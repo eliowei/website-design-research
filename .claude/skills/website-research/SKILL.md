@@ -51,9 +51,12 @@ research/<網域>/
 | 平板 | `formats: ["screenshot"]`，`screenshotOptions: {"fullPage": true, "viewport": {"width": 768, "height": 1024}}` |
 | 手機 | `mobile: true`，`formats: ["screenshot"]`，`screenshotOptions: {"fullPage": true}` |
 
-- markdown 存成 `source/page.md`（之後用行號當證據 `M-L42`），branding 存成 `source/branding.json`。
+- markdown 存成 `source/page.md`（之後用行號當證據 `M-L42`），branding 存成 `source/branding.json`，links 存成 `source/links.json`。過長又和設計無關的欄位（例如 logo 的 data URI）可以省略，但要在檔內註明。
 - 截圖網址是暫時的，立刻用 curl 下載到 `screenshots/`。
 - 遇到速率限制就分開送請求，並在擷取清單註明。
+- 桌機寬度用 Firecrawl 預設的 1920（Playwright 則用 1440），擷取清單寫明實際寬度。
+- **A/B 實驗**：同一網址在不同請求可能拿到不同版本（例如 meta 有 experiment 欄位、三個寬度的文案不一致）。登記成 `X-`，只出現在單一寬度的差異不要拿來當響應式模式。
+- 研究重點是動態時，可以隔幾秒再拍一次首屏（`waitFor`），比對出來的差異記成 `I-`（E3）。
 
 **可以直連網站時**（先用 `curl -sI <網址>` 確認），再用 Playwright（Chromium 在 `/opt/pw-browsers`，不要執行 `playwright install`）補上 E1 證據：
 `getComputedStyle`（body、h1–h3、主要／次要按鈕、連結）、hover 與捲動後的狀態截圖。
@@ -71,9 +74,10 @@ python .claude/skills/website-research/scripts/capture_tools.py slice screenshot
 python .claude/skills/website-research/scripts/capture_tools.py blank screenshots/desktop.png
 ```
 
-   平板用 `--prefix t`，手機用 `--prefix m`。切圖一定放在這個網站自己的 `_slices/`：
+   平板用 `--prefix t`，手機用 `--prefix m`。小字看不清時，可以改小 `--height` 或把 `--scale` 調到 1。
+   腳本路徑是相對於 repo 根目錄；在其他目錄執行時改用絕對路徑。切圖一定放在這個網站自己的 `_slices/`：
    多個研究共用暫存資料夾，會讀到別的網站的圖。
-   `blank` 回報「延伸到截圖底部」的空白時，代表內容要捲動才會出現，那段截圖不能當證據，要登記成 `X-`。
+   `blank` 回報「延伸到截圖底部」的空白時，代表內容要捲動才會出現，或截圖碰到高度上限，那段截圖不能當證據，要登記成 `X-`。
 2. 用 Read 逐段看切圖，每段在證據清單寫一行 `S-` 紀錄。
 3. 用 `capture_tools.py sample` 取樣關鍵色彩（`P-`），和 branding（`B-`）比對；兩者衝突時兩個都記下。
 4. 從 markdown、圖片網址、meta 找 `M-` 和 `H-` 證據（例如 `fallback-*.webp` 暗示有動態主視覺）。

@@ -68,6 +68,8 @@ def cmd_blank(a):
             start = None
     if start is not None and im.height - start >= a.min:
         found.append((start, im.height))
+    if im.height == 16384:
+        print('注意：截圖高度剛好 16384px，可能是瀏覽器截圖的高度上限，頁面實際更長')
     if not found:
         print('沒有偵測到大段空白')
     for s, e in found:

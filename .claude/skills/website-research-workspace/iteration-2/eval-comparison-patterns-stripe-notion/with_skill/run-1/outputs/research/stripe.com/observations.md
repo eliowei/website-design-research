@@ -129,6 +129,18 @@
 | H-05 | E2 | 同一內容有桌機／手機兩張圖：`connect-bento-card-background-image.jpg` 與 `ConnectMobileBackground.jpg`（M-L539）；`sessions-2026-on-demand-bg.png` 與 `…-bg-mobile.png`（M-L541）；What’s happening 圖檔皆為 `*-mobile.png`（M-L1190 起） |
 | H-06 | E2 | 客戶案例圖 alt 文字：「…crosswalks form a slanted parallelogram, imitating the Stripe logo」等，4 張皆描述「形成 Stripe 平行四邊形 logo」（M-L585、L605、L625、L645） |
 
+### 互動／時間差紀錄（I-）
+
+以下都是比對「不同時間的擷取」得出（E3），不是 Playwright 操作。
+
+| ID | 等級 | 內容 |
+| --- | --- | --- |
+| I-01 | E3 | GDP 數字隨時間變大：桌機截圖「1.72480178%」（S-d00）、markdown「1.72480179%」（M-L1）、平板「1.72480200%」（S-t00）、手機「1.72480206%」（S-m00） |
+| I-02 | E3 | 收款 bento 卡在不同擷取顯示不同語系狀態：桌機為德文 Cartsy €26.89（S-d00），平板與手機為英文 Pay Roastery .46（S-t00、S-m00）；markdown 同時含英／德／日三套文字（M-L17–281） |
+| I-03 | E3 | Embed payments 卡：桌機顯示 Daybreak Yoga「Thank you!」完成狀態（S-d01），平板與手機顯示同商家「Order Summary → Pay 99.00」付款前狀態（S-t01、S-m01） |
+| I-04 | E3 | 計費卡：桌機「1,500,000,000」、下方無圖（S-d00，M-L297）；手機「2,010,569,010」並出現長條圖（S-m00） |
+| I-05 | E3 | logo 列內容不同：桌機 Ford、coinbase、Google、shopify、mindbody、MetLife、ramp（S-d00）；平板 ramp、Marriott、Figma、woo 且左右裁切（S-t00）；手機 Marriott、Figma（S-m00） |
+
 ### 缺口（X-）
 
 | ID | 等級 | 內容 |

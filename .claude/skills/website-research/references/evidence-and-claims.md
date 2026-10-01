@@ -28,7 +28,7 @@
 | `B-` | branding 自動萃取 | `B-colors.primary`、`B-typography.fontSizes.h1` | Firecrawl branding 存成 source/branding.json |
 | `C-` | computed style | `C-h1`、`C-button.primary` | Playwright `getComputedStyle`（網站可直連時） |
 | `H-` | 原始 HTML／CSS／檔名線索 | `H-01`（例如 `fallback-dark-glow.webp`） | markdown 的圖片網址、meta、links |
-| `I-` | 互動紀錄 | `I-03`（hover 導覽列後出現下拉） | Playwright 操作，或比對不同時間的截圖 |
+| `I-` | 互動紀錄 | `I-03`（hover 導覽列後出現下拉） | Playwright 操作（E1），或比對不同時間的截圖（E3：只能證明「會變」，不能證明怎麼變） |
 | `X-` | 缺口 | `X-02`（截圖 y≥2716 空白） | `capture_tools.py blank`，或無法取得的資料 |
 
 `X-` 很重要：記下「看不到什麼」，第 6 階段的自我審查會用到。
@@ -37,7 +37,7 @@
 
 | 等級 | 意義 | 典型來源 |
 |---|---|---|
-| E1 | 瀏覽器實際算出或實際操作到的 | `C-`、`I-`（Playwright） |
+| E1 | 瀏覽器實際算出或實際操作到的 | `C-`、Playwright 產生的 `I-` |
 | E2 | 網站原始碼或檔案直接寫明的 | `H-`、`M-` |
 | E3 | 對渲染結果的直接量測 | `P-`、截圖上量的像素尺寸 |
 | E4 | 工具自動推估的 | `B-`（branding 是啟發式萃取，可能和畫面不符） |

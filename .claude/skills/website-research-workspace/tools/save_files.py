@@ -1,9 +1,9 @@
-"""從子代理執行紀錄抽出最後回傳的訊息，存下其中 `===== FILE: <路徑> =====` 格式的檔案。
+"""從子代理執行紀錄的所有訊息，存下其中 `===== FILE: <路徑> =====` 格式的檔案。
 用法：python save_files.py <transcript.jsonl> <outputs_dir>"""
 import json, os, re, sys
 
 def handback(path):
-    last = None
+    texts = []
     for line in open(path):
         try:
             o = json.loads(line)
@@ -13,9 +13,11 @@ def handback(path):
         if m.get('role') != 'assistant' or not isinstance(m.get('content'), list):
             continue
         for b in m['content']:
-            if b.get('type') == 'tool_use' and b.get('name') in ('SubagentHandback', 'SendMessage'):
-                last = b['input'].get('message', last)
-    return last or ''
+            if b.get('type') == 'text':
+                texts.append(b['text'])
+            elif b.get('type') == 'tool_use' and b.get('name') in ('SubagentHandback', 'SendMessage'):
+                texts.append(b['input'].get('message', ''))
+    return '\n'.join(texts)
 
 text = handback(sys.argv[1])
 parts = re.split(r'^\s*===== FILE: (.+?) =====\s*$', text, flags=re.M)

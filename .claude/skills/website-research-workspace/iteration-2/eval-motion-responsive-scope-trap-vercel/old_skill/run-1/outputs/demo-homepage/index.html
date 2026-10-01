@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northwind 雲端平台</title>
+<meta name="description" content="參考 vercel.com 首頁風格製作的示範首頁（虛構品牌 Northwind）。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAFA; --fg:#171717; --muted:#6B6B6B; --line:#EBEBEB; --card:#FFFFFF;
+  --btn-bg:#171717; --btn-fg:#FFFFFF; --glow:rgba(255,255,255,1); --shadow:rgba(0,0,0,.18);
+  --max:1200px; --gutter:24px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A0A0A; --fg:#EDEDED; --muted:#A1A1A1; --line:#2E2E2E; --card:#111111;
+    --btn-bg:#EDEDED; --btn-fg:#0A0A0A; --glow:rgba(120,140,255,.35); --shadow:rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A0A0A; --fg:#EDEDED; --muted:#A1A1A1; --line:#2E2E2E; --card:#111111;
+  --btn-bg:#EDEDED; --btn-fg:#0A0A0A; --glow:rgba(120,140,255,.35); --shadow:rgba(0,0,0,.6);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:"Geist",system-ui,-apple-system,"PingFang TC","Noto Sans TC",sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:"Geist Mono",ui-monospace,monospace}
+
+/* 導覽列 */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;gap:24px;height:64px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:600}
+.logo svg{width:22px;height:22px}
+.links{display:flex;gap:20px;color:var(--muted)}
+.links a{transition:color .15s}.links a:hover{color:var(--fg)}
+.nav .right{margin-left:auto;display:flex;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 16px;border-radius:9999px;font-weight:500;font-size:14px;border:0;cursor:pointer;transition:transform .15s ease,opacity .15s,background .15s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--btn-bg);color:var(--btn-fg)}
+.btn-primary:hover{opacity:.85}
+.btn-secondary{background:var(--card);color:var(--fg);box-shadow:0 0 0 1px var(--line)}
+.btn-secondary:hover{background:var(--line)}
+.btn-sm{height:32px;padding:0 12px;font-size:13px}
+.burger{display:none;margin-left:auto;background:none;border:0;width:40px;height:40px;cursor:pointer;color:var(--fg)}
+.burger span{display:block;width:20px;height:1.5px;background:currentColor;margin:5px auto;transition:transform .25s}
+.burger[aria-expanded="true"] span:first-child{transform:translateY(3.25px) rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+.drawer{display:none}
+
+/* 公告列 */
+.announce{text-align:center;padding-block:12px;color:var(--fg)}
+.announce a{font-weight:500;margin-left:16px}
+.announce a span{display:inline-block;transition:transform .2s}
+.announce a:hover span{transform:translateX(3px)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;min-height:560px;gap:24px}
+.hero h1{font-size:64px;line-height:1.02;letter-spacing:-.04em;font-weight:600}
+.hero .ctas{display:flex;gap:8px;margin-top:24px}
+.hero .ctas .btn{height:40px}
+.mark{position:relative;display:grid;place-items:center;height:320px}
+.mark::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,var(--glow) 0%,transparent 65%);animation:breathe 5s ease-in-out infinite}
+.mark svg{position:relative;width:150px;filter:drop-shadow(0 18px 24px var(--shadow));animation:float 6s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.12);opacity:.75}}
+@keyframes float{50%{transform:translateY(-8px)}}
+.taglines{list-style:none;justify-self:end;display:grid;gap:4px;font-size:15px}
+.taglines li{transition:opacity .4s,color .4s;color:var(--muted)}
+.taglines li.on{color:var(--fg)}
+
+/* Logo 跑馬燈 */
+.logos{overflow:hidden;padding:56px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.track{display:flex;gap:72px;width:max-content;animation:marquee 30s linear infinite}
+.track span{font-weight:600;font-size:20px;letter-spacing:-.02em;color:var(--muted);white-space:nowrap}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.logos:hover .track{animation-play-state:paused}
+
+/* 案例模組 */
+.case{display:grid;grid-template-columns:7fr 4fr;gap:64px;align-items:end;padding-block:120px}
+.case.flip{grid-template-columns:4fr 7fr}
+.case.flip .visual-col{order:2}
+.case h2{font-size:56px;line-height:1.05;letter-spacing:-.04em;font-weight:600;margin-bottom:32px}
+.shot{background:var(--card);border:1px solid var(--line);border-radius:12px;height:300px;position:relative;overflow:hidden;padding:20px}
+.shot::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,var(--bg))}
+.shot .bar{height:10px;border-radius:5px;background:var(--line);margin-bottom:12px}
+.stat{font-size:20px;line-height:1.35;letter-spacing:-.01em;margin-bottom:24px}
+.stat b{font-weight:500}.stat em{font-style:normal;color:var(--muted)}
+.feat-label{color:var(--muted);margin-bottom:6px}
+.feats{list-style:none;display:grid;gap:4px;font-weight:500}
+.feats a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .25s}
+.feats a:hover{background-size:100% 1px}
+
+/* 結尾 CTA 與頁尾 */
+.final{text-align:center;padding-block:160px}
+.final h2{font-size:56px;letter-spacing:-.04em;line-height:1.05;font-weight:600;margin-bottom:24px}
+.final .ctas{display:flex;gap:8px;justify-content:center}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* 捲動進場：只有在 JS 執行、使用者也沒有要求減少動態時才先隱藏，內容預設是看得到的 */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* 響應式：桌機三欄 → 手機單欄、置中、滿版按鈕 */
+@media (max-width:900px){
+  .links,.nav .right{display:none}
+  .burger{display:block}
+  .drawer{display:block;position:fixed;inset:64px 0 0 0;background:var(--bg);padding:24px;transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:9}
+  .drawer.open{opacity:1;transform:none;pointer-events:auto}
+  .drawer a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .drawer .btn{width:100%;height:44px;margin-top:12px;font-size:16px}
+  .announce{display:flex;flex-direction:column;gap:6px}
+  .announce a{margin:0}
+  .hero{grid-template-columns:1fr;text-align:center;min-height:auto;padding-block:16px 8px}
+  .mark{order:-1;height:240px}
+  .mark svg{width:120px}
+  .hero h1{font-size:48px}
+  .taglines{justify-self:center;position:relative;height:24px;width:100%}
+  .taglines li{position:absolute;inset:0;opacity:0;font-family:"Geist Mono",ui-monospace,monospace;color:var(--muted)}
+  .taglines li.on{opacity:1}
+  .hero .ctas{flex-direction:column}
+  .hero .ctas .btn{width:100%;height:44px;font-size:16px}
+  .hero-text{display:contents}
+  .hero-text h1{order:0}.taglines{order:1}.hero .ctas{order:2}
+  .logos{padding:32px 0}
+  .case,.case.flip{grid-template-columns:1fr;gap:32px;padding-block:72px}
+  .case.flip .visual-col{order:0}
+  .case h2,.final h2{font-size:32px;margin-bottom:24px}
+  .shot{height:220px}
+  .stat{font-size:22px}
+  .final{padding-block:96px}
+  .final .ctas{flex-direction:column}
+  .final .btn{width:100%;height:44px}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<header id="top">
+  <nav class="wrap nav" aria-label="主要導覽">
+    <a class="logo" href="#top" aria-label="Northwind 首頁">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l10 18H2z" transform="rotate(180 12 12) translate(0 -1)"/></svg>
+      Northwind
+    </a>
+    <div class="links"><a href="#">產品</a><a href="#">資源</a><a href="#">企業方案</a><a href="#">價格</a></div>
+    <div class="right">
+      <a class="btn btn-secondary btn-sm" href="#">預約展示</a>
+      <a class="btn btn-secondary btn-sm" href="#">登入</a>
+      <a class="btn btn-primary btn-sm" href="#">註冊</a>
+    </div>
+    <button class="burger" aria-label="開啟選單" aria-expanded="false" aria-controls="drawer"><span></span><span></span></button>
+  </nav>
+  <div class="drawer" id="drawer">
+    <a href="#">產品</a><a href="#">資源</a><a href="#">企業方案</a><a href="#">價格</a>
+    <a class="btn btn-primary" href="#">註冊</a>
+    <a class="btn btn-secondary" href="#">登入</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap announce">北風開發者大會 11 月在台北登場 <a href="#">報名參加 <span>›</span></a></div>
+
+  <section class="wrap hero">
+    <div class="hero-text">
+      <h1>為 AI 時代<br>打造的雲端</h1>
+      <div class="ctas"><a class="btn btn-primary" href="#">立即部署</a><a class="btn btn-secondary" href="#">聯絡業務</a></div>
+    </div>
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 100 88"><path d="M50 88L0 0h100z" fill="currentColor"/></svg>
+    </div>
+    <ul class="taglines" aria-label="適用情境">
+      <li class="on">給寫程式的 AI 助理</li>
+      <li>部署網站與應用程式</li>
+      <li>全自動擴充與維運</li>
+    </ul>
+  </section>
+
+  <div class="logos" aria-label="客戶（示意）">
+    <div class="track">
+      <span>Acme</span><span>Globex</span><span>Initech</span><span>Umbrella</span><span>Hooli</span><span>Stark</span><span>Wayne</span>
+      <span aria-hidden="true">Acme</span><span aria-hidden="true">Globex</span><span aria-hidden="true">Initech</span><span aria-hidden="true">Umbrella</span><span aria-hidden="true">Hooli</span><span aria-hidden="true">Stark</span><span aria-hidden="true">Wayne</span>
+    </div>
+  </div>
+
+  <section class="wrap case reveal">
+    <div class="visual-col">
+      <h2>讓 AI 助理跑在懂它的基礎設施上</h2>
+      <div class="shot"><div class="bar" style="width:40%"></div><div class="bar" style="width:75%"></div><div class="bar" style="width:60%"></div><div class="bar" style="width:85%"></div></div>
+    </div>
+    <div>
+      <p class="stat"><b>Acme 每天處理數百萬次</b> <em>AI 對話，全都跑在 Northwind 上。</em></p>
+      <p class="feat-label">功能</p>
+      <ul class="feats"><li><a href="#">長時間任務編排</a></li><li><a href="#">隔離沙箱環境</a></li><li><a href="#">模型閘道</a></li><li><a href="#">彈性運算</a></li></ul>
+    </div>
+  </section>
+
+  <section class="wrap case flip reveal">
+    <div class="visual-col">
+      <h2>從零到百萬流量，瞬間擴充</h2>
+      <div class="shot"><div class="bar" style="width:30%"></div><div class="bar" style="width:90%"></div><div class="bar" style="width:55%"></div></div>
+    </div>
+    <div>
+      <p class="stat"><b>Globex 每月超過一億次</b> <em>網站造訪，由 Northwind 提供服務。</em></p>
+      <p class="feat-label">功能</p>
+      <ul class="feats"><li><a href="#">全球邊緣節點</a></li><li><a href="#">預覽環境</a></li><li><a href="#">無伺服器函式</a></li><li><a href="#">網站防火牆</a></li></ul>
+    </div>
+  </section>
+
+  <section class="wrap case reveal">
+    <div class="visual-col">
+      <h2>一個平台，服務每一位客戶</h2>
+      <div class="shot"><div class="bar" style="width:50%"></div><div class="bar" style="width:70%"></div><div class="bar" style="width:40%"></div><div class="bar" style="width:65%"></div></div>
+    </div>
+    <div>
+      <p class="stat"><b>Initech 為兩萬家公司</b> <em>託管文件網站，全在 Northwind 上。</em></p>
+      <p class="feat-label">功能</p>
+      <ul class="feats"><li><a href="#">租戶隔離</a></li><li><a href="#">網域管理</a></li><li><a href="#">自訂 SSL 憑證</a></li><li><a href="#">預覽網址</a></li></ul>
+    </div>
+  </section>
+
+  <section class="wrap final reveal">
+    <h2>你來寫，或交給你的 AI</h2>
+    <div class="ctas"><a class="btn btn-primary" href="#">立即部署</a><a class="btn btn-secondary" href="#">讓 AI 助理上手</a></div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Northwind（虛構品牌，示範用）</span><span>隱私權・條款・狀態</span></div></footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 導覽列捲動後出現底線
+  var header=document.querySelector('header');
+  addEventListener('scroll',function(){header.classList.toggle('scrolled',scrollY>8)},{passive:true});
+  // 手機漢堡選單
+  var burger=document.querySelector('.burger'),drawer=document.getElementById('drawer');
+  burger.addEventListener('click',function(){
+    var open=burger.getAttribute('aria-expanded')!=='true';
+    burger.setAttribute('aria-expanded',open);drawer.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  // 標語輪播：桌機是三行輪流高亮，手機是單行切換
+  var items=document.querySelectorAll('.taglines li'),i=0;
+  if(!reduce) setInterval(function(){items[i].classList.remove('on');i=(i+1)%items.length;items[i].classList.add('on')},2400);
+  // 捲動進場；瀏覽器不支援 IntersectionObserver 時直接顯示全部內容
+  var els=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
