@@ -63,6 +63,8 @@ research/<網域>/
 `getComputedStyle`（body、h1–h3、主要／次要按鈕、連結）、hover 與捲動後的狀態截圖。
 互動型網站（要點按鈕才進入主內容）一定要這一步，否則只看得到入口。
 網站被網路政策擋住時（curl 回 403、Playwright 出現 `ERR_TUNNEL_CONNECTION_FAILED`），把它登記成缺口 `X-`，不要繞過。
+Playwright 出現 `ERR_CERT_AUTHORITY_INVALID`（curl 卻能連上）時，是瀏覽器還不信任環境的代理憑證，不要關掉憑證檢查；把環境提供的 CA 加進瀏覽器的憑證庫即可（雲端環境的 CA 在 `/root/.ccr/agent-proxy-ca.crt`）：
+`apt-get install -y libnss3-tools && certutil -A -d sql:$HOME/.pki/nssdb -t "C,," -n proxy-ca -i <CA 檔>`
 
 ## 第 2 階段：觀察
 
