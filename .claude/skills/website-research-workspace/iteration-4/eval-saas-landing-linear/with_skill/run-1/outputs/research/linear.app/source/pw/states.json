@@ -1,0 +1,342 @@
+{
+ "vars": {
+  "--ink-a": "#7b83eb",
+  "--ink-b": "#deb949",
+  "--tweet-skeleton-gradient": "linear-gradient(270deg, #15202b, #1e2732, #1e2732, #15202b)",
+  "--tweet-border": "1px solid #425364",
+  "--tweet-font-family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+  "--tweet-font-color": "#f7f9f9",
+  "--tweet-font-color-secondary": "#8b98a5",
+  "--tweet-bg-color": "#15202b",
+  "--tweet-bg-color-hover": "#1e2732",
+  "--tweet-quoted-bg-color-hover": "#ffffff08",
+  "--tweet-color-blue-primary": "#1d9bf0",
+  "--tweet-color-blue-primary-hover": "#1a8cd8",
+  "--tweet-color-blue-secondary": "#6bc9fb",
+  "--tweet-color-blue-secondary-hover": "#6bc9fb1a",
+  "--tweet-color-red-primary": "#f91880",
+  "--tweet-color-red-primary-hover": "#f918801a",
+  "--tweet-color-green-primary": "#00ba7c",
+  "--tweet-color-green-primary-hover": "#00ba7c1a",
+  "--tweet-twitter-icon-color": "var(--tweet-font-color)",
+  "--tweet-verified-old-color": "#829aab",
+  "--tweet-verified-blue-color": "#fff"
+ },
+ "hover": {
+  "signup": {
+   "before": {
+    "color": "rgb(8, 9, 10)",
+    "bg": "rgb(229, 229, 230)",
+    "border": "1px solid rgb(229, 229, 230)",
+    "shadow": "rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(8, 9, 10)",
+    "bg": "rgb(255, 255, 255)",
+    "border": "1px solid rgb(229, 229, 230)",
+    "shadow": "rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  },
+  "login": {
+   "before": {
+    "color": "rgb(138, 143, 152)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(138, 143, 152)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgba(255, 255, 255, 0.08)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  },
+  "navPricing": {
+   "before": {
+    "color": "rgb(138, 143, 152)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(138, 143, 152)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgba(255, 255, 255, 0.08)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  },
+  "getStarted": {
+   "before": {
+    "color": "rgb(8, 9, 10)",
+    "bg": "rgb(229, 229, 230)",
+    "border": "1px solid rgb(229, 229, 230)",
+    "shadow": "rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(8, 9, 10)",
+    "bg": "rgb(255, 255, 255)",
+    "border": "1px solid rgb(229, 229, 230)",
+    "shadow": "rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  },
+  "contactSales": {
+   "before": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgba(255, 255, 255, 0.05)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgb(25, 26, 27)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  },
+  "learnMore": {
+   "before": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  },
+  "footerIntake": {
+   "before": {
+    "color": "rgb(138, 143, 152)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(138, 143, 152)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  },
+  "featureLinearAgent": {
+   "before": {
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(255, 255, 255)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(255, 255, 255)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  },
+  "changelogCard": {
+   "before": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   },
+   "after": {
+    "color": "rgb(247, 248, 248)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px none rgb(247, 248, 248)",
+    "shadow": "none",
+    "outline": "rgba(0, 0, 0, 0) none 0px",
+    "outlineOffset": "0px",
+    "opacity": "1",
+    "transform": "none",
+    "textDecoration": "none"
+   }
+  }
+ },
+ "productMenuText": "Product",
+ "focus": [
+  {
+   "text": "Skip to content →",
+   "outline": "rgb(94, 105, 209) solid 1px",
+   "outlineOffset": "2px",
+   "shadow": "rgb(8, 9, 10) 0px 0px 0px 2px, rgb(94, 106, 210) 0px 0px 0px 4px",
+   "bg": "rgb(94, 106, 210)",
+   "rect": [
+    0,
+    72,
+    1440,
+    32
+   ]
+  },
+  {
+   "text": "",
+   "outline": "rgb(94, 105, 209) solid 1px",
+   "outlineOffset": "2px",
+   "shadow": "none",
+   "bg": "rgba(0, 0, 0, 0)",
+   "rect": [
+    71,
+    20,
+    104,
+    32
+   ]
+  },
+  {
+   "text": "Product",
+   "outline": "rgb(94, 105, 209) solid 1px",
+   "outlineOffset": "2px",
+   "shadow": "none",
+   "bg": "rgba(0, 0, 0, 0)",
+   "rect": [
+    741,
+    20,
+    72.109375,
+    32
+   ]
+  },
+  {
+   "text": "Resources",
+   "outline": "rgb(94, 105, 209) solid 1px",
+   "outlineOffset": "2px",
+   "shadow": "none",
+   "bg": "rgba(0, 0, 0, 0)",
+   "rect": [
+    813.109375,
+    20,
+    88.65625,
+    32
+   ]
+  },
+  {
+   "text": "Customers",
+   "outline": "rgb(94, 105, 209) solid 1px",
+   "outlineOffset": "2px",
+   "shadow": "none",
+   "bg": "rgba(0, 0, 0, 0)",
+   "rect": [
+    901.765625,
+    20,
+    90.703125,
+    32
+   ]
+  },
+  {
+   "text": "Pricing",
+   "outline": "rgb(94, 105, 209) solid 1px",
+   "outlineOffset": "2px",
+   "shadow": "none",
+   "bg": "rgba(0, 0, 0, 0)",
+   "rect": [
+    992.46875,
+    20,
+    66.703125,
+    32
+   ]
+  }
+ ],
+ "featureClick": {
+  "dialog": true,
+  "text": "TECH SPECS\nLinear Agent\n\nThe Linear Agent is an AI agent available in Linear’s intake integrations. It converts supported conversations into Linear issues by extracting requests, summarizing context, and populating issue fields.\n\nLINEAR AGENT IN SLACK\nIntegrations\nIntegration\nDetails\nSlack\n\nConverts Slack threads into issues by mentioning @Linear. The agent uses the full thread context to auto-gen"
+ },
+ "headerTop": {
+  "bg": "rgba(0, 0, 0, 0)",
+  "backdrop": "blur(20px)",
+  "border": "1px solid rgba(255, 255, 255, 0.08)",
+  "position": "fixed",
+  "height": 73
+ },
+ "headerScrolled": {
+  "bg": "rgba(0, 0, 0, 0)",
+  "backdrop": "blur(20px)",
+  "border": "1px solid rgba(255, 255, 255, 0.08)",
+  "position": "fixed",
+  "top": 0
+ }
+}

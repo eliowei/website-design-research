@@ -1,0 +1,631 @@
+{
+ "w1440": {
+  "h1": {
+   "fs": "64px",
+   "lh": "64px",
+   "ls": "-1.408px",
+   "fw": "510",
+   "display": "block",
+   "x": 78,
+   "y": 272,
+   "w": 1282,
+   "h": 128
+  },
+  "heroP": {
+   "fs": "15px",
+   "lh": "24px",
+   "ls": "-0.165px",
+   "fw": "400",
+   "display": "block",
+   "x": 80,
+   "y": 432,
+   "w": 505,
+   "h": 25
+  },
+  "h2s": [
+   {
+    "t": "A new species of product ",
+    "fs": "48px",
+    "lh": "48px",
+    "ls": "-1.056px",
+    "fw": "510",
+    "display": "block",
+    "x": 46,
+    "y": 1596,
+    "w": 1250,
+    "h": 144
+   },
+   {
+    "t": "Intake and integrations",
+    "fs": "48px",
+    "lh": "48px",
+    "ls": "-1.056px",
+    "fw": "510",
+    "display": "block",
+    "x": 78,
+    "y": 2674,
+    "w": 542,
+    "h": 83
+   },
+   {
+    "t": "Planning and monitoring",
+    "fs": "48px",
+    "lh": "48px",
+    "ls": "-1.056px",
+    "fw": "510",
+    "display": "block",
+    "x": 78,
+    "y": 3910,
+    "w": 542,
+    "h": 83
+   },
+   {
+    "t": "AI and automations",
+    "fs": "48px",
+    "lh": "48px",
+    "ls": "-1.056px",
+    "fw": "510",
+    "display": "block",
+    "x": 78,
+    "y": 5149,
+    "w": 542,
+    "h": 83
+   },
+   {
+    "t": "Build, review, and ship",
+    "fs": "48px",
+    "lh": "48px",
+    "ls": "-1.056px",
+    "fw": "510",
+    "display": "block",
+    "x": 78,
+    "y": 6391,
+    "w": 542,
+    "h": 83
+   },
+   {
+    "t": "Changelog",
+    "fs": "48px",
+    "lh": "48px",
+    "ls": "-1.056px",
+    "fw": "510",
+    "display": "block",
+    "x": 78,
+    "y": 7644,
+    "w": 224,
+    "h": 48
+   },
+   {
+    "t": "Built for the future. Ava",
+    "fs": "72px",
+    "lh": "72px",
+    "ls": "-1.584px",
+    "fw": "510",
+    "display": "block",
+    "x": 359,
+    "y": 9014,
+    "w": 722,
+    "h": 144
+   }
+  ],
+  "sections": [
+   {
+    "cls": "",
+    "y": 0,
+    "h": 0,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "block"
+   },
+   {
+    "cls": "",
+    "y": 1239,
+    "h": 0,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 2546,
+    "h": 1226,
+    "pt": "128px",
+    "pb": "128px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 3782,
+    "h": 1229,
+    "pt": "128px",
+    "pb": "128px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 5021,
+    "h": 1232,
+    "pt": "128px",
+    "pb": "128px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 6263,
+    "h": 1220,
+    "pt": "128px",
+    "pb": "128px",
+    "display": "block"
+   },
+   {
+    "cls": "Dc5tqa_container hide-laptop",
+    "y": 8226,
+    "h": 564,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "block"
+   },
+   {
+    "cls": "dYXc1G_homepagePrefooter",
+    "y": 9014,
+    "h": 228,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "flex"
+   }
+  ],
+  "featuresVisible": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "intakeOrder": {
+   "h2y": 2674,
+   "threadY": 2919,
+   "threadVisible": true
+  },
+  "changelogVisible": true,
+  "customers40k": true,
+  "docH": 9960,
+  "getStarted": {
+   "fs": "16px",
+   "lh": "44px",
+   "ls": "normal",
+   "fw": "510",
+   "display": "flex",
+   "x": 579,
+   "y": 9198,
+   "w": 127,
+   "h": 44
+  },
+  "menuBtn": [
+   "Product",
+   "Resources",
+   "Remove from favorites",
+   "Issue options",
+   "Previous issue",
+   "Next issue"
+  ]
+ },
+ "w768": {
+  "h1": {
+   "fs": "56px",
+   "lh": "61.6px",
+   "ls": "-1.232px",
+   "fw": "510",
+   "display": "block",
+   "x": 34,
+   "y": 164,
+   "w": 698,
+   "h": 123
+  },
+  "heroP": {
+   "fs": "15px",
+   "lh": "24px",
+   "ls": "-0.165px",
+   "fw": "400",
+   "display": "block",
+   "x": 36,
+   "y": 307,
+   "w": 378,
+   "h": 48
+  },
+  "h2s": [
+   {
+    "t": "A new species of product ",
+    "fs": "32px",
+    "lh": "36px",
+    "ls": "-0.704px",
+    "fw": "510",
+    "display": "block",
+    "x": 26,
+    "y": 1417,
+    "w": 714,
+    "h": 144
+   },
+   {
+    "t": "Intake and integrations",
+    "fs": "40px",
+    "lh": "44px",
+    "ls": "-0.88px",
+    "fw": "510",
+    "display": "block",
+    "x": 34,
+    "y": 2321,
+    "w": 451,
+    "h": 73
+   },
+   {
+    "t": "Planning and monitoring",
+    "fs": "40px",
+    "lh": "44px",
+    "ls": "-0.88px",
+    "fw": "510",
+    "display": "block",
+    "x": 34,
+    "y": 3559,
+    "w": 451,
+    "h": 73
+   },
+   {
+    "t": "AI and automations",
+    "fs": "40px",
+    "lh": "44px",
+    "ls": "-0.88px",
+    "fw": "510",
+    "display": "block",
+    "x": 34,
+    "y": 4800,
+    "w": 451,
+    "h": 73
+   },
+   {
+    "t": "Build, review, and ship",
+    "fs": "40px",
+    "lh": "44px",
+    "ls": "-0.88px",
+    "fw": "510",
+    "display": "block",
+    "x": 34,
+    "y": 6044,
+    "w": 451,
+    "h": 73
+   },
+   {
+    "t": "Changelog",
+    "fs": "40px",
+    "lh": "44px",
+    "ls": "-0.88px",
+    "fw": "510",
+    "display": "block",
+    "x": 34,
+    "y": 7379,
+    "w": 186,
+    "h": 44
+   },
+   {
+    "t": "Built for the future. Ava",
+    "fs": "40px",
+    "lh": "44px",
+    "ls": "-0.88px",
+    "fw": "510",
+    "display": "block",
+    "x": 183,
+    "y": 8451,
+    "w": 401,
+    "h": 88
+   }
+  ],
+  "sections": [
+   {
+    "cls": "",
+    "y": 0,
+    "h": 0,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "block"
+   },
+   {
+    "cls": "",
+    "y": 1182,
+    "h": 0,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 2273,
+    "h": 1228,
+    "pt": "48px",
+    "pb": "96px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 3511,
+    "h": 1231,
+    "pt": "48px",
+    "pb": "96px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 4752,
+    "h": 1234,
+    "pt": "48px",
+    "pb": "96px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 5996,
+    "h": 1222,
+    "pt": "48px",
+    "pb": "96px",
+    "display": "block"
+   },
+   {
+    "cls": "Dc5tqa_container hide-laptop",
+    "y": 0,
+    "h": 0,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "none"
+   },
+   {
+    "cls": "dYXc1G_homepagePrefooter",
+    "y": 8451,
+    "h": 172,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "flex"
+   }
+  ],
+  "featuresVisible": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "intakeOrder": {
+   "h2y": 2321,
+   "threadY": 2628,
+   "threadVisible": true
+  },
+  "changelogVisible": true,
+  "customers40k": false,
+  "docH": 9525,
+  "getStarted": {
+   "fs": "16px",
+   "lh": "44px",
+   "ls": "normal",
+   "fw": "510",
+   "display": "flex",
+   "x": 243,
+   "y": 8579,
+   "w": 127,
+   "h": 44
+  },
+  "menuBtn": [
+   "",
+   "Remove from favorites",
+   "Issue options",
+   "Previous issue",
+   "Next issue"
+  ]
+ },
+ "w390": {
+  "h1": {
+   "fs": "38px",
+   "lh": "41.8px",
+   "ls": "-0.836px",
+   "fw": "510",
+   "display": "block",
+   "x": 23,
+   "y": 196,
+   "w": 343,
+   "h": 167
+  },
+  "heroP": {
+   "fs": "15px",
+   "lh": "24px",
+   "ls": "-0.165px",
+   "fw": "400",
+   "display": "block",
+   "x": 24,
+   "y": 383,
+   "w": 276,
+   "h": 48
+  },
+  "h2s": [
+   {
+    "t": "A new species of product ",
+    "fs": "24px",
+    "lh": "31.92px",
+    "ls": "-0.288px",
+    "fw": "510",
+    "display": "block",
+    "x": 15,
+    "y": 1076,
+    "w": 359,
+    "h": 191
+   },
+   {
+    "t": "Intake and integrations",
+    "fs": "24px",
+    "lh": "31.92px",
+    "ls": "-0.288px",
+    "fw": "510",
+    "display": "block",
+    "x": 23,
+    "y": 2251,
+    "w": 275,
+    "h": 49
+   },
+   {
+    "t": "Planning and monitoring",
+    "fs": "24px",
+    "lh": "31.92px",
+    "ls": "-0.288px",
+    "fw": "510",
+    "display": "block",
+    "x": 23,
+    "y": 2837,
+    "w": 275,
+    "h": 49
+   },
+   {
+    "t": "AI and automations",
+    "fs": "24px",
+    "lh": "31.92px",
+    "ls": "-0.288px",
+    "fw": "510",
+    "display": "block",
+    "x": 23,
+    "y": 3418,
+    "w": 275,
+    "h": 49
+   },
+   {
+    "t": "Build, review, and ship",
+    "fs": "24px",
+    "lh": "31.92px",
+    "ls": "-0.288px",
+    "fw": "510",
+    "display": "block",
+    "x": 23,
+    "y": 4003,
+    "w": 275,
+    "h": 49
+   },
+   {
+    "t": "Changelog",
+    "fs": "20px",
+    "lh": "26.6px",
+    "ls": "-0.24px",
+    "fw": "510",
+    "display": "block",
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   {
+    "t": "Built for the future. Ava",
+    "fs": "38px",
+    "lh": "41.8px",
+    "ls": "-0.836px",
+    "fw": "510",
+    "display": "block",
+    "x": 16,
+    "y": 4735,
+    "w": 358,
+    "h": 84
+   }
+  ],
+  "sections": [
+   {
+    "cls": "",
+    "y": 0,
+    "h": 0,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "block"
+   },
+   {
+    "cls": "",
+    "y": 877,
+    "h": 0,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "block"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 1899,
+    "h": 581,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "flex"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 2491,
+    "h": 575,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "flex"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 3076,
+    "h": 571,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "flex"
+   },
+   {
+    "cls": "b-30Va_root b-30Va_rootHomepage",
+    "y": 3657,
+    "h": 575,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "flex"
+   },
+   {
+    "cls": "Dc5tqa_container hide-laptop",
+    "y": 0,
+    "h": 0,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "none"
+   },
+   {
+    "cls": "dYXc1G_homepagePrefooter",
+    "y": 4735,
+    "h": 168,
+    "pt": "0px",
+    "pb": "0px",
+    "display": "flex"
+   }
+  ],
+  "featuresVisible": [
+   true,
+   false,
+   false,
+   false,
+   false
+  ],
+  "intakeOrder": {
+   "h2y": 2251,
+   "threadY": 1707,
+   "threadVisible": true
+  },
+  "changelogVisible": true,
+  "customers40k": false,
+  "docH": 5876,
+  "getStarted": {
+   "fs": "16px",
+   "lh": "44px",
+   "ls": "normal",
+   "fw": "510",
+   "display": "flex",
+   "x": 54,
+   "y": 4858,
+   "w": 127,
+   "h": 44
+  },
+  "menuBtn": [
+   "",
+   "Remove from favorites",
+   "Issue options",
+   "Previous issue",
+   "Next issue"
+  ]
+ },
+ "menuText": "Skip to content →\nLog in\nSign up\nThe product development system for teams and agents\nThe product development system for teams and agents\n\nPurpose-built for planning and building products. Designed for the AI era.\n\nNew\nLoops →\nLinear\nPulse\nInbox\nMy issues\nReviews\nWorkspace\nInitiatives\nProjects\nMore\nF"
+}
