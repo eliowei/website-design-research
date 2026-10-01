@@ -60,8 +60,17 @@ research/<網域>/
 - 研究重點是動態時，可以隔幾秒再拍一次首屏（`waitFor`），比對出來的差異記成 `I-`（E3）。
 
 **可以直連網站時**（先用 `curl -sI <網址>` 確認），再用 Playwright（Chromium 在 `/opt/pw-browsers`，不要執行 `playwright install`）補上 E1 證據：
-`getComputedStyle`（body、h1–h3、主要／次要按鈕、連結）、hover 與捲動後的狀態截圖。
+- `getComputedStyle`（body、h1–h3、主要／次要按鈕、連結），以及 `:root` 上的 CSS 變數（讀得到就是最直接的 tokens 證據）。
+- hover、focus（Tab）、點擊後的狀態，記下 `transition` 的時長與 easing。
+- **動態要在觸發的同時開始記錄**：捲動或載入後立刻用 `recordVideo`，或每 100ms 拍一張、持續 1.5 秒。晚了就會錯過進場動畫，只拍到結束狀態。
+- 開一個 `reducedMotion: 'reduce'` 的 context 重拍一次，比較網站怎麼處理減少動態。
+- Playwright 的額外產物放在 `screenshots/pw/`，量測資料（computed style、序列結果）存成 `source/pw/*.json`，讓每個 `C-`、`I-` 都對得到檔案。
+
 互動型網站（要點按鈕才進入主內容）一定要這一步，否則只看得到入口。
+
+**寬度與工具不一致時**：每個 `S-`、`P-`、`C-` 證據都要記下它的 viewport 寬度，因為座標和版面只在同一寬度內可比。
+Firecrawl 和 Playwright 在相近寬度（例如 360 與 390）看到不同畫面時，兩個都記下並登記成 `X-`，不要挑一個當事實；
+兩者衝突的數值以 Playwright 的 E1 為準，但要說明差異。
 網站被網路政策擋住時（curl 回 403、Playwright 出現 `ERR_TUNNEL_CONNECTION_FAILED`），把它登記成缺口 `X-`，不要繞過。
 Playwright 出現 `ERR_CERT_AUTHORITY_INVALID`（curl 卻能連上）時，是瀏覽器還不信任環境的代理憑證，不要關掉憑證檢查；把環境提供的 CA 加進瀏覽器的憑證庫即可（雲端環境的 CA 在 `/root/.ccr/agent-proxy-ca.crt`）：
 `apt-get install -y libnss3-tools && certutil -A -d sql:$HOME/.pki/nssdb -t "C,," -n proxy-ca -i <CA 檔>`

@@ -26,9 +26,9 @@
 | `P-` | 像素取樣 | `P-04` | `capture_tools.py sample`，記下座標與色碼 |
 | `M-` | 頁面文字 | `M-L42`（source/page.md 第 42 行） | Firecrawl markdown 存成檔案後引用行號 |
 | `B-` | branding 自動萃取 | `B-colors.primary`、`B-typography.fontSizes.h1` | Firecrawl branding 存成 source/branding.json |
-| `C-` | computed style | `C-h1`、`C-button.primary` | Playwright `getComputedStyle`（網站可直連時） |
+| `C-` | computed style、CSS 變數 | `C-h1`、`C-button.primary`、`C-var.--color-bg` | Playwright `getComputedStyle` 或讀 `:root` 的 CSS 變數（網站可直連時）。記下 viewport 寬度 |
 | `H-` | 原始 HTML／CSS／檔名線索 | `H-01`（例如 `fallback-dark-glow.webp`） | markdown 的圖片網址、meta、links |
-| `I-` | 互動紀錄 | `I-03`（hover 導覽列後出現下拉） | Playwright 操作（E1），或比對不同時間的截圖（E3：只能證明「會變」，不能證明怎麼變） |
+| `I-` | 互動紀錄 | `I-03`（hover 導覽列後出現下拉） | Playwright 操作或在瀏覽器內定時連拍（E1），或比對 Firecrawl 不同時間的截圖（E3）。連拍只能證明「有變化、先後順序」；時長與 easing 要從 `transition` 屬性、Web Animations API 或錄影逐格量到才算 |
 | `X-` | 缺口 | `X-02`（截圖 y≥2716 空白） | `capture_tools.py blank`，或無法取得的資料 |
 
 `X-` 很重要：記下「看不到什麼」，第 6 階段的自我審查會用到。
