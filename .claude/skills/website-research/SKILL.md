@@ -55,9 +55,17 @@ research/<網域>/
 - markdown 存成 `source/page.md`（之後用行號當證據 `M-L42`），branding 存成 `source/branding.json`，links 存成 `source/links.json`。過長又和設計無關的欄位（例如 logo 的 data URI）可以省略，但要在檔內註明。
 - 截圖網址是暫時的，立刻用 curl 下載到 `screenshots/`。
 - 遇到速率限制就分開送請求，並在擷取清單註明。
-- 桌機寬度用 Firecrawl 預設的 1920（Playwright 則用 1440），擷取清單寫明實際寬度。
-- **A/B 實驗**：同一網址在不同請求可能拿到不同版本（例如 meta 有 experiment 欄位、三個寬度的文案不一致）。登記成 `X-`，只出現在單一寬度的差異不要拿來當響應式模式。
+- **固定寬度**：兩個工具的寬度不同，各自固定下來，比較只在同一工具、同一寬度內做：
+
+  | | 桌機 | 平板 | 手機 |
+  |---|---|---|---|
+  | Firecrawl | 1920（預設） | 768 | 360（`mobile: true`） |
+  | Playwright | 1440×900 | 768×1024 | 390×844，加 `isMobile: true`、`hasTouch: true` |
+- **A/B 實驗與版本差異**：同一網址在不同請求可能拿到不同版本，不只文案，字型、樣式、版面也可能不同（例如 meta 有 experiment 欄位、同寬度兩次執行的字族不一樣）。登記成 `X-`，只出現在單一次執行或單一寬度的差異，不要拿來當響應式模式或設計結論。
 - 研究重點是動態時，可以隔幾秒再拍一次首屏（`waitFor`），比對出來的差異記成 `I-`（E3）。
+- **有預載或長進場動畫的網站**（例如全螢幕單屏、載入數秒才出現內容）：Firecrawl 的截圖常常落在動畫中途，每次時間點還不一樣。
+  先用 `waitFor` 加大到超過進場時間再拍；仍然不穩定時，Firecrawl 截圖只拿來證明「不同時間點畫面不同」，
+  穩定狀態的截圖改由 Playwright 等到 `document.getAnimations()` 全部結束（或網站加上「已就緒」的 class）後再拍，並登記 `X-` 說明。
 
 **可以直連網站時**（先用 `curl -sI <網址>` 確認），再用 Playwright（Chromium 在 `/opt/pw-browsers`，不要執行 `playwright install`）補上 E1 證據：
 - `getComputedStyle`（body、h1–h3、主要／次要按鈕、連結），以及 `:root` 上的 CSS 變數（讀得到就是最直接的 tokens 證據）。
@@ -65,6 +73,9 @@ research/<網域>/
 - **動態要在觸發的同時開始記錄**：捲動或載入後立刻用 `recordVideo`，或每 100ms 拍一張、持續 1.5 秒。晚了就會錯過進場動畫，只拍到結束狀態。
 - 開一個 `reducedMotion: 'reduce'` 的 context 重拍一次，比較網站怎麼處理減少動態。
 - Playwright 的額外產物放在 `screenshots/pw/`，量測資料（computed style、序列結果）存成 `source/pw/*.json`，讓每個 `C-`、`I-` 都對得到檔案。
+  Playwright 截圖的證據 ID 用 `S-pw<寬度>-<名稱>`（例如 `S-pw1440-hero`、`S-pw390-sec03`、`S-pw1440-load-07`），命名規則見 evidence-and-claims.md §2。
+- 動畫時長與 easing 有兩種來源，寫的時候要分開：**設定值**（CSS `transition`、GSAP 等程式碼裡寫的數字，`H-`，E2）和**實測值**（Web Animations API、錄影逐格量到，`I-`／`C-`，E1）。
+  只有設定值時，動態表的 Duration 欄寫成「設定值 0.55s」，不要寫成量到的。
 
 互動型網站（要點按鈕才進入主內容）一定要這一步，否則只看得到入口。
 
@@ -82,14 +93,16 @@ Playwright 出現 `ERR_CERT_AUTHORITY_INVALID`（curl 卻能連上）時，是�
 1. 切圖並檢查空白：
 
 ```bash
-python .claude/skills/website-research/scripts/capture_tools.py slice screenshots/desktop.png _slices --prefix d
-python .claude/skills/website-research/scripts/capture_tools.py blank screenshots/desktop.png
+SCRIPT=<SKILL.md 所在的資料夾>/scripts/capture_tools.py   # 用絕對路徑，在哪個目錄執行都能用
+python "$SCRIPT" slice screenshots/desktop.png _slices --prefix d
+python "$SCRIPT" blank screenshots/desktop.png
 ```
 
    平板用 `--prefix t`，手機用 `--prefix m`。小字看不清時，可以改小 `--height` 或把 `--scale` 調到 1。
-   腳本路徑是相對於 repo 根目錄；在其他目錄執行時改用絕對路徑。切圖一定放在這個網站自己的 `_slices/`：
+   切圖一定放在這個網站自己的 `_slices/`：
    多個研究共用暫存資料夾，會讀到別的網站的圖。
-   `blank` 回報「延伸到截圖底部」的空白時，代表內容要捲動才會出現，或截圖碰到高度上限，那段截圖不能當證據，要登記成 `X-`。
+   `blank` 回報「延伸到截圖底部」的空白時，原因可能是內容要捲動才出現、截圖碰到高度上限，或整頁截圖功能本身沒渲染。那段截圖不能當證據，要登記成 `X-`；
+   能用 Playwright 時，改成捲到每一段再拍視窗截圖（`S-pw<寬度>-sec01`…）補上，並用連拍確認是不是真的有進場動畫，不要直接推定成「捲動淡入」。
 2. 用 Read 逐段看切圖，每段在證據清單寫一行 `S-` 紀錄。
 3. 用 `capture_tools.py sample` 取樣關鍵色彩（`P-`），和 branding（`B-`）比對；兩者衝突時兩個都記下。
 4. 從 markdown、圖片網址、meta 找 `M-` 和 `H-` 證據（例如 `fallback-*.webp` 暗示有動態主視覺）。
@@ -133,7 +146,7 @@ report.md 為了可查核，充滿證據 ID 和層級標記，設計師讀起來
 - 摘要裡的每個絕對或否定說法（「全部」「沒有」「只有」），都要回到**截圖本身**再看一次，不能只對照 observations.md：文字紀錄可能本來就寫錯。
 - 寫摘要時發現 report.md 有錯，先回頭修正 report.md（和相關的 VP），再寫摘要。摘要不能和報告說法不一致。
 
-最後在 `research/README.md` 的索引表加一行，連結指向 summary.md。回覆使用者時給 3–5 點摘要和檔案路徑，以及最重要的不確定之處，不要把整份報告貼進對話。
+最後在 `research/README.md` 的索引表加一行（欄位：網站｜研究日期｜連結），有 summary.md 就連到它，沒有才連 report.md；不要改動其他列。回覆使用者時給 3–5 點摘要和檔案路徑，以及最重要的不確定之處，不要把整份報告貼進對話。
 
 ## 多網站比較
 
@@ -145,7 +158,9 @@ report.md 為了可查核，充滿證據 ID 和層級標記，設計師讀起來
 
 ## 在子代理中執行時
 
-有些環境不允許子代理寫報告檔。被擋下時**不要用 Bash 或其他方式繞過**，改成在最後回覆裡附上每個檔案的完整內容，格式如下，由主對話存檔：
+有些環境不允許子代理寫報告檔，而且哪些檔案會被擋並不一致（曾經 observations.md 能寫、report.md 被擋）。
+規則：每個檔案都先試著正常寫入；**被擋下的檔案不要用 Bash 或其他方式繞過**，改成在最後回覆裡附上完整內容，由主對話存檔。
+回覆開頭列出哪些檔案已寫入、哪些放在 FILE 區塊，讓主對話不用猜。FILE 區塊的格式：
 
 ```
 ===== FILE: research/<網域>/observations.md =====

@@ -22,13 +22,13 @@
 
 | 前綴 | 來源 | 範例 | 怎麼產生 |
 |---|---|---|---|
-| `S-` | 截圖分段 | `S-d03`（桌機第 3 段）、`S-t01`（平板）、`S-m02`（手機） | `capture_tools.py slice` 的輸出，同時記下原圖 y 範圍 |
+| `S-` | 截圖 | Firecrawl 切圖：`S-d03`（桌機第 3 段）、`S-t01`、`S-m02`；Playwright 截圖：`S-pw1440-hero`、`S-pw390-sec03`、連拍的單張 `S-pw1440-load-07` | 切圖記下原圖 y 範圍；Playwright 截圖的 ID 本身帶寬度，檔案放 `screenshots/pw/` |
 | `P-` | 像素取樣 | `P-04` | `capture_tools.py sample`，記下座標與色碼 |
 | `M-` | 頁面文字 | `M-L42`（source/page.md 第 42 行） | Firecrawl markdown 存成檔案後引用行號 |
 | `B-` | branding 自動萃取 | `B-colors.primary`、`B-typography.fontSizes.h1` | Firecrawl branding 存成 source/branding.json |
 | `C-` | computed style、CSS 變數 | `C-h1`、`C-button.primary`、`C-var.--color-bg` | Playwright `getComputedStyle` 或讀 `:root` 的 CSS 變數（網站可直連時）。記下 viewport 寬度 |
-| `H-` | 原始 HTML／CSS／檔名線索 | `H-01`（例如 `fallback-dark-glow.webp`） | markdown 的圖片網址、meta、links |
-| `I-` | 互動紀錄 | `I-03`（hover 導覽列後出現下拉） | Playwright 操作或在瀏覽器內定時連拍（E1），或比對 Firecrawl 不同時間的截圖（E3）。連拍只能證明「有變化、先後順序」；時長與 easing 要從 `transition` 屬性、Web Animations API 或錄影逐格量到才算 |
+| `H-` | 原始 HTML／CSS／JS／檔名線索 | `H-01`（例如 `fallback-dark-glow.webp`）、`H-js-preloader`（程式碼裡的動畫設定值） | markdown 的圖片網址、meta、links；下載的 CSS／JS 摘錄。程式碼裡的 duration、easing 是**設定值**，不是量到的實際播放 |
+| `I-` | 互動紀錄 | `I-03`（hover 導覽列後出現下拉） | Playwright 操作或在瀏覽器內定時連拍（E1），或比對 Firecrawl 不同時間的截圖（E3）。`I-` 是「發生了什麼變化」的結論，連拍的每一張是 `S-`，`I-` 引用它們（例如「I-04：S-pw1440-load-03→07 標題升起」）。連拍只能證明「有變化、先後順序」；時長與 easing 要從 computed `transition`、Web Animations API 或錄影逐格量到才算實測 |
 | `X-` | 缺口 | `X-02`（截圖 y≥2716 空白） | `capture_tools.py blank`，或無法取得的資料 |
 
 `X-` 很重要：記下「看不到什麼」，第 6 階段的自我審查會用到。
