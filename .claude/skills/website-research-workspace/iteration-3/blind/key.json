@@ -1,0 +1,17 @@
+{
+ "pair-1": {
+  "eval": "saas-landing-linear",
+  "A": "iter2",
+  "B": "iter3"
+ },
+ "pair-2": {
+  "eval": "motion-responsive-scope-trap-vercel",
+  "A": "iter2",
+  "B": "iter3"
+ },
+ "pair-3": {
+  "eval": "comparison-patterns-stripe-notion",
+  "A": "iter3",
+  "B": "iter2"
+ }
+}

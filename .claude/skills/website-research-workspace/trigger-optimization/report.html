@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>website-research — Skill Description Optimization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #faf9f5;
+            color: #141413;
+        }
+        h1 { font-family: 'Poppins', sans-serif; color: #141413; }
+        .explainer {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+            color: #b0aea5;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+        }
+        .summary p { margin: 5px 0; }
+        .best { color: #788c5d; font-weight: bold; }
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            font-size: 12px;
+            min-width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #e8e6dc;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            background: #141413;
+            color: #faf9f5;
+            font-weight: 500;
+        }
+        th.test-col {
+            background: #6a9bcc;
+        }
+        th.query-col { min-width: 200px; }
+        td.description {
+            font-family: monospace;
+            font-size: 11px;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+        td.result {
+            text-align: center;
+            font-size: 16px;
+            min-width: 40px;
+        }
+        td.test-result {
+            background: #f0f6fc;
+        }
+        .pass { color: #788c5d; }
+        .fail { color: #c44; }
+        .rate {
+            font-size: 9px;
+            color: #b0aea5;
+            display: block;
+        }
+        tr:hover { background: #faf9f5; }
+        .score {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .score-good { background: #eef2e8; color: #788c5d; }
+        .score-ok { background: #fef3c7; color: #d97706; }
+        .score-bad { background: #fceaea; color: #c44; }
+        .train-label { color: #b0aea5; font-size: 10px; }
+        .test-label { color: #6a9bcc; font-size: 10px; font-weight: bold; }
+        .best-row { background: #f5f8f2; }
+        th.positive-col { border-bottom: 3px solid #788c5d; }
+        th.negative-col { border-bottom: 3px solid #c44; }
+        th.test-col.positive-col { border-bottom: 3px solid #788c5d; }
+        th.test-col.negative-col { border-bottom: 3px solid #c44; }
+        .legend { font-family: 'Poppins', sans-serif; display: flex; gap: 20px; margin-bottom: 10px; font-size: 13px; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+        .swatch-positive { background: #141413; border-bottom: 3px solid #788c5d; }
+        .swatch-negative { background: #141413; border-bottom: 3px solid #c44; }
+        .swatch-test { background: #6a9bcc; }
+        .swatch-train { background: #141413; }
+    </style>
+</head>
+<body>
+    <h1>website-research — Skill Description Optimization</h1>
+    <div class="explainer">
+        <strong>Optimizing your skill's description.</strong> This page updates automatically as Claude tests different versions of your skill's description. Each row is an iteration — a new description attempt. The columns show test queries: green checkmarks mean the skill triggered correctly (or correctly didn't trigger), red crosses mean it got it wrong. The "Train" score shows performance on queries used to improve the description; the "Test" score shows performance on held-out queries the optimizer hasn't seen. When it's done, Claude will apply the best-performing description to your skill.
+    </div>
+
+    <div class="summary">
+        <p><strong>Original:</strong> 以證據為本研究既有網站的設計，依序產出觀察紀錄（含證據 ID）、視覺／UX／動態／響應式分析、重複模式、設計語言與設計系統推論，最後才做綜合與自我審查，存進 research/&lt;網域&gt;/。當使用者給網址並要求分析、研究、拆解、參考、借鏡某網站的設計或設計語言，或要比較多個網站的設計時使用，即使沒有說「研究」兩個字。這是研究 skill，不做前端實作：使用者同時要求「照這個風格做一個」時，仍先完成研究並交付實作交接摘要，再由使用者決定是否另開實作任務。</p>
+        <p class="best"><strong>Best:</strong> 只要使用者想弄懂一個「別人的、已上線的網站」在設計上是怎麼做的、為什麼這樣做，就用這個 skill，不論問題大小。包括：問某頁的字體層級、網格、配色、間距，或想推出它的 design tokens；拆解捲動動畫、hover、轉場等動態手法；分析定價頁、方案卡片、CTA、導覽怎麼引導使用者；整理某站的設計語言或可借鏡之處；比較兩個以上網站（如多家產品首頁）的共同設計模式或趨勢。只給網域或品牌名、沒貼網址、沒說「研究」也算。使用者說「分析 X 然後照它的風格幫我做一個」時也要先用這個 skill：它會產出有證據的研究報告和實作交接摘要，再由使用者決定是否實作。不要用於：修自己專案的程式或跑版、直接從零做頁面或建設計系統、無障礙檢查、網站是否當機、功能／定價／市場的商業競品分析。</p>
+        <p><strong>Best Score:</strong> 5/8 (test)</p>
+        <p><strong>Iterations:</strong> 5 | <strong>Train:</strong> 12 | <strong>Test:</strong> 8</p>
+    </div>
+
+    <div class="legend">
+        <span style="font-weight:600">Query columns:</span>
+        <span class="legend-item"><span class="legend-swatch swatch-positive"></span> Should trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-negative"></span> Should NOT trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-train"></span> Train</span>
+        <span class="legend-item"><span class="legend-swatch swatch-test"></span> Test</span>
+    </div>
+
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Iter</th>
+                <th>Train</th>
+                <th>Test</th>
+                <th class="query-col">Description</th>
+                <th class="positive-col">幫我比較 Figma、Canva、Miro 三個首頁，找出它們共同用的設計模式，我在寫一份設計趨勢的內部分享</th>
+                <th class="positive-col">我很喜歡 stripe.com/press 的編排，想知道它的字體層級跟網格是怎麼做的，可以把它的 design tokens 推出來嗎</th>
+                <th class="positive-col">分析 notion.so 首頁然後照它的風格幫我做一個 landing page，我是做筆記 app 的</th>
+                <th class="positive-col">看一下 https://cal.com 的 pricing page，它的方案卡片跟 CTA 是怎麼引導人升級的？順便整理可以借鏡的地方</th>
+                <th class="positive-col">我們下個月要改版官網，老闆說要參考 Arc browser 跟 Raycast 的感覺，你可以先幫我把這兩個網站的設計語言整理出來嗎？我要拿去跟設計師開會</th>
+                <th class="positive-col">https://www.framer.com 這個首頁的捲動動畫做得很特別，可以幫我拆解一下它到底用了哪些手法、為什麼這樣排嗎</th>
+                <th class="negative-col">我的網站 (localhost:3000) 在手機上 navbar 會跑版，幫我看 src/components/Navbar.tsx 哪裡寫錯</th>
+                <th class="negative-col">https://status.openai.com 現在是不是掛了？幫我看一下</th>
+                <th class="negative-col">幫我們的 app 建一套 design system，要有 color tokens、typography scale 跟 button variants，輸出成 CSS variables</th>
+                <th class="negative-col">幫我用 Next.js + Tailwind 做一個像 vercel.com 那種黑白極簡的首頁，hero 要有漸層光暈</th>
+                <th class="negative-col">幫我寫一份 Notion 跟 Coda 的競品分析，比較功能、定價、目標市場，要給 PM 看的</th>
+                <th class="negative-col">我們網站的無障礙要過 WCAG AA，幫我檢查 index.html 的對比度跟 aria 標籤</th>
+                <th class="test-col positive-col">teenage.engineering 的網站好怪但很好看，到底是哪裡讓它有這種感覺？幫我研究看看</th>
+                <th class="test-col positive-col">awwwards 上這週的 site of the day 幫我挑一個分析，我想學它的版面跟配色是怎麼搭的</th>
+                <th class="test-col positive-col">研究一下 apple.com/airpods-pro 這頁，它手機版跟桌機版差在哪</th>
+                <th class="test-col positive-col">參考 https://linear.app/method 幫我做一份設計研究報告，重點是他們怎麼用動態效果講故事</th>
+                <th class="test-col negative-col">用 firecrawl 把 https://www.ikea.com.tw 所有沙發的名稱跟價格抓下來存成 csv</th>
+                <th class="test-col negative-col">這個 Figma 檔 https://www.figma.com/design/abc123/Landing 幫我轉成 React 元件</th>
+                <th class="test-col negative-col">幫我研究 github.com/vuejs/core 這個 repo 的架構，我想學它怎麼切 package</th>
+                <th class="test-col negative-col">幫我檢查我們官網 example-shop.tw 的 SEO，meta title 跟 description 有沒有問題，還有 lighthouse 分數</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="">
+                <td>1</td>
+                <td><span class="score score-ok">23/36</span></td>
+                <td><span class="score score-ok">14/24</span></td>
+                <td class="description">以證據為本研究既有網站的設計，依序產出觀察紀錄（含證據 ID）、視覺／UX／動態／響應式分析、重複模式、設計語言與設計系統推論，最後才做綜合與自我審查，存進 research/&lt;網域&gt;/。當使用者給網址並要求分析、研究、拆解、參考、借鏡某網站的設計或設計語言，或要比較多個網站的設計時使用，即使沒有說「研究」兩個字。這是研究 skill，不做前端實作：使用者同時要求「照這個風格做一個」時，仍先完成研究並交付實作交接摘要，再由使用者決定是否另開實作任務。</td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">2/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="best-row">
+                <td>2</td>
+                <td><span class="score score-ok">23/36</span></td>
+                <td><span class="score score-ok">16/24</span></td>
+                <td class="description">只要使用者想弄懂一個「別人的、已上線的網站」在設計上是怎麼做的、為什麼這樣做，就用這個 skill，不論問題大小。包括：問某頁的字體層級、網格、配色、間距，或想推出它的 design tokens；拆解捲動動畫、hover、轉場等動態手法；分析定價頁、方案卡片、CTA、導覽怎麼引導使用者；整理某站的設計語言或可借鏡之處；比較兩個以上網站（如多家產品首頁）的共同設計模式或趨勢。只給網域或品牌名、沒貼網址、沒說「研究」也算。使用者說「分析 X 然後照它的風格幫我做一個」時也要先用這個 skill：它會產出有證據的研究報告和實作交接摘要，再由使用者決定是否實作。不要用於：修自己專案的程式或跑版、直接從零做頁面或建設計系統、無障礙檢查、網站是否當機、功能／定價／市場的商業競品分析。</td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">2/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>3</td>
+                <td><span class="score score-ok">22/36</span></td>
+                <td><span class="score score-ok">15/24</span></td>
+                <td class="description">網站設計研究：凡是問題的對象是「別人家已上線的網站／網頁」的設計，就先用這個 skill，不要憑記憶或印象直接回答。這類網站常改版，且常跑 A/B 測試，所以這個 skill 會實際擷取三種寬度的截圖、計算後樣式和色彩，讓每個結論都附證據。適用情境：想知道某站「怎麼做的、為什麼這樣做」，例如字體層級、網格、配色、design tokens、動畫或捲動手法、定價頁或 CTA 的引導方式、設計語言、可借鏡之處；或是比較多個網站的設計模式，用於改版參考、簡報、跟設計師開會。只給品牌名或網域也適用。若使用者要「分析 X 再照它的風格做一個」，第一步就是這個 skill，先產出研究和實作交接摘要。不適用：除錯自己的程式碼、沒有指定參考網站就直接做頁面或設計系統、無障礙稽核、確認網站是否掛掉、比較功能、定價或市場的商業競品分析。</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">2/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>4</td>
+                <td><span class="score score-ok">22/36</span></td>
+                <td><span class="score score-ok">15/24</span></td>
+                <td class="description">TRIGGER：使用者問到任何「別人家的真實網站或網頁」的設計時，第一步就用這個 skill。網站常改版或跑 A/B 測試，所以不要只憑記憶回答。這個 skill 會實際擷取網站並蒐集證據，再寫成研究報告。以下任一情況都算觸發：提到網址、網域或品牌名（例如 Stripe、Figma、Arc），而且想了解它的版面、編排、字體、網格、配色、tokens、動畫或捲動效果、定價頁或 CTA 怎麼引導使用者、設計語言、「感覺」、值得借鏡的地方；把它「拆解、整理、分析、參考」；或比較兩個以上網站的共同設計模式或趨勢，用在改版、簡報、內部分享或設計會議。「分析 X 再照它的風格做」也從這裡開始：先產出研究和實作交接摘要。
+SKIP：修自己專案的程式碼或跑版問題；沒有分析參考網站、直接寫頁面或建立設計系統；無障礙檢查；確認網站是否當機；比較功能、價格或市場的商業競品分析。</td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">2/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>5</td>
+                <td><span class="score score-ok">22/36</span></td>
+                <td><span class="score score-ok">15/24</span></td>
+                <td class="description">當使用者想知道一個他人已上線網站「怎麼設計的」時使用這個 skill：例如某頁的版面、字體層級、網格、配色、間距、design tokens、捲動或 hover 動畫、定價頁與 CTA 的引導、整體設計語言或「感覺」、可借鏡之處，或比較多個網站找出共同的設計模式和趨勢。只講品牌名（Notion、Arc）或網域也算。這類網站常改版，你對它們的記憶多半已經過時；這個 skill 會即時擷取頁面、截圖和樣式，寫成附證據的研究報告，可以拿去開會、做簡報或當改版參考。使用者要求「分析 X，再照它的風格做一個」時，先用這個 skill 完成研究和交接摘要，之後才實作。不要用在：修自己的程式碼、沒有參考網站就直接做頁面或設計系統、無障礙檢查、檢查網站是否當機，以及比較功能、定價或市場的商業競品分析。</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>
