@@ -1,0 +1,351 @@
+{
+ "viewport": "390x844",
+ "mobile": true,
+ "reducedMotion": false,
+ "capturedAt": "2026-10-01T15:41:50.973Z",
+ "computed": {
+  "h1": {
+   "text": "Agentic Infrastructure",
+   "fontSize": "48px",
+   "fontWeight": "400",
+   "lineHeight": "56px",
+   "letterSpacing": "-2.88px",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "center",
+   "width": 342,
+   "height": 112,
+   "x": 24,
+   "y": 444,
+   "borderRadius": "0px",
+   "padding": "0px"
+  },
+  "h2": {
+   "text": "Build agents on infrastructure that thinks like th",
+   "fontSize": "32px",
+   "fontWeight": "450",
+   "lineHeight": "40px",
+   "letterSpacing": "-1.6px",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "start",
+   "width": 342,
+   "height": 120,
+   "x": 24,
+   "y": 1004,
+   "borderRadius": "0px",
+   "padding": "0px"
+  },
+  "deployNow": {
+   "text": "Deploy now",
+   "fontSize": "16px",
+   "fontWeight": "500",
+   "lineHeight": "24px",
+   "letterSpacing": "normal",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "center",
+   "width": 342,
+   "height": 40,
+   "x": 24,
+   "y": 624,
+   "borderRadius": "3.35544e+07px",
+   "padding": "0px 12px"
+  },
+  "talkToSales": {
+   "text": "Talk to sales",
+   "fontSize": "16px",
+   "fontWeight": "500",
+   "lineHeight": "24px",
+   "letterSpacing": "normal",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "center",
+   "width": 342,
+   "height": 40,
+   "x": 24,
+   "y": 676,
+   "borderRadius": "3.35544e+07px",
+   "padding": "0px 12px"
+  },
+  "canvas": {
+   "w": 300,
+   "h": 150,
+   "box": [
+    0,
+    74,
+    390,
+    400
+   ],
+   "opacity": "0",
+   "display": "block"
+  },
+  "heroList": [
+   {
+    "text": "For coding agents",
+    "font": "\"Geist Mono\", ui-monospace, SF",
+    "size": "16px",
+    "y": 572
+   }
+  ],
+  "headerButtons": [
+   "Vercel",
+   "Open menu",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Deploy now",
+   "Talk to sales"
+  ]
+ },
+ "rotation": [
+  {
+   "t": 0,
+   "v": "[GeistSans, \"Gei,0,animate-command-fade-in]"
+  },
+  {
+   "t": 250,
+   "v": "[GeistSans, \"Gei,1,animate-command-fade-in]"
+  }
+ ],
+ "logo": {
+  "openaiCount": 2,
+  "xs": [
+   [
+    -105,
+    904
+   ],
+   [
+    -117,
+    892
+   ],
+   [
+    -130,
+    879
+   ],
+   [
+    -142,
+    867
+   ],
+   [
+    -155,
+    854
+   ],
+   [
+    -168,
+    841
+   ]
+  ],
+  "an": [
+   {
+    "name": "marquee",
+    "duration": 40000,
+    "easing": "linear",
+    "iterations": null,
+    "playState": "running",
+    "target": "flex shrink-0 items-center gap-(--marquee-gap) motion-safe:will-change-transform"
+   },
+   {
+    "name": "marquee",
+    "duration": 40000,
+    "easing": "linear",
+    "iterations": null,
+    "playState": "running",
+    "target": "flex shrink-0 items-center gap-(--marquee-gap) motion-safe:will-change-transform"
+   }
+  ]
+ },
+ "allAnims": [
+  {
+   "name": "marquee",
+   "state": "running",
+   "dur": 40000,
+   "easing": "linear",
+   "iter": null,
+   "target": "flex shrink-0 items-center gap-(--marquee-gap) motion-safe:w"
+  },
+  {
+   "name": "marquee",
+   "state": "running",
+   "dur": 40000,
+   "easing": "linear",
+   "iter": null,
+   "target": "flex shrink-0 items-center gap-(--marquee-gap) motion-safe:w"
+  },
+  {
+   "name": "fade-in",
+   "state": "finished",
+   "dur": 200,
+   "easing": "linear",
+   "iter": 1,
+   "target": "col-start-1 row-start-1 whitespace-nowrap motion-safe:animat"
+  }
+ ],
+ "canvasFrames": [
+  "mobile390-canvas-a.png",
+  "mobile390-canvas-b.png"
+ ],
+ "menuButton": {
+  "label": "Open menu",
+  "expanded": "false",
+  "w": 44,
+  "h": 44
+ },
+ "menuFrames": [
+  {
+   "t": 0,
+   "file": "screenshots/pw/mobile390-menu-0.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 100,
+   "file": "screenshots/pw/mobile390-menu-1.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 200,
+   "file": "screenshots/pw/mobile390-menu-2.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 300,
+   "file": "screenshots/pw/mobile390-menu-3.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 400,
+   "file": "screenshots/pw/mobile390-menu-4.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 500,
+   "file": "screenshots/pw/mobile390-menu-5.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  }
+ ],
+ "menuAfter": {
+  "expanded": "true"
+ },
+ "sections": [
+  {
+   "y": 1004,
+   "files": [
+    "screenshots/pw/mobile390-sec0-0.png",
+    "screenshots/pw/mobile390-sec0-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 1773,
+   "files": [
+    "screenshots/pw/mobile390-sec1-0.png",
+    "screenshots/pw/mobile390-sec1-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 2501,
+   "files": [
+    "screenshots/pw/mobile390-sec2-0.png",
+    "screenshots/pw/mobile390-sec2-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 3279,
+   "files": [
+    "screenshots/pw/mobile390-sec3-0.png",
+    "screenshots/pw/mobile390-sec3-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 4103,
+   "files": [
+    "screenshots/pw/mobile390-sec4-0.png",
+    "screenshots/pw/mobile390-sec4-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 4423,
+   "files": [
+    "screenshots/pw/mobile390-sec5-0.png",
+    "screenshots/pw/mobile390-sec5-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 4687,
+   "files": [
+    "screenshots/pw/mobile390-sec6-0.png",
+    "screenshots/pw/mobile390-sec6-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  }
+ ],
+ "pageHeight": 6671
+}

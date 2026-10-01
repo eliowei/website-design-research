@@ -7,3 +7,5 @@
 
 # 研究過程的切圖只是工作檔
 research/**/_slices/
+# Playwright 的大量連拍與 hover 對照只是工作檔
+research/**/screenshots/pw/

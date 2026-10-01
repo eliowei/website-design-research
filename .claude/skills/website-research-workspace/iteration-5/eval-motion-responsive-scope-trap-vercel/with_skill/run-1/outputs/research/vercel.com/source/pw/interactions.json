@@ -1,0 +1,568 @@
+{
+ "viewport": "1440x900",
+ "capturedAt": "2026-10-01T15:39:17.055Z",
+ "heroLoad": [
+  {
+   "t": 281,
+   "file": "screenshots/pw/hero-seq-00.png",
+   "canvasOpacity": null,
+   "canvasSize": null,
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loading",
+   "anims": []
+  },
+  {
+   "t": 504,
+   "file": null,
+   "canvasOpacity": null,
+   "canvasSize": null,
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 747,
+   "file": "screenshots/pw/hero-seq-02.png",
+   "canvasOpacity": null,
+   "canvasSize": null,
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 977,
+   "file": null,
+   "canvasOpacity": null,
+   "canvasSize": null,
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 1234,
+   "file": "screenshots/pw/hero-seq-04.png",
+   "canvasOpacity": null,
+   "canvasSize": null,
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 1462,
+   "file": null,
+   "canvasOpacity": null,
+   "canvasSize": null,
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 1733,
+   "file": "screenshots/pw/hero-seq-06.png",
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 1980,
+   "file": null,
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 2247,
+   "file": "screenshots/pw/hero-seq-08.png",
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 2480,
+   "file": null,
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 2728,
+   "file": "screenshots/pw/hero-seq-10.png",
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 2958,
+   "file": null,
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 3214,
+   "file": "screenshots/pw/hero-seq-12.png",
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 3437,
+   "file": null,
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": [
+    "opacity:1200ms linear running@CANVAS"
+   ]
+  },
+  {
+   "t": 4565,
+   "file": "screenshots/pw/hero-seq-14.png",
+   "canvasOpacity": "0",
+   "canvasSize": "300x150",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": [
+    "opacity:1200ms linear running@CANVAS"
+   ]
+  },
+  {
+   "t": 4790,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": [
+    "opacity:700ms linear running@DIV"
+   ]
+  },
+  {
+   "t": 5060,
+   "file": "screenshots/pw/hero-seq-16.png",
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": [
+    "opacity:700ms linear running@DIV"
+   ]
+  },
+  {
+   "t": 5285,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": [
+    "opacity:700ms linear running@DIV"
+   ]
+  },
+  {
+   "t": 5562,
+   "file": "screenshots/pw/hero-seq-18.png",
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 5788,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 6059,
+   "file": "screenshots/pw/hero-seq-20.png",
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 6282,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 6537,
+   "file": "screenshots/pw/hero-seq-22.png",
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 6761,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 7029,
+   "file": "screenshots/pw/hero-seq-24.png",
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 7256,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 7545,
+   "file": "screenshots/pw/hero-seq-26.png",
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 7778,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 8062,
+   "file": "screenshots/pw/hero-seq-28.png",
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 8289,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 8565,
+   "file": "screenshots/pw/hero-seq-30.png",
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  },
+  {
+   "t": 8787,
+   "file": null,
+   "canvasOpacity": "1",
+   "canvasSize": "1080x720",
+   "h1Font": "GeistSans, \"GeistSans Fallback\"|loaded",
+   "anims": []
+  }
+ ],
+ "canvasIdle": [
+  "screenshots/pw/canvas-idle-0.png",
+  "screenshots/pw/canvas-idle-1.png",
+  "screenshots/pw/canvas-idle-2.png",
+  "screenshots/pw/canvas-idle-3.png",
+  "screenshots/pw/canvas-idle-4.png",
+  "screenshots/pw/canvas-idle-5.png"
+ ],
+ "heroList": [
+  {
+   "t": "For coding agents",
+   "err": "TimeoutError: locator.hover: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('For "
+  },
+  {
+   "t": "To ship apps and agents",
+   "err": "TimeoutError: locator.hover: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('To s"
+  },
+  {
+   "tag": "SPAN",
+   "color": "rgb(23, 23, 23)",
+   "transition": "color 0.5s cubic-bezier(0, 0, 0.2, 1), background-color 0.5s cubic-bezier(0, 0, 0.2, 1), border-color 0.5s cubic-bezier(0, 0, 0.2, 1), outline-color 0.5s cubic-bezier(0, 0, 0.2, 1), text-decoration-color 0.5s cubic-bezier(0, 0, 0.2, 1), fill 0.5s cubic-bezier(0, 0, 0.2, 1), stroke 0.5s cubic-bezier(0, 0, 0.2, 1), --tw-gradient-from 0.5s cubic-bezier(0, 0, 0.2, 1), --tw-gradient-via 0.5s cubic-bezier(0, 0, 0.2, 1), --tw-gradient-to 0.5s cubic-bezier(0, 0, 0.2, 1)",
+   "parentTag": "DIV",
+   "parentText": "Automated by agents who autonomously investigate errors, plan fixes, and open PRs.",
+   "cursor": "default"
+  }
+ ],
+ "hover": {
+  "deployNow": {
+   "before": {
+    "bg": "rgb(23, 23, 23)",
+    "color": "rgb(255, 255, 255)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   },
+   "immediatelyAfterHover": {
+    "bg": "rgb(23, 23, 23)",
+    "color": "rgb(255, 255, 255)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   },
+   "after300ms": {
+    "bg": "rgb(56, 56, 56)",
+    "color": "rgb(255, 255, 255)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   }
+  },
+  "talkToSales": {
+   "before": {
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(23, 23, 23)",
+    "boxShadow": " 0px, rgb(235, 235, 235) 0px 0px 0px 1px",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   },
+   "immediatelyAfterHover": {
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(23, 23, 23)",
+    "boxShadow": " 0px, rgb(235, 235, 235) 0px 0px 0px 1px",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   },
+   "after300ms": {
+    "bg": "rgb(242, 242, 242)",
+    "color": "rgb(23, 23, 23)",
+    "boxShadow": " 0px, rgb(235, 235, 235) 0px 0px 0px 1px",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   }
+  },
+  "signUp": {
+   "before": {
+    "bg": "rgb(23, 23, 23)",
+    "color": "rgb(255, 255, 255)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   },
+   "immediatelyAfterHover": {
+    "bg": "rgb(23, 23, 23)",
+    "color": "rgb(255, 255, 255)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   },
+   "after300ms": {
+    "bg": "rgb(56, 56, 56)",
+    "color": "rgb(255, 255, 255)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   }
+  },
+  "getDemo": {
+   "before": {
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(23, 23, 23)",
+    "boxShadow": " 0px, rgb(235, 235, 235) 0px 0px 0px 1px",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   },
+   "immediatelyAfterHover": {
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(23, 23, 23)",
+    "boxShadow": " 0px, rgb(235, 235, 235) 0px 0px 0px 1px",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   },
+   "after300ms": {
+    "bg": "rgb(242, 242, 242)",
+    "color": "rgb(23, 23, 23)",
+    "boxShadow": " 0px, rgb(235, 235, 235) 0px 0px 0px 1px",
+    "transform": "none",
+    "transition": "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+    "opacity": "1"
+   }
+  },
+  "pricing": {
+   "before": {
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(77, 77, 77)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "all",
+    "opacity": "1"
+   },
+   "immediatelyAfterHover": {
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(23, 23, 23)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "all",
+    "opacity": "1"
+   },
+   "after300ms": {
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(23, 23, 23)",
+    "boxShadow": "none",
+    "transform": "none",
+    "transition": "all",
+    "opacity": "1"
+   }
+  }
+ },
+ "navDropdownFrames": [
+  {
+   "t": 0,
+   "file": "screenshots/pw/nav-products-0.png",
+   "anims": [
+    "fade-in:200ms linear@col-start-1 row-start-1 whitespace-nowrap motion-s"
+   ]
+  },
+  {
+   "t": 80,
+   "file": null,
+   "anims": [
+    "fade-in:200ms linear@col-start-1 row-start-1 whitespace-nowrap motion-s"
+   ]
+  },
+  {
+   "t": 160,
+   "file": "screenshots/pw/nav-products-2.png",
+   "anims": [
+    "fade-in:200ms linear@col-start-1 row-start-1 whitespace-nowrap motion-s"
+   ]
+  },
+  {
+   "t": 240,
+   "file": null,
+   "anims": [
+    "fade-in:200ms linear@col-start-1 row-start-1 whitespace-nowrap motion-s"
+   ]
+  },
+  {
+   "t": 320,
+   "file": "screenshots/pw/nav-products-4.png",
+   "anims": [
+    "fade-in:200ms linear@col-start-1 row-start-1 whitespace-nowrap motion-s"
+   ]
+  },
+  {
+   "t": 400,
+   "file": null,
+   "anims": [
+    "fade-in:200ms linear@col-start-1 row-start-1 whitespace-nowrap motion-s"
+   ]
+  },
+  {
+   "t": 480,
+   "file": "screenshots/pw/nav-products-6.png",
+   "anims": [
+    "fade-in:200ms linear@col-start-1 row-start-1 whitespace-nowrap motion-s"
+   ]
+  },
+  {
+   "t": 560,
+   "file": "screenshots/pw/nav-products-7.png",
+   "anims": [
+    "fade-in:200ms linear@col-start-1 row-start-1 whitespace-nowrap motion-s"
+   ]
+  }
+ ],
+ "navExpanded": "true",
+ "focus": [
+  {
+   "text": "Skip to content",
+   "outline": "rgb(16, 16, 16) none 0px",
+   "outlineOffset": "1px",
+   "boxShadow": " 255, 255) 0px 0px 0px 2px, rgb(0, 114, 245) 0px 0px 0px 4px",
+   "rect": {
+    "x": 47,
+    "y": 63,
+    "width": 119.78125,
+    "height": 24
+   }
+  },
+  {
+   "text": "Vercel",
+   "outline": "rgb(0, 114, 245) solid 2px",
+   "outlineOffset": "4px",
+   "boxShadow": "none",
+   "rect": {
+    "x": 16,
+    "y": 15,
+    "width": 37,
+    "height": 34
+   }
+  },
+  {
+   "text": "Products",
+   "outline": "rgb(16, 16, 16) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "rect": {
+    "x": 65,
+    "y": 16,
+    "width": 94.328125,
+    "height": 32
+   }
+  },
+  {
+   "text": "Resources",
+   "outline": "rgb(16, 16, 16) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "rect": {
+    "x": 159.328125,
+    "y": 16,
+    "width": 104.28125,
+    "height": 32
+   }
+  },
+  {
+   "text": "Enterprise",
+   "outline": "rgb(0, 114, 245) none 0px",
+   "outlineOffset": "4px",
+   "boxShadow": "none",
+   "rect": {
+    "x": 263.609375,
+    "y": 16,
+    "width": 89.09375,
+    "height": 32
+   }
+  },
+  {
+   "text": "Pricing",
+   "outline": "rgb(0, 114, 245) none 0px",
+   "outlineOffset": "4px",
+   "boxShadow": "none",
+   "rect": {
+    "x": 352.703125,
+    "y": 16,
+    "width": 68.421875,
+    "height": 32
+   }
+  }
+ ],
+ "drag": {
+  "found": true,
+  "effectiveOpacity": 1,
+  "visibility": "visible"
+ }
+}

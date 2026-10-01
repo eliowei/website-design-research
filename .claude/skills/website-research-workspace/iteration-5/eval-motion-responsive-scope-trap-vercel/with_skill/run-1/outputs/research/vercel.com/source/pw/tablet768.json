@@ -1,0 +1,344 @@
+{
+ "viewport": "768x1024",
+ "mobile": false,
+ "reducedMotion": false,
+ "capturedAt": "2026-10-01T15:41:51.556Z",
+ "computed": {
+  "h1": {
+   "text": "Agentic Infrastructure",
+   "fontSize": "64px",
+   "fontWeight": "400",
+   "lineHeight": "64px",
+   "letterSpacing": "-3.84px",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "center",
+   "width": 444,
+   "height": 128,
+   "x": 162,
+   "y": 644,
+   "borderRadius": "0px",
+   "padding": "0px"
+  },
+  "h2": {
+   "text": "Build agents on infrastructure that thinks like th",
+   "fontSize": "48px",
+   "fontWeight": "450",
+   "lineHeight": "56px",
+   "letterSpacing": "-2.88px",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "start",
+   "width": 720,
+   "height": 112,
+   "x": 24,
+   "y": 1232,
+   "borderRadius": "0px",
+   "padding": "0px"
+  },
+  "deployNow": {
+   "text": "Deploy now",
+   "fontSize": "16px",
+   "fontWeight": "500",
+   "lineHeight": "24px",
+   "letterSpacing": "normal",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "center",
+   "width": 124,
+   "height": 40,
+   "x": 251,
+   "y": 840,
+   "borderRadius": "3.35544e+07px",
+   "padding": "0px 12px"
+  },
+  "talkToSales": {
+   "text": "Talk to sales",
+   "fontSize": "16px",
+   "fontWeight": "500",
+   "lineHeight": "24px",
+   "letterSpacing": "normal",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "center",
+   "width": 130,
+   "height": 40,
+   "x": 387,
+   "y": 840,
+   "borderRadius": "3.35544e+07px",
+   "padding": "0px 12px"
+  },
+  "canvas": {
+   "w": 768,
+   "h": 650,
+   "box": [
+    0,
+    49,
+    768,
+    650
+   ],
+   "opacity": "1",
+   "display": "block"
+  },
+  "heroList": [],
+  "headerButtons": [
+   "Vercel",
+   "Open menu",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Deploy now",
+   "Talk to sales"
+  ]
+ },
+ "rotation": [
+  {
+   "t": 0,
+   "v": "[GeistSans, \"Gei,0,animate-command-fade-in]"
+  },
+  {
+   "t": 1000,
+   "v": "[GeistSans, \"Gei,1,animate-command-fade-in]"
+  }
+ ],
+ "logo": {
+  "openaiCount": 2,
+  "xs": [
+   [
+    -237,
+    772
+   ],
+   [
+    -249,
+    760
+   ],
+   [
+    -262,
+    747
+   ],
+   [
+    -274,
+    735
+   ],
+   [
+    -287,
+    722
+   ],
+   [
+    -300,
+    709
+   ]
+  ],
+  "an": [
+   {
+    "name": "marquee",
+    "duration": 40000,
+    "easing": "linear",
+    "iterations": null,
+    "playState": "running",
+    "target": "flex shrink-0 items-center gap-(--marquee-gap) motion-safe:will-change-transform"
+   },
+   {
+    "name": "marquee",
+    "duration": 40000,
+    "easing": "linear",
+    "iterations": null,
+    "playState": "running",
+    "target": "flex shrink-0 items-center gap-(--marquee-gap) motion-safe:will-change-transform"
+   }
+  ]
+ },
+ "allAnims": [
+  {
+   "name": "marquee",
+   "state": "running",
+   "dur": 40000,
+   "easing": "linear",
+   "iter": null,
+   "target": "flex shrink-0 items-center gap-(--marquee-gap) motion-safe:w"
+  },
+  {
+   "name": "marquee",
+   "state": "running",
+   "dur": 40000,
+   "easing": "linear",
+   "iter": null,
+   "target": "flex shrink-0 items-center gap-(--marquee-gap) motion-safe:w"
+  },
+  {
+   "name": "fade-in",
+   "state": "finished",
+   "dur": 200,
+   "easing": "linear",
+   "iter": 1,
+   "target": "col-start-1 row-start-1 whitespace-nowrap motion-safe:animat"
+  }
+ ],
+ "canvasFrames": [
+  "tablet768-canvas-a.png",
+  "tablet768-canvas-b.png"
+ ],
+ "menuButton": {
+  "label": "Open menu",
+  "expanded": "false",
+  "w": 44,
+  "h": 44
+ },
+ "menuFrames": [
+  {
+   "t": 0,
+   "file": "screenshots/pw/tablet768-menu-0.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 100,
+   "file": "screenshots/pw/tablet768-menu-1.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 200,
+   "file": "screenshots/pw/tablet768-menu-2.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 300,
+   "file": "screenshots/pw/tablet768-menu-3.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 400,
+   "file": "screenshots/pw/tablet768-menu-4.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  },
+  {
+   "t": 500,
+   "file": "screenshots/pw/tablet768-menu-5.png",
+   "anims": [
+    "marquee:40000ms linear",
+    "marquee:40000ms linear"
+   ]
+  }
+ ],
+ "menuAfter": {
+  "expanded": "true"
+ },
+ "sections": [
+  {
+   "y": 1232,
+   "files": [
+    "screenshots/pw/tablet768-sec0-0.png",
+    "screenshots/pw/tablet768-sec0-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 2240,
+   "files": [
+    "screenshots/pw/tablet768-sec1-0.png",
+    "screenshots/pw/tablet768-sec1-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 3248,
+   "files": [
+    "screenshots/pw/tablet768-sec2-0.png",
+    "screenshots/pw/tablet768-sec2-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 4074,
+   "files": [
+    "screenshots/pw/tablet768-sec3-0.png",
+    "screenshots/pw/tablet768-sec3-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 4914,
+   "files": [
+    "screenshots/pw/tablet768-sec4-0.png",
+    "screenshots/pw/tablet768-sec4-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 5170,
+   "files": [
+    "screenshots/pw/tablet768-sec5-0.png",
+    "screenshots/pw/tablet768-sec5-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  },
+  {
+   "y": 5434,
+   "files": [
+    "screenshots/pw/tablet768-sec6-0.png",
+    "screenshots/pw/tablet768-sec6-1.png"
+   ],
+   "running": [
+    "marquee"
+   ]
+  }
+ ],
+ "pageHeight": 7688
+}
