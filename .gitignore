@@ -4,3 +4,6 @@
 .claude/skills/website-research-workspace/**/*.jpeg
 .claude/skills/website-research-workspace/**/*.webp
 .claude/skills/website-research-workspace/**/_slices/
+
+# 研究過程的切圖只是工作檔
+research/**/_slices/
