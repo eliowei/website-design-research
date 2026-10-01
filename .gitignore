@@ -1,3 +1,6 @@
 # 測試工作區的截圖與切割圖只在本機用來評分，不進版控
 .claude/skills/website-research-workspace/**/*.png
+.claude/skills/website-research-workspace/**/*.jpg
+.claude/skills/website-research-workspace/**/*.jpeg
+.claude/skills/website-research-workspace/**/*.webp
 .claude/skills/website-research-workspace/**/_slices/
