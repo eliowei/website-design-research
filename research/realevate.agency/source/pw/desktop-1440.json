@@ -1,0 +1,878 @@
+{
+ "viewport": 1440,
+ "styles": [
+  {
+   "sel": "body",
+   "pseudo": null,
+   "rect": [
+    0,
+    0,
+    1440,
+    900
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "16.3705px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgb(255, 255, 255)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": "h1",
+   "pseudo": null,
+   "rect": [
+    481.3,
+    662.3,
+    477.5,
+    61.6
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "23.6827px",
+   "fontWeight": "500",
+   "lineHeight": "30.7875px",
+   "letterSpacing": "-0.236827px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "center"
+  },
+  {
+   "sel": ".marquee-text",
+   "pseudo": null,
+   "rect": [
+    -180.9,
+    245.5,
+    1314.3,
+    218.3
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "218.274px",
+   "fontWeight": "500",
+   "lineHeight": "218.274px",
+   "letterSpacing": "-4.36547px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px 35.4831px 0px 0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".logo",
+   "pseudo": null,
+   "rect": [
+    583.6,
+    63.8,
+    272.8,
+    19.2
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "16.3705px",
+   "fontWeight": "500",
+   "lineHeight": "0px",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "matrix(1, 0, 0, 1, 0, 0)",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".logo img",
+   "pseudo": null,
+   "rect": [
+    583.6,
+    63.8,
+    272.8,
+    19.2
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "16.3705px",
+   "fontWeight": "500",
+   "lineHeight": "0px",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".about-btn",
+   "pseudo": null,
+   "rect": [
+    61.4,
+    61.4,
+    48.3,
+    24
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "17.0526px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".contact-btn",
+   "pseudo": null,
+   "rect": [
+    1315.6,
+    61.4,
+    63,
+    24
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "17.0526px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".hero-content",
+   "pseudo": null,
+   "rect": [
+    481.3,
+    662.3,
+    477.5,
+    116.9
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "16.3705px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "center"
+  },
+  {
+   "sel": ".hero-content p",
+   "pseudo": null,
+   "rect": [
+    574.9,
+    749.9,
+    290.1,
+    29.3
+   ],
+   "fontFamily": "\"Monument Extended\", MonumentExtended, \"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "13.0255px",
+   "fontWeight": "500",
+   "lineHeight": "17.5844px",
+   "letterSpacing": "1.04204px",
+   "textTransform": "uppercase",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "linear-gradient(rgb(31, 43, 94), rgb(31, 43, 94)), linear-gradient(rgb(31, 43, 94), rgb(31, 43, 94)), linear-gradient(rg",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "6.51274px 13.0255px 5.21019px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "center"
+  },
+  {
+   "sel": ".hero-visual",
+   "pseudo": null,
+   "rect": [
+    583.6,
+    232.6,
+    272.8,
+    272.8
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "16.3705px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".hero-opening-media",
+   "pseudo": null,
+   "rect": [
+    583.6,
+    232.6,
+    272.8,
+    272.8
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "16.3705px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".our-selection-btn",
+   "pseudo": null,
+   "rect": [
+    1134.5,
+    792.8,
+    185.4,
+    45.8
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "17.0526px",
+   "fontWeight": "500",
+   "lineHeight": "17.0526px",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "linear-gradient(90deg, rgb(31, 43, 94) 50%, rgba(0, 0, 0, 0) 50%)",
+   "border": "1px solid rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px 25.5789px",
+   "transition": "background-position 0.75s cubic-bezier(0.7, 0.6, 0, 1), color 0.75s cubic-bezier(0.7, 0.6, 0, 1)",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".menu-btn",
+   "pseudo": null,
+   "rect": [
+    1327.3,
+    792.8,
+    51.3,
+    45.8
+   ],
+   "fontFamily": "Arial",
+   "fontSize": "13.3333px",
+   "fontWeight": "400",
+   "lineHeight": "0px",
+   "letterSpacing": "normal",
+   "textTransform": "none",
+   "color": "rgb(255, 255, 255)",
+   "backgroundColor": "rgb(31, 43, 94)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(255, 255, 255)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "center"
+  },
+  {
+   "sel": ".site-footer",
+   "pseudo": null,
+   "rect": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "16.3705px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".site-footer *",
+   "pseudo": null,
+   "rect": [
+    61.4,
+    814.6,
+    126.6,
+    24
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "17.0526px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  },
+  {
+   "sel": ".about-btn",
+   "pseudo": "::after",
+   "rect": [
+    61.4,
+    61.4,
+    48.3,
+    24
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "17.0526px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "transform 0.65s cubic-bezier(0.7, 0.6, 0, 1)",
+   "transform": "matrix(0, 0, 0, 1, 0, 0)",
+   "textAlign": "start"
+  },
+  {
+   "sel": "[data-rl=start]",
+   "pseudo": null,
+   "rect": [
+    588,
+    756.4,
+    264.1,
+    17.6
+   ],
+   "fontFamily": "\"Monument Extended\", MonumentExtended, \"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "13.0255px",
+   "fontWeight": "500",
+   "lineHeight": "17.5844px",
+   "letterSpacing": "1.04204px",
+   "textTransform": "uppercase",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "matrix(1, 0, 0, 1, 0, 0)",
+   "textAlign": "center"
+  },
+  {
+   "sel": "[data-rl=startp]",
+   "pseudo": null,
+   "rect": [
+    574.9,
+    749.9,
+    290.1,
+    29.3
+   ],
+   "fontFamily": "\"Monument Extended\", MonumentExtended, \"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "13.0255px",
+   "fontWeight": "500",
+   "lineHeight": "17.5844px",
+   "letterSpacing": "1.04204px",
+   "textTransform": "uppercase",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgba(0, 0, 0, 0)",
+   "backgroundImage": "linear-gradient(rgb(31, 43, 94), rgb(31, 43, 94)), linear-gradient(rgb(31, 43, 94), rgb(31, 43, 94)), linear-gradient(rg",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "6.51274px 13.0255px 5.21019px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "center"
+  },
+  {
+   "sel": "[data-rl=foot]",
+   "pseudo": null,
+   "rect": [
+    0,
+    0,
+    1440,
+    900
+   ],
+   "fontFamily": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fontSize": "16.3705px",
+   "fontWeight": "500",
+   "lineHeight": "normal",
+   "letterSpacing": "-0.163705px",
+   "textTransform": "none",
+   "color": "rgb(31, 43, 94)",
+   "backgroundColor": "rgb(255, 255, 255)",
+   "backgroundImage": "none",
+   "border": "0px none rgb(31, 43, 94)",
+   "borderRadius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "transform": "none",
+   "textAlign": "start"
+  }
+ ],
+ "h1": [
+  {
+   "tag": "H1",
+   "text": "Invest in Exceptional Real Estate Properties in Cyprus, Montenegro, and Georgia.",
+   "visible": true
+  }
+ ],
+ "vars": {
+  "--brand-navy": "#1F2B5E",
+  "--muted": "#626C95",
+  "--white": "#FFFFFF",
+  "--standard-easing": "cubic-bezier(.7, .6, 0, 1)",
+  "--cta-motion-easing": "cubic-bezier(.7, .6, 0, 1)",
+  "--overlay-duration": ".8s",
+  "--body-leading": "1.35",
+  "--grid-columns": "12",
+  "--grid-padding": "calc(4.5vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--grid-gap": "calc(2.601vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--desktop-grid-padding": "4.5vw",
+  "--desktop-grid-gap": "2.601vw",
+  "--h1-size": "calc(16vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--desktop-h1-size": "16vw",
+  "--lead-size": "calc(1.736vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--text-size": "calc(1.2vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--nav-footer-text-size": "calc(1.25vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--logo-width": "calc(20vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--hero-visual-width": "calc(20vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--responsive-size-scale": "1",
+  "--layout-size-scale": "calc(1 * min(1, calc(100svh / 950px)))",
+  "--compact-vw-as-svh": "min(1, calc(100svh / 950px))",
+  "--nav-action-height": "calc(3.356vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--menu-btn-width": "calc(3.762vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--selection-btn-fill": "",
+  "--selection-btn-bg": "",
+  "--selection-btn-hover-text": "",
+  "--category-by-the-sea-color": "#222A4C",
+  "--category-evergreen-color": "#36614D",
+  "--category-urban-living-color": "#2D1C2D",
+  "--category-rare-gems-color": "#1C181D",
+  "--marquee-gap": "calc(2.601vw * calc(1 * min(1, calc(100svh / 950px))))",
+  "--px-vw": "14.4px"
+ },
+ "bodyClass": "is-ready",
+ "marquee": {
+  "t0": [
+   -184.1,
+   1165.6
+  ],
+  "t1000": [
+   -280,
+   1069.7
+  ],
+  "dxPerSec": -95.9,
+  "marqueeTextCount": 5,
+  "marqueeTextWidth": 1314.296875
+ },
+ "mouseParallax": {
+  "at100_100": {
+   "rect": [
+    584,
+    233
+   ],
+   "transform": "none",
+   "imgT": "none"
+  },
+  "at1340_800": {
+   "rect": [
+    584,
+    233
+   ],
+   "transform": "none",
+   "imgT": "none"
+  }
+ },
+ "hoverAbout": [
+  {
+   "t": 0,
+   "v": "matrix(0, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 100,
+   "v": "matrix(0.297122, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 200,
+   "v": "matrix(0.803841, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 300,
+   "v": "matrix(0.95709, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 400,
+   "v": "matrix(0.992737, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 500,
+   "v": "matrix(0.999629, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 600,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 700,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 800,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  },
+  {
+   "t": 900,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | origin 0px 0.5px | clip none"
+  }
+ ],
+ "hoverSelection": [
+  {
+   "t": 0,
+   "v": "100% 0px | rgb(31, 43, 94)"
+  },
+  {
+   "t": 100,
+   "v": "81.7742% 0px | rgb(72, 82, 123)"
+  },
+  {
+   "t": 200,
+   "v": "59.03% 0px | rgb(123, 130, 160)"
+  },
+  {
+   "t": 300,
+   "v": "13.5043% 0px | rgb(225, 226, 233)"
+  },
+  {
+   "t": 400,
+   "v": "2.84317% 0px | rgb(249, 249, 250)"
+  },
+  {
+   "t": 500,
+   "v": "0.874932% 0px | rgb(253, 253, 254)"
+  },
+  {
+   "t": 600,
+   "v": "0.063886% 0px | rgb(255, 255, 255)"
+  },
+  {
+   "t": 700,
+   "v": "0px 0px | rgb(255, 255, 255)"
+  },
+  {
+   "t": 800,
+   "v": "0px 0px | rgb(255, 255, 255)"
+  },
+  {
+   "t": 900,
+   "v": "0px 0px | rgb(255, 255, 255)"
+  }
+ ],
+ "hoverMenu": [
+  {
+   "t": 0,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 100,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 200,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 300,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 400,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 500,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 600,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 700,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 800,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  },
+  {
+   "t": 900,
+   "v": "rgb(31, 43, 94) | svg none none,none"
+  }
+ ],
+ "hoverLogo": [
+  {
+   "t": 0,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 100,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 200,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 300,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 400,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 500,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 600,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 700,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 800,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  },
+  {
+   "t": 900,
+   "v": "matrix(1, 0, 0, 1, 0, 0) | 1"
+  }
+ ],
+ "focus": [
+  {
+   "tag": "A",
+   "cls": "",
+   "text": "",
+   "aria": "Realevate - home",
+   "outline": "rgb(31, 43, 94) none 0px",
+   "boxShadow": "none",
+   "afterT": "none"
+  },
+  {
+   "tag": "A",
+   "cls": "about-btn link-underline",
+   "text": "About",
+   "aria": null,
+   "outline": "rgb(31, 43, 94) none 0px",
+   "boxShadow": "none",
+   "afterT": "matrix(0.957049, 0, 0, 1, 0, 0)"
+  },
+  {
+   "tag": "A",
+   "cls": "contact-btn link-underline",
+   "text": "Contact",
+   "aria": null,
+   "outline": "rgb(31, 43, 94) none 0px",
+   "boxShadow": "none",
+   "afterT": "matrix(0.957074, 0, 0, 1, 0, 0)"
+  },
+  {
+   "tag": "A",
+   "cls": "our-selection-btn",
+   "text": "Our Selection",
+   "aria": null,
+   "outline": "rgb(31, 43, 94) none 0px",
+   "boxShadow": "none",
+   "afterT": "none"
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "menu-btn",
+   "text": "",
+   "aria": "Open menu",
+   "outline": "rgb(255, 255, 255) none 0px",
+   "boxShadow": "none",
+   "afterT": "none"
+  },
+  {
+   "tag": "BODY",
+   "cls": "is-ready",
+   "text": "Please rotate your device\n  \n\n",
+   "aria": null,
+   "outline": "rgb(31, 43, 94) none 0px",
+   "boxShadow": "none",
+   "afterT": "none"
+  },
+  {
+   "tag": "A",
+   "cls": "",
+   "text": "",
+   "aria": "Realevate - home",
+   "outline": "rgb(31, 43, 94) none 0px",
+   "boxShadow": "none",
+   "afterT": "none"
+  }
+ ],
+ "wheel": {
+  "bodyClassBefore": "is-ready",
+  "frames": [
+   {
+    "t": 5470,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 5660,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 5865,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 6133,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 6384,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 6627,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 6858,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 7084,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 7327,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 7548,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 7784,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 8018,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 8261,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 8502,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 8747,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   },
+   {
+    "t": 8977,
+    "url": "https://realevate.agency/",
+    "cls": "is-ready selection-open"
+   }
+  ],
+  "finalUrl": "https://realevate.agency/",
+  "scrollY": 0
+ },
+ "wheelBack": {
+  "url": "https://realevate.agency/",
+  "cls": "is-ready selection-open"
+ }
+}

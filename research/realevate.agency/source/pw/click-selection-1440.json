@@ -1,0 +1,174 @@
+{
+ "url": "https://realevate.agency/",
+ "bodyClass": "is-ready selection-open",
+ "v": [
+  {
+   "tag": "SPAN",
+   "cls": "selection-card__title",
+   "txt": "By The Sea",
+   "fs": "44.2004px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    295,
+    257,
+    44,
+    213
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "selection-card__desc",
+   "txt": "Coastal, Marina & Seafront properties",
+   "fs": "12.2779px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    87,
+    437,
+    171,
+    33
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "selection-card__title",
+   "txt": "Evergreen",
+   "fs": "44.2004px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    633,
+    270,
+    44,
+    200
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "selection-card__desc",
+   "txt": "Gulf Resorts, parks & Forest Oasis",
+   "fs": "12.2779px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    425,
+    437,
+    171,
+    33
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "selection-card__title",
+   "txt": "Urban Living",
+   "fs": "44.2004px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    971,
+    226,
+    44,
+    244
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "selection-card__desc",
+   "txt": "City center & Old city vibes and lifestyle",
+   "fs": "12.2779px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    763,
+    437,
+    171,
+    33
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "selection-card__title",
+   "txt": "Rare Gems",
+   "fs": "44.2004px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1309,
+    252,
+    44,
+    218
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "selection-card__desc",
+   "txt": "One of a kind & Unique concept Properties",
+   "fs": "12.2779px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1101,
+    437,
+    171,
+    33
+   ]
+  },
+  {
+   "tag": "DIV",
+   "cls": "split-line",
+   "txt": "About",
+   "fs": "17.0526px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    427,
+    738,
+    21,
+    11
+   ]
+  },
+  {
+   "tag": "DIV",
+   "cls": "split-line",
+   "txt": "Contact",
+   "fs": "17.0526px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    985,
+    738,
+    28,
+    11
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "marquee-text",
+   "txt": "Elevating Life",
+   "fs": "218.274px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    288,
+    820,
+    585,
+    97
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "marquee-text",
+   "txt": "Elevating Life",
+   "fs": "218.274px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    888,
+    820,
+    585,
+    97
+   ]
+  }
+ ]
+}

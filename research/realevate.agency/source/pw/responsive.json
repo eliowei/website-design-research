@@ -1,0 +1,650 @@
+{
+ "rm-1440": {
+  ".logo": {
+   "rect": [
+    583.6,
+    63.8,
+    272.8,
+    19.2
+   ],
+   "fs": "16.3705px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".about-btn": {
+   "rect": [
+    61.4,
+    61.4,
+    48.3,
+    24
+   ],
+   "fs": "17.0526px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".contact-btn": {
+   "rect": [
+    1315.6,
+    61.4,
+    63,
+    24
+   ],
+   "fs": "17.0526px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".marquee-text": {
+   "rect": [
+    -634,
+    245.5,
+    1314.3,
+    218.3
+   ],
+   "fs": "218.274px",
+   "display": "block",
+   "visibility": "hidden",
+   "opacity": "1"
+  },
+  ".hero-visual": {
+   "rect": [
+    583.6,
+    232.6,
+    272.8,
+    272.8
+   ],
+   "fs": "16.3705px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  "h1": {
+   "rect": [
+    481.3,
+    662.3,
+    477.5,
+    61.6
+   ],
+   "fs": "23.6827px",
+   "display": "block",
+   "visibility": "hidden",
+   "opacity": "1"
+  },
+  ".hero-content p": {
+   "rect": [
+    574.9,
+    749.9,
+    290.1,
+    29.3
+   ],
+   "fs": "13.0255px",
+   "display": "inline-block",
+   "visibility": "hidden",
+   "opacity": "1"
+  },
+  ".our-selection-btn": {
+   "rect": [
+    1134.5,
+    792.8,
+    185.4,
+    45.8
+   ],
+   "fs": "17.0526px",
+   "display": "flex",
+   "visibility": "hidden",
+   "opacity": "1"
+  },
+  ".menu-btn": {
+   "rect": [
+    1327.3,
+    792.8,
+    51.3,
+    45.8
+   ],
+   "fs": "13.3333px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".site-footer *": {
+   "rect": [
+    61.4,
+    814.6,
+    126.6,
+    24
+   ],
+   "fs": "17.0526px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".rotate-phone-overlay": {
+   "rect": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "fs": "16.3705px",
+   "display": "none",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".site-preloader": null,
+  "vars": {
+   "--grid-columns": "12",
+   "--responsive-size-scale": "1"
+  },
+  "bodyClass": "spa-transition-scroll-locked",
+  "h1Lines": [],
+  "readyAtMs": 33821,
+  "loadFrameTimes": [
+   654,
+   899,
+   1099,
+   1299,
+   1716,
+   1935,
+   2151,
+   2367,
+   2589,
+   2807,
+   3022,
+   3241,
+   3447,
+   3665
+  ],
+  "marqueeX": [
+   -635.6160278320312,
+   -731.6160278320312
+  ],
+  "selectionBgPos150ms": "100% 0px"
+ },
+ "tablet-768": {
+  ".logo": {
+   "rect": [
+    265.7,
+    55.4,
+    236.5,
+    16.7
+   ],
+   "fs": "14.1926px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".about-btn": {
+   "rect": [
+    53.2,
+    53.2,
+    41.8,
+    21
+   ],
+   "fs": "14.784px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".contact-btn": {
+   "rect": [
+    660.2,
+    53.2,
+    54.6,
+    21
+   ],
+   "fs": "14.784px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".marquee-text": {
+   "rect": [
+    -199.7,
+    317.5,
+    1139.4,
+    189.2
+   ],
+   "fs": "189.235px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".hero-visual": {
+   "rect": [
+    265.7,
+    301.6,
+    236.5,
+    236.5
+   ],
+   "fs": "14.1926px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  "h1": {
+   "rect": [
+    184.3,
+    756.2,
+    399.4,
+    53.4
+   ],
+   "fs": "20.532px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".hero-content p": {
+   "rect": [
+    258.3,
+    832.2,
+    251.5,
+    25.4
+   ],
+   "fs": "11.2926px",
+   "display": "inline-block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".our-selection-btn": {
+   "rect": [
+    503,
+    931.1,
+    160.9,
+    39.7
+   ],
+   "fs": "14.784px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".menu-btn": {
+   "rect": [
+    670.3,
+    931.1,
+    44.5,
+    39.7
+   ],
+   "fs": "13.3333px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".site-footer *": {
+   "rect": [
+    53.2,
+    949.8,
+    109.6,
+    21
+   ],
+   "fs": "14.784px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".rotate-phone-overlay": {
+   "rect": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "fs": "14.1926px",
+   "display": "none",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".site-preloader": null,
+  "vars": {
+   "--grid-columns": "8",
+   "--responsive-size-scale": "1.54"
+  },
+  "bodyClass": "is-ready",
+  "h1Lines": [
+   "Invest in Exceptional Real Estate Properties",
+   "in Cyprus, Montenegro, and Georgia."
+  ],
+  "readyAtMs": 4031,
+  "loadFrameTimes": [
+   830,
+   1011,
+   1203,
+   1392,
+   1694,
+   1901,
+   2105,
+   2313,
+   2509,
+   2712,
+   2910,
+   3114,
+   3307,
+   3507
+  ]
+ },
+ "mobile-390": {
+  ".logo": {
+   "rect": [
+    75.7,
+    47.3,
+    238.7,
+    16.8
+   ],
+   "fs": "10.53px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".about-btn": {
+   "rect": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "fs": "12.6141px",
+   "display": "none",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".contact-btn": {
+   "rect": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "fs": "12.6141px",
+   "display": "none",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".marquee-text": {
+   "rect": [
+    -280.8,
+    198.2,
+    845.3,
+    140.4
+   ],
+   "fs": "140.4px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".hero-visual": {
+   "rect": [
+    107.3,
+    190.4,
+    175.5,
+    175.5
+   ],
+   "fs": "10.53px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  "h1": {
+   "rect": [
+    60.4,
+    548.7,
+    269.3,
+    83.6
+   ],
+   "fs": "21.45px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".hero-content p": {
+   "rect": [
+    83,
+    652.4,
+    224,
+    22.6
+   ],
+   "fs": "10.054px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".our-selection-btn": {
+   "rect": [
+    74.7,
+    723.5,
+    186.1,
+    42.5
+   ],
+   "fs": "18.2273px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".menu-btn": {
+   "rect": [
+    267.6,
+    723.5,
+    47.7,
+    42.5
+   ],
+   "fs": "13.3333px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".site-footer *": {
+   "rect": [
+    148.1,
+    787.5,
+    93.9,
+    17
+   ],
+   "fs": "12.6141px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".rotate-phone-overlay": {
+   "rect": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "fs": "10.53px",
+   "display": "none",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".site-preloader": null,
+  "vars": {
+   "--grid-columns": "4",
+   "--responsive-size-scale": "2.25"
+  },
+  "bodyClass": "is-ready",
+  "h1Lines": [
+   "Invest in Exceptional Real",
+   "Estate Properties in Cyprus,",
+   "Montenegro, and Georgia."
+  ],
+  "readyAtMs": 4223,
+  "loadFrameTimes": [
+   663,
+   884,
+   1175,
+   1417,
+   1660,
+   1913,
+   2164,
+   2415,
+   2668,
+   2939,
+   3220,
+   3466,
+   3791,
+   4049
+  ],
+  "afterSwipeClass": "is-ready selection-open"
+ },
+ "mobile-844x390-landscape": {
+  ".logo": {
+   "rect": [
+    387.4,
+    16.6,
+    69.3,
+    4.9
+   ],
+   "fs": "4.15781px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".about-btn": {
+   "rect": [
+    15.6,
+    15.6,
+    12.3,
+    7
+   ],
+   "fs": "4.33105px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".contact-btn": {
+   "rect": [
+    812.4,
+    15.6,
+    16,
+    7
+   ],
+   "fs": "4.33105px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".marquee-text": {
+   "rect": [
+    -217.5,
+    123.8,
+    333.7,
+    55.4
+   ],
+   "fs": "55.4375px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".hero-visual": {
+   "rect": [
+    387.4,
+    125.3,
+    69.3,
+    69.3
+   ],
+   "fs": "4.15781px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  "h1": {
+   "rect": [
+    361.4,
+    328.8,
+    121.3,
+    15.6
+   ],
+   "fs": "6.01497px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".hero-content p": {
+   "rect": [
+    385.2,
+    351,
+    73.5,
+    7.4
+   ],
+   "fs": "3.30823px",
+   "display": "inline-block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".our-selection-btn": {
+   "rect": [
+    765,
+    362.8,
+    48.5,
+    11.6
+   ],
+   "fs": "4.33105px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".menu-btn": {
+   "rect": [
+    815.4,
+    362.8,
+    13,
+    11.6
+   ],
+   "fs": "13.3333px",
+   "display": "flex",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".site-footer *": {
+   "rect": [
+    15.6,
+    367.4,
+    32.1,
+    7
+   ],
+   "fs": "4.33105px",
+   "display": "block",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".rotate-phone-overlay": {
+   "rect": [
+    0,
+    0,
+    844,
+    390
+   ],
+   "fs": "4.15781px",
+   "display": "grid",
+   "visibility": "visible",
+   "opacity": "1"
+  },
+  ".site-preloader": null,
+  "vars": {
+   "--grid-columns": "12",
+   "--responsive-size-scale": "1"
+  },
+  "bodyClass": "is-ready",
+  "h1Lines": [
+   "Invest in Exceptional Real Estate Properties",
+   "in Cyprus, Montenegro, and Georgia."
+  ],
+  "readyAtMs": 3915,
+  "loadFrameTimes": [
+   788,
+   967,
+   1137,
+   1368,
+   1567,
+   1751,
+   1936,
+   2135,
+   2333,
+   2520,
+   2717,
+   2901,
+   3103,
+   3302
+  ]
+ }
+}

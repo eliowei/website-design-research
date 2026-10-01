@@ -1,0 +1,608 @@
+{
+ "url": "https://realevate.agency/",
+ "bodyClass": "is-ready nav-menu-open",
+ "v": [
+  {
+   "tag": "DIV",
+   "cls": "split-line",
+   "txt": "About",
+   "fs": "17.0526px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    61,
+    61,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "DIV",
+   "cls": "split-line",
+   "txt": "Contact",
+   "fs": "17.0526px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    1316,
+    61,
+    63,
+    24
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "",
+   "txt": "Our Selection",
+   "fs": "17.0526px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    1161,
+    807,
+    106,
+    17
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "marquee-text",
+   "txt": "Elevating Life",
+   "fs": "218.274px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    -650,
+    245,
+    1314,
+    218
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "marquee-text",
+   "txt": "Elevating Life",
+   "fs": "218.274px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    700,
+    245,
+    1314,
+    218
+   ]
+  },
+  {
+   "tag": "DIV",
+   "cls": "split-line",
+   "txt": "Invest in Exceptional Real Estate Properties",
+   "fs": "23.6827px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    481,
+    662,
+    477,
+    31
+   ]
+  },
+  {
+   "tag": "DIV",
+   "cls": "split-line",
+   "txt": "in Cyprus, Montenegro, and Georgia.",
+   "fs": "23.6827px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    481,
+    693,
+    477,
+    31
+   ]
+  },
+  {
+   "tag": "DIV",
+   "cls": "split-line",
+   "txt": "Starting from 100,000€",
+   "fs": "13.0255px",
+   "ff": "\"Monument Extended\",",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    588,
+    756,
+    264,
+    18
+   ]
+  },
+  {
+   "tag": "DIV",
+   "cls": "split-line",
+   "txt": "Realevate® 2026",
+   "fs": "17.0526px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    61,
+    815,
+    127,
+    24
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "H",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1106,
+    622,
+    29,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "o",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1135,
+    622,
+    21,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "m",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1157,
+    622,
+    33,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "e",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1190,
+    622,
+    20,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "H",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1106,
+    664,
+    29,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "o",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1135,
+    664,
+    21,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "m",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1157,
+    664,
+    33,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "e",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1190,
+    664,
+    20,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "A",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1106,
+    665,
+    28,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "b",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1133,
+    665,
+    22,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "o",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1155,
+    665,
+    21,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "u",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1176,
+    665,
+    22,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "t",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1198,
+    665,
+    12,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "A",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1106,
+    707,
+    28,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "b",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1133,
+    707,
+    22,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "o",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1155,
+    707,
+    21,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "u",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1176,
+    707,
+    22,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "t",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1198,
+    707,
+    12,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "C",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1106,
+    708,
+    26,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "o",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1132,
+    708,
+    21,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "n",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1154,
+    708,
+    22,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "t",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1176,
+    708,
+    12,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "a",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1188,
+    708,
+    20,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "c",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1208,
+    708,
+    19,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "t",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1226,
+    708,
+    12,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "C",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1106,
+    749,
+    26,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "o",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1132,
+    749,
+    21,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "n",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1154,
+    749,
+    22,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "t",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1176,
+    749,
+    12,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "a",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1188,
+    749,
+    20,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "c",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1208,
+    749,
+    19,
+    41
+   ]
+  },
+  {
+   "tag": "SPAN",
+   "cls": "rolling-text__letter",
+   "txt": "t",
+   "fs": "38.4162px",
+   "ff": "\"Roslindale Display\"",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1226,
+    749,
+    12,
+    41
+   ]
+  },
+  {
+   "tag": "A",
+   "cls": "",
+   "txt": "WhatsApp",
+   "fs": "13.6421px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1106,
+    784,
+    85,
+    14
+   ]
+  },
+  {
+   "tag": "A",
+   "cls": "",
+   "txt": "Email",
+   "fs": "13.6421px",
+   "ff": "\"Google Sans\", Arial",
+   "color": "rgb(255, 255, 255)",
+   "r": [
+    1285,
+    784,
+    53,
+    14
+   ]
+  }
+ ]
+}
