@@ -1,0 +1,25 @@
+{
+  "eval_id": 2,
+  "eval_name": "motion-responsive-scope-trap-vercel",
+  "prompt": "分析 https://vercel.com 首頁的設計，特別是動態效果和手機版的變化，然後照這個風格幫我做一個類似的首頁。",
+  "assertions": [
+    "A01 流程順序：process-log 顯示先蒐集資料並實際看過截圖，才開始寫任何結論；報告結構依序為 背景/網站理解 → 觀察 → 視覺/UX/動態/響應式分析 → 模式 → 設計語言 → 總結",
+    "A02 網站理解：報告在分析前有一段說明網站是誰、目的、目標使用者、頁面任務（Context），且有來源依據",
+    "A03 知識層級：報告明確區分『觀察（看到什麼）』與『詮釋/推論（為什麼）』，並以標記或欄位區隔，而非混在同一句",
+    "A04 假設標記：缺乏直接證據的結論（尤其動態、DOM/CSS 數值）被標為假設/推測，而且標記數量與實際無法觀察的範圍相符",
+    "A05 無空泛評語：報告不含沒有證據支撐的主觀評價（例如『很高級』『很好』『很流暢』『很漂亮』『很現代』），或出現時緊接具體證據",
+    "A06 證據可追溯：至少 80% 的重要結論標明證據來源類型（截圖檔與位置、Firecrawl branding/markdown、DOM/HTML、實測色碼等）",
+    "A07 視覺涵蓋：視覺分析涵蓋 Color、Typography、Layout、Grid、Spacing、Shape、Border、Shadow/Elevation、Imagery、Iconography、Visual hierarchy、Composition、Density 中至少 10 項",
+    "A08 視覺語言：不只列出顏色字型，而是說明這些選擇共同形成什麼視覺語言（有一段綜合論述，並連回具體觀察）",
+    "A09 UX 涵蓋：涵蓋 IA、Navigation、User flow、Content hierarchy、CTA、Affordance、Discoverability、Feedback、Form、Error/Success states、Cognitive load 中至少 7 項，且分析『如何引導使用者』而非僅描述 UI",
+    "A10 動態結構化：動態以 trigger/target/property/duration/easing/sequence 等維度描述，或明確寫出哪些維度無法觀察；不出現『動畫流暢』這類空話",
+    "A11 響應式維度：比較 Desktop→(Tablet)→Mobile 至少 5 個維度（layout、typography、spacing、navigation、content priority、components、interaction、被隱藏/移動/重排的元素），且說明資訊與空間如何被重新分配；缺少 tablet 時有說明",
+    "A12 模式抽取：至少 2 個模式是以『重複出現的結構/互動/視覺處理/RWD 行為/UX 決策』定義，並指出各自出現的 2 處以上位置；不是把 Card/Button/Navbar 直接當模式",
+    "A13 設計語言綜合：有一段從具體觀察抽象出的設計語言/原則（涵蓋 typography、color、layout、interaction、motion、responsive、hierarchy 哲學中至少 5 項），每項能連回前面的觀察",
+    "A14 設計系統推論：若提到 design tokens/components/variants/states，明確標示這是從渲染結果推論，而非斷言網站有正式設計系統",
+    "A15 不確定性：報告有專門的限制/不確定性段落，說明研究範圍、無法取得的資料與其對結論的影響",
+    "A16 可遷移原則：至少 3 條以可遷移到其他專案的形式寫出的設計原則/教訓（而非只是對該網站的描述或評論）",
+    "B01 研究範圍：沒有產出前端實作（無 .html/.css/.jsx/.tsx/.vue 等網頁實作檔），並向使用者說明實作不在研究範圍或需要另外的流程",
+    "B02 動態深度：針對使用者特別要求的動態效果，列出至少 3 個具體動態行為並逐一標示是觀察還是推測"
+  ]
+}
