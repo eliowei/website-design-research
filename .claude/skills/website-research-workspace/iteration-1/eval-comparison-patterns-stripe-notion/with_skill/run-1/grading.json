@@ -1,0 +1,106 @@
+{
+  "expectations": [
+    {
+      "text": "A01 流程順序：process-log 顯示先蒐集資料並實際看過截圖，才開始寫任何結論；報告結構依序為 背景/網站理解 → 觀察 → 視覺/UX/動態/響應式分析 → 模式 → 設計語言 → 總結",
+      "passed": false,
+      "evidence": "process-log 遺失，無法確認順序；報告為各站並列面向＋比較，沒有遞進階段"
+    },
+    {
+      "text": "A02 網站理解：報告在分析前有一段說明網站是誰、目的、目標使用者、頁面任務（Context），且有來源依據",
+      "passed": false,
+      "evidence": "各站只有「類型」一行"
+    },
+    {
+      "text": "A03 知識層級：報告明確區分『觀察（看到什麼）』與『詮釋/推論（為什麼）』，並以標記或欄位區隔，而非混在同一句",
+      "passed": false,
+      "evidence": "沒有觀察／詮釋區隔"
+    },
+    {
+      "text": "A04 假設標記：缺乏直接證據的結論（尤其動態、DOM/CSS 數值）被標為假設/推測，而且標記數量與實際無法觀察的範圍相符",
+      "passed": true,
+      "evidence": "30 處「推測」；GDP 計數器的推論附上兩次抓取數值不同的證據"
+    },
+    {
+      "text": "A05 無空泛評語：報告不含沒有證據支撐的主觀評價（例如『很高級』『很好』『很流暢』『很漂亮』『很現代』），或出現時緊接具體證據",
+      "passed": false,
+      "evidence": "兩份報告都有無依據的「視覺美感 5」評分；比較報告的「讓人覺得這東西很強、很可靠」沒有證據"
+    },
+    {
+      "text": "A06 證據可追溯：至少 80% 的重要結論標明證據來源類型（截圖檔與位置、Firecrawl branding/markdown、DOM/HTML、實測色碼等）",
+      "passed": false,
+      "evidence": "色碼標了取樣或 branding，動態推論有證據；調性結論（「企業級但不冰冷」）沒有"
+    },
+    {
+      "text": "A07 視覺涵蓋：視覺分析涵蓋 Color、Typography、Layout、Grid、Spacing、Shape、Border、Shadow/Elevation、Imagery、Iconography、Visual hierarchy、Composition、Density 中至少 10 項",
+      "passed": true,
+      "evidence": "Stripe 報告涵蓋 13 項中的 12 項，包含 shadow（只有 UI 模型帶陰影）、iconography（紫色細線圖示）"
+    },
+    {
+      "text": "A08 視覺語言：不只列出顏色字型，而是說明這些選擇共同形成什麼視覺語言（有一段綜合論述，並連回具體觀察）",
+      "passed": true,
+      "evidence": "比較報告「視覺隱喻：基礎設施 vs 筆記本」把格線、架構圖、粒子和白紙、手繪連成兩套語言"
+    },
+    {
+      "text": "A09 UX 涵蓋：涵蓋 IA、Navigation、User flow、Content hierarchy、CTA、Affordance、Discoverability、Feedback、Form、Error/Success states、Cognitive load 中至少 7 項，且分析『如何引導使用者』而非僅描述 UI",
+      "passed": false,
+      "evidence": "約 5 項：IA（依客群分段）、nav、CTA、flow、cognitive load（頁面長）"
+    },
+    {
+      "text": "A10 動態結構化：動態以 trigger/target/property/duration/easing/sequence 等維度描述，或明確寫出哪些維度無法觀察；不出現『動畫流暢』這類空話",
+      "passed": true,
+      "evidence": "GDP 計數器：trigger＝時間、target＝Hero 數字、property＝數值，證據是兩次抓取數值不同；並列出 hover、捲動進場未觀察"
+    },
+    {
+      "text": "A11 響應式維度：比較 Desktop→(Tablet)→Mobile 至少 5 個維度（layout、typography、spacing、navigation、content priority、components、interaction、被隱藏/移動/重排的元素），且說明資訊與空間如何被重新分配；缺少 tablet 時有說明",
+      "passed": false,
+      "evidence": "有 layout、content priority（刪掉延伸句）、nav、components；沒有 tablet，沒有空間重新分配的論述"
+    },
+    {
+      "text": "A12 模式抽取：至少 2 個模式是以『重複出現的結構/互動/視覺處理/RWD 行為/UX 決策』定義，並指出各自出現的 2 處以上位置；不是把 Card/Button/Navbar 直接當模式",
+      "passed": true,
+      "evidence": "「共同趨勢」9 條，每條都同時給兩站的具體證據，例如「Hero 下方緊接 logo 牆：Stripe 7 個彩色、Notion 約 20 個灰階」"
+    },
+    {
+      "text": "A13 設計語言綜合：有一段從具體觀察抽象出的設計語言/原則（涵蓋 typography、color、layout、interaction、motion、responsive、hierarchy 哲學中至少 5 項），每項能連回前面的觀察",
+      "passed": true,
+      "evidence": "差異表涵蓋視覺隱喻、色彩、字體、資訊架構、互動、元件、手機 7 個面向"
+    },
+    {
+      "text": "A14 設計系統推論：辨識可能存在的 design tokens／foundations／components／variants／states 至少兩類，並明確標示是從渲染結果推論，而非斷言網站有正式設計系統",
+      "passed": false,
+      "evidence": "只提到「系統一致性強」，沒有辨識 tokens／components"
+    },
+    {
+      "text": "A15 不確定性：報告有專門的限制/不確定性段落，說明研究範圍、無法取得的資料與其對結論的影響",
+      "passed": true,
+      "evidence": "比較報告和個別報告開頭都有研究範圍說明"
+    },
+    {
+      "text": "A16 可遷移原則：至少 3 條以可遷移到其他專案的形式寫出的設計原則/教訓（而非只是對該網站的描述或評論）",
+      "passed": true,
+      "evidence": "結論分成「直接沿用／依產品定位二選一／避免」"
+    },
+    {
+      "text": "C01 先各自研究再比較：兩站各有獨立研究產出，比較報告引用而非重新描述各站內容",
+      "passed": false,
+      "evidence": "各站有獨立報告，比較報告也有連結；但比較表重新描述了色碼、字級、頁長等，沒有用引用取代"
+    },
+    {
+      "text": "C02 跨站模式：至少 2 個跨站共用模式，以兩站的具體證據同時支撐，並說明各自實作差異",
+      "passed": true,
+      "evidence": "9 條共同模式，每條都附兩站證據和實作差異"
+    },
+    {
+      "text": "C03 設計語言差異：比較的是設計原則/語言層級的差異（例如對密度、層級、動態的態度），而不只是色碼字型對照表",
+      "passed": true,
+      "evidence": "比較的是「賣可靠 vs 賣易用」「依客群 vs 依動作分段」這類原則層級的差異"
+    }
+  ],
+  "summary": {
+    "passed": 10,
+    "failed": 9,
+    "total": 19,
+    "pass_rate": 0.53
+  },
+  "timing": {}
+}

@@ -16,7 +16,7 @@
     "A11 響應式維度：比較 Desktop→(Tablet)→Mobile 至少 5 個維度（layout、typography、spacing、navigation、content priority、components、interaction、被隱藏/移動/重排的元素），且說明資訊與空間如何被重新分配；缺少 tablet 時有說明",
     "A12 模式抽取：至少 2 個模式是以『重複出現的結構/互動/視覺處理/RWD 行為/UX 決策』定義，並指出各自出現的 2 處以上位置；不是把 Card/Button/Navbar 直接當模式",
     "A13 設計語言綜合：有一段從具體觀察抽象出的設計語言/原則（涵蓋 typography、color、layout、interaction、motion、responsive、hierarchy 哲學中至少 5 項），每項能連回前面的觀察",
-    "A14 設計系統推論：若提到 design tokens/components/variants/states，明確標示這是從渲染結果推論，而非斷言網站有正式設計系統",
+    "A14 設計系統推論：辨識可能存在的 design tokens／foundations／components／variants／states 至少兩類，並明確標示是從渲染結果推論，而非斷言網站有正式設計系統",
     "A15 不確定性：報告有專門的限制/不確定性段落，說明研究範圍、無法取得的資料與其對結論的影響",
     "A16 可遷移原則：至少 3 條以可遷移到其他專案的形式寫出的設計原則/教訓（而非只是對該網站的描述或評論）",
     "C01 先各自研究再比較：兩站各有獨立研究產出，比較報告引用而非重新描述各站內容",
