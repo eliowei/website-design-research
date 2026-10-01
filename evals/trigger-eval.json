@@ -1,0 +1,22 @@
+[
+  {"query": "https://www.framer.com 這個首頁的捲動動畫做得很特別，可以幫我拆解一下它到底用了哪些手法、為什麼這樣排嗎", "should_trigger": true},
+  {"query": "我們下個月要改版官網，老闆說要參考 Arc browser 跟 Raycast 的感覺，你可以先幫我把這兩個網站的設計語言整理出來嗎？我要拿去跟設計師開會", "should_trigger": true},
+  {"query": "研究一下 apple.com/airpods-pro 這頁，它手機版跟桌機版差在哪", "should_trigger": true},
+  {"query": "awwwards 上這週的 site of the day 幫我挑一個分析，我想學它的版面跟配色是怎麼搭的", "should_trigger": true},
+  {"query": "看一下 https://cal.com 的 pricing page，它的方案卡片跟 CTA 是怎麼引導人升級的？順便整理可以借鏡的地方", "should_trigger": true},
+  {"query": "幫我比較 Figma、Canva、Miro 三個首頁，找出它們共同用的設計模式，我在寫一份設計趨勢的內部分享", "should_trigger": true},
+  {"query": "我很喜歡 stripe.com/press 的編排，想知道它的字體層級跟網格是怎麼做的，可以把它的 design tokens 推出來嗎", "should_trigger": true},
+  {"query": "teenage.engineering 的網站好怪但很好看，到底是哪裡讓它有這種感覺？幫我研究看看", "should_trigger": true},
+  {"query": "參考 https://linear.app/method 幫我做一份設計研究報告，重點是他們怎麼用動態效果講故事", "should_trigger": true},
+  {"query": "分析 notion.so 首頁然後照它的風格幫我做一個 landing page，我是做筆記 app 的", "should_trigger": true},
+  {"query": "幫我用 Next.js + Tailwind 做一個像 vercel.com 那種黑白極簡的首頁，hero 要有漸層光暈", "should_trigger": false},
+  {"query": "我的網站 (localhost:3000) 在手機上 navbar 會跑版，幫我看 src/components/Navbar.tsx 哪裡寫錯", "should_trigger": false},
+  {"query": "幫我研究 github.com/vuejs/core 這個 repo 的架構，我想學它怎麼切 package", "should_trigger": false},
+  {"query": "用 firecrawl 把 https://www.ikea.com.tw 所有沙發的名稱跟價格抓下來存成 csv", "should_trigger": false},
+  {"query": "幫我檢查我們官網 example-shop.tw 的 SEO，meta title 跟 description 有沒有問題，還有 lighthouse 分數", "should_trigger": false},
+  {"query": "這個 Figma 檔 https://www.figma.com/design/abc123/Landing 幫我轉成 React 元件", "should_trigger": false},
+  {"query": "幫我寫一份 Notion 跟 Coda 的競品分析，比較功能、定價、目標市場，要給 PM 看的", "should_trigger": false},
+  {"query": "幫我們的 app 建一套 design system，要有 color tokens、typography scale 跟 button variants，輸出成 CSS variables", "should_trigger": false},
+  {"query": "https://status.openai.com 現在是不是掛了？幫我看一下", "should_trigger": false},
+  {"query": "我們網站的無障礙要過 WCAG AA，幫我檢查 index.html 的對比度跟 aria 標籤", "should_trigger": false}
+]
