@@ -27,6 +27,10 @@ description: 研究網站的設計（版面、配色、字型、元件、互動�
 Firecrawl 無法使用時，改用 Playwright（Chromium 位於 `/opt/pw-browsers`，不要執行 `playwright install`）：
 桌機寬 1440、手機寬 390 各截一張全頁圖，並用 `getComputedStyle` 取出 `body`、`h1`–`h3`、`a`、`button` 的字型、字級、顏色、背景色。
 
+**互動型網站**（WebGL、3D、要點按鈕才進入主內容）：Firecrawl 只會截到入口畫面，要用 Playwright 點擊後再截圖。
+如果網站被研究環境的網路政策擋住（Playwright 出現 `ERR_TUNNEL_CONNECTION_FAILED`、curl 回 403），
+就只用 Firecrawl 拿到的資料分析，並在報告開頭用引用區塊寫明研究範圍的限制。
+
 ### 2. 儲存截圖
 
 把截圖下載到 `research/<網域>/screenshots/`，檔名為 `desktop.png`、`mobile.png`
