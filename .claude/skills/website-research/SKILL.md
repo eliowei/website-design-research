@@ -91,6 +91,8 @@ Daily 不做：Playwright、證據 ID、像素取樣、減少動態、平板寬�
    - **互動**：主要按鈕、導覽、連結的 hover 與 focus（按 Tab）前後各拍一張，記下 `transition` 的設定值；點開選單或漢堡選單看一次。
 
    量測結果存成 `source/pw/*.json`。不能直連時退回 Daily 的資料來源，並在 notes.md 開頭寫明。
+   - 只量**看得見的元素**：很多網站為不同裝置準備了隱藏的重複元素（例如兩顆一樣的 CTA），直接 `querySelector` 會量到隱藏的那個。
+   - 視窗截圖一屏一張、數量很多時，可以拼成對照圖再看，拼好的圖放 `_slices/`。
 2. **寫 `notes.md`**，用 [`templates/standard.md`](templates/standard.md)。研究面向同 Daily 的六項，每個結論後面用括號標出來源：
    `（截圖：pw1440-hero）`、`（CSS：h1）`、`（DOM）`、`（互動：hover CTA）`、`（branding）`，推出來的標 `（推測）`。
    - 模式要列出至少 2 個出現位置。
@@ -98,7 +100,10 @@ Daily 不做：Playwright、證據 ID、像素取樣、減少動態、平板寬�
    - 響應式比較桌機、手機兩種寬度（平板有明顯不同才寫）。
 3. **寫 `summary.md`**（同 Daily 範本），每一點連回 notes.md 的段落。
 
-Standard 不做：證據 ID 與 E1–E5 等級、像素取樣、減少動態、動態連拍量測、三寬度逐項對照表、設計系統推論、自我審查。
+**從 Daily 升級時**：沿用已有的 Firecrawl 截圖，在 notes.md 加一節「Daily 推測的驗證結果」（每個推測一行：證實／修正／推翻，附來源），summary.md 只放三到五行重點。
+為了驗證某個推測，可以在幾個固定捲動位置多拍幾張、或隔一兩秒再拍一張；但不要擴大成整套動態量測，那是 Deep 的工作。
+
+Standard 不做：證據 ID 與 E1–E5 等級、像素取樣、減少動態的重拍（CSS 裡有沒有 `prefers-reduced-motion` 規則可以順手記一句）、動態連拍量測、三寬度逐項對照表、設計系統推論、自我審查。
 
 ## Deep 模式
 
