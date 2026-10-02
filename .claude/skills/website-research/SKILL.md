@@ -1,171 +1,123 @@
 ---
 name: website-research
-description: 只要使用者想弄懂一個「別人的、已上線的網站」在設計上是怎麼做的、為什麼這樣做，就用這個 skill，不論問題大小。包括：問某頁的字體層級、網格、配色、間距，或想推出它的 design tokens；拆解捲動動畫、hover、轉場等動態手法；分析定價頁、方案卡片、CTA、導覽怎麼引導使用者；整理某站的設計語言或可借鏡之處；比較兩個以上網站（如多家產品首頁）的共同設計模式或趨勢。只給網域或品牌名、沒貼網址、沒說「研究」也算。使用者說「分析 X 然後照它的風格幫我做一個」時也要先用這個 skill：它會產出有證據的研究報告和實作交接摘要，再由使用者決定是否實作。不要用於：修自己專案的程式或跑版、直接從零做頁面或建設計系統、無障礙檢查、網站是否當機、功能／定價／市場的商業競品分析。
+description: 研究「別人的、已上線的網站」在設計上是怎麼做的、為什麼這樣做，產出設計師可以直接吸收的研究筆記，存進 research/ 底下以網域命名的資料夾。分三種深度：Daily（預設，約 5 分鐘、一頁摘要，適合每天看一個網站累積設計知識）、Standard（加上瀏覽器實測的截圖、DOM、CSS、互動證據）、Deep（完整的證據鏈、像素取樣、動態量測、三寬度比較、設計系統推論與自我審查）。只要使用者想弄懂某個網站的版面、字體、配色、間距、動態、導覽、CTA、手機版或整體設計語言，或想比較多個網站、從 Awwwards 等網站挑一個來學，就用這個 skill；只給網域或品牌名、沒說「研究」也算。使用者說「分析 X 然後照它的風格做一個」時也先用這個 skill：它產出研究與實作交接摘要，不直接寫程式。不要用於：修自己專案的程式或跑版、直接從零做頁面或建設計系統、無障礙檢查、網站是否當機、功能／定價／市場的商業競品分析。
 ---
 
 # 網站設計研究
 
-這是**研究流程**，不是網站描述，也不是 UI 評論。目標是讓每個結論都能回答「你怎麼知道？有多確定？」，
-並把具體觀察一路抽象成可以帶回自己專案的模式與原則。
+這個 skill 的目的是**每天餵自己一點高品質的設計知識**：看懂一個網站做了哪些設計決定、為什麼有效、可以帶走什麼。
+不是網站描述，也不是 UI 評論；即使是最快的模式，也要講出「為什麼」和「可以帶走什麼」。
 
-流程分成六個階段，**每個階段只使用前一階段的產物**。順序很重要：先下結論再找證據，
-研究就會變成替第一印象背書。所以總結和教訓只出現在最後一個階段。
+## 先選模式
 
-## 研究範圍（先讀）
+| | Daily（預設） | Standard | Deep |
+|---|---|---|---|
+| 用途 | 每天看一個網站，累積設計直覺 | 想認真參考某個網站，需要可查證的數值 | 要拿來當實作依據、或要完整拆解 |
+| 研究面向 | 背景、視覺、UX、動態、響應式、模式 | 同 Daily，每項都有證據 | 同 Standard，再加設計語言與設計系統推論 |
+| 資料來源 | Firecrawl 桌機＋手機 | ＋Playwright：三寬度截圖、DOM、computed CSS、hover／focus／點擊 | ＋證據 ID、證據等級、像素取樣、減少動態、動態量測、三寬度對照表、自我審查 |
+| 產出 | `summary.md`（一頁） | `summary.md`＋`notes.md` | `summary.md`＋`observations.md`＋`report.md` |
+| 大約時間 | 5 分鐘 | 10–15 分鐘 | 15–40 分鐘 |
 
+怎麼選：
+- 使用者說了模式（「daily」「快速看一下」「standard」「deep」「完整拆解」「深入研究」）就照做。
+- **沒說就用 Daily。** 在回覆最後一句提醒：想看實測數值可以用 Standard，要完整證據鏈用 Deep。
+- 使用者要求「照這個風格做一個」：至少用 Standard，因為實作交接需要量到的數值，不能只靠目測。
+- 先用 Daily 看過、使用者想深入某一點，可以在同一個資料夾升級成 Standard 或 Deep，沿用已經擷取的資料。
+
+## 共同規則（三種模式都適用）
+
+**研究範圍**
 - **唯讀**：只研究既有網站，產出只有 `research/` 底下的研究檔案。
-- **止於建議**：不寫網頁實作（HTML、CSS、元件程式碼），也不產出「仿作」。
-  使用者同時要求「照這個風格做一個」時：照常完成研究，在報告最後加一節「實作交接摘要」
-  （要沿用的原則、模式、tokens 推論、需要注意的取捨），並告訴使用者實作是另一個任務，由他決定要不要開始。
-  這樣研究結論能先被檢查，實作也不會把推測當成規格。
-- **保持範圍**：使用者指定某頁或某面向，就不要擴大成全站；說「首頁」就不要只看 Hero。
+- **止於建議**：不寫網頁實作（HTML、CSS、元件程式碼），也不產出「仿作」。使用者同時要求「照這個風格做一個」時，照常完成研究，在最後加一節「實作交接摘要」（要沿用的原則、tokens 起點、不能當規格的部分、不能沿用的品牌素材），並告訴使用者實作是另一個任務，由他決定。
+- **保持範圍**：使用者指定某頁或某面向，就不要擴大成全站；說「首頁」就看整個首頁，不只 Hero。
 
-## 開始前
+**說法要有根據**
+- 不寫沒有根據的形容詞（「很高級」「很流暢」「很好用」）。改寫成「看到什麼」＋「造成什麼效果」。
+- 沒有直接看到、是推出來的，標「（推測）」。尤其是動態：截圖拍不到動畫，從文字或檔名推得的動態一律是推測。
+- 寫「全部」「沒有」「只有」這類絕對說法前，回到截圖再看一次；有例外就寫出例外。
+- 不寫評分表。沒有依據的分數就是主觀評語。
 
-1. 讀 [`references/evidence-and-claims.md`](references/evidence-and-claims.md)：證據 ID、證據等級 E1–E5、結論層級 `[O]` `[I]` `[H]` `[VP]` `[DP]`。後面每個階段都用它。
-2. 每個網站的檔案放在 `research/<網域>/`（網域去掉 `www.`）：
+**檔案位置**：每個網站一個資料夾 `research/<網域>/`（網域去掉 `www.`）。截圖放 `screenshots/`，切圖與暫存檔放這個網站自己的 `_slices/`，不要用共用暫存區（會讀到別的網站的圖）。
 
-```
-research/<網域>/
-├── summary.md          # 最後才寫、最先給人讀：一頁、少術語的設計師摘要
-├── observations.md     # 第 0–2 階段：背景、擷取清單、證據清單
-├── report.md           # 第 3–6 階段：分析、模式、設計語言、綜合、自我審查
-├── source/             # page.md（markdown）、branding.json、links.json
-├── screenshots/        # desktop.png、tablet.png、mobile.png
-└── _slices/            # 切圖，只給本次研究用
-```
+**擷取的基本做法**
+- Firecrawl 的 `firecrawl_scrape` 每次都加 `maxAge: 0`，不用快取。截圖網址是暫時的，立刻用 curl 下載。
+- 長截圖用 Read 看之前先切段：
 
-範本在 `templates/`。
+  ```bash
+  SCRIPT=<SKILL.md 所在的資料夾>/scripts/capture_tools.py   # 用絕對路徑
+  python "$SCRIPT" slice screenshots/desktop.png _slices --prefix d
+  python "$SCRIPT" blank screenshots/desktop.png             # 找出空白段
+  ```
 
-## 第 0 階段：背景與範圍
+  `blank` 回報「延伸到截圖底部」的空白，代表那段截圖不可信（內容可能還沒渲染），不要拿來下結論，也不要直接推定成「捲動才淡入」。
+- 網站被網路政策擋住（curl 回 403、Playwright 出現 `ERR_TUNNEL_CONNECTION_FAILED`）就寫明限制，不要繞過。
+  Playwright 出現 `ERR_CERT_AUTHORITY_INVALID`（curl 卻能連上）是瀏覽器還不信任環境的代理憑證：不要關掉憑證檢查，把環境的 CA 加進瀏覽器憑證庫（雲端環境的 CA 在 `/root/.ccr/agent-proxy-ca.crt`）：
+  `apt-get install -y libnss3-tools && certutil -A -d sql:$HOME/.pki/nssdb -t "C,," -n proxy-ca -i <CA 檔>`
 
-先弄清楚網站是誰、這一頁的任務是什麼、給誰看，寫進 `observations.md` §0。
-設計是為任務服務的，不知道任務就無法判斷設計選擇是否合理。這一階段只寫有來源的事實，不評價設計。
+**收尾**
+- 在 `research/README.md` 的索引表加一行（欄位：網站｜研究日期｜連結），連結指向 summary.md，連結文字寫模式，例如 `[摘要（Daily）](<網域>/summary.md)`；不要改動其他列。
+- 回覆使用者時給 3–5 點重點和檔案路徑，以及最重要的不確定之處，不要把整份內容貼進對話。
 
-## 第 1 階段：擷取
+## Daily 模式
 
-用 Firecrawl 的 `firecrawl_scrape`，**每次都加 `maxAge: 0`**（快取可能是幾天前的版本，三個寬度會對不上）：
+目標：5 分鐘內產出一頁「今天學到什麼」。只做快速觀察，不建立證據清單。
 
-| 擷取 | 參數 |
-|---|---|
-| 內容與 branding | `formats: ["markdown", "branding", "links", "screenshot"]`，`screenshotOptions: {"fullPage": true}` |
-| 平板 | `formats: ["screenshot"]`，`screenshotOptions: {"fullPage": true, "viewport": {"width": 768, "height": 1024}}` |
-| 手機 | `mobile: true`，`formats: ["screenshot"]`，`screenshotOptions: {"fullPage": true}` |
+1. **擷取**（兩次 Firecrawl 呼叫）
+   - 桌機：`formats: ["markdown", "branding", "screenshot"]`，`screenshotOptions: {"fullPage": true}`
+   - 手機：`mobile: true`，`formats: ["screenshot"]`，`screenshotOptions: {"fullPage": true}`
 
-- markdown 存成 `source/page.md`（之後用行號當證據 `M-L42`），branding 存成 `source/branding.json`，links 存成 `source/links.json`。過長又和設計無關的欄位（例如 logo 的 data URI）可以省略，但要在檔內註明。
-- 截圖網址是暫時的，立刻用 curl 下載到 `screenshots/`。
-- 遇到速率限制就分開送請求，並在擷取清單註明。
-- **固定寬度**：兩個工具的寬度不同，各自固定下來，比較只在同一工具、同一寬度內做：
+   下載成 `screenshots/desktop.png`、`screenshots/mobile.png`，切段後用 Read 看過一遍。markdown 和 branding 只在對話中參考，不用存檔。
+   branding 是工具自動推估的，和截圖看到的不一致時，以截圖為準。
+2. **快速觀察六個面向**，每個面向只抓最突出的 1–2 件事，並想清楚「為什麼這樣設計」：
+   - **背景**：網站是誰、這一頁要訪客做什麼。
+   - **視覺**：配色、字體、版面中最有特色的選擇，以及它們合起來給人的感覺。
+   - **UX**：怎麼引導訪客走向主要行動（CTA 在哪、導覽怎麼安排）。
+   - **動態**：截圖看得出來的動態線索（例如輪播、跑馬燈、預載畫面），一律標（推測）。看不出來就寫「這次沒有觀察動態」，不要猜。
+   - **響應式**：手機版和桌機版最大的差別，以及這樣改的理由。
+   - **模式**：在頁面裡重複出現至少 2 次的設計決策（結構、視覺處理、互動），不是元件名稱。
+3. **寫 `summary.md`**，用 [`templates/daily.md`](templates/daily.md)，一頁以內。
 
-  | | 桌機 | 平板 | 手機 |
-  |---|---|---|---|
-  | Firecrawl | 1920（預設） | 768 | 360（`mobile: true`） |
-  | Playwright | 1440×900 | 768×1024 | 390×844，加 `isMobile: true`、`hasTouch: true` |
-- **A/B 實驗與版本差異**：同一網址在不同請求可能拿到不同版本，不只文案，字型、樣式、版面也可能不同（例如 meta 有 experiment 欄位、同寬度兩次執行的字族不一樣）。登記成 `X-`，只出現在單一次執行或單一寬度的差異，不要拿來當響應式模式或設計結論。
-- 研究重點是動態時，可以隔幾秒再拍一次首屏（`waitFor`），比對出來的差異記成 `I-`（E3）。
-- **有預載或長進場動畫的網站**（例如全螢幕單屏、載入數秒才出現內容）：Firecrawl 的截圖常常落在動畫中途，每次時間點還不一樣。
-  先用 `waitFor` 加大到超過進場時間再拍；仍然不穩定時，Firecrawl 截圖只拿來證明「不同時間點畫面不同」，
-  穩定狀態的截圖改由 Playwright 等到 `document.getAnimations()` 全部結束（或網站加上「已就緒」的 class）後再拍，並登記 `X-` 說明。
+Daily 不做：Playwright、證據 ID、像素取樣、減少動態、平板寬度、設計系統推論、自我審查。
 
-**可以直連網站時**（先用 `curl -sI <網址>` 確認），再用 Playwright（Chromium 在 `/opt/pw-browsers`，不要執行 `playwright install`）補上 E1 證據：
-- `getComputedStyle`（body、h1–h3、主要／次要按鈕、連結），以及 `:root` 上的 CSS 變數（讀得到就是最直接的 tokens 證據）。
-- hover、focus（Tab）、點擊後的狀態，記下 `transition` 的時長與 easing。
-- **動態要在觸發的同時開始記錄**：捲動或載入後立刻用 `recordVideo`，或每 100ms 拍一張、持續 1.5 秒。晚了就會錯過進場動畫，只拍到結束狀態。
-- 開一個 `reducedMotion: 'reduce'` 的 context 重拍一次，比較網站怎麼處理減少動態。
-- Playwright 的額外產物放在 `screenshots/pw/`，量測資料（computed style、序列結果）存成 `source/pw/*.json`，讓每個 `C-`、`I-` 都對得到檔案。
-  Playwright 截圖的證據 ID 用 `S-pw<寬度>-<名稱>`（例如 `S-pw1440-hero`、`S-pw390-sec03`、`S-pw1440-load-07`），命名規則見 evidence-and-claims.md §2。
-- 動畫時長與 easing 有兩種來源，寫的時候要分開：**設定值**（CSS `transition`、GSAP 等程式碼裡寫的數字，`H-`，E2）和**實測值**（Web Animations API、錄影逐格量到，`I-`／`C-`，E1）。
-  只有設定值時，動態表的 Duration 欄寫成「設定值 0.55s」，不要寫成量到的。
+## Standard 模式
 
-互動型網站（要點按鈕才進入主內容）一定要這一步，否則只看得到入口。
+目標：10–15 分鐘，讓重要的結論都有實際的截圖、DOM、CSS 或互動證據可以查。
 
-**寬度與工具不一致時**：每個 `S-`、`P-`、`C-` 證據都要記下它的 viewport 寬度，因為座標和版面只在同一寬度內可比。
-Firecrawl 和 Playwright 在相近寬度（例如 360 與 390）看到不同畫面時，兩個都記下並登記成 `X-`，不要挑一個當事實；
-兩者衝突的數值以 Playwright 的 E1 為準，但要說明差異。
-網站被網路政策擋住時（curl 回 403、Playwright 出現 `ERR_TUNNEL_CONNECTION_FAILED`），把它登記成缺口 `X-`，不要繞過。
-Playwright 出現 `ERR_CERT_AUTHORITY_INVALID`（curl 卻能連上）時，是瀏覽器還不信任環境的代理憑證，不要關掉憑證檢查；把環境提供的 CA 加進瀏覽器的憑證庫即可（雲端環境的 CA 在 `/root/.ccr/agent-proxy-ca.crt`）：
-`apt-get install -y libnss3-tools && certutil -A -d sql:$HOME/.pki/nssdb -t "C,," -n proxy-ca -i <CA 檔>`
+1. **擷取**：先做 Daily 的兩次 Firecrawl。網站可以直連時（`curl -sI <網址>` 確認），再用 Playwright（`/opt/pw-browsers/chromium`，不要執行 `playwright install`）：
+   - **三寬度截圖**：1440×900、768×1024、390×844（手機加 `isMobile: true`、`hasTouch: true`）。整頁截圖有空白時，捲到各段拍視窗截圖。存到 `screenshots/pw/`。
+   - **DOM**：主要區塊的順序、標題層級（h1–h3）、導覽與 CTA 的連結目標。
+   - **CSS**：`getComputedStyle` 讀 body、h1–h3、主要／次要按鈕、連結的字族、字級、字重、行高、字距、顏色、背景、圓角；順便讀 `:root` 的 CSS 變數（讀得到就是最直接的 tokens 證據）。
+   - **互動**：主要按鈕、導覽、連結的 hover 與 focus（按 Tab）前後各拍一張，記下 `transition` 的設定值；點開選單或漢堡選單看一次。
 
-## 第 2 階段：觀察
+   量測結果存成 `source/pw/*.json`。不能直連時退回 Daily 的資料來源，並在 notes.md 開頭寫明。
+2. **寫 `notes.md`**，用 [`templates/standard.md`](templates/standard.md)。研究面向同 Daily 的六項，每個結論後面用括號標出來源：
+   `（截圖：pw1440-hero）`、`（CSS：h1）`、`（DOM）`、`（互動：hover CTA）`、`（branding）`，推出來的標 `（推測）`。
+   - 模式要列出至少 2 個出現位置。
+   - 動態只寫看得到或量得到的：CSS 的 transition／animation 設定值、hover 前後的差異；進場動畫和捲動動畫若沒有實際拍到，標（推測）。
+   - 響應式比較桌機、手機兩種寬度（平板有明顯不同才寫）。
+3. **寫 `summary.md`**（同 Daily 範本），每一點連回 notes.md 的段落。
 
-目的是建立**證據清單**，讓後面的分析只需要引用、不需要重看網站。這一階段只記錄看到什麼，不寫解讀。
+Standard 不做：證據 ID 與 E1–E5 等級、像素取樣、減少動態、動態連拍量測、三寬度逐項對照表、設計系統推論、自我審查。
 
-1. 切圖並檢查空白：
+## Deep 模式
 
-```bash
-SCRIPT=<SKILL.md 所在的資料夾>/scripts/capture_tools.py   # 用絕對路徑，在哪個目錄執行都能用
-python "$SCRIPT" slice screenshots/desktop.png _slices --prefix d
-python "$SCRIPT" blank screenshots/desktop.png
-```
-
-   平板用 `--prefix t`，手機用 `--prefix m`。小字看不清時，可以改小 `--height` 或把 `--scale` 調到 1。
-   切圖一定放在這個網站自己的 `_slices/`：
-   多個研究共用暫存資料夾，會讀到別的網站的圖。
-   `blank` 回報「延伸到截圖底部」的空白時，原因可能是內容要捲動才出現、截圖碰到高度上限，或整頁截圖功能本身沒渲染。那段截圖不能當證據，要登記成 `X-`；
-   能用 Playwright 時，改成捲到每一段再拍視窗截圖（`S-pw<寬度>-sec01`…）補上，並用連拍確認是不是真的有進場動畫，不要直接推定成「捲動淡入」。
-2. 用 Read 逐段看切圖，每段在證據清單寫一行 `S-` 紀錄。
-3. 用 `capture_tools.py sample` 取樣關鍵色彩（`P-`），和 branding（`B-`）比對；兩者衝突時兩個都記下。
-4. 從 markdown、圖片網址、meta 找 `M-` 和 `H-` 證據（例如 `fallback-*.webp` 暗示有動態主視覺）。
-
-## 第 3 階段：維度分析
-
-讀 [`references/analysis-dimensions.md`](references/analysis-dimensions.md)，依序寫 `report.md` 第 1–4 節：視覺、UX、動態、響應式。
-
-- 每句結論前加層級標記，句末附證據 ID。只引用證據清單裡的 ID；缺證據時回到第 2 階段補，並登記新 ID。
-- 每節最後回答該節的**核心問題**。清單是為了不漏看，核心問題才是分析的目的。
-- 四個維度各管各的：視覺不評論 UX，響應式只寫「隨寬度改變的部分」，不重做視覺分析。
-
-## 第 4 階段：模式抽取
-
-只從第 3 階段的四節裡找**重複出現的設計決策**（結構、互動、視覺處理、響應式行為、UX 決策），
-每個模式至少 2 處出現位置，編號 `VP-01`、`VP-02`…，格式見 evidence-and-claims.md §5。
-不要重新分析網站，也不要把「卡片」「按鈕」這種元件名稱當成模式。
-
-## 第 5 階段：設計語言與設計系統推論
-
-從模式抽象出色彩、字體、版面、互動、動態、響應式、資訊層級的「哲學」，每一項都指出根據的 VP。
-接著推論可能存在的 tokens、components、variants、states，全部標成推論（evidence-and-claims.md §6）。
-這一階段不引入新觀察：如果需要新證據，代表前面的階段漏了，回去補。
-
-## 第 6 階段：綜合與自我審查
-
-到這裡才寫：一句話總結、可遷移的設計原則 `[DP]`、設計取捨、最值得帶走的一件事。
-每條原則都要指出來自哪個 VP。不寫評分表：沒有依據的分數就是主觀評語。
-
-然後回答範本 §8 的五個自我審查問題（證據等級分布、單一證據的結論、無法觀察的維度、重述而非引用、下一次要補的證據）。
-這一步讓讀者知道哪些結論可以直接用、哪些要先驗證。
-
-### 設計師摘要（summary.md）
-
-report.md 為了可查核，充滿證據 ID 和層級標記，設計師讀起來很慢。所以全部完成後，再用 `templates/summary.md` 寫一份一頁的摘要：
-**最後寫、最先讀**（和 oss-research 的 `00-summary.md` 一樣）。這不違反「最後才下結論」，因為摘要只濃縮 report.md 已經成立的結論，不新增任何判斷。
-
-- 用一般設計語言，不放證據 ID；把層級翻成白話（「截圖上量得到」「推測，還沒驗證」）。
-- 每個重點用一個連結指回 report.md 的對應段落或 VP，想查證的人一點就到。
-- 篇幅控制在一頁：讀者應該兩分鐘內知道「這個網站最值得學的 3–5 個設計決定、它們的代價、哪些還不確定」。
-- 摘要裡的每個絕對或否定說法（「全部」「沒有」「只有」），都要回到**截圖本身**再看一次，不能只對照 observations.md：文字紀錄可能本來就寫錯。
-- 寫摘要時發現 report.md 有錯，先回頭修正 report.md（和相關的 VP），再寫摘要。摘要不能和報告說法不一致。
-
-最後在 `research/README.md` 的索引表加一行（欄位：網站｜研究日期｜連結），有 summary.md 就連到它，沒有才連 report.md；不要改動其他列。回覆使用者時給 3–5 點摘要和檔案路徑，以及最重要的不確定之處，不要把整份報告貼進對話。
+讀 [`references/deep-mode.md`](references/deep-mode.md)，照它的第 0–6 階段做。
+它會再帶你讀 `references/evidence-and-claims.md`（證據 ID、證據等級、結論層級）和 `references/analysis-dimensions.md`（視覺 13 項、UX 11 項、動態 6 欄、響應式三寬度表）。
 
 ## 多網站比較
 
-1. 每個網站各自完成第 0–5 階段（第 6 階段的自我審查可以合併到比較報告）。
-2. 用 `templates/comparison.md` 寫 `research/comparisons/<YYYY-MM-DD>-<主題>.md`。範本最上面的「摘要」一節最後才寫，規則同設計師摘要。
-3. 比較報告**只引用**各站報告的段落與 VP 編號。必須重述數值時，先寫一句「這裡新增的比較角度是…」。
-   跨站模式（`XP-`）必須在兩站都有對應的 VP。
-4. 比較三個以上網站、單一對話裝不下時，可以每站派一個子代理做第 0–2 階段，由主對話接手後面的階段。
+1. 每個網站先用同一個模式各自研究（各自一個資料夾）。
+2. 再寫 `research/comparisons/<YYYY-MM-DD>-<主題>.md`：
+   - Daily／Standard：一頁內，寫兩站共同的模式（各自的例子）、設計語言最大的差異、各自適合借鏡的情境。
+   - Deep：用 `templates/comparison.md`，規則見 deep-mode.md。
+3. 比較時只引用各站的 summary／notes／report，不重新描述各站資料；必須重述數值時，先寫一句這裡新增的比較角度。
 
 ## 在子代理中執行時
 
-有些環境不允許子代理寫報告檔，而且哪些檔案會被擋並不一致（曾經 observations.md 能寫、report.md 被擋）。
-規則：每個檔案都先試著正常寫入；**被擋下的檔案不要用 Bash 或其他方式繞過**，改成在最後回覆裡附上完整內容，由主對話存檔。
-回覆開頭列出哪些檔案已寫入、哪些放在 FILE 區塊，讓主對話不用猜。FILE 區塊的格式：
+有些環境不允許子代理寫報告檔，而且哪些檔案會被擋並不一致。規則：每個檔案都先試著正常寫入；**被擋下的檔案不要用 Bash 或其他方式繞過**，改成在最後回覆裡附上完整內容，由主對話存檔。回覆開頭列出哪些檔案已寫入、哪些放在 FILE 區塊。格式：
 
 ```
-===== FILE: research/<網域>/observations.md =====
-<內容>
-===== FILE: research/<網域>/report.md =====
+===== FILE: research/<網域>/summary.md =====
 <內容>
 ```
 
