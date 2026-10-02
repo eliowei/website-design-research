@@ -25,12 +25,24 @@ setTimeout(()=>{_()},2900)   // _(): $.to(uTransition,{value:1,duration:3,ease:"
 ```
 
 ## H-js-herodelay：首屏內容的延遲
-第一次造訪 `delay: 8.5`（名字逐字、導覽文字、介紹段落、跑馬燈 h4、選單按鈕、logo）、`delay: 9`（`.face-image` 3.5s 由暗轉亮並放大到 1、`.plus-rotate`、右下 `.cta-connect`）；重新整理時全部改為 `delay: .1`。例：
+第一次造訪 `delay: 8.5`（底部列 TENSION／IMMERSION／IMPACT 逐字〔`.Name-plus`〕、頂部導覽逐字〔`.active-animate`〕、介紹段落、跑馬燈 h4 升起、選單按鈕、logo）、`delay: 9`（`.face-image` 3.5s 由暗轉亮並放大到 1、`.plus-rotate`、右下 `.cta-connect`）；重新整理時全部改為 `delay: .1`。例：
 ```js
-$.to(Lv.chars,{yPercent:0,opacity:1,stagger:.03,duration:.8,ease:"power3.out",delay:ir?.1:8.5})   // .Name-plus 逐字
+$.to(Lv.chars,{yPercent:0,opacity:1,stagger:.03,duration:.8,ease:"power3.out",delay:ir?.1:8.5})   // .Name-plus（底部列的 TENSION 等）逐字
 $.to(".face-image",{y:0,duration:3.5,filter:"brightness(1)",scale:1,delay:ir?.1:9})
 $.to(Iv.lines,{yPercent:0,opacity:1,stagger:.01,duration:1.5,ease:"power3.out",delay:ta?8.5:.1,filter:"blur(0px)"}) // .para-introduce-hero 逐行去模糊
 ```
+
+## H-js-marquee：首屏／頁尾跑馬燈
+```js
+const ny=$.utils.toArray(".rail h4"),Yp=iy(ny,{repeat:-1,paddingRight:30});   // 無縫水平循環
+Bt.create({onChangeY(r){let e=2.5;r.deltaY<0&&(e*=-1),
+  $.timeline({defaults:{ease:"none"}}).to(Yp,{timeScale:e*2.5,duration:.2,overwrite:!0}).to(Yp,{timeScale:e/2.5,duration:1},"+=0.3")}});
+```
+每次捲動：循環速度在 0.2s 內加到 6.25 倍，0.3s 後用 1s 降回 1 倍；往上捲時 e 變負，跑馬燈倒著走。
+（另有 `.marquee-bg` 50s／40s 來回的 linear timeline，對應的元素在 HTML 中沒有找到。）
+
+## H-css-live：ONLINE 紅點
+`.dots{…animation:liveBlink 1.5s infinite ease-in-out}`，`@keyframes liveBlink` 在 #0c0c0c 與 #ff2b2b 之間閃爍並放大；JS 中沒有找到改變它狀態的程式。
 
 ## H-js-lenis：平滑捲動與捲動鎖
 ```js

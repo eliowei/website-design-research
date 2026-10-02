@@ -148,7 +148,10 @@
 | H-meta | E2 | title「Meer Mohsin \| Front-End Developer, UI/UX Designer & 3D Web Developer」；theme-color #0D0D0D；og:description「Crafting immersive and cinematic digital experiences using Three.js, GSAP, WebGL…」 |
 | H-js-firstvisit | E2 | 預載只在非重新整理、且 sessionStorage 沒有 loaderPlayed 時播放 |
 | H-js-preloader | E2 | 設定值：計數 000→100 3.5s power2.inOut；之後數字淡出 1.45s、2.85s、0.5s；WebGL 轉場 setTimeout 2.9s 後開始、3s power2.inOut，完成即移除預載 |
-| H-js-herodelay | E2 | 設定值：第一次造訪首屏內容 delay 8.5s（文字類）、9s（臉 3.5s 由暗轉亮、CTA）；重新整理 delay 0.1s |
+| H-js-herodelay | E2 | 設定值：第一次造訪首屏內容 delay 8.5s（底部列逐字、頂部導覽逐字、段落、跑馬燈升起、選單鈕）、9s（臉 3.5s 由暗轉亮、CTA）；重新整理 delay 0.1s |
+| H-js-marquee | E2 | 跑馬燈是無縫水平循環；每次捲動速度 0.2s 內升到 6.25 倍、再用 1s 降回，往上捲時倒轉 |
+| H-css-live | E2 | ONLINE 紅點是 CSS `liveBlink` 1.5s 無限閃爍（#0c0c0c↔#ff2b2b），JS 沒有狀態邏輯 |
+| H-html-bar | E2 | 底部 TENSION／IMMERSION／IMPACT 是 `.fixed-bar-ledger` 裡的 `<p>`，不是連結；「+」是 `.plus-rotate` 圖片，捲動時依位移量×0.3 旋轉 |
 | H-js-lenis | E2 | Lenis duration 1.2；第一次造訪鎖捲動 6s；錨點捲動桌機 2.5s／手機 1.5s，easeOutQuart |
 | H-js-sound | E2 | 第一次點擊任意處播放背景音樂（1.5s 漸大到 0.5）；左下 40 條 bar 波形是音樂開關 |
 | H-js-menu | E2 | 漢堡選單：5 條紅色 bar 依序 scaleX 0→1（0.8s，stagger 0.06，power4.inOut），完成後線條轉成 X、文字逐行升起並去模糊（0.8s，stagger 0.03） |
@@ -205,7 +208,7 @@
 | I-08 | E3 | 服務段在 1440 連續 7 屏（sec05–11）構圖相同、只換中心字與圖，作品段連續 6 屏（sec13–18）同構圖換作品，3D 獎項場景 4 屏（sec25–28）——對應 H-js-pins 的釘選 |
 | I-09 | E3 | 多處截圖拍到「逐字／逐詞顯現中」：S-pw1440-sec01（THIS WILL 缺字）、sec19（只有 From）、sec29（標題被遮罩切半）、S-t08（文字漸灰） |
 | I-10 | E1 | reduced motion 下預載、計數、捲動鎖照常（C-rm、S-pw1440-rm-load-00） |
-| I-11 | E3 | 底部 TENSION／IMMERSION／IMPACT 列與左上 logo、右下 CTA（桌機另有右上導覽）在 1440、768、390 的每一張逐屏截圖都在同一位置；列中的「+」在不同捲動位置呈現不同旋轉角度（S-pw768-sec01 為 ×，S-pw768-hero 為 +；S-pw390-sec03 為 ×），logo 每張角度不同（S-pw1440-sec00 正面、S-pw1440-sec16 側面窄條） |
+| I-11 | E3 | 底部 TENSION／IMMERSION／IMPACT 列、左上 logo、左下紅色音樂波形在 1440、768、390 的每一張逐屏截圖都在同一位置；桌機右上導覽也都在，但部分截圖中字被切半（S-pw1440-sec09、sec13，逐字藏起中）。右下 Let's Connect **只出現在 scrollY 0 的截圖**（S-pw1440-hero／sec00、S-pw768-hero、S-pw390-hero），往下的逐屏截圖都沒有它（對應 H-js-cta 的往下捲滑出）。列中的「+」在不同捲動位置呈現不同旋轉角度（S-pw768-sec01 為 ×，S-pw768-hero 為 +；S-pw390-sec03 為 ×），logo 每張角度不同（S-pw1440-sec00 正面、S-pw1440-sec16 側面窄條） |
 
 ### 2.9 缺口（X-）
 
