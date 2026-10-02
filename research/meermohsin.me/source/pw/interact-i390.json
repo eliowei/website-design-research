@@ -1,0 +1,282 @@
+{
+  "viewport": {
+    "w": 390,
+    "h": 844,
+    "mobile": true
+  },
+  "reducedMotion": false,
+  "steps": [
+    {
+      "name": "menu-open",
+      "shot": "S-pw390-menu-open",
+      "before": {
+        ".navigation-menu": {
+          "display": "block",
+          "visibility": "hidden",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        },
+        ".line-1": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, -41, -8)",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        }
+      },
+      "after": {
+        ".navigation-menu": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        },
+        ".line-1": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, -41, -8)",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        }
+      }
+    },
+    {
+      "name": "menu-close",
+      "shot": "S-pw390-menu-close",
+      "before": {
+        ".navigation-menu": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        },
+        ".line-1": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "matrix(1, 0.000439823, -0.000439823, 1, -41, -7.99592)",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        }
+      },
+      "after": {
+        ".navigation-menu": {
+          "display": "block",
+          "visibility": "hidden",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        },
+        ".line-1": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, -41, -8)",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 255)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        }
+      }
+    },
+    {
+      "name": "click-sound",
+      "shot": "S-pw390-click-sound",
+      "before": {
+        ".sound-wave": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        }
+      },
+      "after": {
+        ".sound-wave": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        }
+      }
+    }
+  ],
+  "firstLoad": {
+    "navType": "navigate",
+    "loaderVisible": "visible/flex",
+    "matchesReduce": false
+  },
+  "afterReload": {
+    "navType": "reload",
+    "loaderExists": true,
+    "loaderDisplay": "none",
+    "htmlClass": "lenis"
+  },
+  "reloadSettledWallMs": 49295,
+  "visibility": {
+    ".menu-2-bar": true,
+    ".active-animate": false,
+    ".cta-connect": true,
+    ".sound-wave": true,
+    ".logo-3d": true,
+    ".custom-cursor": false
+  },
+  "focus": [
+    {
+      "tag": "INPUT",
+      "cls": "",
+      "text": "",
+      "outline": "rgb(245, 245, 245) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        16,
+        179,
+        390,
+        25
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "cls": "",
+      "text": "",
+      "outline": "rgb(245, 245, 245) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        16,
+        236,
+        390,
+        25
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "cls": "",
+      "text": "",
+      "outline": "rgb(245, 245, 245) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        16,
+        293,
+        390,
+        25
+      ]
+    },
+    {
+      "tag": "TEXTAREA",
+      "cls": "textarea",
+      "text": "",
+      "outline": "rgb(228, 224, 224) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        16,
+        383,
+        390,
+        30
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "cls": "cta-submit",
+      "text": "Submit",
+      "outline": "rgb(245, 245, 245) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        16,
+        1372,
+        100,
+        100
+      ]
+    },
+    {
+      "tag": "A",
+      "cls": "",
+      "text": "",
+      "outline": "rgb(229, 151, 0) auto 1px",
+      "outlineStyle": "auto",
+      "boxShadow": "none",
+      "rect": [
+        337,
+        1457,
+        53,
+        4
+      ]
+    }
+  ],
+  "soundWaveClass": "sound-wave on",
+  "wallMs": 107405
+}

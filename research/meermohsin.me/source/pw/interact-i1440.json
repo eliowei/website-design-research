@@ -1,0 +1,190 @@
+{
+  "viewport": {
+    "w": 1440,
+    "h": 900,
+    "mobile": false
+  },
+  "reducedMotion": false,
+  "steps": [
+    {
+      "name": "hover-cta",
+      "shot": "S-pw1440-hover-cta",
+      "before": {
+        ".cta-connect": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(241, 241, 241)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(241, 241, 241) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "2s cubic-bezier(0.075, 0.82, 0.165, 1)",
+          "cursor": "none",
+          "filter": "none"
+        }
+      },
+      "after": {
+        ".cta-connect": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 5.76441, 1.86698)",
+          "color": "rgb(19, 19, 19)",
+          "background": "rgba(207, 8, 8, 0.92)",
+          "outline": "rgb(19, 19, 19) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "2s cubic-bezier(0.075, 0.82, 0.165, 1)",
+          "cursor": "none",
+          "filter": "none"
+        }
+      }
+    },
+    {
+      "name": "click-sound",
+      "shot": "S-pw1440-click-sound",
+      "before": {
+        ".sound-wave": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        }
+      },
+      "after": {
+        ".sound-wave": {
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "transform": "none",
+          "color": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)",
+          "outline": "rgb(0, 0, 0) none 0px",
+          "outlineOffset": "0px",
+          "boxShadow": "none",
+          "transition": "all",
+          "cursor": "none",
+          "filter": "none"
+        }
+      }
+    }
+  ],
+  "firstLoad": {
+    "navType": "navigate",
+    "loaderVisible": "visible/flex",
+    "matchesReduce": false
+  },
+  "afterReload": {
+    "navType": "reload",
+    "loaderExists": true,
+    "loaderDisplay": "none",
+    "htmlClass": "lenis"
+  },
+  "reloadSettledWallMs": 86753,
+  "visibility": {
+    ".menu-2-bar": false,
+    ".active-animate": true,
+    ".cta-connect": true,
+    ".sound-wave": true,
+    ".logo-3d": true,
+    ".custom-cursor": false
+  },
+  "focus": [
+    {
+      "tag": "INPUT",
+      "cls": "",
+      "text": "",
+      "outline": "rgb(245, 245, 245) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        24,
+        224,
+        576,
+        26
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "cls": "",
+      "text": "",
+      "outline": "rgb(245, 245, 245) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        24,
+        286,
+        576,
+        26
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "cls": "",
+      "text": "",
+      "outline": "rgb(245, 245, 245) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        24,
+        348,
+        576,
+        26
+      ]
+    },
+    {
+      "tag": "TEXTAREA",
+      "cls": "textarea",
+      "text": "",
+      "outline": "rgb(228, 224, 224) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        24,
+        410,
+        576,
+        57
+      ]
+    },
+    {
+      "tag": "INPUT",
+      "cls": "cta-submit",
+      "text": "Submit",
+      "outline": "rgb(245, 245, 245) none 0px",
+      "outlineStyle": "none",
+      "boxShadow": "none",
+      "rect": [
+        24,
+        1493,
+        100,
+        100
+      ]
+    },
+    {
+      "tag": "A",
+      "cls": "active-animate",
+      "text": "HOME",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineStyle": "auto",
+      "boxShadow": "none",
+      "rect": [
+        1005,
+        30,
+        40,
+        14
+      ]
+    }
+  ],
+  "soundWaveClass": "sound-wave on",
+  "wallMs": 237837
+}
