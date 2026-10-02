@@ -63,19 +63,20 @@ description: 研究「別人的、已上線的網站」在設計上是怎麼做�
 目標：5 分鐘內產出一頁「今天學到什麼」。只做快速觀察，不建立證據清單。
 
 1. **擷取**（兩次 Firecrawl 呼叫）
-   - 桌機：`formats: ["markdown", "branding", "screenshot"]`，`screenshotOptions: {"fullPage": true}`
+   - 桌機：`formats: ["markdown", "branding", "screenshot"]`，`screenshotOptions: {"fullPage": true}`，`onlyMainContent: true`（回傳太大時工具會另存成檔案，只讀出 markdown 和 branding 就好）
    - 手機：`mobile: true`，`formats: ["screenshot"]`，`screenshotOptions: {"fullPage": true}`
 
    下載成 `screenshots/desktop.png`、`screenshots/mobile.png`，切段後用 Read 看過一遍。markdown 和 branding 只在對話中參考，不用存檔。
    branding 是工具自動推估的，和截圖看到的不一致時，以截圖為準。
-2. **快速觀察六個面向**，每個面向只抓最突出的 1–2 件事，並想清楚「為什麼這樣設計」：
+2. **快速觀察六個面向**，每個面向只抓最突出的 1–2 件事（寧可少而有理由，不要列清單），並想清楚「為什麼這樣設計」：
    - **背景**：網站是誰、這一頁要訪客做什麼。
    - **視覺**：配色、字體、版面中最有特色的選擇，以及它們合起來給人的感覺。
    - **UX**：怎麼引導訪客走向主要行動（CTA 在哪、導覽怎麼安排）。
    - **動態**：截圖看得出來的動態線索（例如輪播、跑馬燈、預載畫面），一律標（推測）。看不出來就寫「這次沒有觀察動態」，不要猜。
    - **響應式**：手機版和桌機版最大的差別，以及這樣改的理由。
    - **模式**：在頁面裡重複出現至少 2 次的設計決策（結構、視覺處理、互動），不是元件名稱。
-3. **寫 `summary.md`**，用 [`templates/daily.md`](templates/daily.md)，一頁以內。
+3. **寫 `summary.md`**，用 [`templates/daily.md`](templates/daily.md)，一頁以內：背景寫在開頭的「這個網站在做什麼」，其餘五個面向寫在速記；「不要照抄的地方」最多 3 點；最大的不確定之處用一行寫在最後。
+   截圖中段或底部有大段空白（`blank` 會列出）時，那幾段不拿來下結論，在不確定之處提一句就好。
 
 Daily 不做：Playwright、證據 ID、像素取樣、減少動態、平板寬度、設計系統推論、自我審查。
 
