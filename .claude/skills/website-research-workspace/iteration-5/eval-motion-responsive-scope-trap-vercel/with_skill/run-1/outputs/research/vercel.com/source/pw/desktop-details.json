@@ -1,0 +1,272 @@
+{
+ "parts": [
+  {
+   "text": "Notion powers millions of agent conversations dail",
+   "color": "rgb(23, 23, 23)",
+   "size": "16px",
+   "weight": "400",
+   "lh": "24px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Notion powers millions of agent conversations dail",
+   "color": "rgb(77, 77, 77)",
+   "size": "24px",
+   "weight": "450",
+   "lh": "32px",
+   "ls": "-0.96px",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Notion powers millions",
+   "color": "rgb(23, 23, 23)",
+   "size": "24px",
+   "weight": "450",
+   "lh": "32px",
+   "ls": "-0.96px",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "FeaturesDurable OrchestrationSandboxed Environment",
+   "color": "rgb(23, 23, 23)",
+   "size": "14px",
+   "weight": "500",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Features",
+   "color": "rgb(77, 77, 77)",
+   "size": "14px",
+   "weight": "400",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Durable Orchestration",
+   "color": "rgb(23, 23, 23)",
+   "size": "14px",
+   "weight": "500",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Sandboxed Environments",
+   "color": "rgb(23, 23, 23)",
+   "size": "14px",
+   "weight": "500",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "AI Model Gateway",
+   "color": "rgb(23, 23, 23)",
+   "size": "14px",
+   "weight": "500",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Fluid Compute",
+   "color": "rgb(23, 23, 23)",
+   "size": "14px",
+   "weight": "500",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  }
+ ],
+ "feat": [
+  {
+   "text": "Features",
+   "color": "rgb(77, 77, 77)",
+   "size": "14px",
+   "weight": "400",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Durable Orchestration",
+   "color": "rgb(23, 23, 23)",
+   "size": "14px",
+   "weight": "500",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Features",
+   "color": "rgb(77, 77, 77)",
+   "size": "14px",
+   "weight": "400",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  },
+  {
+   "text": "Features",
+   "color": "rgb(77, 77, 77)",
+   "size": "14px",
+   "weight": "400",
+   "lh": "20px",
+   "ls": "normal",
+   "family": "GeistSans, \"GeistSans Fallback"
+  }
+ ],
+ "sections": [
+  {
+   "t": "Build agents on infrastructure",
+   "x": 24,
+   "y": 1108,
+   "w": 673
+  },
+  {
+   "t": "Ship apps that scale from zero",
+   "x": 495,
+   "y": 1981,
+   "w": 921
+  },
+  {
+   "t": "Host platforms that serve ever",
+   "x": 24,
+   "y": 2853,
+   "w": 921
+  },
+  {
+   "t": "Recently shipped",
+   "x": 24,
+   "y": 3679,
+   "w": 921
+  },
+  {
+   "t": "Built by you, or your agents",
+   "x": 401,
+   "y": 4519,
+   "w": 638
+  },
+  {
+   "t": "Agent Stack",
+   "x": 24,
+   "y": 4775,
+   "w": 212
+  },
+  {
+   "t": "Core Platform",
+   "x": 260,
+   "y": 4775,
+   "w": 212
+  },
+  {
+   "t": "Security",
+   "x": 496,
+   "y": 4775,
+   "w": 212
+  },
+  {
+   "t": "Tools",
+   "x": 732,
+   "y": 4775,
+   "w": 212
+  },
+  {
+   "t": "Frameworks",
+   "x": 968,
+   "y": 4775,
+   "w": 212
+  },
+  {
+   "t": "SDKs",
+   "x": 1204,
+   "y": 4775,
+   "w": 212
+  },
+  {
+   "t": "Build",
+   "x": 24,
+   "y": 5095,
+   "w": 212
+  },
+  {
+   "t": "Learn",
+   "x": 260,
+   "y": 5095,
+   "w": 212
+  },
+  {
+   "t": "Explore",
+   "x": 496,
+   "y": 5095,
+   "w": 212
+  },
+  {
+   "t": "Company",
+   "x": 732,
+   "y": 5095,
+   "w": 212
+  },
+  {
+   "t": "Legal & Trust",
+   "x": 968,
+   "y": 5095,
+   "w": 212
+  },
+  {
+   "t": "Social",
+   "x": 1204,
+   "y": 5095,
+   "w": 212
+  }
+ ],
+ "imgs": [
+  {
+   "src": "notion-desktop-light.webp",
+   "w": 921,
+   "x": 24,
+   "y": 1264,
+   "vis": true
+  },
+  {
+   "src": "zapier-desktop-light.webp",
+   "w": 921,
+   "x": 495,
+   "y": 2137,
+   "vis": true
+  }
+ ],
+ "card": {
+  "radius": "6px",
+  "border": "0px solid rgb(235, 235, 235)",
+  "bg": "rgb(250, 250, 250)",
+  "shadow": "px 0px 0px 1px, rgb(250, 250, 250) 0px 0px 0px 1px",
+  "transition": "all"
+ },
+ "maxWidth": [
+  "1448px",
+  "961px",
+  "100%",
+  "1080px",
+  "444px",
+  "401px",
+  "100%",
+  "100%",
+  "364px",
+  "673.344px",
+  "100%",
+  "100%",
+  "100%",
+  "100%",
+  "100%"
+ ],
+ "cardHoverAnims": [
+  "opacity:1000ms cubic-bezier(0, 0, 0.2, 1) running@passport-book-glow pointer-events-none a",
+  "passport-glow-ellipse-x:1200ms linear running@passport-book-glow-ellipse-surface h-ful",
+  "fade-in:200ms linear finished@col-start-1 row-start-1 whitespace-nowra"
+ ]
+}

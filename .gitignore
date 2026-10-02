@@ -1,0 +1,16 @@
+# 測試工作區的截圖與切割圖只在本機用來評分，不進版控
+.claude/skills/website-research-workspace/**/*.png
+.claude/skills/website-research-workspace/**/*.jpg
+.claude/skills/website-research-workspace/**/*.jpeg
+.claude/skills/website-research-workspace/**/*.webp
+.claude/skills/website-research-workspace/**/_slices/
+
+# 研究過程的切圖只是工作檔
+research/**/_slices/
+# Playwright 的大量連拍與 hover 對照只是工作檔
+research/**/screenshots/pw/
+.claude/skills/website-research-workspace/**/*.webm
+research/**/*.webm
+# 網站完整的原始碼打包檔不進版控（證據用 source/*-excerpts.md 的摘錄）
+research/**/source/assets/
+research/**/source/index.html

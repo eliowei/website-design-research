@@ -1,0 +1,56 @@
+{
+ "winner": "B",
+ "scores": {
+  "A": {
+   "evidence_accuracy": 4,
+   "depth_of_reasoning": 4,
+   "honesty_uncertainty": 5,
+   "patterns_principles": 4,
+   "usability_for_designer": 3,
+   "scope_fit": 5,
+   "overall": 4
+  },
+  "B": {
+   "evidence_accuracy": 4,
+   "depth_of_reasoning": 4,
+   "honesty_uncertainty": 5,
+   "patterns_principles": 4,
+   "usability_for_designer": 5,
+   "scope_fit": 5,
+   "overall": 4.5
+  }
+ },
+ "reasoning": "A's and B's observations.md, report.md and screenshots are byte-identical (same md5). The only difference is that B adds summary.md, linked first from its README. That summary is a faithful 1-page distillation of report §5 and §7: 5 key decisions, each with a confidence note and an anchor link back to the evidence. It also covers what not to copy, the open unknowns, and a scope note saying no code was written. It adds no new claims and drops no caveats, so a designer gets the takeaways in about 3 minutes instead of digging through a 27KB report. Evidence, honesty and scope are equal. B wins only on usability, but the margin is clear.",
+ "a_strengths": [
+  "Dense, evidence-ID-linked report with clear [O]/[H] separation",
+  "Explicit self-audit and verification plan (Playwright, reduced-motion)",
+  "Stays in research scope with a handoff summary instead of code",
+  "Transferable design principles (DP 1-5) tied to patterns"
+ ],
+ "a_weaknesses": [
+  "No short entry point; key takeaways sit deep in a 27KB report (§5/§7/handoff)",
+  "README sends the reader to observations first, which is the slowest route"
+ ],
+ "b_strengths": [
+  "Everything in A, plus a summary.md that leads with the 5 most copyable decisions",
+  "Each summary point carries its confidence level and an anchor link to the evidence",
+  "Summary keeps the uncertainty about motion parameters and the 'don't copy' warnings",
+  "Summary states the scope clearly: research only, implementation is a separate decision"
+ ],
+ "b_weaknesses": [
+  "Shares A's limits: no computed styles, no measured motion timing, desktop and mobile lower halves not rendered",
+  "The summary repeats the report's DP content, so there is some redundancy"
+ ],
+ "spot_checks": [
+  "Background is #FAFAFA -> verified (pixel 250,250,250 on desktop)",
+  "Desktop hero shows three subtitle lines side by side; mobile shows one monospace line that changes about 6s later -> verified ('For coding agents' becomes 'To ship apps and agents')",
+  "Mobile logo row is clipped at both edges and moves left -> verified (Weather/Polymarket/Meta becomes Polymarket/Meta/Schwab)",
+  "Desktop shows 7 logos side by side -> verified (Meta, Schwab, DoorDash, OpenAI, SpaceX, Weather Company, Polymarket)",
+  "Mobile CTAs are full-width and stacked: black Deploy now, white outlined Talk to sales -> verified",
+  "Mobile hero order is triangle, then title, then subtitle, then CTA -> verified"
+ ],
+ "minutes_to_key_takeaways": {
+  "A": 10,
+  "B": 3
+ }
+}

@@ -1,0 +1,1390 @@
+{
+  "exit_reason": "max_iterations (5)",
+  "original_description": "\u4ee5\u8b49\u64da\u70ba\u672c\u7814\u7a76\u65e2\u6709\u7db2\u7ad9\u7684\u8a2d\u8a08\uff0c\u4f9d\u5e8f\u7522\u51fa\u89c0\u5bdf\u7d00\u9304\uff08\u542b\u8b49\u64da ID\uff09\u3001\u8996\u89ba\uff0fUX\uff0f\u52d5\u614b\uff0f\u97ff\u61c9\u5f0f\u5206\u6790\u3001\u91cd\u8907\u6a21\u5f0f\u3001\u8a2d\u8a08\u8a9e\u8a00\u8207\u8a2d\u8a08\u7cfb\u7d71\u63a8\u8ad6\uff0c\u6700\u5f8c\u624d\u505a\u7d9c\u5408\u8207\u81ea\u6211\u5be9\u67e5\uff0c\u5b58\u9032 research/<\u7db2\u57df>/\u3002\u7576\u4f7f\u7528\u8005\u7d66\u7db2\u5740\u4e26\u8981\u6c42\u5206\u6790\u3001\u7814\u7a76\u3001\u62c6\u89e3\u3001\u53c3\u8003\u3001\u501f\u93e1\u67d0\u7db2\u7ad9\u7684\u8a2d\u8a08\u6216\u8a2d\u8a08\u8a9e\u8a00\uff0c\u6216\u8981\u6bd4\u8f03\u591a\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u6642\u4f7f\u7528\uff0c\u5373\u4f7f\u6c92\u6709\u8aaa\u300c\u7814\u7a76\u300d\u5169\u500b\u5b57\u3002\u9019\u662f\u7814\u7a76 skill\uff0c\u4e0d\u505a\u524d\u7aef\u5be6\u4f5c\uff1a\u4f7f\u7528\u8005\u540c\u6642\u8981\u6c42\u300c\u7167\u9019\u500b\u98a8\u683c\u505a\u4e00\u500b\u300d\u6642\uff0c\u4ecd\u5148\u5b8c\u6210\u7814\u7a76\u4e26\u4ea4\u4ed8\u5be6\u4f5c\u4ea4\u63a5\u6458\u8981\uff0c\u518d\u7531\u4f7f\u7528\u8005\u6c7a\u5b9a\u662f\u5426\u53e6\u958b\u5be6\u4f5c\u4efb\u52d9\u3002",
+  "best_description": "\u53ea\u8981\u4f7f\u7528\u8005\u60f3\u5f04\u61c2\u4e00\u500b\u300c\u5225\u4eba\u7684\u3001\u5df2\u4e0a\u7dda\u7684\u7db2\u7ad9\u300d\u5728\u8a2d\u8a08\u4e0a\u662f\u600e\u9ebc\u505a\u7684\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u505a\uff0c\u5c31\u7528\u9019\u500b skill\uff0c\u4e0d\u8ad6\u554f\u984c\u5927\u5c0f\u3002\u5305\u62ec\uff1a\u554f\u67d0\u9801\u7684\u5b57\u9ad4\u5c64\u7d1a\u3001\u7db2\u683c\u3001\u914d\u8272\u3001\u9593\u8ddd\uff0c\u6216\u60f3\u63a8\u51fa\u5b83\u7684 design tokens\uff1b\u62c6\u89e3\u6372\u52d5\u52d5\u756b\u3001hover\u3001\u8f49\u5834\u7b49\u52d5\u614b\u624b\u6cd5\uff1b\u5206\u6790\u5b9a\u50f9\u9801\u3001\u65b9\u6848\u5361\u7247\u3001CTA\u3001\u5c0e\u89bd\u600e\u9ebc\u5f15\u5c0e\u4f7f\u7528\u8005\uff1b\u6574\u7406\u67d0\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6216\u53ef\u501f\u93e1\u4e4b\u8655\uff1b\u6bd4\u8f03\u5169\u500b\u4ee5\u4e0a\u7db2\u7ad9\uff08\u5982\u591a\u5bb6\u7522\u54c1\u9996\u9801\uff09\u7684\u5171\u540c\u8a2d\u8a08\u6a21\u5f0f\u6216\u8da8\u52e2\u3002\u53ea\u7d66\u7db2\u57df\u6216\u54c1\u724c\u540d\u3001\u6c92\u8cbc\u7db2\u5740\u3001\u6c92\u8aaa\u300c\u7814\u7a76\u300d\u4e5f\u7b97\u3002\u4f7f\u7528\u8005\u8aaa\u300c\u5206\u6790 X \u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b\u300d\u6642\u4e5f\u8981\u5148\u7528\u9019\u500b skill\uff1a\u5b83\u6703\u7522\u51fa\u6709\u8b49\u64da\u7684\u7814\u7a76\u5831\u544a\u548c\u5be6\u4f5c\u4ea4\u63a5\u6458\u8981\uff0c\u518d\u7531\u4f7f\u7528\u8005\u6c7a\u5b9a\u662f\u5426\u5be6\u4f5c\u3002\u4e0d\u8981\u7528\u65bc\uff1a\u4fee\u81ea\u5df1\u5c08\u6848\u7684\u7a0b\u5f0f\u6216\u8dd1\u7248\u3001\u76f4\u63a5\u5f9e\u96f6\u505a\u9801\u9762\u6216\u5efa\u8a2d\u8a08\u7cfb\u7d71\u3001\u7121\u969c\u7919\u6aa2\u67e5\u3001\u7db2\u7ad9\u662f\u5426\u7576\u6a5f\u3001\u529f\u80fd\uff0f\u5b9a\u50f9\uff0f\u5e02\u5834\u7684\u5546\u696d\u7af6\u54c1\u5206\u6790\u3002",
+  "best_score": "5/8",
+  "best_train_score": "6/12",
+  "best_test_score": "5/8",
+  "final_description": "\u7576\u4f7f\u7528\u8005\u60f3\u77e5\u9053\u4e00\u500b\u4ed6\u4eba\u5df2\u4e0a\u7dda\u7db2\u7ad9\u300c\u600e\u9ebc\u8a2d\u8a08\u7684\u300d\u6642\u4f7f\u7528\u9019\u500b skill\uff1a\u4f8b\u5982\u67d0\u9801\u7684\u7248\u9762\u3001\u5b57\u9ad4\u5c64\u7d1a\u3001\u7db2\u683c\u3001\u914d\u8272\u3001\u9593\u8ddd\u3001design tokens\u3001\u6372\u52d5\u6216 hover \u52d5\u756b\u3001\u5b9a\u50f9\u9801\u8207 CTA \u7684\u5f15\u5c0e\u3001\u6574\u9ad4\u8a2d\u8a08\u8a9e\u8a00\u6216\u300c\u611f\u89ba\u300d\u3001\u53ef\u501f\u93e1\u4e4b\u8655\uff0c\u6216\u6bd4\u8f03\u591a\u500b\u7db2\u7ad9\u627e\u51fa\u5171\u540c\u7684\u8a2d\u8a08\u6a21\u5f0f\u548c\u8da8\u52e2\u3002\u53ea\u8b1b\u54c1\u724c\u540d\uff08Notion\u3001Arc\uff09\u6216\u7db2\u57df\u4e5f\u7b97\u3002\u9019\u985e\u7db2\u7ad9\u5e38\u6539\u7248\uff0c\u4f60\u5c0d\u5b83\u5011\u7684\u8a18\u61b6\u591a\u534a\u5df2\u7d93\u904e\u6642\uff1b\u9019\u500b skill \u6703\u5373\u6642\u64f7\u53d6\u9801\u9762\u3001\u622a\u5716\u548c\u6a23\u5f0f\uff0c\u5beb\u6210\u9644\u8b49\u64da\u7684\u7814\u7a76\u5831\u544a\uff0c\u53ef\u4ee5\u62ff\u53bb\u958b\u6703\u3001\u505a\u7c21\u5831\u6216\u7576\u6539\u7248\u53c3\u8003\u3002\u4f7f\u7528\u8005\u8981\u6c42\u300c\u5206\u6790 X\uff0c\u518d\u7167\u5b83\u7684\u98a8\u683c\u505a\u4e00\u500b\u300d\u6642\uff0c\u5148\u7528\u9019\u500b skill \u5b8c\u6210\u7814\u7a76\u548c\u4ea4\u63a5\u6458\u8981\uff0c\u4e4b\u5f8c\u624d\u5be6\u4f5c\u3002\u4e0d\u8981\u7528\u5728\uff1a\u4fee\u81ea\u5df1\u7684\u7a0b\u5f0f\u78bc\u3001\u6c92\u6709\u53c3\u8003\u7db2\u7ad9\u5c31\u76f4\u63a5\u505a\u9801\u9762\u6216\u8a2d\u8a08\u7cfb\u7d71\u3001\u7121\u969c\u7919\u6aa2\u67e5\u3001\u6aa2\u67e5\u7db2\u7ad9\u662f\u5426\u7576\u6a5f\uff0c\u4ee5\u53ca\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u6216\u5e02\u5834\u7684\u5546\u696d\u7af6\u54c1\u5206\u6790\u3002",
+  "iterations_run": 5,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "\u4ee5\u8b49\u64da\u70ba\u672c\u7814\u7a76\u65e2\u6709\u7db2\u7ad9\u7684\u8a2d\u8a08\uff0c\u4f9d\u5e8f\u7522\u51fa\u89c0\u5bdf\u7d00\u9304\uff08\u542b\u8b49\u64da ID\uff09\u3001\u8996\u89ba\uff0fUX\uff0f\u52d5\u614b\uff0f\u97ff\u61c9\u5f0f\u5206\u6790\u3001\u91cd\u8907\u6a21\u5f0f\u3001\u8a2d\u8a08\u8a9e\u8a00\u8207\u8a2d\u8a08\u7cfb\u7d71\u63a8\u8ad6\uff0c\u6700\u5f8c\u624d\u505a\u7d9c\u5408\u8207\u81ea\u6211\u5be9\u67e5\uff0c\u5b58\u9032 research/<\u7db2\u57df>/\u3002\u7576\u4f7f\u7528\u8005\u7d66\u7db2\u5740\u4e26\u8981\u6c42\u5206\u6790\u3001\u7814\u7a76\u3001\u62c6\u89e3\u3001\u53c3\u8003\u3001\u501f\u93e1\u67d0\u7db2\u7ad9\u7684\u8a2d\u8a08\u6216\u8a2d\u8a08\u8a9e\u8a00\uff0c\u6216\u8981\u6bd4\u8f03\u591a\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u6642\u4f7f\u7528\uff0c\u5373\u4f7f\u6c92\u6709\u8aaa\u300c\u7814\u7a76\u300d\u5169\u500b\u5b57\u3002\u9019\u662f\u7814\u7a76 skill\uff0c\u4e0d\u505a\u524d\u7aef\u5be6\u4f5c\uff1a\u4f7f\u7528\u8005\u540c\u6642\u8981\u6c42\u300c\u7167\u9019\u500b\u98a8\u683c\u505a\u4e00\u500b\u300d\u6642\uff0c\u4ecd\u5148\u5b8c\u6210\u7814\u7a76\u4e26\u4ea4\u4ed8\u5be6\u4f5c\u4ea4\u63a5\u6458\u8981\uff0c\u518d\u7531\u4f7f\u7528\u8005\u6c7a\u5b9a\u662f\u5426\u53e6\u958b\u5be6\u4f5c\u4efb\u52d9\u3002",
+      "train_passed": 7,
+      "train_failed": 5,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "teenage.engineering \u7684\u7db2\u7ad9\u597d\u602a\u4f46\u5f88\u597d\u770b\uff0c\u5230\u5e95\u662f\u54ea\u88e1\u8b93\u5b83\u6709\u9019\u7a2e\u611f\u89ba\uff1f\u5e6b\u6211\u7814\u7a76\u770b\u770b",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "awwwards \u4e0a\u9019\u9031\u7684 site of the day \u5e6b\u6211\u6311\u4e00\u500b\u5206\u6790\uff0c\u6211\u60f3\u5b78\u5b83\u7684\u7248\u9762\u8ddf\u914d\u8272\u662f\u600e\u9ebc\u642d\u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7814\u7a76\u4e00\u4e0b apple.com/airpods-pro \u9019\u9801\uff0c\u5b83\u624b\u6a5f\u7248\u8ddf\u684c\u6a5f\u7248\u5dee\u5728\u54ea",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u53c3\u8003 https://linear.app/method \u5e6b\u6211\u505a\u4e00\u4efd\u8a2d\u8a08\u7814\u7a76\u5831\u544a\uff0c\u91cd\u9ede\u662f\u4ed6\u5011\u600e\u9ebc\u7528\u52d5\u614b\u6548\u679c\u8b1b\u6545\u4e8b",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7528 firecrawl \u628a https://www.ikea.com.tw \u6240\u6709\u6c99\u767c\u7684\u540d\u7a31\u8ddf\u50f9\u683c\u6293\u4e0b\u4f86\u5b58\u6210 csv",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u9019\u500b Figma \u6a94 https://www.figma.com/design/abc123/Landing \u5e6b\u6211\u8f49\u6210 React \u5143\u4ef6",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7814\u7a76 github.com/vuejs/core \u9019\u500b repo \u7684\u67b6\u69cb\uff0c\u6211\u60f3\u5b78\u5b83\u600e\u9ebc\u5207 package",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u6aa2\u67e5\u6211\u5011\u5b98\u7db2 example-shop.tw \u7684 SEO\uff0cmeta title \u8ddf description \u6709\u6c92\u6709\u554f\u984c\uff0c\u9084\u6709 lighthouse \u5206\u6578",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 7,
+      "failed": 5,
+      "total": 12,
+      "results": [
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "\u53ea\u8981\u4f7f\u7528\u8005\u60f3\u5f04\u61c2\u4e00\u500b\u300c\u5225\u4eba\u7684\u3001\u5df2\u4e0a\u7dda\u7684\u7db2\u7ad9\u300d\u5728\u8a2d\u8a08\u4e0a\u662f\u600e\u9ebc\u505a\u7684\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u505a\uff0c\u5c31\u7528\u9019\u500b skill\uff0c\u4e0d\u8ad6\u554f\u984c\u5927\u5c0f\u3002\u5305\u62ec\uff1a\u554f\u67d0\u9801\u7684\u5b57\u9ad4\u5c64\u7d1a\u3001\u7db2\u683c\u3001\u914d\u8272\u3001\u9593\u8ddd\uff0c\u6216\u60f3\u63a8\u51fa\u5b83\u7684 design tokens\uff1b\u62c6\u89e3\u6372\u52d5\u52d5\u756b\u3001hover\u3001\u8f49\u5834\u7b49\u52d5\u614b\u624b\u6cd5\uff1b\u5206\u6790\u5b9a\u50f9\u9801\u3001\u65b9\u6848\u5361\u7247\u3001CTA\u3001\u5c0e\u89bd\u600e\u9ebc\u5f15\u5c0e\u4f7f\u7528\u8005\uff1b\u6574\u7406\u67d0\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6216\u53ef\u501f\u93e1\u4e4b\u8655\uff1b\u6bd4\u8f03\u5169\u500b\u4ee5\u4e0a\u7db2\u7ad9\uff08\u5982\u591a\u5bb6\u7522\u54c1\u9996\u9801\uff09\u7684\u5171\u540c\u8a2d\u8a08\u6a21\u5f0f\u6216\u8da8\u52e2\u3002\u53ea\u7d66\u7db2\u57df\u6216\u54c1\u724c\u540d\u3001\u6c92\u8cbc\u7db2\u5740\u3001\u6c92\u8aaa\u300c\u7814\u7a76\u300d\u4e5f\u7b97\u3002\u4f7f\u7528\u8005\u8aaa\u300c\u5206\u6790 X \u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b\u300d\u6642\u4e5f\u8981\u5148\u7528\u9019\u500b skill\uff1a\u5b83\u6703\u7522\u51fa\u6709\u8b49\u64da\u7684\u7814\u7a76\u5831\u544a\u548c\u5be6\u4f5c\u4ea4\u63a5\u6458\u8981\uff0c\u518d\u7531\u4f7f\u7528\u8005\u6c7a\u5b9a\u662f\u5426\u5be6\u4f5c\u3002\u4e0d\u8981\u7528\u65bc\uff1a\u4fee\u81ea\u5df1\u5c08\u6848\u7684\u7a0b\u5f0f\u6216\u8dd1\u7248\u3001\u76f4\u63a5\u5f9e\u96f6\u505a\u9801\u9762\u6216\u5efa\u8a2d\u8a08\u7cfb\u7d71\u3001\u7121\u969c\u7919\u6aa2\u67e5\u3001\u7db2\u7ad9\u662f\u5426\u7576\u6a5f\u3001\u529f\u80fd\uff0f\u5b9a\u50f9\uff0f\u5e02\u5834\u7684\u5546\u696d\u7af6\u54c1\u5206\u6790\u3002",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "teenage.engineering \u7684\u7db2\u7ad9\u597d\u602a\u4f46\u5f88\u597d\u770b\uff0c\u5230\u5e95\u662f\u54ea\u88e1\u8b93\u5b83\u6709\u9019\u7a2e\u611f\u89ba\uff1f\u5e6b\u6211\u7814\u7a76\u770b\u770b",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "awwwards \u4e0a\u9019\u9031\u7684 site of the day \u5e6b\u6211\u6311\u4e00\u500b\u5206\u6790\uff0c\u6211\u60f3\u5b78\u5b83\u7684\u7248\u9762\u8ddf\u914d\u8272\u662f\u600e\u9ebc\u642d\u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7814\u7a76\u4e00\u4e0b apple.com/airpods-pro \u9019\u9801\uff0c\u5b83\u624b\u6a5f\u7248\u8ddf\u684c\u6a5f\u7248\u5dee\u5728\u54ea",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u53c3\u8003 https://linear.app/method \u5e6b\u6211\u505a\u4e00\u4efd\u8a2d\u8a08\u7814\u7a76\u5831\u544a\uff0c\u91cd\u9ede\u662f\u4ed6\u5011\u600e\u9ebc\u7528\u52d5\u614b\u6548\u679c\u8b1b\u6545\u4e8b",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7528 firecrawl \u628a https://www.ikea.com.tw \u6240\u6709\u6c99\u767c\u7684\u540d\u7a31\u8ddf\u50f9\u683c\u6293\u4e0b\u4f86\u5b58\u6210 csv",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u9019\u500b Figma \u6a94 https://www.figma.com/design/abc123/Landing \u5e6b\u6211\u8f49\u6210 React \u5143\u4ef6",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7814\u7a76 github.com/vuejs/core \u9019\u500b repo \u7684\u67b6\u69cb\uff0c\u6211\u60f3\u5b78\u5b83\u600e\u9ebc\u5207 package",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u6aa2\u67e5\u6211\u5011\u5b98\u7db2 example-shop.tw \u7684 SEO\uff0cmeta title \u8ddf description \u6709\u6c92\u6709\u554f\u984c\uff0c\u9084\u6709 lighthouse \u5206\u6578",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "\u7db2\u7ad9\u8a2d\u8a08\u7814\u7a76\uff1a\u51e1\u662f\u554f\u984c\u7684\u5c0d\u8c61\u662f\u300c\u5225\u4eba\u5bb6\u5df2\u4e0a\u7dda\u7684\u7db2\u7ad9\uff0f\u7db2\u9801\u300d\u7684\u8a2d\u8a08\uff0c\u5c31\u5148\u7528\u9019\u500b skill\uff0c\u4e0d\u8981\u6191\u8a18\u61b6\u6216\u5370\u8c61\u76f4\u63a5\u56de\u7b54\u3002\u9019\u985e\u7db2\u7ad9\u5e38\u6539\u7248\uff0c\u4e14\u5e38\u8dd1 A/B \u6e2c\u8a66\uff0c\u6240\u4ee5\u9019\u500b skill \u6703\u5be6\u969b\u64f7\u53d6\u4e09\u7a2e\u5bec\u5ea6\u7684\u622a\u5716\u3001\u8a08\u7b97\u5f8c\u6a23\u5f0f\u548c\u8272\u5f69\uff0c\u8b93\u6bcf\u500b\u7d50\u8ad6\u90fd\u9644\u8b49\u64da\u3002\u9069\u7528\u60c5\u5883\uff1a\u60f3\u77e5\u9053\u67d0\u7ad9\u300c\u600e\u9ebc\u505a\u7684\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u505a\u300d\uff0c\u4f8b\u5982\u5b57\u9ad4\u5c64\u7d1a\u3001\u7db2\u683c\u3001\u914d\u8272\u3001design tokens\u3001\u52d5\u756b\u6216\u6372\u52d5\u624b\u6cd5\u3001\u5b9a\u50f9\u9801\u6216 CTA \u7684\u5f15\u5c0e\u65b9\u5f0f\u3001\u8a2d\u8a08\u8a9e\u8a00\u3001\u53ef\u501f\u93e1\u4e4b\u8655\uff1b\u6216\u662f\u6bd4\u8f03\u591a\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u7528\u65bc\u6539\u7248\u53c3\u8003\u3001\u7c21\u5831\u3001\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703\u3002\u53ea\u7d66\u54c1\u724c\u540d\u6216\u7db2\u57df\u4e5f\u9069\u7528\u3002\u82e5\u4f7f\u7528\u8005\u8981\u300c\u5206\u6790 X \u518d\u7167\u5b83\u7684\u98a8\u683c\u505a\u4e00\u500b\u300d\uff0c\u7b2c\u4e00\u6b65\u5c31\u662f\u9019\u500b skill\uff0c\u5148\u7522\u51fa\u7814\u7a76\u548c\u5be6\u4f5c\u4ea4\u63a5\u6458\u8981\u3002\u4e0d\u9069\u7528\uff1a\u9664\u932f\u81ea\u5df1\u7684\u7a0b\u5f0f\u78bc\u3001\u6c92\u6709\u6307\u5b9a\u53c3\u8003\u7db2\u7ad9\u5c31\u76f4\u63a5\u505a\u9801\u9762\u6216\u8a2d\u8a08\u7cfb\u7d71\u3001\u7121\u969c\u7919\u7a3d\u6838\u3001\u78ba\u8a8d\u7db2\u7ad9\u662f\u5426\u639b\u6389\u3001\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u6216\u5e02\u5834\u7684\u5546\u696d\u7af6\u54c1\u5206\u6790\u3002",
+      "train_passed": 7,
+      "train_failed": 5,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "teenage.engineering \u7684\u7db2\u7ad9\u597d\u602a\u4f46\u5f88\u597d\u770b\uff0c\u5230\u5e95\u662f\u54ea\u88e1\u8b93\u5b83\u6709\u9019\u7a2e\u611f\u89ba\uff1f\u5e6b\u6211\u7814\u7a76\u770b\u770b",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "awwwards \u4e0a\u9019\u9031\u7684 site of the day \u5e6b\u6211\u6311\u4e00\u500b\u5206\u6790\uff0c\u6211\u60f3\u5b78\u5b83\u7684\u7248\u9762\u8ddf\u914d\u8272\u662f\u600e\u9ebc\u642d\u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7814\u7a76\u4e00\u4e0b apple.com/airpods-pro \u9019\u9801\uff0c\u5b83\u624b\u6a5f\u7248\u8ddf\u684c\u6a5f\u7248\u5dee\u5728\u54ea",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u53c3\u8003 https://linear.app/method \u5e6b\u6211\u505a\u4e00\u4efd\u8a2d\u8a08\u7814\u7a76\u5831\u544a\uff0c\u91cd\u9ede\u662f\u4ed6\u5011\u600e\u9ebc\u7528\u52d5\u614b\u6548\u679c\u8b1b\u6545\u4e8b",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7528 firecrawl \u628a https://www.ikea.com.tw \u6240\u6709\u6c99\u767c\u7684\u540d\u7a31\u8ddf\u50f9\u683c\u6293\u4e0b\u4f86\u5b58\u6210 csv",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u9019\u500b Figma \u6a94 https://www.figma.com/design/abc123/Landing \u5e6b\u6211\u8f49\u6210 React \u5143\u4ef6",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7814\u7a76 github.com/vuejs/core \u9019\u500b repo \u7684\u67b6\u69cb\uff0c\u6211\u60f3\u5b78\u5b83\u600e\u9ebc\u5207 package",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u6aa2\u67e5\u6211\u5011\u5b98\u7db2 example-shop.tw \u7684 SEO\uff0cmeta title \u8ddf description \u6709\u6c92\u6709\u554f\u984c\uff0c\u9084\u6709 lighthouse \u5206\u6578",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 7,
+      "failed": 5,
+      "total": 12,
+      "results": [
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 4,
+      "description": "TRIGGER\uff1a\u4f7f\u7528\u8005\u554f\u5230\u4efb\u4f55\u300c\u5225\u4eba\u5bb6\u7684\u771f\u5be6\u7db2\u7ad9\u6216\u7db2\u9801\u300d\u7684\u8a2d\u8a08\u6642\uff0c\u7b2c\u4e00\u6b65\u5c31\u7528\u9019\u500b skill\u3002\u7db2\u7ad9\u5e38\u6539\u7248\u6216\u8dd1 A/B \u6e2c\u8a66\uff0c\u6240\u4ee5\u4e0d\u8981\u53ea\u6191\u8a18\u61b6\u56de\u7b54\u3002\u9019\u500b skill \u6703\u5be6\u969b\u64f7\u53d6\u7db2\u7ad9\u4e26\u8490\u96c6\u8b49\u64da\uff0c\u518d\u5beb\u6210\u7814\u7a76\u5831\u544a\u3002\u4ee5\u4e0b\u4efb\u4e00\u60c5\u6cc1\u90fd\u7b97\u89f8\u767c\uff1a\u63d0\u5230\u7db2\u5740\u3001\u7db2\u57df\u6216\u54c1\u724c\u540d\uff08\u4f8b\u5982 Stripe\u3001Figma\u3001Arc\uff09\uff0c\u800c\u4e14\u60f3\u4e86\u89e3\u5b83\u7684\u7248\u9762\u3001\u7de8\u6392\u3001\u5b57\u9ad4\u3001\u7db2\u683c\u3001\u914d\u8272\u3001tokens\u3001\u52d5\u756b\u6216\u6372\u52d5\u6548\u679c\u3001\u5b9a\u50f9\u9801\u6216 CTA \u600e\u9ebc\u5f15\u5c0e\u4f7f\u7528\u8005\u3001\u8a2d\u8a08\u8a9e\u8a00\u3001\u300c\u611f\u89ba\u300d\u3001\u503c\u5f97\u501f\u93e1\u7684\u5730\u65b9\uff1b\u628a\u5b83\u300c\u62c6\u89e3\u3001\u6574\u7406\u3001\u5206\u6790\u3001\u53c3\u8003\u300d\uff1b\u6216\u6bd4\u8f03\u5169\u500b\u4ee5\u4e0a\u7db2\u7ad9\u7684\u5171\u540c\u8a2d\u8a08\u6a21\u5f0f\u6216\u8da8\u52e2\uff0c\u7528\u5728\u6539\u7248\u3001\u7c21\u5831\u3001\u5167\u90e8\u5206\u4eab\u6216\u8a2d\u8a08\u6703\u8b70\u3002\u300c\u5206\u6790 X \u518d\u7167\u5b83\u7684\u98a8\u683c\u505a\u300d\u4e5f\u5f9e\u9019\u88e1\u958b\u59cb\uff1a\u5148\u7522\u51fa\u7814\u7a76\u548c\u5be6\u4f5c\u4ea4\u63a5\u6458\u8981\u3002\nSKIP\uff1a\u4fee\u81ea\u5df1\u5c08\u6848\u7684\u7a0b\u5f0f\u78bc\u6216\u8dd1\u7248\u554f\u984c\uff1b\u6c92\u6709\u5206\u6790\u53c3\u8003\u7db2\u7ad9\u3001\u76f4\u63a5\u5beb\u9801\u9762\u6216\u5efa\u7acb\u8a2d\u8a08\u7cfb\u7d71\uff1b\u7121\u969c\u7919\u6aa2\u67e5\uff1b\u78ba\u8a8d\u7db2\u7ad9\u662f\u5426\u7576\u6a5f\uff1b\u6bd4\u8f03\u529f\u80fd\u3001\u50f9\u683c\u6216\u5e02\u5834\u7684\u5546\u696d\u7af6\u54c1\u5206\u6790\u3002",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "teenage.engineering \u7684\u7db2\u7ad9\u597d\u602a\u4f46\u5f88\u597d\u770b\uff0c\u5230\u5e95\u662f\u54ea\u88e1\u8b93\u5b83\u6709\u9019\u7a2e\u611f\u89ba\uff1f\u5e6b\u6211\u7814\u7a76\u770b\u770b",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "awwwards \u4e0a\u9019\u9031\u7684 site of the day \u5e6b\u6211\u6311\u4e00\u500b\u5206\u6790\uff0c\u6211\u60f3\u5b78\u5b83\u7684\u7248\u9762\u8ddf\u914d\u8272\u662f\u600e\u9ebc\u642d\u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7814\u7a76\u4e00\u4e0b apple.com/airpods-pro \u9019\u9801\uff0c\u5b83\u624b\u6a5f\u7248\u8ddf\u684c\u6a5f\u7248\u5dee\u5728\u54ea",
+          "should_trigger": true,
+          "trigger_rate": 0.6666666666666666,
+          "triggers": 2,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u53c3\u8003 https://linear.app/method \u5e6b\u6211\u505a\u4e00\u4efd\u8a2d\u8a08\u7814\u7a76\u5831\u544a\uff0c\u91cd\u9ede\u662f\u4ed6\u5011\u600e\u9ebc\u7528\u52d5\u614b\u6548\u679c\u8b1b\u6545\u4e8b",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7528 firecrawl \u628a https://www.ikea.com.tw \u6240\u6709\u6c99\u767c\u7684\u540d\u7a31\u8ddf\u50f9\u683c\u6293\u4e0b\u4f86\u5b58\u6210 csv",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u9019\u500b Figma \u6a94 https://www.figma.com/design/abc123/Landing \u5e6b\u6211\u8f49\u6210 React \u5143\u4ef6",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7814\u7a76 github.com/vuejs/core \u9019\u500b repo \u7684\u67b6\u69cb\uff0c\u6211\u60f3\u5b78\u5b83\u600e\u9ebc\u5207 package",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u6aa2\u67e5\u6211\u5011\u5b98\u7db2 example-shop.tw \u7684 SEO\uff0cmeta title \u8ddf description \u6709\u6c92\u6709\u554f\u984c\uff0c\u9084\u6709 lighthouse \u5206\u6578",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 5,
+      "description": "\u7576\u4f7f\u7528\u8005\u60f3\u77e5\u9053\u4e00\u500b\u4ed6\u4eba\u5df2\u4e0a\u7dda\u7db2\u7ad9\u300c\u600e\u9ebc\u8a2d\u8a08\u7684\u300d\u6642\u4f7f\u7528\u9019\u500b skill\uff1a\u4f8b\u5982\u67d0\u9801\u7684\u7248\u9762\u3001\u5b57\u9ad4\u5c64\u7d1a\u3001\u7db2\u683c\u3001\u914d\u8272\u3001\u9593\u8ddd\u3001design tokens\u3001\u6372\u52d5\u6216 hover \u52d5\u756b\u3001\u5b9a\u50f9\u9801\u8207 CTA \u7684\u5f15\u5c0e\u3001\u6574\u9ad4\u8a2d\u8a08\u8a9e\u8a00\u6216\u300c\u611f\u89ba\u300d\u3001\u53ef\u501f\u93e1\u4e4b\u8655\uff0c\u6216\u6bd4\u8f03\u591a\u500b\u7db2\u7ad9\u627e\u51fa\u5171\u540c\u7684\u8a2d\u8a08\u6a21\u5f0f\u548c\u8da8\u52e2\u3002\u53ea\u8b1b\u54c1\u724c\u540d\uff08Notion\u3001Arc\uff09\u6216\u7db2\u57df\u4e5f\u7b97\u3002\u9019\u985e\u7db2\u7ad9\u5e38\u6539\u7248\uff0c\u4f60\u5c0d\u5b83\u5011\u7684\u8a18\u61b6\u591a\u534a\u5df2\u7d93\u904e\u6642\uff1b\u9019\u500b skill \u6703\u5373\u6642\u64f7\u53d6\u9801\u9762\u3001\u622a\u5716\u548c\u6a23\u5f0f\uff0c\u5beb\u6210\u9644\u8b49\u64da\u7684\u7814\u7a76\u5831\u544a\uff0c\u53ef\u4ee5\u62ff\u53bb\u958b\u6703\u3001\u505a\u7c21\u5831\u6216\u7576\u6539\u7248\u53c3\u8003\u3002\u4f7f\u7528\u8005\u8981\u6c42\u300c\u5206\u6790 X\uff0c\u518d\u7167\u5b83\u7684\u98a8\u683c\u505a\u4e00\u500b\u300d\u6642\uff0c\u5148\u7528\u9019\u500b skill \u5b8c\u6210\u7814\u7a76\u548c\u4ea4\u63a5\u6458\u8981\uff0c\u4e4b\u5f8c\u624d\u5be6\u4f5c\u3002\u4e0d\u8981\u7528\u5728\uff1a\u4fee\u81ea\u5df1\u7684\u7a0b\u5f0f\u78bc\u3001\u6c92\u6709\u53c3\u8003\u7db2\u7ad9\u5c31\u76f4\u63a5\u505a\u9801\u9762\u6216\u8a2d\u8a08\u7cfb\u7d71\u3001\u7121\u969c\u7919\u6aa2\u67e5\u3001\u6aa2\u67e5\u7db2\u7ad9\u662f\u5426\u7576\u6a5f\uff0c\u4ee5\u53ca\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u6216\u5e02\u5834\u7684\u5546\u696d\u7af6\u54c1\u5206\u6790\u3002",
+      "train_passed": 6,
+      "train_failed": 6,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "teenage.engineering \u7684\u7db2\u7ad9\u597d\u602a\u4f46\u5f88\u597d\u770b\uff0c\u5230\u5e95\u662f\u54ea\u88e1\u8b93\u5b83\u6709\u9019\u7a2e\u611f\u89ba\uff1f\u5e6b\u6211\u7814\u7a76\u770b\u770b",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "awwwards \u4e0a\u9019\u9031\u7684 site of the day \u5e6b\u6211\u6311\u4e00\u500b\u5206\u6790\uff0c\u6211\u60f3\u5b78\u5b83\u7684\u7248\u9762\u8ddf\u914d\u8272\u662f\u600e\u9ebc\u642d\u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7814\u7a76\u4e00\u4e0b apple.com/airpods-pro \u9019\u9801\uff0c\u5b83\u624b\u6a5f\u7248\u8ddf\u684c\u6a5f\u7248\u5dee\u5728\u54ea",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u53c3\u8003 https://linear.app/method \u5e6b\u6211\u505a\u4e00\u4efd\u8a2d\u8a08\u7814\u7a76\u5831\u544a\uff0c\u91cd\u9ede\u662f\u4ed6\u5011\u600e\u9ebc\u7528\u52d5\u614b\u6548\u679c\u8b1b\u6545\u4e8b",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u7528 firecrawl \u628a https://www.ikea.com.tw \u6240\u6709\u6c99\u767c\u7684\u540d\u7a31\u8ddf\u50f9\u683c\u6293\u4e0b\u4f86\u5b58\u6210 csv",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u9019\u500b Figma \u6a94 https://www.figma.com/design/abc123/Landing \u5e6b\u6211\u8f49\u6210 React \u5143\u4ef6",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7814\u7a76 github.com/vuejs/core \u9019\u500b repo \u7684\u67b6\u69cb\uff0c\u6211\u60f3\u5b78\u5b83\u600e\u9ebc\u5207 package",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u6aa2\u67e5\u6211\u5011\u5b98\u7db2 example-shop.tw \u7684 SEO\uff0cmeta title \u8ddf description \u6709\u6c92\u6709\u554f\u984c\uff0c\u9084\u6709 lighthouse \u5206\u6578",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 6,
+      "failed": 6,
+      "total": 12,
+      "results": [
+        {
+          "query": "\u5e6b\u6211\u6bd4\u8f03 Figma\u3001Canva\u3001Miro \u4e09\u500b\u9996\u9801\uff0c\u627e\u51fa\u5b83\u5011\u5171\u540c\u7528\u7684\u8a2d\u8a08\u6a21\u5f0f\uff0c\u6211\u5728\u5beb\u4e00\u4efd\u8a2d\u8a08\u8da8\u52e2\u7684\u5167\u90e8\u5206\u4eab",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5f88\u559c\u6b61 stripe.com/press \u7684\u7de8\u6392\uff0c\u60f3\u77e5\u9053\u5b83\u7684\u5b57\u9ad4\u5c64\u7d1a\u8ddf\u7db2\u683c\u662f\u600e\u9ebc\u505a\u7684\uff0c\u53ef\u4ee5\u628a\u5b83\u7684 design tokens \u63a8\u51fa\u4f86\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u5206\u6790 notion.so \u9996\u9801\u7136\u5f8c\u7167\u5b83\u7684\u98a8\u683c\u5e6b\u6211\u505a\u4e00\u500b landing page\uff0c\u6211\u662f\u505a\u7b46\u8a18 app \u7684",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u770b\u4e00\u4e0b https://cal.com \u7684 pricing page\uff0c\u5b83\u7684\u65b9\u6848\u5361\u7247\u8ddf CTA \u662f\u600e\u9ebc\u5f15\u5c0e\u4eba\u5347\u7d1a\u7684\uff1f\u9806\u4fbf\u6574\u7406\u53ef\u4ee5\u501f\u93e1\u7684\u5730\u65b9",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "https://www.framer.com \u9019\u500b\u9996\u9801\u7684\u6372\u52d5\u52d5\u756b\u505a\u5f97\u5f88\u7279\u5225\uff0c\u53ef\u4ee5\u5e6b\u6211\u62c6\u89e3\u4e00\u4e0b\u5b83\u5230\u5e95\u7528\u4e86\u54ea\u4e9b\u624b\u6cd5\u3001\u70ba\u4ec0\u9ebc\u9019\u6a23\u6392\u55ce",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u5011\u4e0b\u500b\u6708\u8981\u6539\u7248\u5b98\u7db2\uff0c\u8001\u95c6\u8aaa\u8981\u53c3\u8003 Arc browser \u8ddf Raycast \u7684\u611f\u89ba\uff0c\u4f60\u53ef\u4ee5\u5148\u5e6b\u6211\u628a\u9019\u5169\u500b\u7db2\u7ad9\u7684\u8a2d\u8a08\u8a9e\u8a00\u6574\u7406\u51fa\u4f86\u55ce\uff1f\u6211\u8981\u62ff\u53bb\u8ddf\u8a2d\u8a08\u5e2b\u958b\u6703",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "\u6211\u7684\u7db2\u7ad9 (localhost:3000) \u5728\u624b\u6a5f\u4e0a navbar \u6703\u8dd1\u7248\uff0c\u5e6b\u6211\u770b src/components/Navbar.tsx \u54ea\u88e1\u5beb\u932f",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "https://status.openai.com \u73fe\u5728\u662f\u4e0d\u662f\u639b\u4e86\uff1f\u5e6b\u6211\u770b\u4e00\u4e0b",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5011\u7684 app \u5efa\u4e00\u5957 design system\uff0c\u8981\u6709 color tokens\u3001typography scale \u8ddf button variants\uff0c\u8f38\u51fa\u6210 CSS variables",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u7528 Next.js + Tailwind \u505a\u4e00\u500b\u50cf vercel.com \u90a3\u7a2e\u9ed1\u767d\u6975\u7c21\u7684\u9996\u9801\uff0chero \u8981\u6709\u6f38\u5c64\u5149\u6688",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u5e6b\u6211\u5beb\u4e00\u4efd Notion \u8ddf Coda \u7684\u7af6\u54c1\u5206\u6790\uff0c\u6bd4\u8f03\u529f\u80fd\u3001\u5b9a\u50f9\u3001\u76ee\u6a19\u5e02\u5834\uff0c\u8981\u7d66 PM \u770b\u7684",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "\u6211\u5011\u7db2\u7ad9\u7684\u7121\u969c\u7919\u8981\u904e WCAG AA\uff0c\u5e6b\u6211\u6aa2\u67e5 index.html \u7684\u5c0d\u6bd4\u5ea6\u8ddf aria \u6a19\u7c64",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

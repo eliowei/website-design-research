@@ -1,0 +1,1461 @@
+{
+ "url": "https://www.moto-card.com/",
+ "title": "Moto Card | Homepage",
+ "scrollHeight": 11256,
+ "body": {
+  "font-family": "Neuemontreal, Arial, sans-serif",
+  "font-size": "14.5236px",
+  "font-weight": "500",
+  "line-height": "18.8807px",
+  "letter-spacing": "-0.0435708px",
+  "text-transform": "none",
+  "color": "rgb(225, 229, 229)",
+  "background-color": "rgb(8, 8, 8)",
+  "border-radius": "0px",
+  "padding": "0px",
+  "transition": "all",
+  "display": "block",
+  "opacity": "1",
+  "visibility": "visible",
+  "transform": "none"
+ },
+ "html": {
+  "font-size": "10.374px",
+  "background-color": "rgba(0, 0, 0, 0)",
+  "scroll-behavior": "auto",
+  "overflow": "clip visible"
+ },
+ "heads": [
+  {
+   "tag": "H1",
+   "text": "BUILT FOR MODERN WEALTH",
+   "sel": "h1.text-style-h1",
+   "rect": {
+    "x": 39,
+    "y": 143,
+    "w": 311,
+    "h": 75
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "37.3464px",
+    "font-weight": "500",
+    "line-height": "37.3464px",
+    "letter-spacing": "-0.298771px",
+    "text-transform": "uppercase",
+    "color": "rgb(225, 229, 229)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "INFRASTRUCTURE FOR HOW YOU MOVE",
+   "sel": "h2.text-style-h1",
+   "rect": {
+    "x": 12,
+    "y": 1089,
+    "w": 367,
+    "h": 75
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "37.3464px",
+    "font-weight": "500",
+    "line-height": "37.3464px",
+    "letter-spacing": "-0.298771px",
+    "text-transform": "uppercase",
+    "color": "rgb(225, 229, 229)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "THE CARD IS ONLY THE BEGINNING",
+   "sel": "h2",
+   "rect": {
+    "x": 21,
+    "y": 2466,
+    "w": 349,
+    "h": 66
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "33.1968px",
+    "font-weight": "500",
+    "line-height": "33.1968px",
+    "letter-spacing": "-0.265574px",
+    "text-transform": "uppercase",
+    "color": "rgb(225, 229, 229)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "SPEND GLOBALLY. 0 FX FEES BUILT IN.",
+   "sel": "h2.numbers_header_h2",
+   "rect": {
+    "x": 46,
+    "y": 4162,
+    "w": 299,
+    "h": 66
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "33.1968px",
+    "font-weight": "500",
+    "line-height": "33.1968px",
+    "letter-spacing": "-0.265574px",
+    "text-transform": "uppercase",
+    "color": "rgb(8, 8, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "24/7 CONCIERGE. ANYTHING. ANYTIME.",
+   "sel": "h2.concierge_top_h2.text-style-h1",
+   "rect": {
+    "x": 13,
+    "y": 5087,
+    "w": 220,
+    "h": 149
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "37.3464px",
+    "font-weight": "500",
+    "line-height": "37.3464px",
+    "letter-spacing": "-0.298771px",
+    "text-transform": "uppercase",
+    "color": "rgb(225, 229, 229)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "MADE FOR THE PLACES YOU ALREADY MOVE THROUGH.",
+   "sel": "h2.made_h2",
+   "rect": {
+    "x": 12,
+    "y": 7352,
+    "w": 352,
+    "h": 50
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "24.8976px",
+    "font-weight": "500",
+    "line-height": "24.8976px",
+    "letter-spacing": "-0.199181px",
+    "text-transform": "uppercase",
+    "color": "rgb(8, 8, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H3",
+   "text": "Hotels",
+   "sel": "h3.made_point_h3.text-medium.text-weight-500",
+   "rect": {
+    "x": 49,
+    "y": 7469,
+    "w": 41,
+    "h": 19
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "14.5236px",
+    "font-weight": "500",
+    "line-height": "18.8807px",
+    "letter-spacing": "-0.0435708px",
+    "text-transform": "none",
+    "color": "rgb(8, 8, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H3",
+   "text": "Dining",
+   "sel": "h3.made_point_h3.text-medium.text-weight-500",
+   "rect": {
+    "x": 51,
+    "y": 7555,
+    "w": 40,
+    "h": 19
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "14.5236px",
+    "font-weight": "500",
+    "line-height": "18.8807px",
+    "letter-spacing": "-0.0435708px",
+    "text-transform": "none",
+    "color": "rgb(8, 8, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H3",
+   "text": "Travel",
+   "sel": "h3.made_point_h3.text-medium.text-weight-500",
+   "rect": {
+    "x": 52,
+    "y": 7641,
+    "w": 38,
+    "h": 19
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "14.5236px",
+    "font-weight": "500",
+    "line-height": "18.8807px",
+    "letter-spacing": "-0.0435708px",
+    "text-transform": "none",
+    "color": "rgb(8, 8, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H3",
+   "text": "Experiences",
+   "sel": "h3.made_point_h3.text-medium.text-weight-500",
+   "rect": {
+    "x": 52,
+    "y": 7727,
+    "w": 79,
+    "h": 19
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "14.5236px",
+    "font-weight": "500",
+    "line-height": "18.8807px",
+    "letter-spacing": "-0.0435708px",
+    "text-transform": "none",
+    "color": "rgb(8, 8, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H3",
+   "text": "Wellness",
+   "sel": "h3.made_point_h3.text-medium.text-weight-500",
+   "rect": {
+    "x": 51,
+    "y": 7813,
+    "w": 56,
+    "h": 19
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "14.5236px",
+    "font-weight": "500",
+    "line-height": "18.8807px",
+    "letter-spacing": "-0.0435708px",
+    "text-transform": "none",
+    "color": "rgb(8, 8, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "ACCESS OUR NETWORK",
+   "sel": "h2.text-style-h1",
+   "rect": {
+    "x": 62,
+    "y": 8253,
+    "w": 265,
+    "h": 75
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "37.3464px",
+    "font-weight": "500",
+    "line-height": "37.3464px",
+    "letter-spacing": "-0.298771px",
+    "text-transform": "uppercase",
+    "color": "rgb(225, 229, 229)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "FREQUENTLY ASKED QUESTIONS",
+   "sel": "h2.text-style-h3",
+   "rect": {
+    "x": 12,
+    "y": 8824,
+    "w": 297,
+    "h": 66
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "33.1968px",
+    "font-weight": "500",
+    "line-height": "33.1968px",
+    "letter-spacing": "-0.265574px",
+    "text-transform": "uppercase",
+    "color": "rgb(8, 8, 8)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H3",
+   "text": "ABOUT MOTO",
+   "sel": "h3.faq_h3.text-tiny.text-cl-grey500",
+   "rect": {
+    "x": 12,
+    "y": 8995,
+    "w": 79,
+    "h": 29
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "12.4488px",
+    "font-weight": "500",
+    "line-height": "12.4488px",
+    "letter-spacing": "-0.0995904px",
+    "text-transform": "uppercase",
+    "color": "rgb(102, 111, 118)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "16.5984px 0px 0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H3",
+   "text": "COSTS & BENEFITS",
+   "sel": "h3.faq_h3.text-tiny.text-cl-grey500",
+   "rect": {
+    "x": 12,
+    "y": 9455,
+    "w": 110,
+    "h": 29
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "12.4488px",
+    "font-weight": "500",
+    "line-height": "12.4488px",
+    "letter-spacing": "-0.0995904px",
+    "text-transform": "uppercase",
+    "color": "rgb(102, 111, 118)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "16.5984px 0px 0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H3",
+   "text": "USAGE",
+   "sel": "h3.faq_h3.text-tiny.text-cl-grey500",
+   "rect": {
+    "x": 12,
+    "y": 9659,
+    "w": 40,
+    "h": 29
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "12.4488px",
+    "font-weight": "500",
+    "line-height": "12.4488px",
+    "letter-spacing": "-0.0995904px",
+    "text-transform": "uppercase",
+    "color": "rgb(102, 111, 118)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "16.5984px 0px 0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "visible",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "A QUIETER WAY TO MOVE THROUGH THE WORLD",
+   "sel": "h2",
+   "rect": {
+    "x": 24,
+    "y": 10420,
+    "w": 342,
+    "h": 100
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "33.1968px",
+    "font-weight": "500",
+    "line-height": "33.1968px",
+    "letter-spacing": "-0.265574px",
+    "text-transform": "uppercase",
+    "color": "rgb(225, 229, 229)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "0",
+    "visibility": "visible",
+    "transform": "matrix(1, 0, 0, 1, 0, 50)"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "Get early access",
+   "sel": "h2.popup_h2.text-weight-400",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "24.8976px",
+    "font-weight": "400",
+    "line-height": "24.8976px",
+    "letter-spacing": "-0.199181px",
+    "text-transform": "none",
+    "color": "rgb(225, 229, 229)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "hidden",
+    "transform": "none"
+   }
+  },
+  {
+   "tag": "H2",
+   "text": "Moto Membership",
+   "sel": "h2.popup_member_h2.text-large",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "style": {
+    "font-family": "Neuemontreal, Arial, sans-serif",
+    "font-size": "16.5984px",
+    "font-weight": "500",
+    "line-height": "21.5779px",
+    "letter-spacing": "-0.0497952px",
+    "text-transform": "none",
+    "color": "rgb(225, 229, 229)",
+    "background-color": "rgba(0, 0, 0, 0)",
+    "border-radius": "0px",
+    "padding": "0px",
+    "transition": "all",
+    "display": "block",
+    "opacity": "1",
+    "visibility": "hidden",
+    "transform": "none"
+   }
+  }
+ ],
+ "links": [
+  {
+   "tag": "A",
+   "text": "Moto Card Homepage",
+   "href": "/",
+   "sel": "a.nav_logo_link.w-inline-block.w--current",
+   "rect": {
+    "x": 12,
+    "y": 17,
+    "w": 94,
+    "h": 42
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Membership",
+   "href": "/",
+   "sel": "a.nav_menu_link.text-small.w--current",
+   "rect": {
+    "x": 17,
+    "y": -244,
+    "w": 97,
+    "h": 38
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Partnership",
+   "href": "/partnership",
+   "sel": "a.nav_menu_link.text-small",
+   "rect": {
+    "x": 17,
+    "y": -198,
+    "w": 89,
+    "h": 38
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Become a Partner",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share",
+   "sel": "a.button.w-variant-844ed737-3fda-3b42-7a73-533f00e5e63b.w-inline-block",
+   "rect": {
+    "x": 17,
+    "y": -118,
+    "w": 349,
+    "h": 41
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share",
+   "sel": "a.button.w-variant-b2a47393-e449-8f34-02c6-286b846f1d34.w-inline-block",
+   "rect": {
+    "x": 17,
+    "y": -64,
+    "w": 349,
+    "h": 44
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "Navigation Menu",
+   "href": null,
+   "sel": "button.nav_menu_btn",
+   "rect": {
+    "x": 337,
+    "y": 17,
+    "w": 41,
+    "h": 41
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share",
+   "sel": "a.button.w-variant-b2a47393-e449-8f34-02c6-286b846f1d34.w-inline-block",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "visible": false
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share",
+   "sel": "a.button.w-inline-block",
+   "rect": {
+    "x": 91,
+    "y": 665,
+    "w": 207,
+    "h": 44
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share",
+   "sel": "a.button.w-inline-block",
+   "rect": {
+    "x": 91,
+    "y": 1252,
+    "w": 207,
+    "h": 44
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share",
+   "sel": "a.button.w-inline-block",
+   "rect": {
+    "x": 91,
+    "y": 2566,
+    "w": 207,
+    "h": 44
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share",
+   "sel": "a.button.w-inline-block",
+   "rect": {
+    "x": 91,
+    "y": 8424,
+    "w": 207,
+    "h": 44
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "What is Moto?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 8995,
+    "w": 183,
+    "h": 52
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "How does Moto work?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9270,
+    "w": 183,
+    "h": 52
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "Do I need to own crypto to use Moto?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9318,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "What does Moto Membership cost?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9455,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "What does Moto Membership include?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9522,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "How can I apply for Moto Membership?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9659,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "How do I fund my Moto account?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9726,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "How long do deposits and withdrawals take?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9793,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "Why is my transaction under review?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9860,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Moto",
+   "href": "mailto:support@moto-card.com",
+   "sel": "a",
+   "rect": {
+    "x": 331,
+    "y": 10075,
+    "w": 28,
+    "h": 15
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Support",
+   "href": "mailto:support@moto-card.com",
+   "sel": "a",
+   "rect": {
+    "x": 195,
+    "y": 10092,
+    "w": 44,
+    "h": 15
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "How does identity verification work?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9926,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "What happens if I send funds to the wrong address?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 9993,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "How does Moto protect my account and personal information?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 10060,
+    "w": 183,
+    "h": 90
+   },
+   "visible": true
+  },
+  {
+   "tag": "BUTTON",
+   "text": "What should I do if a payment is declined?",
+   "href": null,
+   "sel": "button.accordion_question_button",
+   "rect": {
+    "x": 195,
+    "y": 10146,
+    "w": 183,
+    "h": 71
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share",
+   "sel": "a.button.w-inline-block",
+   "rect": {
+    "x": 24,
+    "y": 10545,
+    "w": 207,
+    "h": 44
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Partnerships",
+   "href": "/partnership",
+   "sel": "a.footer2_link",
+   "rect": {
+    "x": 24,
+    "y": 10688,
+    "w": 68,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Benefits",
+   "href": "/#benefits",
+   "sel": "a.footer2_link",
+   "rect": {
+    "x": 24,
+    "y": 10729,
+    "w": 45,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "FAQ",
+   "href": "/#faq",
+   "sel": "a.footer2_link",
+   "rect": {
+    "x": 24,
+    "y": 10770,
+    "w": 24,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "contact@moto-card.com",
+   "href": "mailto:contact@moto-card.com",
+   "sel": "a.footer2_link",
+   "rect": {
+    "x": 205,
+    "y": 10688,
+    "w": 134,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "+1 888 505 1096",
+   "href": "tel:+18885051096",
+   "sel": "a.footer2_link",
+   "rect": {
+    "x": 205,
+    "y": 10729,
+    "w": 89,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Terms of service",
+   "href": "/legals/terms-and-conditions",
+   "sel": "a.footer2_link",
+   "rect": {
+    "x": 24,
+    "y": 10923,
+    "w": 88,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Privacy",
+   "href": "/legals/privacy-policy",
+   "sel": "a.footer2_link",
+   "rect": {
+    "x": 24,
+    "y": 10964,
+    "w": 40,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Instagram",
+   "href": "https://www.instagram.com/moto__archive",
+   "sel": "a.footer2_link.is-x",
+   "rect": {
+    "x": 205,
+    "y": 10923,
+    "w": 70,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Linkedin",
+   "href": "https://www.linkedin.com/company/usemotocard",
+   "sel": "a.footer2_link",
+   "rect": {
+    "x": 205,
+    "y": 10964,
+    "w": 45,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "X",
+   "href": "https://x.com/usemotocard",
+   "sel": "a.footer2_link.is-x",
+   "rect": {
+    "x": 205,
+    "y": 11005,
+    "w": 25,
+    "h": 33
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Download on the App Store",
+   "href": "https://apps.apple.com/pl/app/moto-card/id6755962355",
+   "sel": "a.footer_link_download.w-inline-block",
+   "rect": {
+    "x": 24,
+    "y": 11138,
+    "w": 149,
+    "h": 52
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Get it on Google Play",
+   "href": "https://play.google.com/store/apps/details?id=com.moto.mobile&pcampaignid=web_share&pli=1",
+   "sel": "a.footer_link_download.is-play.w-inline-block",
+   "rect": {
+    "x": 186,
+    "y": 11138,
+    "w": 150,
+    "h": 52
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "",
+   "href": "https://www.awwwards.com/sites/moto-finance",
+   "sel": "a",
+   "rect": {
+    "x": 337,
+    "y": 491,
+    "w": 53,
+    "h": 17
+   },
+   "visible": true
+  },
+  {
+   "tag": "A",
+   "text": "Privacy Policy",
+   "href": "/legals/privacy-policy",
+   "sel": "a",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "visible": false
+  },
+  {
+   "tag": "A",
+   "text": "Terms of Service.",
+   "href": "/legals/terms-and-conditions",
+   "sel": "a",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "visible": false
+  },
+  {
+   "tag": "BUTTON",
+   "text": "",
+   "href": null,
+   "sel": "button.popup_close_button",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   },
+   "visible": false
+  }
+ ],
+ "sections": [
+  {
+   "sel": "div.pin-spacer",
+   "rect": {
+    "x": 0,
+    "y": 971,
+    "w": 390,
+    "h": 844
+   },
+   "bg": "rgba(0, 0, 0, 0)",
+   "firstText": "INFRASTRUCTURE FOR HOW YOU MOVE At home, abroad, and everywhere in between, Moto"
+  },
+  {
+   "sel": "section.earth",
+   "rect": {
+    "x": 0,
+    "y": 971,
+    "w": 390,
+    "h": 844
+   },
+   "bg": "rgba(0, 0, 0, 0)",
+   "firstText": "INFRASTRUCTURE FOR HOW YOU MOVE At home, abroad, and everywhere in between, Moto"
+  },
+  {
+   "sel": "section.card",
+   "rect": {
+    "x": 0,
+    "y": 1815,
+    "w": 390,
+    "h": 2110
+   },
+   "bg": "rgba(0, 0, 0, 0)",
+   "firstText": "THE CARD IS ONLY THE BEGINNING Apply for Access"
+  },
+  {
+   "sel": "section.numbers.theme-invert.end-card-trigger",
+   "rect": {
+    "x": 0,
+    "y": 3925,
+    "w": 390,
+    "h": 1037
+   },
+   "bg": "rgb(237, 239, 239)",
+   "firstText": "SPEND GLOBALLY. 0 FX FEES BUILT IN. Frictionless One system everywhere Global sp"
+  },
+  {
+   "sel": "section#benefits.concierge.no-container",
+   "rect": {
+    "x": 0,
+    "y": 4962,
+    "w": 390,
+    "h": 2026
+   },
+   "bg": "rgba(0, 0, 0, 0)",
+   "firstText": "24/7 CONCIERGE. ANYTHING. ANYTIME. Dedicated concierge Global support Private in"
+  },
+  {
+   "sel": "section.made.theme-invert.no-container",
+   "rect": {
+    "x": 0,
+    "y": 6988,
+    "w": 390,
+    "h": 934
+   },
+   "bg": "rgb(255, 255, 255)",
+   "firstText": "24/7 02:42:55 AM UTC 10:42:55 PM EDT 03:42:55 AM BST 05:42:55 AM EEST 11:42:55 A"
+  },
+  {
+   "sel": "section.luxury",
+   "rect": {
+    "x": 0,
+    "y": 7922,
+    "w": 390,
+    "h": 844
+   },
+   "bg": "rgba(0, 0, 0, 0)",
+   "firstText": "LUXURY TRAVEL DINING LOCAL REWARDS . ACCESS OUR NETWORK Membership includes pref"
+  },
+  {
+   "sel": "section#faq.faq.theme-invert",
+   "rect": {
+    "x": 0,
+    "y": 8766,
+    "w": 390,
+    "h": 1480
+   },
+   "bg": "rgb(255, 255, 255)",
+   "firstText": "FREQUENTLY ASKED QUESTIONS 13 ABOUT MOTO What is Moto? Moto is infrastructure fo"
+  }
+ ],
+ "rootVars": {
+  "--_themes---background": "var(--_colors---dark)",
+  "--_text-style---font-family": "Neuemontreal,Arial,sans-serif",
+  "--_themes---text": "var(--_colors---light)",
+  "--text--body": "1.6rem",
+  "--_text-style---line-height": "1.3",
+  "--_text-style---font-weight": "500",
+  "--_text-style---letter-spacing": "-.003em",
+  "--_text-style---font-size": "var(--text--body)",
+  "--_colors---grey400": "#838a8f",
+  "--_colors---grey100": "#e1e5e5",
+  "--_colors---grey800": "#1c2227",
+  "--_colors---light": "#e1e5e5",
+  "--_colors---grey200": "#dfe3e3",
+  "--_colors---grey500": "#666f76",
+  "--_colors---grey300": "#c0c4c6",
+  "--text--text-small": "1.4rem",
+  "--_themes---nav_color": "var(--_colors---light)",
+  "--_colors---dark": "#080808",
+  "--padding-global": "3.2rem",
+  "--_colors---white": "white",
+  "--text--text-medium": "1.8rem",
+  "--text--text-large": "2rem",
+  "--_colors---transparent": "transparent",
+  "--_colors---grey700": "#20272c",
+  "--text--h3": "4.2rem",
+  "--_colors---grey01": "#1c2227",
+  "--_colors---black": "#000",
+  "--_colors---dark900": "#08080a",
+  "--padding-section": "12rem",
+  "--padding-section-m": "10rem",
+  "--padding-section-l": "8rem",
+  "--_font-family---heading": "Arial,\"Helvetica Neue\",Helvetica,sans-serif",
+  "--_font-family---body": "Arial,\"Helvetica Neue\",Helvetica,sans-serif",
+  "--container-nav": "100%",
+  "--container-large": "100%",
+  "--container-medium": "100rem",
+  "--container-small": "60rem",
+  "--text--h1": "6.4rem",
+  "--text--h2": "5.2rem",
+  "--text--h4": "2.4rem",
+  "--text--h5": "1.8rem",
+  "--text--h6": "0rem",
+  "--text--display1": "0rem",
+  "--text--display2": "0rem",
+  "--_colors---nav_color": "#e1e5e5",
+  "--_colors---grey600": "#212528"
+ },
+ "animated": [],
+ "transitions": {
+  "all": [
+   "html.w-mod-js.w-mod-touch.lenis",
+   "head",
+   "style",
+   "meta"
+  ],
+  "transform 0.5s": [
+   "div.w-layout-hflex.nav_menu"
+  ],
+  "opacity 0.3s": [
+   "a.nav_menu_link.text-small.w--current",
+   "a.nav_menu_link.text-small",
+   "div.accordion.first-active.is-active",
+   "div.accordion"
+  ],
+  "color 0.2s, background-color 0.2s": [
+   "a.button.w-variant-844ed737-3fda-3b42-7a73-533f00e5e63b.w-inline-block",
+   "a.button.w-variant-b2a47393-e449-8f34-02c6-286b846f1d34.w-inline-block",
+   "a.button.w-variant-b2a47393-e449-8f34-02c6-286b846f1d34.w-inline-block",
+   "a.button.w-inline-block"
+  ],
+  "0.2s": [
+   "div.nav_burger_line",
+   "div.nav_burger_line",
+   "div.nav_burger_line"
+  ],
+  "color 0.2s": [
+   "a.footer2_link",
+   "a.footer2_link",
+   "a.footer2_link",
+   "a.footer2_link"
+  ],
+  "opacity 0.2s": [
+   "a.footer_link_download.w-inline-block",
+   "a.footer_link_download.is-play.w-inline-block",
+   "button.popup_close_button"
+  ]
+ },
+ "canvases": [
+  {
+   "sel": "canvas.canvas_earth",
+   "rect": {
+    "x": 0,
+    "y": 971,
+    "w": 390,
+    "h": 844
+   },
+   "parent": "div.earth_canvas_wrap"
+  },
+  {
+   "sel": "canvas#card_canvas",
+   "rect": {
+    "x": 0,
+    "y": 1815,
+    "w": 390,
+    "h": 844
+   },
+   "parent": "div#card_canvas_warp.card_canvas_warp"
+  },
+  {
+   "sel": "canvas.numbers_overlay_canvas",
+   "rect": {
+    "x": 0,
+    "y": 3925,
+    "w": 390,
+    "h": 1037
+   },
+   "parent": "section.numbers.theme-invert.end-card-trigger"
+  }
+ ],
+ "videos": [
+  {
+   "sel": "video.sheep_video.js-video-scroll",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 390,
+    "h": 844
+   },
+   "src": "https://properlystudio.s3.eu-central-1.amazonaws.com/Moto/MOTO_HERO_2.mp4",
+   "autoplay": false,
+   "loop": false
+  }
+ ],
+ "nav": {
+  "sel": "div.css-nav-blur.w-embed",
+  "rect": {
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0
+  },
+  "style": {
+   "font-family": "Neuemontreal, Arial, sans-serif",
+   "font-size": "14.5236px",
+   "font-weight": "500",
+   "line-height": "18.8807px",
+   "letter-spacing": "-0.0435708px",
+   "text-transform": "none",
+   "color": "rgb(225, 229, 229)",
+   "background-color": "rgba(0, 0, 0, 0)",
+   "border-radius": "0px",
+   "padding": "0px",
+   "transition": "all",
+   "display": "block",
+   "opacity": "1",
+   "visibility": "visible",
+   "transform": "none"
+  }
+ },
+ "scripts": [
+  "https://www.googletagmanager.com/gtag/js?id=G-1TWZG170K9",
+  "https://challenges.cloudflare.com/turnstile/v0/api.js",
+  "https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6a7ad390f189a22016c86fa4",
+  "https://cdn.prod.website-files.com/6a7ad390f189a22016c86fa4/js/webflow.a0aa6ca1.b7683852b8a60d8e.js",
+  "https://unpkg.com/lenis@1.3.18/dist/lenis.min.js",
+  "https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js",
+  "https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js",
+  "https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"
+ ],
+ "classesWithLenis": "w-mod-js w-mod-touch lenis",
+ "reducedMotionQueries": [],
+ "shots": [
+  {
+   "i": 0,
+   "y": 0,
+   "actual": 0
+  },
+  {
+   "i": 1,
+   "y": 844,
+   "actual": 844
+  },
+  {
+   "i": 2,
+   "y": 1688,
+   "actual": 1688
+  },
+  {
+   "i": 3,
+   "y": 2532,
+   "actual": 2532
+  },
+  {
+   "i": 4,
+   "y": 3376,
+   "actual": 3376
+  },
+  {
+   "i": 5,
+   "y": 4220,
+   "actual": 4220
+  },
+  {
+   "i": 6,
+   "y": 5064,
+   "actual": 5064
+  },
+  {
+   "i": 7,
+   "y": 5908,
+   "actual": 5908
+  },
+  {
+   "i": 8,
+   "y": 6752,
+   "actual": 6752
+  },
+  {
+   "i": 9,
+   "y": 7596,
+   "actual": 7596
+  },
+  {
+   "i": 10,
+   "y": 8440,
+   "actual": 8440
+  },
+  {
+   "i": 11,
+   "y": 9284,
+   "actual": 9284
+  },
+  {
+   "i": 12,
+   "y": 10128,
+   "actual": 10128
+  },
+  {
+   "i": 13,
+   "y": 10972,
+   "actual": 10412
+  }
+ ],
+ "viewport": {
+  "width": 390,
+  "height": 844
+ }
+}

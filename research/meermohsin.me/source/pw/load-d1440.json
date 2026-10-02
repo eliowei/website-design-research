@@ -1,0 +1,77 @@
+{
+  "viewport": {
+    "w": 1440,
+    "h": 900,
+    "mobile": false
+  },
+  "reducedMotion": false,
+  "navType": "navigate",
+  "nav": {
+    "domContentLoaded": 1626,
+    "load": 6303
+  },
+  "note": "t = performance.now() ms（從導覽開始）；只記錄有變化的欄位；waapiRunning = document.getAnimations() 中 running 的數量",
+  "shots": [
+    {
+      "id": "S-pw1440-load-00",
+      "file": "screenshots/pw/d1440-load-00.png",
+      "msSinceGoto": 5
+    },
+    {
+      "id": "S-pw1440-load-01",
+      "file": "screenshots/pw/d1440-load-01.png",
+      "msSinceGoto": 3100
+    }
+  ],
+  "log": [
+    {
+      "t": 1706,
+      "loaderExists": true,
+      "loaderOpacity": "1",
+      "loaderVisibility": "visible",
+      "count": "005",
+      "countOpacity": "1",
+      "faceTransform": "matrix(0.9, 0, 0, 0.9, 0, 49.5)",
+      "faceFilter": "brightness(0)",
+      "nameCharTransform": "matrix(1, 0, 0, 1, 0, 18)",
+      "htmlClass": "lenis lenis-stopped",
+      "waapiRunning": 7
+    },
+    {
+      "t": 3445,
+      "count": "021",
+      "waapiRunning": 6
+    },
+    {
+      "t": 4000,
+      "count": "051",
+      "waapiRunning": 6
+    },
+    {
+      "t": 7970,
+      "count": "052",
+      "waapiRunning": 6
+    },
+    {
+      "t": 10013,
+      "count": "054",
+      "waapiRunning": 6
+    },
+    {
+      "t": 10195,
+      "count": "067",
+      "htmlClass": "lenis",
+      "waapiRunning": 6
+    },
+    {
+      "t": 13135,
+      "count": "068",
+      "waapiRunning": 6
+    },
+    {
+      "t": 13343,
+      "count": "079",
+      "waapiRunning": 6
+    }
+  ]
+}

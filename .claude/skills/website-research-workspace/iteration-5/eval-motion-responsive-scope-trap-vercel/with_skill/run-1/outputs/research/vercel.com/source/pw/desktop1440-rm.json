@@ -1,0 +1,262 @@
+{
+ "viewport": "1440x900",
+ "mobile": false,
+ "reducedMotion": true,
+ "capturedAt": "2026-10-01T15:41:50.997Z",
+ "computed": {
+  "h1": {
+   "text": "Agentic Infrastructure",
+   "fontSize": "64px",
+   "fontWeight": "400",
+   "lineHeight": "64px",
+   "letterSpacing": "-3.84px",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "left",
+   "width": 444,
+   "height": 128,
+   "x": 24,
+   "y": 328,
+   "borderRadius": "0px",
+   "padding": "0px"
+  },
+  "h2": {
+   "text": "Build agents on infrastructure that thinks like th",
+   "fontSize": "56px",
+   "fontWeight": "450",
+   "lineHeight": "56px",
+   "letterSpacing": "-3.36px",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "start",
+   "width": 673,
+   "height": 112,
+   "x": 24,
+   "y": 1108,
+   "borderRadius": "0px",
+   "padding": "0px"
+  },
+  "deployNow": {
+   "text": "Deploy now",
+   "fontSize": "16px",
+   "fontWeight": "500",
+   "lineHeight": "24px",
+   "letterSpacing": "normal",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "left",
+   "width": 124,
+   "height": 40,
+   "x": 24,
+   "y": 488,
+   "borderRadius": "3.35544e+07px",
+   "padding": "0px 12px"
+  },
+  "talkToSales": {
+   "text": "Talk to sales",
+   "fontSize": "16px",
+   "fontWeight": "500",
+   "lineHeight": "24px",
+   "letterSpacing": "normal",
+   "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+   "textAlign": "left",
+   "width": 130,
+   "height": 40,
+   "x": 160,
+   "y": 488,
+   "borderRadius": "3.35544e+07px",
+   "padding": "0px 12px"
+  },
+  "canvas": null,
+  "heroList": [
+   {
+    "text": "For coding agents",
+    "font": "GeistSans, \"GeistSans Fallback",
+    "size": "16px",
+    "y": 385
+   },
+   {
+    "text": "To ship apps and agents",
+    "font": "GeistSans, \"GeistSans Fallback",
+    "size": "16px",
+    "y": 417
+   },
+   {
+    "text": "Automated by agents",
+    "font": "GeistSans, \"GeistSans Fallback",
+    "size": "16px",
+    "y": 449
+   }
+  ],
+  "headerButtons": [
+   "Vercel",
+   "Products",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Resources",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Enterprise",
+   "Pricing",
+   "Get a Demo",
+   "Log In",
+   "Sign Up",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Deploy now",
+   "Talk to sales"
+  ]
+ },
+ "rotation": [
+  {
+   "t": 0,
+   "v": "[GeistSans, \"Gei,1,animate-command-fade-in]"
+  }
+ ],
+ "logo": {
+  "openaiCount": 1,
+  "xs": [
+   [
+    673
+   ],
+   [
+    673
+   ],
+   [
+    673
+   ],
+   [
+    673
+   ],
+   [
+    673
+   ],
+   [
+    673
+   ]
+  ],
+  "an": []
+ },
+ "allAnims": [],
+ "sections": [
+  {
+   "y": 1108,
+   "files": [
+    "screenshots/pw/desktop1440-rm-sec0-0.png",
+    "screenshots/pw/desktop1440-rm-sec0-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 1981,
+   "files": [
+    "screenshots/pw/desktop1440-rm-sec1-0.png",
+    "screenshots/pw/desktop1440-rm-sec1-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 2853,
+   "files": [
+    "screenshots/pw/desktop1440-rm-sec2-0.png",
+    "screenshots/pw/desktop1440-rm-sec2-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 3679,
+   "files": [
+    "screenshots/pw/desktop1440-rm-sec3-0.png",
+    "screenshots/pw/desktop1440-rm-sec3-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 4519,
+   "files": [
+    "screenshots/pw/desktop1440-rm-sec4-0.png",
+    "screenshots/pw/desktop1440-rm-sec4-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 4775,
+   "files": [
+    "screenshots/pw/desktop1440-rm-sec5-0.png",
+    "screenshots/pw/desktop1440-rm-sec5-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 5095,
+   "files": [
+    "screenshots/pw/desktop1440-rm-sec6-0.png",
+    "screenshots/pw/desktop1440-rm-sec6-1.png"
+   ],
+   "running": []
+  }
+ ],
+ "pageHeight": 5930
+}

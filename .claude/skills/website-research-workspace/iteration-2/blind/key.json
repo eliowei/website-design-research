@@ -1,0 +1,32 @@
+{
+ "pair-1": {
+  "pair": "comparison-patterns-stripe-notion--new-vs-old",
+  "A": "old_skill",
+  "B": "with_skill"
+ },
+ "pair-2": {
+  "pair": "comparison-patterns-stripe-notion--new-vs-without",
+  "A": "without_skill",
+  "B": "with_skill"
+ },
+ "pair-3": {
+  "pair": "motion-responsive-scope-trap-vercel--new-vs-old",
+  "A": "with_skill",
+  "B": "old_skill"
+ },
+ "pair-4": {
+  "pair": "motion-responsive-scope-trap-vercel--new-vs-without",
+  "A": "with_skill",
+  "B": "without_skill"
+ },
+ "pair-5": {
+  "pair": "saas-landing-linear--new-vs-old",
+  "A": "old_skill",
+  "B": "with_skill"
+ },
+ "pair-6": {
+  "pair": "saas-landing-linear--new-vs-without",
+  "A": "with_skill",
+  "B": "without_skill"
+ }
+}

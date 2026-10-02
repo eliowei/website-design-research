@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Set Review - website-research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lora', Georgia, serif; background: #faf9f5; padding: 2rem; color: #141413; }
+    h1 { font-family: 'Poppins', sans-serif; margin-bottom: 0.5rem; font-size: 1.5rem; }
+    .description { color: #b0aea5; margin-bottom: 1.5rem; font-style: italic; max-width: 900px; }
+    .controls { margin-bottom: 1rem; display: flex; gap: 0.5rem; }
+    .btn { font-family: 'Poppins', sans-serif; padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.875rem; font-weight: 500; }
+    .btn-add { background: #6a9bcc; color: white; }
+    .btn-add:hover { background: #5889b8; }
+    .btn-export { background: #d97757; color: white; }
+    .btn-export:hover { background: #c4613f; }
+    table { width: 100%; max-width: 1100px; border-collapse: collapse; background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th { font-family: 'Poppins', sans-serif; background: #141413; color: #faf9f5; padding: 0.75rem 1rem; text-align: left; font-size: 0.875rem; }
+    td { padding: 0.75rem 1rem; border-bottom: 1px solid #e8e6dc; vertical-align: top; }
+    tr:nth-child(even) td { background: #faf9f5; }
+    tr:hover td { background: #f3f1ea; }
+    .section-header td { background: #e8e6dc; font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.8rem; color: #141413; text-transform: uppercase; letter-spacing: 0.05em; }
+    .query-input { width: 100%; padding: 0.4rem; border: 1px solid #e8e6dc; border-radius: 4px; font-size: 0.875rem; font-family: 'Lora', Georgia, serif; resize: vertical; min-height: 60px; }
+    .query-input:focus { outline: none; border-color: #d97757; box-shadow: 0 0 0 2px rgba(217,119,87,0.15); }
+    .toggle { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle .slider { position: absolute; inset: 0; background: #b0aea5; border-radius: 24px; cursor: pointer; transition: 0.2s; }
+    .toggle .slider::before { content: ""; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.2s; }
+    .toggle input:checked + .slider { background: #d97757; }
+    .toggle input:checked + .slider::before { transform: translateX(20px); }
+    .btn-delete { background: #c44; color: white; padding: 0.3rem 0.6rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-family: 'Poppins', sans-serif; }
+    .btn-delete:hover { background: #a33; }
+    .summary { margin-top: 1rem; color: #b0aea5; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <h1>Eval Set Review: <span id="skill-name">website-research</span></h1>
+  <p class="description">Current description: <span id="skill-desc">以證據為本研究既有網站的設計，依序產出觀察紀錄（含證據 ID）、視覺／UX／動態／響應式分析、重複模式、設計語言與設計系統推論，最後才做綜合與自我審查，存進 research/&lt;網域>/。當使用者給網址並要求分析、研究、拆解、參考、借鏡某網站的設計或設計語言，或要比較多個網站的設計時使用，即使沒有說「研究」兩個字。這是研究 skill，不做前端實作：使用者同時要求「照這個風格做一個」時，仍先完成研究並交付實作交接摘要，再由使用者決定是否另開實作任務。</span></p>
+
+  <div class="controls">
+    <button class="btn btn-add" onclick="addRow()">+ Add Query</button>
+    <button class="btn btn-export" onclick="exportEvalSet()">Export Eval Set</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:65%">Query</th>
+        <th style="width:18%">Should Trigger</th>
+        <th style="width:10%">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="eval-body"></tbody>
+  </table>
+
+  <p class="summary" id="summary"></p>
+
+  <script>
+    const EVAL_DATA = [
+  {"query": "https://www.framer.com 這個首頁的捲動動畫做得很特別，可以幫我拆解一下它到底用了哪些手法、為什麼這樣排嗎", "should_trigger": true},
+  {"query": "我們下個月要改版官網，老闆說要參考 Arc browser 跟 Raycast 的感覺，你可以先幫我把這兩個網站的設計語言整理出來嗎？我要拿去跟設計師開會", "should_trigger": true},
+  {"query": "研究一下 apple.com/airpods-pro 這頁，它手機版跟桌機版差在哪", "should_trigger": true},
+  {"query": "awwwards 上這週的 site of the day 幫我挑一個分析，我想學它的版面跟配色是怎麼搭的", "should_trigger": true},
+  {"query": "看一下 https://cal.com 的 pricing page，它的方案卡片跟 CTA 是怎麼引導人升級的？順便整理可以借鏡的地方", "should_trigger": true},
+  {"query": "幫我比較 Figma、Canva、Miro 三個首頁，找出它們共同用的設計模式，我在寫一份設計趨勢的內部分享", "should_trigger": true},
+  {"query": "我很喜歡 stripe.com/press 的編排，想知道它的字體層級跟網格是怎麼做的，可以把它的 design tokens 推出來嗎", "should_trigger": true},
+  {"query": "teenage.engineering 的網站好怪但很好看，到底是哪裡讓它有這種感覺？幫我研究看看", "should_trigger": true},
+  {"query": "參考 https://linear.app/method 幫我做一份設計研究報告，重點是他們怎麼用動態效果講故事", "should_trigger": true},
+  {"query": "分析 notion.so 首頁然後照它的風格幫我做一個 landing page，我是做筆記 app 的", "should_trigger": true},
+  {"query": "幫我用 Next.js + Tailwind 做一個像 vercel.com 那種黑白極簡的首頁，hero 要有漸層光暈", "should_trigger": false},
+  {"query": "我的網站 (localhost:3000) 在手機上 navbar 會跑版，幫我看 src/components/Navbar.tsx 哪裡寫錯", "should_trigger": false},
+  {"query": "幫我研究 github.com/vuejs/core 這個 repo 的架構，我想學它怎麼切 package", "should_trigger": false},
+  {"query": "用 firecrawl 把 https://www.ikea.com.tw 所有沙發的名稱跟價格抓下來存成 csv", "should_trigger": false},
+  {"query": "幫我檢查我們官網 example-shop.tw 的 SEO，meta title 跟 description 有沒有問題，還有 lighthouse 分數", "should_trigger": false},
+  {"query": "這個 Figma 檔 https://www.figma.com/design/abc123/Landing 幫我轉成 React 元件", "should_trigger": false},
+  {"query": "幫我寫一份 Notion 跟 Coda 的競品分析，比較功能、定價、目標市場，要給 PM 看的", "should_trigger": false},
+  {"query": "幫我們的 app 建一套 design system，要有 color tokens、typography scale 跟 button variants，輸出成 CSS variables", "should_trigger": false},
+  {"query": "https://status.openai.com 現在是不是掛了？幫我看一下", "should_trigger": false},
+  {"query": "我們網站的無障礙要過 WCAG AA，幫我檢查 index.html 的對比度跟 aria 標籤", "should_trigger": false}
+]
+;
+
+    let evalItems = [...EVAL_DATA];
+
+    function render() {
+      const tbody = document.getElementById('eval-body');
+      tbody.innerHTML = '';
+
+      // Sort: should-trigger first, then should-not-trigger
+      const sorted = evalItems
+        .map((item, origIdx) => ({ ...item, origIdx }))
+        .sort((a, b) => (b.should_trigger ? 1 : 0) - (a.should_trigger ? 1 : 0));
+
+      let lastGroup = null;
+      sorted.forEach(item => {
+        const group = item.should_trigger ? 'trigger' : 'no-trigger';
+        if (group !== lastGroup) {
+          const headerRow = document.createElement('tr');
+          headerRow.className = 'section-header';
+          headerRow.innerHTML = `<td colspan="3">${item.should_trigger ? 'Should Trigger' : 'Should NOT Trigger'}</td>`;
+          tbody.appendChild(headerRow);
+          lastGroup = group;
+        }
+
+        const idx = item.origIdx;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><textarea class="query-input" onchange="updateQuery(${idx}, this.value)">${escapeHtml(item.query)}</textarea></td>
+          <td>
+            <label class="toggle">
+              <input type="checkbox" ${item.should_trigger ? 'checked' : ''} onchange="updateTrigger(${idx}, this.checked)">
+              <span class="slider"></span>
+            </label>
+            <span style="margin-left:8px;font-size:0.8rem;color:#b0aea5">${item.should_trigger ? 'Yes' : 'No'}</span>
+          </td>
+          <td><button class="btn-delete" onclick="deleteRow(${idx})">Delete</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateSummary();
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function updateQuery(idx, value) { evalItems[idx].query = value; updateSummary(); }
+    function updateTrigger(idx, value) { evalItems[idx].should_trigger = value; render(); }
+    function deleteRow(idx) { evalItems.splice(idx, 1); render(); }
+
+    function addRow() {
+      evalItems.push({ query: '', should_trigger: true });
+      render();
+      const inputs = document.querySelectorAll('.query-input');
+      inputs[inputs.length - 1].focus();
+    }
+
+    function updateSummary() {
+      const trigger = evalItems.filter(i => i.should_trigger).length;
+      const noTrigger = evalItems.filter(i => !i.should_trigger).length;
+      document.getElementById('summary').textContent =
+        `${evalItems.length} queries total: ${trigger} should trigger, ${noTrigger} should not trigger`;
+    }
+
+    function exportEvalSet() {
+      const valid = evalItems.filter(i => i.query.trim() !== '');
+      const data = valid.map(i => ({ query: i.query.trim(), should_trigger: i.should_trigger }));
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'eval_set.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "_note": "Firecrawl branding，maxAge:0，2026-10-02，scrapeId 01a0fa29-59db-70cb-b5f0-6d2f7151b0cb；metadata 欄位省略（與 page.md 擷取相同）",
+  "branding": {
+    "colorScheme": "dark",
+    "fonts": [
+      {
+        "family": "Ruthie",
+        "role": "display"
+      }
+    ],
+    "colors": {
+      "primary": "#990000",
+      "secondary": "#CF0808",
+      "accent": "#D60407",
+      "background": "#000000",
+      "textPrimary": "#F5F5F5",
+      "link": "#D60407"
+    },
+    "typography": {
+      "fontFamilies": {
+        "primary": "Ruthie",
+        "heading": "Ruthie"
+      },
+      "fontStacks": {
+        "heading": [
+          "regular-font"
+        ],
+        "body": [
+          "regular-font"
+        ],
+        "paragraph": [
+          "regular-font"
+        ]
+      },
+      "fontSizes": {
+        "h1": "79.9968px",
+        "h2": "207.992px",
+        "body": "79.9968px"
+      }
+    },
+    "spacing": {
+      "baseUnit": 4,
+      "borderRadius": "100px"
+    },
+    "components": {
+      "input": {
+        "background": "transparent",
+        "textColor": "#F5F5F5",
+        "borderColor": null,
+        "borderRadius": "0px",
+        "shadow": "none"
+      },
+      "buttonPrimary": {
+        "background": "transparent",
+        "textColor": "#F5F5F5",
+        "borderColor": "#F3F3F3",
+        "borderRadius": "479.981px",
+        "shadow": "none"
+      }
+    },
+    "images": {
+      "logo": "https://www.meermohsin.me/assets/apple-touch-icon-V_3jUXWB.png",
+      "favicon": "https://www.meermohsin.me/assets/favicon-96x96-BhyCdcue.png",
+      "ogImage": "https://meermohsin.me/mohsin-face.jpg"
+    },
+    "personality": {
+      "tone": "modern",
+      "energy": "medium",
+      "targetAudience": "tech-savvy individuals interested in front-end development and design"
+    },
+    "designSystem": {
+      "framework": "custom",
+      "componentLibrary": ""
+    },
+    "confidence": {
+      "buttons": 0.9,
+      "colors": 0.9,
+      "overall": 0.9
+    },
+    "brandName": "Mohsin Meer"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "_note": "Firecrawl branding (maxAge:0, 2026-10-01, desktop 1920). 已省略 images.logo 與頂層 logo 的 SVG data URI（與設計數值無關；為 Linear 字標，填色 rgb(247,248,248)）。",
+  "colorScheme": "dark",
+  "fonts": [{"family":"Inter","role":"body"},{"family":"SF Pro Display","role":"heading"},{"family":"Roboto","role":"unknown"},{"family":"Open Sans","role":"unknown"},{"family":"Ubuntu","role":"unknown"}],
+  "colors": {"primary":"#5E6AD2","secondary":"#D0D6E0","accent":"#E4F222","background":"#08090A","textPrimary":"#08090A","link":"#E4F222"},
+  "typography": {
+    "fontFamilies": {"primary":"Inter","heading":"SF Pro Display"},
+    "fontStacks": {"heading":["Inter","SF Pro Display","-apple-system","BlinkMacSystemFont","Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Open Sans","Helvetica Neue","sans-serif"]},
+    "fontSizes": {"h1":"64px","h2":"48px","body":"15px"}
+  },
+  "spacing": {"baseUnit":4,"borderRadius":"8px"},
+  "components": {
+    "input": {"background":"transparent","borderRadius":"0px","shadow":"none"},
+    "buttonPrimary": {"background":"#E5E5E6","textColor":"#08090A","borderColor":"#E5E5E6","borderRadius":"9999px","shadow":"rgba(0, 0, 0, 0) 0px 8px 2px 0px, rgba(0, 0, 0, 0.01) 0px 5px 2px 0px, rgba(0, 0, 0, 0.04) 0px 3px 2px 0px, rgba(0, 0, 0, 0.07) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px"},
+    "buttonSecondary": {"background":"#141516","textColor":"#F7F8F8","borderRadius":"9999px","shadow":"rgba(255, 255, 255, 0.03) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px"}
+  },
+  "images": {"favicon":"https://linear.app/favicon.ico?v=2","ogImage":"https://linear.app/api/og/main?title=Linear&v=4","logoHref":"/homepage","logoAlt":"Linear"},
+  "personality": {"tone":"modern","energy":"medium","targetAudience":"product development teams"},
+  "designSystem": {"framework":"custom","componentLibrary":""},
+  "confidence": {"buttons":0.95,"colors":0.9,"overall":0.925},
+  "metadata": {"title":"Linear – The system for product development","description":"Purpose-built for planning and building products with AI agents.","theme-color":"#08090a","sentry-release":"linear-web@1.79935.0","viewport":"width=device-width, height=device-height, initial-scale=1, viewport-fit=cover"}
+}

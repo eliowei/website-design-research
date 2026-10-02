@@ -1,0 +1,95 @@
+{
+  "expectations": [
+    {
+      "text": "A01 流程順序：process-log 顯示先蒐集資料並實際看過截圖，才開始寫任何結論；報告結構依序為 背景/網站理解 → 觀察 → 視覺/UX/動態/響應式分析 → 模式 → 設計語言 → 總結",
+      "passed": false,
+      "evidence": "process-log 顯示先抓取→看切片→取樣→才撰寫（順序正確），但報告結構是範本的 7 個並列面向，沒有 背景→觀察→分析→模式→設計語言→總結 的遞進；一句話總結放在最前面"
+    },
+    {
+      "text": "A02 網站理解：報告在分析前有一段說明網站是誰、目的、目標使用者、頁面任務（Context），且有來源依據",
+      "passed": false,
+      "evidence": "只有一行「類型：SaaS 落地頁（產品開發／專案管理工具）」，沒有目標使用者、頁面任務、品牌定位"
+    },
+    {
+      "text": "A03 知識層級：報告明確區分『觀察（看到什麼）』與『詮釋/推論（為什麼）』，並以標記或欄位區隔，而非混在同一句",
+      "passed": false,
+      "evidence": "全篇沒有觀察／詮釋的區隔；例如「訪客很快就能抓到閱讀節奏」是詮釋，卻和觀察寫在同一段"
+    },
+    {
+      "text": "A04 假設標記：缺乏直接證據的結論（尤其動態、DOM/CSS 數值）被標為假設/推測，而且標記數量與實際無法觀察的範圍相符",
+      "passed": true,
+      "evidence": "20 處「推測」，字重、行高、max-width、所有動畫都標了推測或未觀察；與實際無法量測範圍相符"
+    },
+    {
+      "text": "A05 無空泛評語：報告不含沒有證據支撐的主觀評價（例如『很高級』『很好』『很流暢』『很漂亮』『很現代』），或出現時緊接具體證據",
+      "passed": false,
+      "evidence": "出現「撐起精品感」「焦點控制得很好」，以及範本要求的「參考價值評分：視覺美感 5」，皆無評分依據"
+    },
+    {
+      "text": "A06 證據可追溯：至少 80% 的重要結論標明證據來源類型（截圖檔與位置、Firecrawl branding/markdown、DOM/HTML、實測色碼等）",
+      "passed": false,
+      "evidence": "色碼標了 branding／截圖取樣、區塊高度標了實測像素；但詮釋性結論（如「強化社會證明很有效」）沒有證據來源，也沒有截圖位置引用"
+    },
+    {
+      "text": "A07 視覺涵蓋：視覺分析涵蓋 Color、Typography、Layout、Grid、Spacing、Shape、Border、Shadow/Elevation、Imagery、Iconography、Visual hierarchy、Composition、Density 中至少 10 項",
+      "passed": true,
+      "evidence": "涵蓋 color、typography、layout、grid（推測 12 欄）、spacing（4px）、shape（膠囊）、border（inset 1px）、shadow（5 層陰影）、imagery、iconography、hierarchy（三層）、composition（舞台光暈）"
+    },
+    {
+      "text": "A08 視覺語言：不只列出顏色字型，而是說明這些選擇共同形成什麼視覺語言（有一段綜合論述，並連回具體觀察）",
+      "passed": false,
+      "evidence": "只有一句話總結和各節零散的「可以學的地方」，沒有說明這些選擇如何共同形成視覺語言"
+    },
+    {
+      "text": "A09 UX 涵蓋：涵蓋 IA、Navigation、User flow、Content hierarchy、CTA、Affordance、Discoverability、Feedback、Form、Error/Success states、Cognitive load 中至少 7 項，且分析『如何引導使用者』而非僅描述 UI",
+      "passed": false,
+      "evidence": "涵蓋 IA、nav、flow（依產品生命週期）、CTA、affordance（+ 展開）、cognitive load（頁面長、門檻高）約 6 項；缺 discoverability、feedback、form、states"
+    },
+    {
+      "text": "A10 動態結構化：動態以 trigger/target/property/duration/easing/sequence 等維度描述，或明確寫出哪些維度無法觀察；不出現『動畫流暢』這類空話",
+      "passed": false,
+      "evidence": "動態只列「未觀察：捲動動畫、hover、轉場」和數項推測，沒有任何一項以 trigger/target/property 描述，也沒指出哪些維度無法量"
+    },
+    {
+      "text": "A11 響應式維度：比較 Desktop→(Tablet)→Mobile 至少 5 個維度（layout、typography、spacing、navigation、content priority、components、interaction、被隱藏/移動/重排的元素），且說明資訊與空間如何被重新分配；缺少 tablet 時有說明",
+      "passed": false,
+      "evidence": "描述了 layout、typography（H1 四行）、nav、components（橫向滑動卡）、content priority（隱藏 Changelog）等；但沒有提到 tablet，也沒有提出「資訊與空間如何重新分配」的整體論述"
+    },
+    {
+      "text": "A12 模式抽取：至少 2 個模式是以『重複出現的結構/互動/視覺處理/RWD 行為/UX 決策』定義，並指出各自出現的 2 處以上位置；不是把 Card/Button/Navbar 直接當模式",
+      "passed": false,
+      "evidence": "沒有模式章節；只在版面節提到「同一模板重複四次」一個重複結構"
+    },
+    {
+      "text": "A13 設計語言綜合：有一段從具體觀察抽象出的設計語言/原則（涵蓋 typography、color、layout、interaction、motion、responsive、hierarchy 哲學中至少 5 項），每項能連回前面的觀察",
+      "passed": false,
+      "evidence": "沒有設計語言／原則綜合段落"
+    },
+    {
+      "text": "A14 設計系統推論：辨識可能存在的 design tokens／foundations／components／variants／states 至少兩類，並明確標示是從渲染結果推論，而非斷言網站有正式設計系統",
+      "passed": false,
+      "evidence": "只寫「間距基準 4px、圓角基準 8px（branding spacing）」，沒有辨識 tokens／components／variants，也沒有標示推論"
+    },
+    {
+      "text": "A15 不確定性：報告有專門的限制/不確定性段落，說明研究範圍、無法取得的資料與其對結論的影響",
+      "passed": true,
+      "evidence": "開頭「研究範圍說明」說明資料來源、手機截圖為 2 天前快取、動畫無法觀察"
+    },
+    {
+      "text": "A16 可遷移原則：至少 3 條以可遷移到其他專案的形式寫出的設計原則/教訓（而非只是對該網站的描述或評論）",
+      "passed": true,
+      "evidence": "各節「可以學的地方」有多條可遷移寫法，例如「用可讀的產品介面當插圖，比抽象插畫更能說明產品」"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 12,
+    "total": 16,
+    "pass_rate": 0.25
+  },
+  "timing": {
+    "total_tokens": 98711,
+    "duration_ms": 207414,
+    "total_duration_seconds": 207.4
+  }
+}

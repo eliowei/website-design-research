@@ -1,1 +1,48 @@
-# 測試
+# 網站設計研究
+
+用 Claude Code 研究別人的網站設計，每天累積一點高品質的設計知識。
+
+## 使用方式
+
+在 Claude Code 裡直接說，或打 `/website-research`：
+
+| 模式 | 什麼時候用 | 產出 | 大約時間 |
+|---|---|---|---|
+| **Daily**（預設） | 每天看一個網站，累積設計直覺 | 一頁摘要：今天學到的 3 件事、六面向速記、不要照抄的地方 | 2–5 分鐘 |
+| **Standard** | 想認真參考，需要實測的數值 | 摘要＋研究筆記（瀏覽器實測的截圖、DOM、CSS、互動，每個結論附來源） | 10–15 分鐘 |
+| **Deep** | 要拿來當實作依據或完整拆解 | 摘要＋觀察紀錄＋完整報告（證據 ID、像素取樣、動態量測、三寬度比較、設計系統推論、自我審查） | 15–40 分鐘 |
+
+例如：
+
+- 「從 Awwwards 挑一個網站看一下」→ Daily
+- 「用 Standard 研究 linear.app」
+- 「Deep 拆解 vercel.com 的動態和手機版」
+- 「把 moto-card.com 升級成 Standard」→ 沿用已抓的資料，補上實測證據
+- 「比較 stripe.com 和 notion.com 的首頁」
+
+研究只做研究，不會直接寫網頁程式碼；要求「照這個風格做一個」時，會附上實作交接摘要，由你決定要不要另外開始實作。
+
+## 成果
+
+- 每個網站一個資料夾：`research/<網域>/`，先讀 `summary.md`
+- 多網站比較：`research/comparisons/`
+- 索引：[research/README.md](research/README.md)
+
+## 結構
+
+```
+.claude/skills/website-research/        研究 skill
+├── SKILL.md                            模式選擇、共同規則、Daily 與 Standard 流程
+├── references/deep-mode.md             Deep 流程（只在選 Deep 時讀）
+├── references/evidence-and-claims.md   證據 ID、證據等級、結論層級（Deep）
+├── references/analysis-dimensions.md   視覺／UX／動態／響應式的分析清單（Deep）
+├── templates/                          各模式的範本
+└── scripts/capture_tools.py            切長截圖、取樣色碼、偵測空白
+.claude/hooks/session-start.sh          雲端 session 啟動時設定 Pillow 與瀏覽器憑證
+evals/                                  skill 的測試案例與評估報告
+research/                               研究成果
+```
+
+## 雲端環境注意
+
+在 Claude Code 雲端環境使用時，環境的網路存取要放寬（或把要研究的網站加進允許清單），Standard 與 Deep 才能用瀏覽器直接開網站。設定方式見 https://code.claude.com/docs/en/claude-code-on-the-web 。

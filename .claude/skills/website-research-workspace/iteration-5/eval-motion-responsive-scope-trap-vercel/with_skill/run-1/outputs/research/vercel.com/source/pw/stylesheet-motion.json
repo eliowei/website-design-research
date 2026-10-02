@@ -1,0 +1,161 @@
+{
+ "heroText": "Drop to deploy\nLoading\nAgentic Infrastructure\nDeploy now\nTalk to sales\nFor coding agents to deploy in their native language, with Vercel's API, CLI, MCP, and Skills.\nTo ship apps and agents in Sandboxed VMs, with durable backends, powered by hundreds of models.\nAutomated by agents who autonomously i",
+ "sub": [
+  [
+   "span.invisible.col-start-1.row-start-1.whitespace-nowrap",
+   "",
+   "span.grid.place-items-center",
+   ""
+  ],
+  [
+   "span.invisible.col-start-1.row-start-1.whitespace-nowrap",
+   "",
+   "span.grid.place-items-center",
+   ""
+  ],
+  [
+   "span.col-start-1.row-start-1.whitespace-nowrap.motion-safe:animate-command-fade-in",
+   "",
+   "span.grid.place-items-center",
+   ""
+  ],
+  [
+   "span.inline-flex.shrink-0.items-center.justify-center",
+   "",
+   "a.cursor-pointer.focus-visible:outline-2.outline-[var(--ds-focus-color)].outline-offset-4",
+   ""
+  ],
+  [
+   "span.inline-flex.shrink-0.items-center.justify-center",
+   "",
+   "a.cursor-pointer.focus-visible:outline-2.outline-[var(--ds-focus-color)].outline-offset-4",
+   ""
+  ],
+  [
+   "span.inline-flex.shrink-0.items-center.justify-center",
+   "",
+   "a.cursor-pointer.focus-visible:outline-2.outline-[var(--ds-focus-color)].outline-offset-4",
+   ""
+  ]
+ ],
+ "logos": [
+  [
+   "svg",
+   "Meta",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "Charles Schwab",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "DoorDash",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "OpenAI",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "SpaceXAI",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "The Weather Company",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "Polymarket",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "Meta",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "Charles Schwab",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ],
+  [
+   "svg",
+   "DoorDash",
+   "{\"x\":0,\"y\":0,\"width\":0,\"height\":0,\"top\":0,\"right\":0,\"bottom\":0,\"left\":0}"
+  ]
+ ],
+ "kf": [
+  "soft-fade-in",
+  "show",
+  "hide",
+  "fade-in",
+  "fade-out",
+  "spinner-opacity",
+  "slide-in",
+  "fade-slide-in",
+  "blue-glow",
+  "thinking-loader",
+  "bar-pulse",
+  "logo-carousel",
+  "sandbox-left",
+  "sandbox-right",
+  "sandbox-left-reverse",
+  "sandbox-right-reverse",
+  "blink",
+  "flip-front",
+  "flip-back",
+  "accordion-down",
+  "accordion-up",
+  "marquee",
+  "fadein-inplace",
+  "slideUpFadeIn",
+  "barPulse",
+  "progress-bar",
+  "border-trail",
+  "ping",
+  "pulse",
+  "bounce",
+  "enter",
+  "exit",
+  "loading",
+  "loading-skeleton",
+  "fadeInTooltip",
+  "feedbackAppear",
+  "feedbackFadeIn",
+  "feedbackFadeOut",
+  "fadeOut",
+  "cmdkLoading",
+  "cmdkFadeIn",
+  "cmdkFadeOut",
+  "cmdkScaleIn",
+  "cmdkScaleOut",
+  "zm99lG_fadeIn",
+  "pFnISG_mount-li",
+  "pFnISG_scroll",
+  "eaE5iq_reveal",
+  "eaE5iq_fluctuate",
+  "knmcua_drawPath",
+  "AEUiAq_float",
+  "disV0a_fadeIn",
+  "modal-appear",
+  "passport-glow-ellipse-x"
+ ],
+ "rm": [
+  "@media (prefers-reduced-motion: reduce) {\n  #marketing-header { transition: none; }\n}",
+  "@media (prefers-reduced-motion: no-preference) {\n  .gateway-gradient-fade-out { transition-property: opacity; transition-timing-function: ease-out; }\n  [data-gateway-gradient-state=\"hidden\"] .gateway-gradient-fade-out { transition-duration: 0.7s; }\n  [data-gateway-gradient-state=\"visible\"] .gateway-gradient-fade-out { transition-duration: 90ms; }\n}",
+  "@media (prefers-reduced-motion: no-preference) {\n  .f5VlMG_item { interpolate-size: allow-keywords; }\n}",
+  "@media (prefers-reduced-motion: reduce), (max-width: 601px) {\n  .eaE5iq_cursor { animation: auto ease 0s 1 normal none running none; transform: translate(100%); }\n  .eaE5iq_cursor::after { opacity: 0; animation: auto ease 0s 1 normal none running none; }\n}",
+  "@media (prefers-reduced-motion: reduce), (max-width: 601px) {\n  .knmcua_v, .knmcua_zeroBottom, .knmcua_zeroTop, .knmcua_zeroSlash { stroke-dasharray: 0; stroke-dashoffset: 1px; animation: auto ease 0s 1 normal none running none; }\n}",
+  "@media (prefers-reduced-motion: reduce) {\n  .AEUiAq_cursor { animation-play-state: paused; }\n}",
+  "@media (prefers-reduced-motion: reduce) {\n  .fides-toggle-display { transition-duration: 0s; }\n}"
+ ],
+ "header": "header.peer.sticky.top-0.z-(--header-zindex)",
+ "viewport": "1440x900",
+ "capturedAt": "2026-10-01T15:46:02.579Z"
+}

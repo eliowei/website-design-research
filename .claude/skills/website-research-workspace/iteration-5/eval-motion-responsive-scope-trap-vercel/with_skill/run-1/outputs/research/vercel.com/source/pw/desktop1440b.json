@@ -1,0 +1,290 @@
+{
+ "viewport": "1440x900",
+ "mobile": false,
+ "reducedMotion": false,
+ "capturedAt": "2026-10-01T15:41:50.881Z",
+ "computed": {
+  "h1": {
+   "text": "Agentic Infrastructure",
+   "fontSize": "64px",
+   "fontWeight": "400",
+   "lineHeight": "64px",
+   "letterSpacing": "-3.84px",
+   "fontFamily": "Inter, -apple-system, BlinkMacSystemFont",
+   "textAlign": "left",
+   "width": 444,
+   "height": 128,
+   "x": 24,
+   "y": 328,
+   "borderRadius": "0px",
+   "padding": "0px"
+  },
+  "h2": {
+   "text": "Build agents on infrastructure that thinks like th",
+   "fontSize": "56px",
+   "fontWeight": "450",
+   "lineHeight": "56px",
+   "letterSpacing": "-3.36px",
+   "fontFamily": "Inter, -apple-system, BlinkMacSystemFont",
+   "textAlign": "start",
+   "width": 561,
+   "height": 168,
+   "x": 24,
+   "y": 1108,
+   "borderRadius": "0px",
+   "padding": "0px"
+  },
+  "deployNow": {
+   "text": "Deploy now",
+   "fontSize": "16px",
+   "fontWeight": "500",
+   "lineHeight": "24px",
+   "letterSpacing": "normal",
+   "fontFamily": "Inter, -apple-system, BlinkMacSystemFont",
+   "textAlign": "left",
+   "width": 120,
+   "height": 40,
+   "x": 24,
+   "y": 488,
+   "borderRadius": "3.35544e+07px",
+   "padding": "0px 12px"
+  },
+  "talkToSales": {
+   "text": "Talk to sales",
+   "fontSize": "16px",
+   "fontWeight": "500",
+   "lineHeight": "24px",
+   "letterSpacing": "normal",
+   "fontFamily": "Inter, -apple-system, BlinkMacSystemFont",
+   "textAlign": "left",
+   "width": 124,
+   "height": 40,
+   "x": 156,
+   "y": 488,
+   "borderRadius": "3.35544e+07px",
+   "padding": "0px 12px"
+  },
+  "canvas": {
+   "w": 300,
+   "h": 150,
+   "box": [
+    180,
+    88,
+    1080,
+    720
+   ],
+   "opacity": "0",
+   "display": "block"
+  },
+  "heroList": [
+   {
+    "text": "For coding agents",
+    "font": "Inter, -apple-system, BlinkMac",
+    "size": "16px",
+    "y": 387
+   },
+   {
+    "text": "To ship apps and agents",
+    "font": "Inter, -apple-system, BlinkMac",
+    "size": "16px",
+    "y": 419
+   },
+   {
+    "text": "Automated by agents",
+    "font": "Inter, -apple-system, BlinkMac",
+    "size": "16px",
+    "y": 451
+   }
+  ],
+  "headerButtons": [
+   "Vercel",
+   "Products",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Resources",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Enterprise",
+   "Pricing",
+   "Get a Demo",
+   "Log In",
+   "Sign Up",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Deploy now",
+   "Talk to sales"
+  ]
+ },
+ "rotation": [
+  {
+   "t": 0,
+   "v": "[Inter, -apple-s,0,animate-command-fade-in]"
+  },
+  {
+   "t": 250,
+   "v": "[Inter, -apple-s,1,animate-command-fade-in]"
+  }
+ ],
+ "logo": {
+  "openaiCount": 1,
+  "xs": [
+   [
+    673
+   ],
+   [
+    673
+   ],
+   [
+    673
+   ],
+   [
+    673
+   ],
+   [
+    673
+   ],
+   [
+    673
+   ]
+  ],
+  "an": []
+ },
+ "allAnims": [
+  {
+   "name": "fade-in",
+   "state": "finished",
+   "dur": 200,
+   "easing": "linear",
+   "iter": 1,
+   "target": "col-start-1 row-start-1 whitespace-nowrap motion-safe:animat"
+  }
+ ],
+ "canvasFrames": [
+  "desktop1440b-canvas-a.png",
+  "desktop1440b-canvas-b.png"
+ ],
+ "sections": [
+  {
+   "y": 1108,
+   "files": [
+    "screenshots/pw/desktop1440b-sec0-0.png",
+    "screenshots/pw/desktop1440b-sec0-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 2037,
+   "files": [
+    "screenshots/pw/desktop1440b-sec1-0.png",
+    "screenshots/pw/desktop1440b-sec1-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 2909,
+   "files": [
+    "screenshots/pw/desktop1440b-sec2-0.png",
+    "screenshots/pw/desktop1440b-sec2-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 3735,
+   "files": [
+    "screenshots/pw/desktop1440b-sec3-0.png",
+    "screenshots/pw/desktop1440b-sec3-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 4575,
+   "files": [
+    "screenshots/pw/desktop1440b-sec4-0.png",
+    "screenshots/pw/desktop1440b-sec4-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 4831,
+   "files": [
+    "screenshots/pw/desktop1440b-sec5-0.png",
+    "screenshots/pw/desktop1440b-sec5-1.png"
+   ],
+   "running": []
+  },
+  {
+   "y": 5151,
+   "files": [
+    "screenshots/pw/desktop1440b-sec6-0.png",
+    "screenshots/pw/desktop1440b-sec6-1.png"
+   ],
+   "running": []
+  }
+ ],
+ "pageHeight": 5930
+}

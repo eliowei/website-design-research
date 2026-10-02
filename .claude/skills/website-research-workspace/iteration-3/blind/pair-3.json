@@ -1,0 +1,56 @@
+{
+ "winner": "A",
+ "scores": {
+  "A": {
+   "evidence_accuracy": 4,
+   "depth_of_reasoning": 4,
+   "honesty_uncertainty": 5,
+   "patterns_principles": 4,
+   "usability": 5,
+   "scope_fit": 5,
+   "overall": 4.5
+  },
+  "B": {
+   "evidence_accuracy": 4,
+   "depth_of_reasoning": 4,
+   "honesty_uncertainty": 4,
+   "patterns_principles": 4,
+   "usability": 3,
+   "scope_fit": 5,
+   "overall": 3.8
+  }
+ },
+ "reasoning": "The per-site observations, reports and screenshots are byte-identical in A and B, and the comparison bodies (XP-01 to 08, the language table, synthesis and self-review) are word-for-word the same. A adds three things: a top summary in the comparison, two designer summaries (one per site) and a README that links to them. A's top summary also qualifies XP-07: it says 'no sections removed' holds only at the section level, because both sites trim first-screen content. It also notes that Notion's secondary CTA styling varies by location. B leaves XP-07's overclaim unqualified and makes readers start at the patterns list. Same substance, but A is faster to act on and more careful about its claims.",
+ "a_strengths": [
+  "Top summary gives 3 shared patterns, the main language difference and open uncertainties, with anchor links",
+  "The per-site summaries pair each takeaway with its confidence level and a link to the evidence",
+  "Qualifies XP-07's 'no sections removed' claim against the screenshots",
+  "Notes CTA variants (Notion nav uses a text link; Stripe audience sections have a single button)"
+ ],
+ "a_weaknesses": [
+  "The summary calls Notion's H1 pill 'sometimes another blue'; the desktop screenshot shows a green 'Ship' pill",
+  "Some repetition between the summaries and the comparison",
+  "XP-07 body still says 'no sections removed'; the fix is only in the summary"
+ ],
+ "b_strengths": [
+  "Same solid evidence-linked patterns, tradeoff table and 'avoid mixing' guidance",
+  "Self-review flags weak cross-site evidence (motion marked [H], Stripe A/B buckets)"
+ ],
+ "b_weaknesses": [
+  "No summary; reader must go through 8 XPs and a table to get the gist",
+  "XP-07 'no sections removed / order unchanged' overclaims and is never qualified",
+  "The XP-03 claim of 'the same button pair everywhere' ignores Notion's text-link secondary CTA in the nav"
+ ],
+ "spot_checks": [
+  "Stripe H1 is two-tone, near-black main clause plus grey-blue extension -> verified (desktop)",
+  "Stripe uses solid purple primary plus outlined white secondary (Get started / Sign up with Google) -> verified",
+  "Notion primary CTA is solid blue 'Get Notion free'; Hero secondary 'Request a demo' has a light-blue fill; nav secondary is a text link -> verified",
+  "Notion mobile Hero has no product screenshot, replaced by a row of avatar illustrations -> verified",
+  "A: Notion H1 pill sometimes turns 'another blue' -> partly contradicted (desktop pill is green 'Ship'; mobile is blue 'Think')",
+  "Page lengths of about 14828px for Stripe and 4810px for Notion -> verified from screenshot heights"
+ ],
+ "minutes_to_key_takeaways": {
+  "A": 2,
+  "B": 7
+ }
+}

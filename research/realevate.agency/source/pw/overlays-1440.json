@@ -1,0 +1,384 @@
+{
+ "menu": [
+  {
+   "cls": "split-line",
+   "txt": "About",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "17.0526px",
+   "fw": "500",
+   "lh": "normal",
+   "ls": "-0.163705px",
+   "color": "rgb(31, 43, 94)",
+   "writingMode": "horizontal-tb",
+   "href": "/about",
+   "r": [
+    61,
+    61,
+    48,
+    24
+   ]
+  },
+  {
+   "cls": "split-line",
+   "txt": "Contact",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "17.0526px",
+   "fw": "500",
+   "lh": "normal",
+   "ls": "-0.163705px",
+   "color": "rgb(31, 43, 94)",
+   "writingMode": "horizontal-tb",
+   "href": "/contact",
+   "r": [
+    1316,
+    61,
+    63,
+    24
+   ]
+  },
+  {
+   "cls": "",
+   "txt": "WhatsApp",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "13.6421px",
+   "fw": "500",
+   "lh": "13.6421px",
+   "ls": "-0.163705px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "horizontal-tb",
+   "href": "https://wa.me/972546020690",
+   "r": [
+    1106,
+    784,
+    85,
+    14
+   ]
+  },
+  {
+   "cls": "",
+   "txt": "Email",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "13.6421px",
+   "fw": "500",
+   "lh": "13.6421px",
+   "ls": "-0.163705px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "horizontal-tb",
+   "href": "mailto:info@realevate.agency",
+   "r": [
+    1285,
+    784,
+    53,
+    14
+   ]
+  }
+ ],
+ "menuPanel": {
+  "cls": "is-ready nav-menu-open",
+  "rect": [
+   0,
+   0,
+   1440,
+   900
+  ],
+  "bg": "rgb(255, 255, 255)",
+  "transition": "all"
+ },
+ "afterEscMenuClass": "is-ready",
+ "selection": [
+  {
+   "cls": "selection-card__title",
+   "txt": "By The Sea",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "44.2004px",
+   "fw": "500",
+   "lh": "44.2004px",
+   "ls": "-0.884008px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "vertical-rl",
+   "href": "/bythesea",
+   "r": [
+    295,
+    257,
+    44,
+    213
+   ]
+  },
+  {
+   "cls": "selection-card__desc",
+   "txt": "Coastal, Marina & Seafront properties",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "12.2779px",
+   "fw": "500",
+   "lh": "16.5752px",
+   "ls": "-0.163705px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "horizontal-tb",
+   "href": "/bythesea",
+   "r": [
+    87,
+    437,
+    171,
+    33
+   ]
+  },
+  {
+   "cls": "selection-card__title",
+   "txt": "Evergreen",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "44.2004px",
+   "fw": "500",
+   "lh": "44.2004px",
+   "ls": "-0.884008px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "vertical-rl",
+   "href": "/evergreen",
+   "r": [
+    633,
+    270,
+    44,
+    200
+   ]
+  },
+  {
+   "cls": "selection-card__desc",
+   "txt": "Gulf Resorts, parks & Forest Oasis",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "12.2779px",
+   "fw": "500",
+   "lh": "16.5752px",
+   "ls": "-0.163705px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "horizontal-tb",
+   "href": "/evergreen",
+   "r": [
+    425,
+    437,
+    171,
+    33
+   ]
+  },
+  {
+   "cls": "selection-card__title",
+   "txt": "Urban Living",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "44.2004px",
+   "fw": "500",
+   "lh": "44.2004px",
+   "ls": "-0.884008px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "vertical-rl",
+   "href": "/urbanliving",
+   "r": [
+    971,
+    226,
+    44,
+    244
+   ]
+  },
+  {
+   "cls": "selection-card__desc",
+   "txt": "City center & Old city vibes and lifesty",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "12.2779px",
+   "fw": "500",
+   "lh": "16.5752px",
+   "ls": "-0.163705px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "horizontal-tb",
+   "href": "/urbanliving",
+   "r": [
+    763,
+    437,
+    171,
+    33
+   ]
+  },
+  {
+   "cls": "selection-card__title",
+   "txt": "Rare Gems",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "44.2004px",
+   "fw": "500",
+   "lh": "44.2004px",
+   "ls": "-0.884008px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "vertical-rl",
+   "href": "/raregems",
+   "r": [
+    1309,
+    252,
+    44,
+    218
+   ]
+  },
+  {
+   "cls": "selection-card__desc",
+   "txt": "One of a kind & Unique concept Propertie",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "12.2779px",
+   "fw": "500",
+   "lh": "16.5752px",
+   "ls": "-0.163705px",
+   "color": "rgb(255, 255, 255)",
+   "writingMode": "horizontal-tb",
+   "href": "/raregems",
+   "r": [
+    1101,
+    437,
+    171,
+    33
+   ]
+  },
+  {
+   "cls": "split-line",
+   "txt": "About",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "17.0526px",
+   "fw": "500",
+   "lh": "normal",
+   "ls": "-0.163705px",
+   "color": "rgb(31, 43, 94)",
+   "writingMode": "horizontal-tb",
+   "href": "/about",
+   "r": [
+    427,
+    738,
+    21,
+    11
+   ]
+  },
+  {
+   "cls": "split-line",
+   "txt": "Contact",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "17.0526px",
+   "fw": "500",
+   "lh": "normal",
+   "ls": "-0.163705px",
+   "color": "rgb(31, 43, 94)",
+   "writingMode": "horizontal-tb",
+   "href": "/contact",
+   "r": [
+    985,
+    738,
+    28,
+    11
+   ]
+  },
+  {
+   "cls": "marquee-text",
+   "txt": "Elevating Life",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "218.274px",
+   "fw": "500",
+   "lh": "218.274px",
+   "ls": "-4.36547px",
+   "color": "rgb(31, 43, 94)",
+   "writingMode": "horizontal-tb",
+   "href": null,
+   "r": [
+    208,
+    820,
+    585,
+    97
+   ]
+  },
+  {
+   "cls": "marquee-text",
+   "txt": "Elevating Life",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "218.274px",
+   "fw": "500",
+   "lh": "218.274px",
+   "ls": "-4.36547px",
+   "color": "rgb(31, 43, 94)",
+   "writingMode": "horizontal-tb",
+   "href": null,
+   "r": [
+    809,
+    820,
+    585,
+    97
+   ]
+  },
+  {
+   "cls": "marquee-text",
+   "txt": "Elevating Life",
+   "ff": "\"Google Sans\", Arial, Helvetic",
+   "fs": "218.274px",
+   "fw": "500",
+   "lh": "218.274px",
+   "ls": "-4.36547px",
+   "color": "rgb(31, 43, 94)",
+   "writingMode": "horizontal-tb",
+   "href": null,
+   "r": [
+    1409,
+    820,
+    585,
+    97
+   ]
+  }
+ ],
+ "selectionLinks": [
+  {
+   "href": "/",
+   "text": "Homepage Invest in Cyprus, Montenegro and Georgia"
+  },
+  {
+   "href": "/bythesea",
+   "text": "By The Sea Coastal, Marina & Seafront properties"
+  },
+  {
+   "href": "/evergreen",
+   "text": "Evergreen Gulf Resorts, parks & Forest Oasis"
+  },
+  {
+   "href": "/urbanliving",
+   "text": "Urban Living City center & Old city vibes and lifestyle"
+  },
+  {
+   "href": "/raregems",
+   "text": "Rare Gems One of a kind & Unique concept Properties"
+  }
+ ],
+ "afterClickPreview": {
+  "cls": "is-ready",
+  "url": "https://realevate.agency/"
+ },
+ "menuLinks": [
+  {
+   "cls": "about-btn link-underline",
+   "txt": "About",
+   "ff": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fs": "17.0526px",
+   "fw": "500",
+   "lh": "normal",
+   "ls": "-0.163705px",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    61,
+    61,
+    48,
+    24
+   ]
+  },
+  {
+   "cls": "contact-btn link-underline",
+   "txt": "Contact",
+   "ff": "\"Google Sans\", Arial, Helvetica, sans-serif",
+   "fs": "17.0526px",
+   "fw": "500",
+   "lh": "normal",
+   "ls": "-0.163705px",
+   "color": "rgb(31, 43, 94)",
+   "r": [
+    1316,
+    61,
+    63,
+    24
+   ]
+  }
+ ]
+}

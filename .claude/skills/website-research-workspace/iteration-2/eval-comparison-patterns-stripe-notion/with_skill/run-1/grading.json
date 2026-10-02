@@ -1,0 +1,110 @@
+{
+  "expectations": [
+    {
+      "text": "A01 流程順序：process-log 顯示先蒐集資料並實際看過截圖，才開始寫任何結論；報告結構依序為 背景/網站理解 → 觀察 → 視覺/UX/動態/響應式分析 → 模式 → 設計語言 → 總結",
+      "passed": true,
+      "evidence": "observations.md（背景→擷取→證據清單）→ report.md（視覺→UX→動態→響應式→模式→設計語言→綜合→自我審查）；process-log 顯示先擷取、切圖、取樣，最後才寫報告"
+    },
+    {
+      "text": "A02 網站理解：報告在分析前有一段說明網站是誰、目的、目標使用者、頁面任務（Context），且有來源依據",
+      "passed": true,
+      "evidence": "observations.md §0 有網站是誰、頁面任務、目標使用者、研究重點，並附 M- 來源"
+    },
+    {
+      "text": "A03 知識層級：報告明確區分『觀察（看到什麼）』與『詮釋/推論（為什麼）』，並以標記或欄位區隔，而非混在同一句",
+      "passed": true,
+      "evidence": "每句都標 [O]／[I]／[H]，[I] 會寫「依據 O：…」"
+    },
+    {
+      "text": "A04 假設標記：缺乏直接證據的結論（尤其動態、DOM/CSS 數值）被標為假設/推測，而且標記數量與實際無法觀察的範圍相符",
+      "passed": true,
+      "evidence": "[H] 都附驗證方法（例如「驗證：Playwright 逐段捲動後截圖」），動態幾乎全部停在 [H]"
+    },
+    {
+      "text": "A05 無空泛評語：報告不含沒有證據支撐的主觀評價（例如『很高級』『很好』『很流暢』『很漂亮』『很現代』），或出現時緊接具體證據",
+      "passed": true,
+      "evidence": "空泛評語檢查 0 處；沒有評分表"
+    },
+    {
+      "text": "A06 證據可追溯：至少 80% 的重要結論標明證據來源類型（截圖檔與位置、Firecrawl branding/markdown、DOM/HTML、實測色碼等）",
+      "passed": true,
+      "evidence": "幾乎每句都附證據 ID；抽查 P-05、P-09、M-L94、M-L129、H-01、I-01、X-01，都能在 observations.md 或 source/page.md 找到"
+    },
+    {
+      "text": "A07 視覺涵蓋：視覺分析涵蓋 Color、Typography、Layout、Grid、Spacing、Shape、Border、Shadow/Elevation、Imagery、Iconography、Visual hierarchy、Composition、Density 中至少 10 項",
+      "passed": true,
+      "evidence": "視覺 13 個維度都有獨立段落"
+    },
+    {
+      "text": "A08 視覺語言：不只列出顏色字型，而是說明這些選擇共同形成什麼視覺語言（有一段綜合論述，並連回具體觀察）",
+      "passed": true,
+      "evidence": "§1 結尾「核心問題的答案」把色彩、明度、陰影的選擇綜合成視覺語言，並連回 P-／S- 證據"
+    },
+    {
+      "text": "A09 UX 涵蓋：涵蓋 IA、Navigation、User flow、Content hierarchy、CTA、Affordance、Discoverability、Feedback、Form、Error/Success states、Cognitive load 中至少 7 項，且分析『如何引導使用者』而非僅描述 UI",
+      "passed": true,
+      "evidence": "UX 涵蓋 IA、Navigation、User flow、Content hierarchy、CTA、Affordance、Discoverability、Feedback、Form、Cognitive load，看不到的寫成 X- 缺口"
+    },
+    {
+      "text": "A10 動態結構化：動態以 trigger/target/property/duration/easing/sequence 等維度描述，或明確寫出哪些維度無法觀察；不出現『動畫流暢』這類空話",
+      "passed": true,
+      "evidence": "動態用 Trigger／Target／Property／Duration／Sequence／證據／層級表格，無法觀察的欄位寫「未觀察」"
+    },
+    {
+      "text": "A11 響應式維度：比較 Desktop→(Tablet)→Mobile 至少 5 個維度（layout、typography、spacing、navigation、content priority、components、interaction、被隱藏/移動/重排的元素），且說明資訊與空間如何被重新分配；缺少 tablet 時有說明",
+      "passed": true,
+      "evidence": "響應式表格比較桌機、平板（768）、手機三個寬度，7 個維度，每列都有「重新分配的邏輯」"
+    },
+    {
+      "text": "A12 模式抽取：至少 2 個模式是以『重複出現的結構/互動/視覺處理/RWD 行為/UX 決策』定義，並指出各自出現的 2 處以上位置；不是把 Card/Button/Navbar 直接當模式",
+      "passed": true,
+      "evidence": "模式以 VP 編號整理，每個都有類型、≥2 處出現位置（附證據 ID）、不變／會變的部分"
+    },
+    {
+      "text": "A13 設計語言綜合：有一段從具體觀察抽象出的設計語言/原則（涵蓋 typography、color、layout、interaction、motion、responsive、hierarchy 哲學中至少 5 項），每項能連回前面的觀察",
+      "passed": true,
+      "evidence": "§6 表格涵蓋色彩、字體、版面、互動、動態、響應式、資訊層級 7 種哲學，每項指向 VP"
+    },
+    {
+      "text": "A14 設計系統推論：辨識可能存在的 design tokens／foundations／components／variants／states 至少兩類，並明確標示是從渲染結果推論，而非斷言網站有正式設計系統",
+      "passed": true,
+      "evidence": "§6 設計系統推論列出 tokens、components／variants、states，每項標 [I] 或 [H]，並聲明「不代表網站有正式設計系統」"
+    },
+    {
+      "text": "A15 不確定性：報告有專門的限制/不確定性段落，說明研究範圍、無法取得的資料與其對結論的影響",
+      "passed": true,
+      "evidence": "報告開頭有研究範圍與限制；§8 自我審查列出證據等級分布與 X- 缺口的影響"
+    },
+    {
+      "text": "A16 可遷移原則：至少 3 條以可遷移到其他專案的形式寫出的設計原則/教訓（而非只是對該網站的描述或評論）",
+      "passed": true,
+      "evidence": "§7 有 5–6 條 [DP]，每條指向 VP"
+    },
+    {
+      "text": "C01 先各自研究再比較：兩站各有獨立研究產出，比較報告引用而非重新描述各站內容",
+      "passed": true,
+      "evidence": "兩站各有 observations.md＋report.md；比較報告只引用 VP 編號與章節，重述字級、頁長兩處時有寫明新增的比較角度"
+    },
+    {
+      "text": "C02 跨站模式：至少 2 個跨站共用模式，以兩站的具體證據同時支撐，並說明各自實作差異",
+      "passed": true,
+      "evidence": "8 個 XP，每個都對應兩站的 VP 編號，並寫出各自的實作差異與可遷移條件"
+    },
+    {
+      "text": "C03 設計語言差異：比較的是設計原則/語言層級的差異（例如對密度、層級、動態的態度），而不只是色碼字型對照表",
+      "passed": true,
+      "evidence": "設計語言差異表 8 個面向都有「差異背後的取捨」欄，例如「Stripe 是多入口的入口網站，Notion 是單一漏斗」"
+    }
+  ],
+  "summary": {
+    "passed": 19,
+    "failed": 0,
+    "total": 19,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "total_tokens": 245261,
+    "duration_ms": 1088222,
+    "total_duration_seconds": 1088.2
+  }
+}

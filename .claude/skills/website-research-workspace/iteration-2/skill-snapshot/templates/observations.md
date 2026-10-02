@@ -1,0 +1,35 @@
+# <網站名稱> 觀察紀錄
+
+- **網址**：<url>
+- **研究日期**：<YYYY-MM-DD>
+- **研究頁面**：<首頁／其他>
+- **擷取方式**：<Firecrawl／Playwright>，<是否 maxAge: 0、快取時間>
+
+## 0. 網站背景（Context）
+
+只寫有來源的事實，不評價設計。
+
+- **網站是誰**：<公司／產品／組織>（M-…）
+- **頁面任務**：<這一頁要訪客做什麼：註冊、預約、購買、理解…>（M-…，CTA 文字）
+- **目標使用者**：<從文案與 CTA 推得>（標 [O] 或 [H]）
+- **研究重點**：<使用者特別關心的面向>
+
+## 1. 擷取清單
+
+| 檔案 | 寬度 | 尺寸 | 時間／快取 | 備註 |
+| --- | --- | --- | --- | --- |
+| screenshots/desktop.png | 1920 | | | |
+| screenshots/tablet.png | 768 | | | |
+| screenshots/mobile.png | 360 | | | |
+| source/page.md | — | — | | Firecrawl markdown |
+| source/branding.json | — | — | | Firecrawl branding |
+
+## 2. 證據清單（只記錄看到什麼，不寫解讀）
+
+| ID | 等級 | 內容 |
+| --- | --- | --- |
+| S-d00 | E3 | 桌機 y=0–2200：<這段畫面有什麼> |
+| P-01 | E3 | (x,y) = #XXXXXX，<位置> |
+| B-colors.primary | E4 | #XXXXXX |
+| M-L12 | E2 | <文字> |
+| X-01 | — | <缺口：看不到什麼、為什麼> |
