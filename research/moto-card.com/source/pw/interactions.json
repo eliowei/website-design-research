@@ -1,0 +1,624 @@
+{
+ "navBtn": {
+  "before": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgb(28, 34, 39)",
+   "radius": "1425.6px",
+   "padding": "16px 32px",
+   "fs": "16px",
+   "fw": "500",
+   "lh": "16px",
+   "ls": "-0.048px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "color 0.2s, background-color 0.2s",
+   "opacity": "1",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 48,
+   "w": 165.59375
+  },
+  "hover": {
+   "color": "rgb(192, 196, 198)",
+   "bg": "rgb(18, 25, 28)",
+   "radius": "1425.6px",
+   "padding": "16px 32px",
+   "fs": "16px",
+   "fw": "500",
+   "lh": "16px",
+   "ls": "-0.048px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "color 0.2s, background-color 0.2s",
+   "opacity": "1",
+   "outline": "rgb(192, 196, 198) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 48,
+   "w": 165.59375
+  }
+ },
+ "heroBtn": {
+  "before": {
+   "color": "rgb(8, 8, 8)",
+   "bg": "rgb(225, 229, 229)",
+   "radius": "1425.6px",
+   "padding": "18px 24px",
+   "fs": "16px",
+   "fw": "500",
+   "lh": "16px",
+   "ls": "-0.048px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "color 0.2s, background-color 0.2s",
+   "opacity": "1",
+   "outline": "rgb(8, 8, 8) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 52,
+   "w": 253
+  },
+  "hover": {
+   "color": "rgb(102, 111, 118)",
+   "bg": "rgb(223, 227, 227)",
+   "radius": "1425.6px",
+   "padding": "18px 24px",
+   "fs": "16px",
+   "fw": "500",
+   "lh": "16px",
+   "ls": "-0.048px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "color 0.2s, background-color 0.2s",
+   "opacity": "1",
+   "outline": "rgb(102, 111, 118) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 52,
+   "w": 253
+  }
+ },
+ "navLink": {
+  "before0": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": "0px",
+   "padding": "8px 0px",
+   "fs": "14px",
+   "fw": "500",
+   "lh": "18.2px",
+   "ls": "-0.042px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "opacity 0.3s",
+   "opacity": "1",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 34.1875,
+   "w": 76.234375
+  },
+  "before1": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": "0px",
+   "padding": "8px 0px",
+   "fs": "14px",
+   "fw": "500",
+   "lh": "18.2px",
+   "ls": "-0.042px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "opacity 0.3s",
+   "opacity": "0.5",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 34.1875,
+   "w": 70.265625
+  },
+  "hover1": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": "0px",
+   "padding": "8px 0px",
+   "fs": "14px",
+   "fw": "500",
+   "lh": "18.2px",
+   "ls": "-0.042px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "opacity 0.3s",
+   "opacity": "1",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 34.1875,
+   "w": 70.265625
+  }
+ },
+ "focusSeq": [
+  {
+   "tag": "A",
+   "text": "",
+   "cls": "nav_logo_link w-inline-block w--current",
+   "outline": "rgb(16, 16, 16) auto 1px",
+   "outlineOffset": "1px",
+   "boxShadow": "none",
+   "bg": "rgba(0, 0, 0, 0)",
+   "color": "rgb(225, 229, 229)",
+   "focusVisible": true
+  },
+  {
+   "tag": "A",
+   "text": "Membership",
+   "cls": "nav_menu_link text-small w--current current",
+   "outline": "rgb(16, 16, 16) auto 1px",
+   "outlineOffset": "1px",
+   "boxShadow": "none",
+   "bg": "rgba(0, 0, 0, 0)",
+   "color": "rgb(225, 229, 229)",
+   "focusVisible": true
+  },
+  {
+   "tag": "A",
+   "text": "Partnership",
+   "cls": "nav_menu_link text-small",
+   "outline": "rgb(16, 16, 16) auto 1px",
+   "outlineOffset": "1px",
+   "boxShadow": "none",
+   "bg": "rgba(0, 0, 0, 0)",
+   "color": "rgb(225, 229, 229)",
+   "focusVisible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "cls": "button w-variant-b2a47393-e449-8f34-02c6-286b846f1d34 w-inline-block",
+   "outline": "rgb(16, 16, 16) auto 1px",
+   "outlineOffset": "1px",
+   "boxShadow": "none",
+   "bg": "rgb(28, 34, 39)",
+   "color": "rgb(225, 229, 229)",
+   "focusVisible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "cls": "button w-inline-block",
+   "outline": "rgb(16, 16, 16) auto 1px",
+   "outlineOffset": "1px",
+   "boxShadow": "none",
+   "bg": "rgb(225, 229, 229)",
+   "color": "rgb(8, 8, 8)",
+   "focusVisible": true
+  },
+  {
+   "tag": "A",
+   "text": "Apply for Access",
+   "cls": "button w-inline-block",
+   "outline": "rgb(16, 16, 16) auto 1px",
+   "outlineOffset": "1px",
+   "boxShadow": "none",
+   "bg": "rgb(225, 229, 229)",
+   "color": "rgb(8, 8, 8)",
+   "focusVisible": true
+  }
+ ],
+ "navAfterScroll": {
+  "transform": "none",
+  "opacity": "1",
+  "rect": {
+   "x": 720,
+   "y": 40,
+   "width": 0,
+   "height": 0,
+   "top": 40,
+   "right": 720,
+   "bottom": 40,
+   "left": 720
+  }
+ },
+ "navBtnOnLight": {
+  "color": "rgb(225, 229, 229)",
+  "bg": "rgb(28, 34, 39)",
+  "radius": "1425.6px",
+  "padding": "16px 32px",
+  "fs": "16px",
+  "fw": "500",
+  "lh": "16px",
+  "ls": "-0.048px",
+  "ff": "Neuemontreal, Arial, sans-serif",
+  "transition": "color 0.2s, background-color 0.2s",
+  "opacity": "1",
+  "outline": "rgb(225, 229, 229) none 0px",
+  "outlineOffset": "0px",
+  "boxShadow": "none",
+  "transform": "none",
+  "h": 48,
+  "w": 165.59375
+ },
+ "numbersText": [
+  {
+   "t": ".numbers {\n    position: relat",
+   "op": "1",
+   "filter": "none",
+   "color": "rgb(8, 8, 8)",
+   "fs": "16px"
+  },
+  {
+   "t": ".numbers_track_wrap.is-left {\n",
+   "op": "1",
+   "filter": "none",
+   "color": "rgb(8, 8, 8)",
+   "fs": "16px"
+  },
+  {
+   "t": "SPEND GLOBALLY. 0 FX FEES BUIL",
+   "op": "1",
+   "filter": "none",
+   "color": "rgb(8, 8, 8)",
+   "fs": "52px"
+  },
+  {
+   "t": "Frictionless",
+   "op": "1",
+   "filter": "blur(0px)",
+   "color": "rgb(8, 8, 8)",
+   "fs": "24px"
+  },
+  {
+   "t": "One system everywhere",
+   "op": "1",
+   "filter": "blur(0px)",
+   "color": "rgb(8, 8, 8)",
+   "fs": "24px"
+  },
+  {
+   "t": "Global spend",
+   "op": "1",
+   "filter": "blur(0px)",
+   "color": "rgb(8, 8, 8)",
+   "fs": "24px"
+  },
+  {
+   "t": "¥20,000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "¥20,000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "CHF 40.000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "CHF 40.000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "£15.000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "₩22.000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "¥20,000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "€12.500",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "₺28.000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "CHF 40.000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "£15.000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "₩22.000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "¥20,000",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  },
+  {
+   "t": "€12.500",
+   "op": "1",
+   "filter": "none",
+   "color": "rgba(0, 0, 0, 0)",
+   "fs": "34.56px"
+  }
+ ],
+ "earthBubbles": [
+  {
+   "t": "Apply for Access\nBUILT FOR\nMODERN WEALTH\nApply for Access\nINFRASTRUCTURE FOR HOW YOU MOVE\n\nAt home, abroad, and everywhere  in between, Moto gives its members  a quieter way  to move.\n\nApply for Access\nTransaction Successfull\nHotel Booked\nJet Booked\nTHE CARD IS ONLY THE BEGINNING\nApply for Access\nSPEND GLOBALLY. 0 FX FEES BUILT IN.\nFrictionless\nOne system everywhere\nGlobal spend\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\nCHF 40.000\n£15.000\n₩22.000\n¥20,000\n€12.500\n₺28.000\n¥20,000\n¥20,000\nCHF 40.000\nCHF 40.000\n24/7\nCONCIERGE.\nANYTHING.\nANYTIME.\nDedicated concierge\nGlobal support\nPrivate inventory\n24/7\n02:46:22 AM UTC\n04:46:22 AM CEST\n11:20:29 PM GST\n10:46:22 PM EDT\n02:46:22 AM UTC\n04:46:22 AM CEST\n11:20:29 PM GST\n10:46:22 PM EDT\n\nONE SYSTEM EVERYWHERE\n\nGLOBAL SPEND\n\nFRICTIONLESS\n\n0% FX GLOBALLY\n\nGLOBAL SUPPORT\n\nDEDICATED CONCIERGE\n\nPRIVATE INVENTORY\n\nPREMIUM CARD\n\nONE SYSTEM EVERYWHERE\n\nGLOBAL SPEND\n\nFRICTIONLESS\n\n0% FX GLOBALLY\n\nGLOBAL SUPPORT\n\nDEDICATED CONCIERGE\n\nPRIVATE INVENTORY\n\nPREMIUM CARD\n\n24/7\n02:46:22 AM UTC\n10:46:22 PM EDT\n03:46:22 AM BST\n05:46:22 AM EEST\n11:46:22 AM JST\n04:46:22 AM CEST\n10:46:22 AM CST\n12:46:22 PM AEST\n04:46:22 AM CAT\n02:46:22 AM UTC\n10:46:22 PM EDT\n03:46:22 AM BST\n05:46:22 AM EEST\n11:46:22 AM JST\n04:46:22 AM CEST\n10:46:22 AM CST\n12:46:22 PM AEST\n04:46:22 AM CAT\nMADE FOR THE PLACES YOU ALREADY MOVE THROUGH.\n05\n01\nHotels\n\nPreferred stays, selected rates, and member benefits.\n\n02\nDining\n\nAccess connected to restaurants and hospitality moments.\n\n03\nTravel\n\nBenefits designed around movement between cities and countries.\n\n04\nExperiences\n\nSelected access across retail, culture, and events.\n\n05\nWellness\n\nSelected access to spaces and services designed for recovery, balance, and wellbeing.\n\nLUXURY\nTRAVEL\nDINING\nLOCAL REWARDS\n.\nACCESS\nOUR NETWORK\n\nMembership includes preferred rates and exclusive experiences across our catalogue of partners.\n\nApply for Access\nFREQUENTLY\nASKED QUESTIONS\n13\nABOUT MOTO\nWhat is Moto?\n\nMoto is infrastructure for how you move.At home, abroad, and\n\neverywhere in between, Moto gives its members a quieter way to\n\nmove through the world. It starts with a Visa Infinite card built for\n\nglobal spending, with zero FX fees and one system that works\n\nwherever you go. Beyond the card, Moto connects members to\n\npreferred stays, dining, travel, culture, experiences, and wellness.\n\nThe card is only the beginning.\n\nMoto is infrastructure for how you move.At home, abroad, and everywhere in between, Moto gives its members a quieter way to move through the world. It starts with a Visa Infinite card built for global spending, with zero FX fees and one system that works wherever you go. Beyond the card, Moto connects members to preferred stays, dining, travel, culture, experiences, and wellness. The card is only the beginning.\n\nHow does Moto work?\n\nMoto combines a Visa Infinite credit card and a self-custodial\n\nwallet into a single app. Deposit funds, receive a collateral-backed\n\ncredit limit, and use your card anywhere Visa is accepted. Moto\n\ndoes not deduct each purchase from your balance like a debit\n\ncard. You spend on credit and settle your balance monthly. The\n\ninfrastructure is built onchain. The experience is designed to feel\n\nlike a premium card.\n\nMoto combines a Visa Infinite credit card and a self-custodial wallet into a single app. Deposit funds, receive a collateral-backed credit limit, and use your card anywhere Visa is accepted. Moto does not deduct each purchase from your balance like a debit card. You spend on credit and settle your balance monthly. The infrastructure is built onchain. The experience is designed to feel like a premium card.\n\nDo I need to own crypto to use Moto?\n\nNo. Moto is built for both mainstream and crypto-native members.\n\nYou do not need an external wallet, prior crypto experience, or an\n\nunderstanding of DeFi. Bank accounts are also supported.Moto\n\nhandles the technical complexity behind the scenes, giving you a\n\nfamiliar way to fund, spend, and manage your account.\n\nNo. Moto is built for both mainstream and crypto-native members. You do not need an external wallet, prior crypto experience, or an understanding of DeFi. Bank accounts are also supported.Moto handles the technical complexity behind the scenes, giving you a familiar way to fund, spend, and manage your account.\n\nCOSTS & BENEFITS\nWhat does Moto Membership cost?\n\nMoto Membership costs $2,500 per year or $250 per month.\n\nAnnual membership includes two months complimentary.\n\nMoto Membership costs $2,500 per year or $250 per month.  Annual membership includes two months complimentary.\n\nWhat does Moto Membership include?\n\nMoto Membership is designed to make every part of spending\n\nmore valuable.\n\n\n\nMembers earn points on every dollar spent: 1x points on all\n\npurchases, 3x on dining and retail, and 5x on travel. Points can be\n\nredeemed for flights, hotels, or up to $200 per month in statement\n\ncredits. More airline and hotel programs will be added by the end\n\nof the year. 1 point = 0.01 dollars.\n\n\n\nMembership also includes zero FX fees, zero transfer fees,\n\nunlimited access to airport lounges, and a dedicated Relationship\n\nManager available whenever you need assistance.Beyond the\n\ncard, Moto Lens gives members our global curation of\n\nrestaurants, hotels, shops, and bars. Moto Spaces, our dedicated\n\ncoworking and event spaces, are coming soon.\n\n‍\n\nMoto Membership is designed to make every part of spending more valuable.\n\nMembers earn points on every dollar spent:  1x points on all purchases, 3x on dining and retail, and 5x on travel. Points can be redeemed for flights, hotels, or up to $200 per month in statement credits. More airline and hotel programs will be added by the end of the year. 1 point = 0.01 dollars.\n\nMembership also includes zero FX fees, zero transfer fees, unlimited access to airport lounges, and a dedicated Relationship Manager available whenever you need assistance.Beyond the card, Moto Lens gives members our global curation of restaurants, hotels, shops, and bars. Moto Spaces, our dedicated coworking and event spaces, are coming soon.\n\n‍\n\nUSAGE\nHow can I apply for Moto Membership?\n\nApplications are open on the Moto website and reviewed\n\nperiodically. If your application is approved, you’ll receive an email\n\nwith the next steps. To apply for Moto, simply download Moto from\n\nthe App Store or Play Store and begin your application.\n\nApplications are open on the Moto website and reviewed periodically. If your application is approved, you’ll receive an email with the next steps. To apply for Moto, simply download Moto from the App Store or Play Store and begin your application.\n\nHow do I fund my Moto account?\n\nYou can fund your account with fiat or digital assets like USDC.\n\nMoto offers Virtual IBANs for EUR transfers. For crypto deposits,\n\nMoto provides the correct address for each supported asset and\n\nnetwork. Always confirm that the asset, network, and destination\n\naddress match the details shown in your account. Transactions\n\nconfirmed onchain cannot be reversed.\n\nYou can fund your account with fiat or digital assets like USDC. Moto offers Virtual IBANs for EUR transfers. For crypto deposits, Moto provides the correct address for each supported asset and network. Always confirm that the asset, network, and destination address match the details shown in your account. Transactions confirmed onchain cannot be reversed.\n\nHow long do deposits and withdrawals take?\n\nProcessing time depends on the asset, network, and withdrawal\n\nmethod. These are estimates. Network conditions and additional\n\nsecurity or compliance checks may extend processing times.\n\n\n‍\n\nTransaction\nSolana USDC deposit\nOther supported crypto deposit\nCrypto withdrawal\nFiat withdrawal\nTypical processing time\nUsually under 2 minutes\nUp to 48 hours\nUsually within minutes\nTypically within 1 business day; occasionally\nup to 3\n\n‍\n\nProcessing time depends on the asset, network, and withdrawal method. These are estimates. Network conditions and additional security or compliance checks may extend processing times.\n‍\n\nTransaction\nSolana USDC deposit\nOther supported crypto deposit\nCrypto withdrawal\nFiat withdrawal\nTypical processing time\nUsually under 2 minutes\nUp to 48 hours\nUsually within minutes\nTypically within 1 business day; occasionally up to 3\n\n‍\n\nWhy is my transaction under review?\n\nSome transactions require an additional security or compliance\n\nreview. These checks help protect Moto members and the\n\nintegrity of the platform. Most reviews are completed within 24\n\nhours. If your transaction has remained under review for longer,\n\ncontact Moto Support, and we’ll look into it.\n\nHow does identity verification work?\n\nEvery Moto member must complete identity verification during\n\nonboarding. This helps us meet our regulatory obligations and\n\nkeep the platform secure. Depending on your jurisdiction or\n\naccount activity, we may occasionally require additional\n\ninformation. If we do, you’ll receive clear instructions in the Moto\n\napp.\n\nEvery Moto member must complete identity verification during onboarding. This helps us meet our regulatory obligations and keep the platform secure. Depending on your jurisdiction or account activity, we may occasionally require additional information. If we do, you’ll receive clear instructions in the Moto app.\n\nWhat happens if I send funds to the wrong address?\n\nOnchain transactions are irreversible. Funds sent to an incorrect\n\naddress, unsupported asset, or unsupported network may not be\n\nrecoverable. Before confirming a transfer, verify the asset,\n\nnetwork, and deposit address against the details shown in your\n\nMoto account. If you believe you made an error, contact Moto\n\nSupport immediately. We’ll review the transaction and explain any\n\navailable options, but recovery cannot be guaranteed.\n\nOnchain transactions are irreversible. Funds sent to an incorrect address, unsupported asset, or unsupported network may not be recoverable. Before confirming a transfer, verify the asset, network, and deposit address against the details shown in your Moto account. If you believe you made an error, contact Moto Support immediately. We’ll review the transaction and explain any available options, but recovery cannot be guaranteed.\n\nHow does Moto protect my account and personal information?\n\nMoto uses multiple layers of security, including encrypted\n\ncommunications, device-bound passkeys, multisignature wallet\n\ninfrastructure, and ongoing fraud monitoring. Moto is\n\nself-custodial, meaning you retain control of your assets. You\n\nshould still protect your device and credentials, review transaction\n\ndetails carefully, and never share verification codes or recovery\n\ninformation. Moto Support will never ask for your passkey or\n\nprivate recovery credentials.\n\nMoto uses multiple layers of security, including encrypted communications, device-bound passkeys, multisignature wallet infrastructure, and ongoing fraud monitoring. Moto is self-custodial, meaning you retain control of your assets. You should still protect your device and credentials, review transaction details carefully, and never share verification codes or recovery information. Moto Support will never ask for your passkey or private recovery credentials.\n\nWhat should I do if a payment is declined?\n\nA payment can be declined because of:\n\nInsufficient available credit\nA merchant or transaction restriction\nA security check\nA payment-network issue\nA temporary service interruption\n\nCheck your available credit and confirm that your card is active,\n\nthen try again. If the payment continues to fail, contact Moto\n\nSupport with the merchant name, transaction amount, and\n\napproximate time of the attempt.\n\nA payment can be declined because of:\n\nInsufficient available credit\nA merchant or transaction restriction\nA security check\nA payment-network issue\nA temporary service interruption\n\nCheck your available credit and confirm that your card is active, then try again. If the payment continues to fail, contact Moto Support with the merchant name, transaction amount, and approximate time of the attempt.\n\nA QUIETER WAY\nTO MOVE THROUGH THE WORLD\nApply for Access\nCARD\nPartnerships\nBenefits\nFAQ\nCONTACT\ncontact@moto-card.com\n+1 888 505 1096\nAvailable 24/7 Worldwide\nLEGAL\nTerms of service\nPrivacy\nSOCIALS\nInstagram\nLinkedin\nX\nDownload on the\nApp Store\nGet it on\nGoogle Play\n\nMoto Finance Inc.",
+   "cls": "w-mod-js lenis",
+   "op": "1",
+   "transform": "none"
+  },
+  {
+   "t": "INFRASTRUCTURE FOR HOW YOU MOVE\n\nAt home, abroad, and everywhere  in between, Moto gives its members  a quieter way  to move.\n\nApply for Access\nTransaction Successfull\nHotel Booked\nJet Booked",
+   "cls": "pin-spacer",
+   "op": "1",
+   "transform": "none"
+  },
+  {
+   "t": "Transaction Successfull\nHotel Booked\nJet Booked",
+   "cls": "earth_canvas_wrap",
+   "op": "1",
+   "transform": "none"
+  },
+  {
+   "t": "Transaction Successfull",
+   "cls": "w-layout-hflex earth_point is-1",
+   "op": "0.5289",
+   "transform": "matrix(1, 0, 0, 1, 0, 11.3067)"
+  },
+  {
+   "t": "Transaction Successfull",
+   "cls": "text-small",
+   "op": "1",
+   "transform": "none"
+  },
+  {
+   "t": "Hotel Booked",
+   "cls": "w-layout-hflex earth_point is-2",
+   "op": "0.9289",
+   "transform": "matrix(1, 0, 0, 1, 0, 1.7067)"
+  },
+  {
+   "t": "Hotel Booked",
+   "cls": "text-small",
+   "op": "1",
+   "transform": "none"
+  },
+  {
+   "t": "Jet Booked",
+   "cls": "w-layout-hflex earth_point is-3",
+   "op": "1",
+   "transform": "matrix(1, 0, 0, 1, 0, 0)"
+  }
+ ],
+ "faqBefore": [
+  {
+   "cls": "accordion first-active is-active",
+   "h": 196.96875,
+   "op": "1"
+  },
+  {
+   "cls": "accordion",
+   "h": 51.390625,
+   "op": "0.5"
+  },
+  {
+   "cls": "accordion",
+   "h": 51.390625,
+   "op": "0.5"
+  }
+ ],
+ "faqAfter": [
+  {
+   "cls": "accordion first-active",
+   "h": 51.390625,
+   "op": "0.5"
+  },
+  {
+   "cls": "accordion is-active",
+   "h": 196.96875,
+   "op": "1"
+  },
+  {
+   "cls": "accordion",
+   "h": 51.390625,
+   "op": "0.5"
+  }
+ ],
+ "faqAnswerStyle": {
+  "fs": "18px",
+  "lh": "23.4px",
+  "color": "rgb(8, 8, 8)"
+ },
+ "m": {
+  "h1": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": "0px",
+   "padding": "0px",
+   "fs": "37.3464px",
+   "fw": "500",
+   "lh": "37.3464px",
+   "ls": "-0.298771px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "all",
+   "opacity": "1",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 74.6875,
+   "w": 311.109375
+  },
+  "h2": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": "0px",
+   "padding": "0px",
+   "fs": "37.3464px",
+   "fw": "500",
+   "lh": "37.3464px",
+   "ls": "-0.298771px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "all",
+   "opacity": "1",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 74.6875,
+   "w": 366.59375
+  },
+  "body": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgb(8, 8, 8)",
+   "radius": "0px",
+   "padding": "0px",
+   "fs": "14.5236px",
+   "fw": "500",
+   "lh": "18.8807px",
+   "ls": "-0.0435708px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "all",
+   "opacity": "1",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 11255.671875,
+   "w": 390
+  },
+  "btn": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgb(28, 34, 39)",
+   "radius": "386.1px",
+   "padding": "14.5236px 33.1968px",
+   "fs": "14.5236px",
+   "fw": "500",
+   "lh": "14.5236px",
+   "ls": "-0.0435708px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "color 0.2s, background-color 0.2s",
+   "opacity": "1",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "none",
+   "h": 43.5625,
+   "w": 348.515625
+  },
+  "burger": {
+   "cls": "css-nav-burger hide w-embed",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0,
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+   },
+   "tag": "DIV"
+  },
+  "navLinksVisible": [
+   {
+    "t": "Membership",
+    "vis": true
+   },
+   {
+    "t": "Partnership",
+    "vis": true
+   }
+  ],
+  "menuOpen": [
+   {
+    "t": "Membership",
+    "x": 17,
+    "y": 116,
+    "fs": "16.5984px",
+    "color": "rgb(225, 229, 229)"
+   },
+   {
+    "t": "Partnership",
+    "x": 17,
+    "y": 163,
+    "fs": "16.5984px",
+    "color": "rgb(225, 229, 229)"
+   },
+   {
+    "t": "Become a Partner",
+    "x": 17,
+    "y": 242,
+    "fs": "12.4488px",
+    "color": "rgb(8, 8, 8)"
+   },
+   {
+    "t": "Apply for Access",
+    "x": 17,
+    "y": 296,
+    "fs": "14.5236px",
+    "color": "rgb(225, 229, 229)"
+   }
+  ],
+  "menuStyle": {
+   "color": "rgb(225, 229, 229)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "radius": "0px",
+   "padding": "116.189px 24.8976px 20.748px 16.5984px",
+   "fs": "14.5236px",
+   "fw": "500",
+   "lh": "18.8807px",
+   "ls": "-0.0435708px",
+   "ff": "Neuemontreal, Arial, sans-serif",
+   "transition": "transform 0.5s",
+   "opacity": "1",
+   "outline": "rgb(225, 229, 229) none 0px",
+   "outlineOffset": "0px",
+   "boxShadow": "none",
+   "transform": "matrix(1, 0, 0, 1, 0, 0)",
+   "h": 360.5,
+   "w": 390
+  }
+ }
+}
