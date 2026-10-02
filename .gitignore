@@ -11,3 +11,6 @@ research/**/_slices/
 research/**/screenshots/pw/
 .claude/skills/website-research-workspace/**/*.webm
 research/**/*.webm
+# 網站完整的原始碼打包檔不進版控（證據用 source/*-excerpts.md 的摘錄）
+research/**/source/assets/
+research/**/source/index.html
