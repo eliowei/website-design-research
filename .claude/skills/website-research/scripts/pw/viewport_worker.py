@@ -66,6 +66,9 @@ def main():
         if cap:  # 先記下首屏結果：之後就算被強制中止，首屏證據仍然算數
             C.record(site, w, 'screenshot', 'partial' if cap['hero']['status'] != 'unavailable' else 'unavailable',
                      f'首屏 {cap["hero"]["status"]}；分段截圖尚未完成')
+        # 先盤點 DOM／CSS／CTA：便宜又重要，不要讓很慢的捲動截圖把它們擠掉
+        inv = step(site, w, 'dom', inspect_visible.run, page, ctx) if deadline.ok(15) else None
+        cta = step(site, w, 'cta', measure_cta.run, page, ctx, inv) if inv else None
         max_shots = {1440: 10, 390: 8, 768: 4}[w] if not reduced else {1440: 6, 390: 4, 768: 2}[w]
         seg = None
         if deadline.ok(40):
@@ -83,12 +86,15 @@ def main():
             C.record(site, w, 'screenshot', 'partial', f'{states.count("unavailable")}/{len(states)} 張失敗')
         else:
             C.record(site, w, 'screenshot', 'fallback', f'{states.count("fallback")} 張改用 CDP 擷取')
-        inv = step(site, w, 'dom', inspect_visible.run, page, ctx) if deadline.ok(15) else None
-        if inv is None and not deadline.ok(15):
-            for c in ('dom', 'css'):
-                C.record(site, w, c, 'skipped', '時間預算不足')
-        cta = step(site, w, 'cta', measure_cta.run, page, ctx, inv) if inv else None
+        if deadline.ok(30) and seg:  # 捲動後再盤點一次：把捲動時才出現的元素（seen）也算進來
+            inv2 = step(site, w, 'dom', inspect_visible.run, page, ctx)
+            if inv2:
+                inv = inv2
+                cta = step(site, w, 'cta', measure_cta.run, page, ctx, inv) or cta
         if inv is None:
+            for c in ('dom', 'css'):
+                if not C.wr_status.get_capability(C.wr_status.load(site), w, c):
+                    C.record(site, w, c, 'skipped', '時間預算不足')
             C.record(site, w, 'cta', 'unavailable', '沒有 DOM 資料')
         step(site, w, 'menu', measure_responsive.run, page, ctx, False)
         if w == 1440:

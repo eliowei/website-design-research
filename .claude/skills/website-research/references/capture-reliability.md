@@ -189,6 +189,8 @@ Value 決定「值不值得研究」，Feasibility 決定「這次能研究到�
 | Focus | 按 Tab | 依近似 Tab 順序 `focus({focusVisible: true})` | fallback |
 | 點擊（CTA、選單） | 原生點擊 | 頁面內 `click()` | 照結果 |
 
+幀率 < 5 時分段截圖最多 3 張（頭、中、尾），而且 DOM／CSS／CTA 在捲動前先盤點，避免很慢的截圖把它們擠掉。
+
 這是「優先用原生 wheel／pointer」的例外：原生輸入在這種網站會拖垮整個 pipeline，而改用的方式都會記成 fallback，報告看得出來。
 
 **重試上限**：每個動作最多 2 次（重試 1 次）。被網路政策擋住（`ERR_TUNNEL_CONNECTION_FAILED`、`ERR_BLOCKED_BY_CLIENT`、403）不重試、不繞過。

@@ -99,6 +99,7 @@ FPS_JS = r"""
 """
 SLOW_INPUT_SECONDS = 8   # 一次原生 wheel 超過這麼久，代表主執行緒太忙，改用不會卡住的方式
 LOW_FPS = 15             # 幀率低於這個值時，原生輸入事件可能卡住數十秒（瀏覽器要等畫面回應）
+VERY_LOW_FPS = 5         # 低於這個值時分段截圖最多 3 張
 
 
 def do_scroll(page, method, delta, vh, center, target):
@@ -190,6 +191,8 @@ def run(page, ctx, max_shots=10, prefix=None, capture_only=False):
     low_fps = fps is not None and fps < LOW_FPS
     st0 = C.evaluate(page, '() => window.__wr.scrollState()', default={})
     total = est_height(st0, vh)
+    if fps is not None and fps < VERY_LOW_FPS:
+        max_shots = min(max_shots, 3)  # 每張截圖可能要 20 秒以上：只拍頭、中、尾
     planned = 1 if total <= vh * 1.1 else min(max_shots, math.ceil(total / vh))
     targets = [0] if planned == 1 else [round(i * (total - vh) / (planned - 1)) for i in range(planned)]
 
