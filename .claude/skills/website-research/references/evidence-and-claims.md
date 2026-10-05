@@ -10,6 +10,7 @@
 5. 模式（Pattern）的判定
 6. 設計系統推論
 7. 常見錯誤
+8. 證據等級不是研究可靠度
 
 ## 1. 為什麼需要這些規則
 
@@ -29,9 +30,10 @@
 | `C-` | computed style、CSS 變數 | `C-h1`、`C-button.primary`、`C-var.--color-bg` | Playwright `getComputedStyle` 或讀 `:root` 的 CSS 變數（網站可直連時）。記下 viewport 寬度 |
 | `H-` | 原始 HTML／CSS／JS／檔名線索 | `H-01`（例如 `fallback-dark-glow.webp`）、`H-js-preloader`（程式碼裡的動畫設定值） | markdown 的圖片網址、meta、links；下載的 CSS／JS 摘錄。程式碼裡的 duration、easing 是**設定值**，不是量到的實際播放 |
 | `I-` | 互動紀錄 | `I-03`（hover 導覽列後出現下拉） | Playwright 操作或在瀏覽器內定時連拍（E1），或比對 Firecrawl 不同時間的截圖（E3）。`I-` 是「發生了什麼變化」的結論，連拍的每一張是 `S-`，`I-` 引用它們（例如「I-04：S-pw1440-load-03→07 標題升起」）。連拍只能證明「有變化、先後順序」；computed `transition` 是瀏覽器套用的設定值；實際播放時長要從 Web Animations API 的時間軸或錄影逐格量到才算實測 |
-| `X-` | 缺口 | `X-02`（截圖 y≥2716 空白） | `capture_tools.py blank`，或無法取得的資料 |
+| `X-` | 缺口 | `X-02`（截圖 y≥2716 空白） | `capture_tools.py blank`、`quality_check.py` 的缺口、能力狀態為 unavailable／unverified 的項目，或無法取得的資料 |
 
-`X-` 很重要：記下「看不到什麼」，第 6 階段的自我審查會用到。
+`X-` 很重要：記下「看不到什麼」，第 6 階段的自我審查會用到。`X-` 是「沒有證據」，不是「證據顯示沒有」：缺口裡的東西寫「未觀察到」，不能寫成「網站沒有」。
+Fallback 分段截圖（`screenshots/fb/`）是正式的 `S-` 證據：`S-fb-d-s03`。
 
 ## 3. 證據等級 E1–E5
 
@@ -116,3 +118,21 @@
 | 「這個 CTA 設計提高了轉換率」 | 沒有轉換資料。改寫成轉換機制（`[I]`：CTA 在 5 段結尾重複出現）＋轉換假設（`[H]`：假設訪客在任一段被說服都能立即行動；需要 analytics 才能驗證） |
 | 「這是一個高端精品品牌」 | 品牌定位是詮釋。改成「從單一字重、低彩度攝影與極短標題（證據 ID）可以觀察到，品牌可能想建立精品物件的形象」 |
 | 品牌節重新列出所有色碼與字級 | 視覺特徵寫在視覺節；品牌節只寫這些選擇共同傳達什麼，引用證據 ID |
+| 「中段沒有 CTA」（但中段截圖是空白） | 缺口不是證據。寫「中段是擷取缺口（X-03），CTA 是否存在未確認」 |
+| 「Capture C，所以這份研究的結論都不可靠」 | 可靠度管的是取得範圍，不是每一句話。有 E1 證據的結論仍然是 `[O]` |
+| 「這個網站可靠度 B」 | 可靠度描述的是這次研究，不是網站。寫「這次研究的 Overall 可靠度是 B」 |
+
+## 8. 證據等級不是研究可靠度
+
+```
+Evidence（S-、C-、I-…，各有 E1–E5）→ Claim（[O]/[I]/[H]…）→ Confidence（看這句話自己的證據）
+```
+
+- **證據等級 E1–E5**：一筆證據本身有多直接（瀏覽器算出、原始碼寫明、截圖量測、工具推估、目測）。
+- **結論層級 [O]/[I]/[H]/[VP]/[DP]**：一句結論是觀察、詮釋還是假設。
+- **Research Reliability**（Capture／Interaction／Responsive／DOM/CSS／Overall，A–D）：這次研究環境整體取得證據的完整度，由 `reliability.py` 產生（規則見 capture-reliability.md §7）。
+
+三者分開記錄，不能互相換算：
+- Reliability 低，不會把一句有 E1 證據的 `[O]` 降成 `[H]`；Reliability 高，也不會把 `[H]` 升成 `[O]`。
+- Reliability 影響的是**範圍性**結論：全頁有幾個 CTA、某元素存不存在、手機拿掉了什麼、「全部／沒有／只有」。對應面向低於 B 時，這類結論只能寫成「在取得的範圍內…」，並引用 `X-` 缺口。
+- 自我審查（report.md §10）要對照 Reliability：哪些結論落在 Reliability C／D 的面向裡、是否用了範圍性說法。

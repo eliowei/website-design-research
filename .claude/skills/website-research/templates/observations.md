@@ -17,13 +17,15 @@
 
 ## 1. 擷取清單
 
-| 檔案 | 寬度 | 尺寸 | 時間／快取 | 備註 |
-| --- | --- | --- | --- | --- |
-| screenshots/desktop.png | 1920 | | | |
-| screenshots/tablet.png | 768 | | | |
-| screenshots/mobile.png | 360 | | | |
-| source/page.md | — | — | | Firecrawl markdown |
-| source/branding.json | — | — | | Firecrawl branding |
+| 檔案 | 寬度 | 尺寸 | 時間／快取 | Capture Quality | 備註 |
+| --- | --- | --- | --- | --- | --- |
+| screenshots/desktop.png | 1920 | | | <A–D（quality_check）> | |
+| screenshots/tablet.png | 768 | | | | |
+| screenshots/mobile.png | 360 | | | | |
+| screenshots/fb/、screenshots/pw/ 分段 | | | | <A–D（覆蓋率）> | <fallback／Playwright> |
+| source/page.md | — | — | | — | Firecrawl markdown |
+| source/branding.json | — | — | | — | Firecrawl branding |
+| source/capture-status.json | — | — | | — | 擷取品質、能力狀態、可靠度（工具寫入） |
 
 ## 2. 證據清單（只記錄看到什麼，不寫解讀）
 

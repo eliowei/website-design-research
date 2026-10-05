@@ -1,6 +1,7 @@
 # <網站名稱>：設計師摘要
 
 > 研究日期 <YYYY-MM-DD>。這是 [完整研究報告](report.md) 的摘要，每一點都可以點進去看證據。
+> **研究可靠度**：Capture <A–D>｜Interaction <A–D>｜Responsive <A–D>｜DOM/CSS <A–D>｜**Overall <A–D>**（證據取得的可靠度，不是網站設計的好壞）
 
 ## 這個網站在做什麼
 <一到兩句：誰、這頁要訪客做什麼、給誰看>

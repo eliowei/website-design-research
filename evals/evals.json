@@ -96,6 +96,71 @@
         "B06 不重複：品牌面向沒有重新列出視覺面向已寫的色碼與字級；UX 面向沒有重寫 CTA 策略",
         "B07 篇幅：summary.md 仍在一頁內（約 60 行以內），沒有因為新增面向而明顯變長"
       ]
+    },
+    {
+      "id": 5,
+      "name": "daily-capture-quality-fallback",
+      "prompt": "用 Daily 看一下 https://www.usavionix.com/ ，它的首頁好像是一整段捲動動畫。",
+      "expected_output": "Daily 一頁摘要。Firecrawl 整頁截圖大段空白時，先判定 Capture Quality（低於 A），啟動分段擷取 fallback，把 fallback 截圖當證據；救不回來的區域寫「未觀察到」而不是「沒有」；開頭有研究可靠度（Capture、Responsive、Overall），並說明它不是網站評分。",
+      "files": [],
+      "assertions": [
+        "R01 擷取品質：source/capture-status.json 有 firecrawl-desktop 與 firecrawl-mobile 的 Capture Quality 紀錄，等級與截圖實際空白程度相符（USAvionix 首屏以下空白 → 不是 A）",
+        "R02 啟動 fallback：Capture Quality 低於 A 時，有 fallback 分段截圖（screenshots/fb/ 或等效的分段擷取），並記錄 fallback 後的等級；沒有做 fallback 時寫明原因（例如網站無法直連）",
+        "R03 fallback 是證據：summary.md 至少一個結論引用 fallback 截圖（例如（截圖：fb-d-s03）），而不是只標（推測）",
+        "R04 缺口寫法：擷取缺口內的內容寫「未觀察到」或等效說法，沒有寫成「沒有」「不存在」「只有」",
+        "R05 可靠度欄位：summary.md 開頭有研究可靠度，包含 Capture、Responsive、Overall，Interaction 與 DOM/CSS 標示 Daily 不量測",
+        "R06 可靠度不是評分：可靠度旁有「證據取得的可靠度，不是網站設計的好壞」或等效說明；全文沒有把可靠度寫成網站分數",
+        "R07 不做量測：Daily 沒有產生 DOM／CSS／hover／focus 量測檔（source/pw/dom-css-*.json 等）",
+        "R08 引用驗證：validate_refs.py 對這個網站資料夾通過（引用的截圖都存在）",
+        "B07 篇幅：summary.md 仍在一頁內（約 60 行以內）"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "standard-graceful-degradation",
+      "prompt": "把 usavionix.com 升級成 Standard，量不到的部分沒關係，但要講清楚哪些有量到。",
+      "expected_output": "先做 Feasibility Preflight，再用 run_standard.py 量測；某個寬度或能力失敗時照能力狀態降級寫報告，不中止研究；notes.md 開頭有研究可靠度與能力狀態表；未驗證的行為寫「未驗證」；Daily 推測逐項證實／修正／推翻。",
+      "files": [],
+      "assertions": [
+        "S01 預檢：source/preflight.json 存在，notes.md 開頭寫出 Feasibility 與採用的範圍（full／reduced）",
+        "S02 用工具量測：source/pw/ 有 run_standard.py 的輸出（capture-*.json、segments-*.json、dom-css-*.json、cta-*.json、run-summary.json），不是臨時腳本的單一檔案",
+        "S03 時間上限：run-summary.json 中每個寬度的秒數不超過該寬度預算＋30 秒；整體不超過 --budget＋60 秒",
+        "S04 不單點失敗：至少一個寬度或能力失敗時，其他寬度仍有結果，notes.md 仍寫完所有面向",
+        "S05 能力狀態表：notes.md 開頭有研究可靠度一行＋能力狀態表（截圖、捲動、DOM、CSS、CTA、hover、focus、CTA 點擊、選單 × 1440／768／390）",
+        "S06 降級寫法：狀態為 unverified／unavailable 的能力，對應的行為在 notes.md 寫「未驗證」或「未取得」，沒有寫成確定的事實",
+        "S07 hover 內層：hover 結論引用 hover-1440.json 的變化節點；若變化在子元素（span／svg／::before），有寫出是哪一層",
+        "S08 只量可見元素：CTA 次數引用 cta-<寬度>.json，並註明排除了隱藏複本（hiddenDuplicatesExcluded）",
+        "S09 Daily 驗證表：有「Daily 推測的驗證結果」，每項標證實／修正／推翻並附來源",
+        "R08 引用驗證：validate_refs.py 對這個網站資料夾通過"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "standard-selection-value-vs-feasibility",
+      "prompt": "今天 Daily 研究了 usavionix.com、palmo.co.in、crency.agency、thetiebreak.merci-michel.com、mj.kevinlagier.com（research/ 底下都有 summary.md），從中選 2 個做 Standard，告訴我為什麼。",
+      "expected_output": "分開判斷 Research Value（8 項）與 Research Feasibility（preflight）；候選先依 Value 排序、再預檢，從可量測候選選 2 個；低可量測但價值極高的網站最多佔 1 個名額且縮小範圍；寫出選站表與每站理由。",
+      "files": [],
+      "assertions": [
+        "V01 兩個維度：回覆或總覽有選站表，每個候選同時列出 Research Value（分數或逐項）與 Feasibility（High／Medium／Low／Blocked）",
+        "V02 Value 不等於不確定：選擇理由沒有只用「Daily 最不確定」當唯一理由；Daily uncertainty 只算 Value 的一項",
+        "V03 預檢有做：被考慮的候選都有 source/preflight.json（或說明為什麼沒預檢）",
+        "V04 從可量測中選：選出的網站 Feasibility 為 High／Medium；若選了 Low，符合例外條件（Value ≥ 12/16 且明顯高於第 2 名可量測候選）並寫明縮小範圍與時間上限",
+        "V05 Blocked 不選：Feasibility 為 Blocked 的網站沒有被選進 Standard",
+        "V06 不永久排除：沒有寫出「WebGL／3D 網站不適合研究」這類永久排除的規則"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "reliability-separate-from-evidence",
+      "prompt": "幫我看一下 https://crency.agency/ 的 Daily 摘要可靠嗎？截圖有很多空白，是不是整份都不能信？",
+      "expected_output": "說明 Research Reliability（取得證據的完整度）和單一結論的確定程度是兩件事：截圖空白只降級缺口區域與範圍性結論，首屏等有證據的結論不受影響；可靠度不是網站評分；建議 fallback 或 Standard 補救。",
+      "files": [],
+      "assertions": [
+        "E01 分開兩件事：回覆區分「研究可靠度（Capture 等）」與「單一結論的證據」，沒有說「整份都不可信」",
+        "E02 指出受影響的範圍：說明哪些結論落在擷取缺口或範圍性說法（例如 CTA 次數、某段是否存在）而需要保留",
+        "E03 不是評分：沒有把可靠度說成網站設計的好壞或分數",
+        "E04 補救方法：提出 fallback 分段擷取或升級 Standard 的具體做法（工具或步驟）"
+      ]
     }
   ]
 }

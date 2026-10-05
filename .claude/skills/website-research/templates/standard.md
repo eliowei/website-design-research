@@ -3,7 +3,13 @@
 - **網址**：<url>　**研究日期**：<YYYY-MM-DD>
 - **資料來源**：Firecrawl（1920、360）、Playwright（1440、768、390；量測在 `source/pw/`，截圖在 `screenshots/pw/`）
 - **限制**：<連不上、截圖空白、沒有測到的互動…>
+- **Feasibility**：<High／Medium／Low（preflight 的理由）；範圍 full／reduced>
 
+<貼上 `reliability.py --mode standard --markdown` 的輸出：研究可靠度一行＋能力狀態表>
+
+能力狀態不是 ok 的部分照降級寫：unverified／unavailable 的行為寫「未驗證」，缺口裡的內容寫「未觀察到」，不寫「沒有」。研究可靠度是證據取得的可靠度，不是網站設計的評分。
+
+截圖名稱寫完整（`pw1440-s07`、`int1440-hover-1-after`、`fb-d-s03`），範圍寫 `pw1440-s01～pw1440-s05`，收尾用 `validate_refs.py` 檢查。
 每個結論後面用括號標來源：`（截圖：pw1440-hero）`、`（CSS：h1）`、`（DOM）`、`（互動：hover CTA）`、`（CTA 清單）`、`（文案：h1）`、`（branding）`；推出來的標 `（推測）`。
 不寫「提高了轉換率」這類效果；品牌定位與客群除非網站寫明，都標（推測）或寫「從……可以觀察到」。
 
