@@ -4,6 +4,8 @@
 - **證據來源**：[observations.md](observations.md)（本報告只引用證據 ID，不重貼內容）
 
 > **研究範圍與限制**：<資料來源、無法取得的資料（X-…）、對結論的影響>
+>
+> **研究可靠度**：<`reliability.py --mode deep --markdown` 的輸出>。這是證據取得的可靠度，不是網站設計的評分；單一結論的確定程度仍看它自己的證據等級（E1–E5）與層級標記。
 
 ## 1. 商業／轉換
 <依 references/analysis-dimensions.md §1，每句標 [O]/[I]/[H] 並附證據 ID。CTA 次數與位置引用 observations.md §3。只寫轉換策略、機制、假設（[H]）與可觀察的阻力，不寫轉換效果>

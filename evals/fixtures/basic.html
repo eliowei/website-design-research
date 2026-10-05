@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fixture: basic</title>
+<style>
+:root{--brand:#2244aa;--radius:999px}
+body{margin:0;font:16px/1.5 sans-serif;color:#111}
+header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;gap:24px;padding:0 24px;background:#fff;z-index:5}
+header nav a{color:#111;text-decoration:none}
+.roll{display:inline-block;overflow:hidden;height:1.5em}
+.roll span{display:block;transition:transform .3s}
+.roll:hover span{transform:translateY(-100%)}
+.btn{display:inline-flex;gap:8px;align-items:center;padding:12px 24px;border-radius:var(--radius);background:var(--brand);color:#fff;text-decoration:none}
+.btn .label{transition:color .2s}
+.btn:hover .label{color:#ffe066}
+.btn:hover svg{transform:translateX(4px)}
+.btn svg{transition:transform .2s}
+.btn:focus-visible{outline:3px solid #ffb000;outline-offset:2px}
+.mobile-only{display:none}
+.burger{display:none}
+#menu{display:none;position:fixed;inset:64px 0 0 0;background:#fff;padding:24px}
+#menu.open{display:block}
+section{min-height:900px;padding:96px 24px;border-top:1px solid #ddd}
+h1{font-size:64px;margin:0}
+@media (max-width:600px){header nav{display:none}.burger{display:block}.desktop-only{display:none}.mobile-only{display:inline-flex}h1{font-size:36px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head>
+<body>
+<header><strong>Fixture</strong>
+<nav><a class="roll" href="/about"><span>About</span><span>About</span></a> <a class="roll" href="/work"><span>Work</span><span>Work</span></a></nav>
+<button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu" onclick="document.getElementById('menu').classList.toggle('open');this.setAttribute('aria-expanded','true')">☰</button>
+</header>
+<div id="menu"><a href="/about">About</a><br><a href="/work">Work</a><br><a href="/contact">Contact</a></div>
+<main>
+<section id="hero"><h1>Build something</h1><p>Fixture page for website-research tools.</p>
+<a class="btn desktop-only" href="/signup" data-cta="hero"><span class="label">Get started</span><svg width="12" height="12"><rect width="12" height="12" fill="#fff"/></svg></a>
+<a class="btn mobile-only" href="/signup" data-cta="hero-m"><span class="label">Get started</span></a>
+<a class="btn" href="/signup" style="display:none">Get started</a>
+</section>
+<section id="features"><h2>Features</h2><p>Lorem ipsum.</p></section>
+<section id="pricing"><h2>Pricing</h2><a class="btn" href="/signup"><span class="label">Get started</span></a></section>
+<section id="contact"><h2>Contact</h2><a href="/contact">Talk to us</a></section>
+</main>
+</body></html>

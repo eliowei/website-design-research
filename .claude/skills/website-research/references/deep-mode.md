@@ -3,7 +3,8 @@
 只有選了 Deep 模式才讀這份。SKILL.md 的共同規則（研究範圍、檔案位置、子代理）仍然適用。
 Deep 的目標是「每個結論都能回答：你怎麼知道？有多確定？」，代價是時間：單站約 15–40 分鐘、15–30 萬 token。
 
-開始前先讀 [`evidence-and-claims.md`](evidence-and-claims.md)（證據 ID、證據等級 E1–E5、結論層級），
+開始前先讀 [`evidence-and-claims.md`](evidence-and-claims.md)（證據 ID、證據等級 E1–E5、結論層級）與
+[`capture-reliability.md`](capture-reliability.md)（Capture Quality、fallback、失敗與逾時規則、Research Reliability），
 第 3 階段再讀 [`analysis-dimensions.md`](analysis-dimensions.md)。
 
 Deep 的檔案結構：
@@ -37,6 +38,7 @@ research/<網域>/
 
 - markdown 存成 `source/page.md`（之後用行號當證據 `M-L42`），branding 存成 `source/branding.json`，links 存成 `source/links.json`。過長又和設計無關的欄位（例如 logo 的 data URI）可以省略，但要在檔內註明。
 - 截圖網址是暫時的，立刻用 curl 下載到 `screenshots/`。
+- 每張整頁截圖下載後跑 `quality_check.py image … --record`；低於 A 就照 capture-reliability.md §3 做 fallback 分段擷取，再登記 `X-` 缺口。
 - 遇到速率限制就分開送請求，並在擷取清單註明。
 - **固定寬度**：兩個工具的寬度不同，各自固定下來，比較只在同一工具、同一寬度內做：
 
@@ -50,7 +52,8 @@ research/<網域>/
   先用 `waitFor` 加大到超過進場時間再拍；仍然不穩定時，Firecrawl 截圖只拿來證明「不同時間點畫面不同」，
   穩定狀態的截圖改由 Playwright 等到 `document.getAnimations()` 全部結束（或網站加上「已就緒」的 class）後再拍，並登記 `X-` 說明。
 
-**可以直連網站時**（先用 `curl -sI <網址>` 確認），再用 Playwright（Chromium 在 `/opt/pw-browsers`，不要執行 `playwright install`）補上 E1 證據：
+**可以直連網站時**（先用 `curl -sI <網址>` 確認），先跑 `scripts/pw/preflight.py` 與 `scripts/pw/run_standard.py` 取得三寬度的基本量測（截圖、捲動、DOM、CSS、CTA、hover、focus、選單，各有時間上限，失敗會降級而不是中止），
+再用 Playwright（Chromium 在 `/opt/pw-browsers`，不要執行 `playwright install`）補上 Deep 需要的其他 E1 證據；手寫的量測同樣要有逾時、最多重試一次、只量看得見的元素：
 - `getComputedStyle`（body、h1–h3、主要／次要按鈕、連結），以及 `:root` 上的 CSS 變數（讀得到就是最直接的 tokens 證據）。
 - **CTA 清單**：三個寬度各列出所有**可見**的 CTA（按鈕與主要行動連結）：文字、所在段落、頁面 y 座標、連結目標（`href` 或點擊後實際發生什麼）、主要／次要樣式。存成 `source/pw/cta-<寬度>.json`，每個 CTA 是一筆 `C-`。
 - **轉換相關區塊**：價格、FAQ、見證／客戶 logo／數據／認證、表單出現的段落與 y 座標，以及表單欄位數。
@@ -121,7 +124,8 @@ python "$SCRIPT" blank screenshots/desktop.png
 到這裡才寫：一句話總結（要同時回答「想達成什麼商業目標、想讓誰產生什麼感受、怎麼透過視覺／UX／動態／響應式實現」）、可遷移的設計原則 `[DP]`、設計取捨、最值得帶走的一件事。
 每條原則都要指出來自哪個 VP。不寫評分表：沒有依據的分數就是主觀評語。
 
-然後回答範本 §10 的六個自我審查問題（證據等級分布、單一證據的結論、無法觀察的維度、重述而非引用、轉換與品牌的說法是否越界、下一次要補的證據）。
+然後回答範本 §10 的六個自我審查問題（證據等級分布、單一證據的結論、無法觀察的維度、重述而非引用、轉換與品牌的說法是否越界、下一次要補的證據），
+並對照 Research Reliability：落在 C／D 面向裡的範圍性說法（「全部」「沒有」「只有」）要改寫或刪除。
 這一步讓讀者知道哪些結論可以直接用、哪些要先驗證。
 
 ### 設計師摘要（summary.md）
@@ -135,6 +139,7 @@ report.md 為了可查核，充滿證據 ID 和層級標記，設計師讀起來
 - 摘要裡的每個絕對或否定說法（「全部」「沒有」「只有」），都要回到**截圖本身**再看一次，不能只對照 observations.md：文字紀錄可能本來就寫錯。
 - 寫摘要時發現 report.md 有錯，先回頭修正 report.md（和相關的 VP），再寫摘要。摘要不能和報告說法不一致。
 
+寫完後跑 `reliability.py --mode deep --markdown --write` 與 `validate_refs.py`，把可靠度放進 report.md 與 summary.md 開頭。
 最後在 `research/README.md` 的索引表加一行（欄位：網站｜研究日期｜連結），有 summary.md 就連到它，沒有才連 report.md；不要改動其他列。回覆使用者時給 3–5 點摘要和檔案路徑，以及最重要的不確定之處，不要把整份報告貼進對話。
 
 

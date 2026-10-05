@@ -9,6 +9,7 @@
   python capture_tools.py blank <截圖> [--min 300]
       找出高度 ≥ min 像素、幾乎單色的區段。截圖下半部空白通常代表內容要捲動才進場，
       這時下半頁不能用截圖當證據，要在報告裡說明。
+      要判斷整張截圖的 Capture Quality（A–D）並決定要不要 fallback，用 quality_check.py。
 
 需要 Pillow：pip install pillow
 """
