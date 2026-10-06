@@ -1,0 +1,96 @@
+{
+ "viewport": 1440,
+ "count": 4,
+ "by_text": {
+  "Cart (0)": 1,
+  "Privacy Policy": 1,
+  "Essential Only": 1,
+  "Accept All": 1
+ },
+ "by_href": {
+  "/us/cart": 1
+ },
+ "ctas": [
+  {
+   "text": "Cart (0)",
+   "href": "/us/cart",
+   "target": null,
+   "y": 17,
+   "section": {
+    "container": "nav",
+    "heading": null
+   },
+   "style": "link",
+   "persistent": "fixed",
+   "topmost": true,
+   "visibleNow": true,
+   "selector": {
+    "kind": "semantic",
+    "sel": "a[href=\"/us/cart\"]",
+    "nth": 0,
+    "unique": true
+   }
+  },
+  {
+   "text": "Privacy Policy",
+   "href": null,
+   "target": null,
+   "y": 805,
+   "section": {
+    "container": null,
+    "heading": null
+   },
+   "style": "primary",
+   "persistent": "fixed",
+   "topmost": true,
+   "visibleNow": true,
+   "selector": {
+    "kind": "aria",
+    "sel": "[aria-label=\"View privacy policy\"]",
+    "nth": 0,
+    "unique": true
+   }
+  },
+  {
+   "text": "Essential Only",
+   "href": null,
+   "target": null,
+   "y": 835,
+   "section": {
+    "container": null,
+    "heading": null
+   },
+   "style": "primary",
+   "persistent": "fixed",
+   "topmost": true,
+   "visibleNow": true,
+   "selector": {
+    "kind": "aria",
+    "sel": "[aria-label=\"Reject non-essential cookies\"]",
+    "nth": 0,
+    "unique": true
+   }
+  },
+  {
+   "text": "Accept All",
+   "href": null,
+   "target": null,
+   "y": 835,
+   "section": {
+    "container": null,
+    "heading": null
+   },
+   "style": "primary",
+   "persistent": "fixed",
+   "topmost": true,
+   "visibleNow": true,
+   "selector": {
+    "kind": "aria",
+    "sel": "[aria-label=\"Accept all cookies\"]",
+    "nth": 0,
+    "unique": true
+   }
+  }
+ ],
+ "_source": "2026-10-05 nightkidz.shop 實際量測（舊版 measure_cta 選中 cookie 橫幅的 Privacy Policy 當 Primary CTA）"
+}

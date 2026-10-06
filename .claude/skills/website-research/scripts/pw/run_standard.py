@@ -9,7 +9,7 @@
 - 子行程超過預算＋30 秒就整組強制結束（連同 Chromium），該寬度沒記錄到的能力標成 unavailable。
 - 某個寬度失敗不會中止其他寬度；剩餘預算不足 45 秒的寬度直接標成 skipped。
 - --scope auto：讀 source/preflight.json，可量測性 Low 時自動縮小範圍（截圖張數減半、hover 只量 3 個、
-  略過 768）。
+  略過 768、整體上限 480 秒）；Blocked 直接結束（結束碼 3），不做 Standard。
 - 結束時印出每個能力的狀態表與 Research Reliability，結果寫進 source/capture-status.json 與
   source/pw/run-summary.json。量測失敗不代表研究失敗：照狀態表降級寫報告即可。
 """
@@ -29,7 +29,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument('url')
     p.add_argument('site_dir')
-    p.add_argument('--budget', type=int, default=C.BUDGET['site'])
+    p.add_argument('--budget', type=int, default=None,
+                   help=f'全部寬度的時間上限（秒）；預設 full {C.BUDGET["site"]}、reduced {C.BUDGET["reduced_site"]}')
     p.add_argument('--viewports', default='1440,390,768')
     p.add_argument('--scope', choices=('auto', 'full', 'reduced'), default='auto')
     p.add_argument('--gpu', choices=('swiftshader', 'default'), default='swiftshader')
@@ -44,8 +45,15 @@ def main():
         vb[int(k)] = int(v)
     scope = o.scope
     pre = C.read_json(os.path.join(site, 'source', 'preflight.json'))
+    if pre and pre.get('feasibility') == 'Blocked':
+        print(f'Preflight 結果是 Blocked（{"；".join(pre.get("reasons", []))}）：這次不做 Standard，保留 Daily。')
+        sys.exit(3)
     if scope == 'auto':
         scope = 'reduced' if (pre and pre.get('feasibility') in ('Low',)) else 'full'
+    if o.budget is None:
+        o.budget = C.BUDGET['reduced_site'] if scope == 'reduced' else C.BUDGET['site']
+    elif scope == 'reduced':
+        o.budget = min(o.budget, C.BUDGET['reduced_site'])  # 低可量測不能拖垮其他 Standard
     viewports = [int(x) for x in o.viewports.split(',') if x]
     if scope == 'reduced' and 768 in viewports and o.viewports == '1440,390,768':
         viewports.remove(768)

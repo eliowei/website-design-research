@@ -2,7 +2,7 @@
 
 > <YYYY-MM-DD>｜<網址>｜模式：<Daily／Standard>｜<來源，例如：Awwwards 2026-09-26 Site of the Day>
 > <`reliability.py --mode daily`（Standard 用 `--mode standard`）`--markdown` 的第一行，例如：**研究可靠度**：Capture B｜Interaction —（Daily 不量測）｜Responsive C｜DOM/CSS —（Daily 不量測）｜**Overall C**（證據取得的可靠度，不是網站設計的好壞）>
-> **擷取**：桌機 <A–D>（<Firecrawl／fallback 分段 N 張>）、手機 <A–D>；缺口：<y 範圍，或「無」>
+> **擷取**（Final Capture Quality，`quality_check.py final`）：桌機 Initial <A–D> → Fallback <A–D／未做> → **Final <A–D>**；手機 Initial <A–D> → Fallback <…> → **Final <A–D>**；缺口：<y 範圍，或「無」>
 
 **這個網站在做什麼**：<一到兩句：誰、這一頁要訪客做什麼、給誰看>
 

@@ -1,0 +1,36 @@
+{
+ "viewport": 1440,
+ "target": {
+  "text": "Privacy Policy",
+  "href": null,
+  "target": null,
+  "y": 805,
+  "section": {
+   "container": null,
+   "heading": null
+  },
+  "style": "primary",
+  "persistent": "fixed",
+  "topmost": true,
+  "visibleNow": true,
+  "css": {
+   "bg": "rgba(0, 0, 0, 0)",
+   "color": "rgb(115, 115, 115)",
+   "radius": "0px",
+   "padding": "0px",
+   "size": "12px",
+   "weight": "400",
+   "transition": "color 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), text-decoration-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), fill 0.15s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.15s cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "selector": {
+   "kind": "aria",
+   "sel": "[aria-label=\"View privacy policy\"]",
+   "nth": 0,
+   "unique": true
+  }
+ },
+ "method": "js-click",
+ "result": "no_observable_change",
+ "url": "https://www.nightkidz.shop/us",
+ "_source": "2026-10-05 nightkidz.shop 舊版點擊紀錄：target 是 Privacy Policy、結果 no_observable_change，當時被記成 unverified 但原因寫成「沒有變化」，沒有指出選錯目標"
+}

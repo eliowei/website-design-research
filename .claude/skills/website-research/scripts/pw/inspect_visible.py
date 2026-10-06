@@ -40,7 +40,7 @@ INVENTORY_JS = r"""
     const rec = {id, tag: el.tagName.toLowerCase(), text: W.text(el), href: el.getAttribute('href'), target: el.getAttribute('target'),
       aria: el.getAttribute('aria-label'), expanded: el.getAttribute('aria-expanded'),
       box: W.box(el), inView: W.inView(el), topmost: W.inView(el) ? W.topmost(el) : null, seen: !!seen[id] || W.inView(el),
-      css: W.cs(el), buttonLike: W.buttonLike(el, s), persistent: W.persistent(el), section: W.section(el), selector: W.selector(el)};
+      css: W.cs(el), buttonLike: W.buttonLike(el, s), persistent: W.persistent(el), section: W.section(el), consent: W.consent(el), selector: W.selector(el)};
     items.push(rec);
     visibleKeys.add(key(rec.text, rec.href));
   }
@@ -48,7 +48,7 @@ INVENTORY_JS = r"""
   for (const [id, r] of Object.entries(seen)) {
     if (used.has(id) || ['h1', 'h2', 'h3'].includes(r.tag)) continue;
     items.push({id, tag: r.tag, text: r.text, href: r.href, aria: r.aria, expanded: r.expanded, box: {x: r.x, y: r.y, vy: r.vy, w: r.w, h: r.h}, inView: false, topmost: null,
-                seen: true, visibleNow: false, css: r.css, buttonLike: r.buttonLike, persistent: r.persistent, section: r.section, selector: r.selector});
+                seen: true, visibleNow: false, css: r.css, buttonLike: r.buttonLike, persistent: r.persistent, section: r.section, consent: r.consent || null, selector: r.selector});
     visibleKeys.add(key(r.text, r.href));
   }
   let hiddenDuplicates = 0;

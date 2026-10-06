@@ -5,9 +5,12 @@
 {
   "version": 1,
   "captures": {                      # 每次擷取的 Capture Quality（quality_check.py 寫入）
-    "firecrawl-desktop": {"grade": "C", "auto_grade": "C", "metrics": {...}, "gaps": [[y0, y1], ...]},
-    "fallback-desktop":  {"grade": "B", ...}
+    "firecrawl-desktop": {"grade": "C", "auto_grade": "C", "stage": "primary", "metrics": {...}, "gaps": [[y0, y1], ...]},
+    "fallback-desktop":  {"grade": "B", "stage": "fallback", "attempts": [{...先前同名的嘗試...}]}
   },
+  "final_capture": {...},            # 證據集合判定的 Final Capture Quality（quality_check.py final 寫入）
+  "final_overrides": {...},          # 研究者對 Final 的覆寫（必須有理由）
+  "environment": {...},              # Research Environment Failure（例如 browser unsupported）
   "capabilities": {                  # 每個研究能力在每個寬度的狀態（Playwright 工具寫入）
     "1440": {"screenshot": {"status": "ok", "detail": "..."}, "scroll": {...}, "dom": {...}, ...},
     "390":  {...}
@@ -80,10 +83,38 @@ def get_capability(d, viewport, name):
     return d.get('capabilities', {}).get(str(viewport), {}).get(name, {}).get('status')
 
 
+def stage_of(key):
+    """擷取的階段：primary（Firecrawl、Playwright 正式量測）或 fallback（分段擷取、加長等待重拍）。"""
+    return 'fallback' if key.startswith('fallback') else 'primary'
+
+
 def set_capture(site_dir, key, record):
+    """記錄一次擷取。同一個 key 再記一次時，舊紀錄移到 attempts（證據集合，不覆蓋）。
+
+    Final Capture Quality 看的是「全部擷取（含歷次嘗試）」這個證據集合，不是最後一次結果，
+    所以任何一次擷取都不能被後來的擷取蓋掉（references/capture-reliability.md §2.1）。
+    """
     d = load(site_dir)
+    record = dict(record)
+    record.setdefault('stage', stage_of(key))
+    record.setdefault('t', time.strftime('%Y-%m-%dT%H:%M:%S'))
+    old = d['captures'].get(key)
+    if old:
+        hist = old.pop('attempts', [])
+        hist.append(old)
+        record['attempts'] = hist
     d['captures'][key] = record
     save(site_dir, d)
+
+
+def iter_captures(d):
+    """回傳 [(key, record)]：每個 key 的現行紀錄＋它歷次被取代的嘗試。"""
+    out = []
+    for k, v in d.get('captures', {}).items():
+        for old in v.get('attempts', []):
+            out.append((k, old))
+        out.append((k, v))
+    return out
 
 
 def event(site_dir, msg):

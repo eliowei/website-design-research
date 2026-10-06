@@ -9,7 +9,8 @@
                         [--override responsive=C --reason "理由"]
 
 讀 <網站資料夾>/source/capture-status.json（quality_check.py 與 scripts/pw/ 的工具寫入），算出：
-  Capture      主要內容（桌機）擷取的完整度：取所有桌機擷取中最好的 Capture Quality
+  Capture      主要內容（桌機）擷取的完整度：Final Capture Quality（證據集合：Initial＋Fallback，
+               見 quality_check.py final；不是最後一次擷取的等級）
   Interaction  hover、focus、CTA 點擊、選單是否實測到（Daily 不量測：N/A）
   Responsive   桌機／平板／手機的證據是否都拿到
   DOM/CSS      三個寬度的 DOM 與 computed style 是否拿到（Daily 不量測：N/A）
@@ -75,14 +76,19 @@ def cap_status(d, vp, name):
 
 
 def compute(d, mode):
-    caps = capture_grades(d)
+    # Capture 用證據集合判定的 Final Capture Quality（Initial＋Fallback），不是最後一次擷取
+    import quality_check
+    fin = quality_check.final_capture(d)
+    status = quality_check.research_status(fin)
     notes = []
-    capture = best(caps['desktop'])
+    capture = fin.get('desktop', {}).get('grade')
     if capture is None:
-        capture = best(caps['other'] + caps['mobile'] + caps['tablet'])
+        capture = best([fin[k]['grade'] for k in ('other', 'mobile', 'tablet') if k in fin])
         notes.append('沒有桌機擷取紀錄' + ('，Capture 改用其他寬度' if capture else ''))
     capture = capture or 'D'
-    mobile_best = best(caps['mobile'])
+    mobile_best = fin.get('mobile', {}).get('grade')
+    if status == 'environment-failure':
+        notes.append('Research Environment Failure：主要內容只取得被拒絕的頁面（例如 browser unsupported）')
 
     if mode == 'daily':
         responsive = worse(capture, mobile_best) if mobile_best else 'D'
@@ -134,8 +140,11 @@ def compute(d, mode):
     elif ORDER.index(overall) < ORDER.index(cap) - 1:
         overall = ORDER[ORDER.index(cap) - 1]
     weakest = [k for k, g in dims.items() if g == worse(*in_scope)]
+    if status == 'environment-failure':
+        overall = 'D'
     return {'mode': mode, **dims, 'overall': overall, 'weakest': weakest, 'notes': notes,
-            'overrides': overrides}
+            'overrides': overrides, 'research_status': status,
+            'final_capture': {k: {x: v.get(x) for x in ('initial', 'fallback', 'grade', 'basis', 'status')} for k, v in fin.items()}}
 
 
 LABEL = {'capture': 'Capture', 'interaction': 'Interaction', 'responsive': 'Responsive', 'domcss': 'DOM/CSS'}
@@ -145,7 +154,9 @@ def markdown(r, d):
     def show(k):
         g = r[k]
         return f'{LABEL[k]} {g}' if g in ORDER else f'{LABEL[k]} —（Daily 不量測）'
-    line = ('**研究可靠度**：' + '｜'.join(show(k) for k in ('capture', 'interaction', 'responsive', 'domcss'))
+    prefix = '**研究環境失敗（Research Environment Failure）**：擷取到的是網站拒絕研究環境的頁面，不是網站內容。\n' \
+        if r.get('research_status') == 'environment-failure' else ''
+    line = prefix + ('**研究可靠度**：' + '｜'.join(show(k) for k in ('capture', 'interaction', 'responsive', 'domcss'))
             + f'｜**Overall {r["overall"]}**（證據取得的可靠度，不是網站設計的好壞）')
     if r['mode'] == 'daily':
         return line
