@@ -23,7 +23,7 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import common as C  # noqa: E402
-from quality_check import blank_runs, analyze_segments, grade_segments, painted_ratio  # noqa: E402
+from quality_check import blank_runs, analyze_segments, grade_segments, painted_ratio, environment_failure  # noqa: E402
 import wr_status  # noqa: E402
 
 CONTENT_JS = r"""
@@ -70,7 +70,7 @@ SEEN_JS = r"""
       aria: el.getAttribute('aria-label'), expanded: el.getAttribute('aria-expanded'),
       y: Math.round(r.top + progress), vy: Math.round(r.top), x: Math.round(r.x), w: Math.round(r.width), h: Math.round(r.height),
       css: W.cs(el), selector: W.selector(el), persistent: W.persistent(el), section: W.section(el),
-      buttonLike: W.buttonLike(el, getComputedStyle(el)), seenAt: progress};
+      buttonLike: W.buttonLike(el, getComputedStyle(el)), consent: W.consent(el), seenAt: progress};
     n++;
   }
   return n;
@@ -351,13 +351,24 @@ def run(page, ctx, max_shots=10, prefix=None, capture_only=False):
     C.write_json(json_path, data)
     m = analyze_segments(json_path)
     g, why = grade_segments(m)
-    wr_status.set_capture(site, cap_key, {'kind': 'segments', 'auto_grade': g, 'grade': g, 'reasons': why,
-                                          'metrics': {k: v for k, v in m.items() if k != 'gaps'}, 'gaps': m['gaps'],
-                                          'method': method})
+    rec = {'kind': 'segments', 'auto_grade': g, 'grade': g, 'reasons': why,
+           'metrics': {k: v for k, v in m.items() if k != 'gaps'}, 'gaps': m['gaps'], 'method': method}
+    page_info = C.evaluate(page, '() => ({url: location.href, title: document.title, '
+                                 'text: document.body ? document.body.innerText.slice(0, 2000) : ""})', default={}) or {}
+    env = environment_failure(page_info.get('url'), page_info.get('title'), page_info.get('text'))
+    if env:  # 研究環境被拒絕（例如 browser unsupported）：這組分段截圖不是網站內容
+        rec.update(grade='D', auto_grade='D', environment_failure=env,
+                   reasons=[f'Research Environment Failure（{env["type"]}）：{env["evidence"]}'] + why)
+        g = 'D'
+        d0 = wr_status.load(site)
+        e0 = d0.get('environment') or {'failures': []}
+        e0['failures'].append({'capture': cap_key, **env})
+        wr_status.set_key(site, 'environment', e0)
+    wr_status.set_capture(site, cap_key, rec)
     if not capture_only:
         C.record(site, w, 'scroll', status, detail or f'方式：{method}', method=method, moved_by=moved_by)
     return {'status': status, 'detail': detail, 'grade': g, 'segments': len(segs), 'planned': planned,
-            'json': json_path, 'shot_states': shot_states, 'method': method}
+            'json': json_path, 'shot_states': shot_states, 'method': method, 'environment_failure': env}
 
 
 def main():
@@ -382,6 +393,11 @@ def main():
         r = run(page, {'viewport': o.viewport, 'site_dir': o.site_dir, 'deadline': deadline},
                 max_shots=o.max_shots, prefix=o.prefix, capture_only=o.capture_only)
     print(f'捲動：{r["status"]}（{r["method"]}）{r["detail"]}；分段 {r["segments"]}/{r["planned"]}；Capture Quality {r["grade"]}')
+    if r.get('environment_failure'):
+        e = r['environment_failure']
+        print(f'Research Environment Failure（{e["type"]}）：{e["evidence"]}')
+    if o.capture_only:
+        print('下一步：python quality_check.py final <網站資料夾>（Initial＋Fallback 一起判定 Final Capture Quality）')
     print(f'結果：{r["json"]}')
 
 

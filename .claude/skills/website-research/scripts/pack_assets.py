@@ -162,6 +162,9 @@ def main():
     site = o.site_dir.rstrip('/')
     out_img = os.path.join(o.out_dir, 'img')
     os.makedirs(out_img, exist_ok=True)
+    stale = os.path.join(o.out_dir, 'manifest.json')
+    if os.path.exists(stale):  # 這次打包失敗時，不能讓上一次的 manifest 被誤當成這次的結果
+        os.remove(stale)
     chosen, referenced, skipped, count = select(site, o.max, parse_quota(o.quota))
     manifest = {'images': [], 'data': None, 'referenced': referenced, 'skipped': skipped, 'categories': count}
     for rel in chosen:

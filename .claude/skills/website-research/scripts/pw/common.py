@@ -29,6 +29,7 @@ VIEWPORTS = {
 # 預設時間預算（秒）。改這裡就要同步改 references/capture-reliability.md §6。
 BUDGET = {
     'site': 720,                                  # run_standard 全部 viewport 加總
+    'reduced_site': 480,                          # 低可量測（Low）縮小範圍時的上限
     'viewport': {1440: 300, 390: 240, 768: 150},  # 單一 viewport
     'hard_kill_grace': 30,                        # 超過 viewport 預算多久後強制結束子行程
     'goto': 45,
@@ -284,6 +285,22 @@ WR_JS = r"""
     const sec = el.closest('section,header,footer,nav,main > *,article');
     const h = sec && sec.querySelector('h1,h2,h3');
     return {container: sec ? (sec.tagName.toLowerCase() + (sec.id ? '#' + sec.id : '')) : null, heading: h ? W.text(h).slice(0, 60) : null};
+  };
+  // 元素是否在 cookie／consent 橫幅裡（Action Verification 的 Target Correctness 用）
+  W.CONSENT = /cookie|consent|gdpr|ccpa|onetrust|didomi|cookiebot|usercentrics|iubenda|quantcast|trustarc|osano|termly|\bcmp\b/i;
+  W.consent = (el) => {
+    for (let n = el, depth = 0; n && n !== document.body && depth < 12; n = n.parentElement, depth++) {
+      const attrs = [n.id, String(n.className || ''), n.getAttribute('aria-label') || '', n.getAttribute('aria-describedby') || '',
+                     n.getAttribute('data-testid') || ''].join(' ');
+      if (W.CONSENT.test(attrs)) return 'attr:' + attrs.trim().slice(0, 60);
+      const role = n.getAttribute('role');
+      const pos = getComputedStyle(n).position;
+      if (n !== el && (role === 'dialog' || role === 'alertdialog' || n.getAttribute('aria-modal') === 'true' || pos === 'fixed' || pos === 'sticky')) {
+        const txt = (n.innerText || '').slice(0, 800);
+        if (txt.length < 800 && /cookie|consent|gdpr/i.test(txt)) return 'text:' + txt.replace(/\s+/g, ' ').slice(0, 60);
+      }
+    }
+    return null;
   };
   W.buttonLike = (el, s) => {
     const bg = s.backgroundColor; const hasBg = bg && !/rgba?\(0, 0, 0, 0\)|transparent/.test(bg);

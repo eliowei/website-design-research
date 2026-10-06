@@ -92,13 +92,22 @@ def run(page, ctx, steps=8):
         status, detail = 'ok', f'{len(moved)} 步'
     else:
         status, detail = 'partial', f'只有 {len(moved)} 步'
+    # Action Verification：Target Correctness（焦點落在看得見的元素）→ Action Success（焦點真的移動）→
+    # Expected Outcome（有可見的焦點指示）。落在看不見元素的步驟不算驗證到的步驟。
+    good = [s for s in moved if s.get('visible') and s.get('indicator') != 'none-detected']
+    verification = {'steps': len(moved), 'verified_steps': len(good), 'on_hidden': len(hidden), 'no_indicator': len(no_ind),
+                    'verdict': 'verified' if len(good) >= 3 else ('unverified' if not good else 'partial')}
+    if status in ('ok', 'fallback') and len(good) < 3:
+        status = 'partial' if good else 'unverified'
+        detail += f'；只有 {len(good)} 步落在看得見、有焦點指示的元素（Action Verification）'
     if hidden:
         detail += f'；{len(hidden)} 次落在看不見的元素'
     if no_ind:
         detail += f'；{len(no_ind)} 次沒有偵測到 outline／box-shadow（需看截圖確認）'
     C.write_json(os.path.join(src, f'focus-{w}.json'), {'viewport': w, 'sequence': seq,
-                                                        'focusOnHidden': len(hidden), 'noIndicator': len(no_ind)})
-    C.record(ctx['site_dir'], w, 'focus', status, detail)
+                                                        'focusOnHidden': len(hidden), 'noIndicator': len(no_ind),
+                                                        'verification': verification})
+    C.record(ctx['site_dir'], w, 'focus', status, detail, verification=verification)
     return seq
 
 

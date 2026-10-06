@@ -7,6 +7,12 @@
                                 [--override B --reason "理由"] [--json]
       檢查一張全頁截圖：空白比例、最長空白、是否只拿到首屏、高度是否和頁面不符。
 
+  python quality_check.py image <截圖> ... [--page-url <最終網址>] [--page-title <標題>] [--page-text-file <markdown>]
+      加上擷取工具回報的網址／標題／內文，偵測 Research Environment Failure（browser unsupported、機器人驗證、被擋）。
+
+  python quality_check.py final <網站資料夾> [--override desktop=B --reason "依據 firecrawl-desktop＋fallback-desktop"]
+      以證據集合判定 Final Capture Quality：Initial（primary）＋所有 Fallback 一起看，不是取最後一次。
+
   python quality_check.py segments <segments.json> [--record <網站資料夾> --as fallback-desktop]
                                    [--override B --reason "理由"] [--json]
       檢查分段擷取（scroll_page.py 產生的 segments.json）的覆蓋率。
@@ -27,6 +33,7 @@
 import argparse
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -266,15 +273,140 @@ def grade_segments(m):
     return 'D', why
 
 
-def record(site_dir, key, kind, metrics, auto_grade, reasons, override=None, reason=None):
+def record(site_dir, key, kind, metrics, auto_grade, reasons, override=None, reason=None, environment=None):
     import wr_status
     rec = {'kind': kind, 'auto_grade': auto_grade, 'grade': override or auto_grade,
            'reasons': reasons, 'metrics': {k: v for k, v in metrics.items() if k != 'gaps'},
            'gaps': metrics.get('gaps', [])}
     if override:
         rec['override_reason'] = reason
+    if environment:
+        rec['environment_failure'] = environment
+        d = wr_status.load(site_dir)
+        env = d.get('environment') or {'failures': []}
+        env['failures'].append({'capture': key, **environment})
+        d['environment'] = env
+        wr_status.save(site_dir, d)
     wr_status.set_capture(site_dir, key, rec)
     return rec
+
+
+# ---------------------------------------------------------------- Research Environment Failure
+# 擷取到的不是網站本身，而是「研究環境被拒絕」的頁面：瀏覽器不支援、機器人驗證、存取被擋。
+# 這不是網站設計的問題，也不是一般的 Capture D：那一次擷取沒有任何網站內容可以研究。
+ENV_PATTERNS = [
+    ('unsupported-browser', re.compile(r'(browser|navigateur|navegador|browser wird)\s*(is|est|no es|wird)?\s*(not|non|nicht)?\s*'
+                                       r'(supported|support[ée]|compatible|unterst[üu]tzt)|unsupported browser|'
+                                       r'update your browser|upgrade your browser|browser not supported', re.I)),
+    ('bot-challenge', re.compile(r'verify (that )?you are (a )?human|checking (if the site connection is secure|your browser)|'
+                                 r'are you a robot|captcha|cf-challenge|just a moment\.\.\.|attention required', re.I)),
+    ('access-denied', re.compile(r'access denied|forbidden|request blocked|you have been blocked|not available in your (country|region)', re.I)),
+    ('javascript-required', re.compile(r'(please )?enable javascript|javascript is (required|disabled)|requires javascript', re.I)),
+]
+ENV_URL = re.compile(r'/(unsupported|browser-?not-?supported|old-?browser|outdated|blocked|captcha|challenge)(/|\?|$)', re.I)
+
+
+def environment_failure(url=None, title=None, text=None, http_status=None):
+    """擷取結果是不是 Research Environment Failure。回傳 {'type', 'evidence'} 或 None。
+
+    只看「被拒絕頁面」的明確訊號：網址被導到 /unsupported 之類、標題或內文是拒絕訊息、HTTP 401／403／429。
+    內文很長（> 1500 字）時只看標題與網址，避免網站正文剛好提到 captcha 這類字眼。
+    """
+    if http_status in (401, 403, 429):
+        return {'type': 'access-denied', 'evidence': f'HTTP {http_status}'}
+    if url and ENV_URL.search(url):
+        typ = 'unsupported-browser' if 'support' in url.lower() or 'browser' in url.lower() else 'access-denied'
+        return {'type': typ, 'evidence': f'被導向 {url}'}
+    hay = [('標題', title or '')]
+    if text and len(text) <= 1500:
+        hay.append(('內文', text))
+    for where, s in hay:
+        for typ, rx in ENV_PATTERNS:
+            m = rx.search(s)
+            if m:
+                return {'type': typ, 'evidence': f'{where}：「{m.group(0)}」'}
+    return None
+
+
+# ---------------------------------------------------------------- Final Capture Quality（證據集合）
+DEVICES = ('desktop', 'tablet', 'mobile')
+
+
+def device_of(key):
+    for dev in DEVICES:
+        if key.endswith(dev):
+            return dev
+    return 'other'
+
+
+def final_capture(d):
+    """以「證據集合」判定每個裝置的 Final Capture Quality。
+
+    規則（references/capture-reliability.md §2.1）：
+      1. 同一個裝置的所有擷取（primary、fallback、歷次嘗試）都是證據，不互斥；Final 不是「最後一次」的結果。
+      2. Final = 證據集合中能支撐的最好等級：一張 A 的分段擷取就足以讓 Final 成為 A，
+         失敗的 fallback（D）不會把已經取得的 B 拉下來。
+      3. Research Environment Failure 的擷取不算證據；某裝置只有這種擷取時，該裝置 status = environment-failure、Final D。
+      4. 多次擷取各自只涵蓋一部分、合起來更完整時，研究者可以用 final --override 調整（理由必填、要指出是哪些擷取）。
+    """
+    import wr_status
+    groups = {}
+    for key, rec in iter_all(d):
+        if not rec.get('stage'):  # 舊紀錄沒有 stage：依記錄名稱判斷（fallback-* 是 fallback）
+            rec = dict(rec, stage=wr_status.stage_of(key))
+        groups.setdefault(device_of(key), []).append((key, rec))
+    out = {}
+    overrides = d.get('final_overrides', {})
+    for dev, items in groups.items():
+        usable = [(k, r) for k, r in items if not r.get('environment_failure') and r.get('grade') in GRADE_ORDER]
+        env = [(k, r) for k, r in items if r.get('environment_failure')]
+        prim = [r.get('grade') for k, r in items if r.get('stage', 'primary') == 'primary']
+        fb = [r.get('grade') for k, r in items if r.get('stage') == 'fallback']
+        rec = {'initial': prim[0] if prim else None, 'fallback': fb,
+               'evidence': [{'capture': k, 'stage': r.get('stage', 'primary'), 'grade': r.get('grade'),
+                             'environment_failure': bool(r.get('environment_failure'))} for k, r in items]}
+        if usable:
+            best_k, best_r = min(usable, key=lambda kr: GRADE_ORDER.index(kr[1]['grade']))
+            rec.update(grade=best_r['grade'], basis=best_k, status='ok' if best_r['grade'] == 'A' else 'degraded',
+                       rule='證據集合中最好的擷取')
+        else:
+            rec.update(grade='D', basis=None, status='environment-failure' if env else 'failed',
+                       rule='只有研究環境被拒絕的擷取' if env else '沒有可用擷取')
+            if env:
+                rec['environment_failure'] = env[0][1]['environment_failure']
+        ov = overrides.get(dev)
+        if ov and rec['status'] != 'environment-failure':
+            rec.update(auto_grade=rec['grade'], grade=ov['grade'], override_reason=ov['reason'],
+                       status='ok' if ov['grade'] == 'A' else 'degraded', rule='研究者覆寫')
+        out[dev] = rec
+    return out
+
+
+def iter_all(d):
+    import wr_status
+    return wr_status.iter_captures(d)
+
+
+def research_status(final):
+    """整份研究的環境狀態：桌機（主要內容）只有環境失敗 → environment-failure。"""
+    dev = final.get('desktop') or final.get('other')
+    if dev and dev.get('status') == 'environment-failure':
+        return 'environment-failure'
+    return 'ok'
+
+
+def final_table(final):
+    rows = ['| 裝置 | Initial | Fallback | **Final** | 依據 |', '| --- | --- | --- | --- | --- |']
+    for dev in DEVICES + ('other',):
+        r = final.get(dev)
+        if not r:
+            continue
+        fb = '、'.join(g or '—' for g in r['fallback']) or '—'
+        basis = r.get('basis') or ('Research Environment Failure' if r['status'] == 'environment-failure' else '—')
+        if r.get('override_reason'):
+            basis += f'（覆寫：{r["override_reason"]}）'
+        rows.append(f'| {dev} | {r["initial"] or "—"} | {fb} | **{r["grade"]}** | {basis} |')
+    return '\n'.join(rows)
 
 
 def main():
@@ -285,6 +417,11 @@ def main():
     a.add_argument('--viewport-h', type=int)
     a.add_argument('--expected-height', type=int, help='DOM scrollHeight 或其他來源得知的頁面高度')
     a.add_argument('--content-chars', type=int, help='markdown 字數；很長卻只有一屏截圖 → 只拿到首屏')
+    a.add_argument('--page-url', help='擷取工具回報的最終網址（被導到 /unsupported 之類 → Research Environment Failure）')
+    a.add_argument('--page-title', help='擷取到的頁面標題')
+    a.add_argument('--page-text', help='擷取到的 markdown／內文（或用 --page-text-file）')
+    a.add_argument('--page-text-file')
+    a.add_argument('--http-status', type=int)
     b = sub.add_parser('segments')
     b.add_argument('path')
     for x in (a, b):
@@ -293,22 +430,40 @@ def main():
         x.add_argument('--override', choices=list(GRADE_ORDER))
         x.add_argument('--reason')
         x.add_argument('--json', action='store_true')
+    f = sub.add_parser('final', help='以證據集合判定 Final Capture Quality（Initial＋Fallback → Final）')
+    f.add_argument('site_dir')
+    f.add_argument('--override', action='append', default=[], metavar='裝置=等級',
+                   help='研究者覆寫 Final，例如 desktop=B；一定要配 --reason，並寫出依據哪些擷取')
+    f.add_argument('--reason')
+    f.add_argument('--json', action='store_true')
     o = p.parse_args()
+    if o.cmd == 'final':
+        return main_final(p, o)
     if o.override and not o.reason:
         p.error('--override 一定要寫 --reason（例如「看過切圖，空白是設計本身的留白」）')
+    env = None
     if o.cmd == 'image':
         m = analyze_image(o.path, o.viewport_h, o.expected_height, o.content_chars)
         g, why = grade_image(m)
+        text = o.page_text
+        if o.page_text_file:
+            text = open(o.page_text_file, encoding='utf-8').read()
+        env = environment_failure(o.page_url, o.page_title, text, o.http_status)
+        if env:
+            g, why = 'D', [f'Research Environment Failure（{env["type"]}）：{env["evidence"]}'] + why
     else:
         m = analyze_segments(o.path)
         g, why = grade_segments(m)
     final = o.override or g
+    if env and o.override:
+        p.error('Research Environment Failure 的擷取不能覆寫等級：那一次沒有拿到網站內容')
     if o.record:
         if not o.key:
             p.error('--record 需要 --as')
-        record(o.record, o.key, o.cmd, m, g, why, o.override, o.reason)
+        record(o.record, o.key, o.cmd, m, g, why, o.override, o.reason, environment=env)
     if o.json:
-        print(json.dumps({'grade': final, 'auto_grade': g, 'reasons': why, 'metrics': m}, ensure_ascii=False, indent=1))
+        print(json.dumps({'grade': final, 'auto_grade': g, 'reasons': why, 'metrics': m, 'environment_failure': env},
+                         ensure_ascii=False, indent=1))
         return
     names = {'A': 'Complete', 'B': 'Partial', 'C': 'Degraded', 'D': 'Failed'}
     print(f'Capture Quality：{final} — {names[final]}' + (f'（自動判定 {g}，研究者覆寫：{o.reason}）' if o.override else ''))
@@ -316,9 +471,38 @@ def main():
         print(f'  - {r}')
     if o.cmd == 'image' and m.get('gaps'):
         print('  缺口（原圖 y 範圍）：' + '、'.join(f'{a}-{b}' for a, b in m['gaps']))
-    if final != 'A':
-        print('建議：啟動 fallback 分段擷取（references/capture-reliability.md §3）；'
+    if env:
+        print('Research Environment Failure：研究環境被網站拒絕，不是網站設計的問題。用其他擷取方式（Playwright fallback）'
+              '再試一次；仍被拒絕就把這個網站記為「研究環境失敗」，不要寫設計結論（references/capture-reliability.md §6.1）。')
+    elif final != 'A':
+        print('下一步：Fallback Capture（references/capture-reliability.md §3），之後跑 quality_check.py final 重新判定；'
               '缺口內的內容寫「未觀察到」，不要寫成網站沒有。')
+
+
+def main_final(p, o):
+    import wr_status
+    d = wr_status.load(o.site_dir)
+    if o.override:
+        if not o.reason:
+            p.error('final --override 一定要寫 --reason，並指出依據哪些擷取')
+        ov = d.setdefault('final_overrides', {})
+        for item in o.override:
+            dev, _, g = item.partition('=')
+            if dev not in DEVICES or g not in GRADE_ORDER:
+                p.error(f'無法解析 {item}（裝置：desktop／tablet／mobile；等級 A–D）')
+            ov[dev] = {'grade': g, 'reason': o.reason}
+        wr_status.save(o.site_dir, d)
+    fin = final_capture(d)
+    status = research_status(fin)
+    wr_status.set_key(o.site_dir, 'final_capture', fin)
+    wr_status.set_key(o.site_dir, 'research_status', status)
+    if o.json:
+        print(json.dumps({'final_capture': fin, 'research_status': status}, ensure_ascii=False, indent=1))
+        return
+    print('Final Capture Quality（證據集合：Initial＋Fallback → Final）')
+    print(final_table(fin))
+    if status == 'environment-failure':
+        print('\n研究狀態：Research Environment Failure（主要內容只有被拒絕的頁面；不要寫設計結論，記入研究限制並補位）')
 
 
 if __name__ == '__main__':

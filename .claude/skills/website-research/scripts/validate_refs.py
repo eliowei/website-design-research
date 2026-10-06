@@ -136,6 +136,8 @@ def check(site_dir, manifest=None, day=None, domain=None):
     refs = collect_refs(site_dir, texts)
     packed = None
     if manifest:
+        if not os.path.exists(manifest):
+            return [f'manifest 不存在：{manifest}（pack_assets.py 可能以 Pipeline Error 結束，先修正再打包）'], refs
         with open(manifest, encoding='utf-8') as f:
             man = json.load(f)
         packed = {i['path'] for i in man.get('images', [])}

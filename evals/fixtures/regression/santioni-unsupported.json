@@ -1,0 +1,5 @@
+{
+ "_source": "2026-10-05 santionispirits.com：Firecrawl（桌機、手機）與 Playwright fallback 都被導向 /unsupported",
+ "firecrawl": {"url": "https://santionispirits.com/unsupported", "title": "Not Supported", "markdown": "# Your browser is not supported", "statusCode": 200},
+ "playwright": {"url": "https://santionispirits.com/unsupported", "title": "Not Supported", "text": "YOUR BROWSER IS NOT SUPPORTED"}
+}

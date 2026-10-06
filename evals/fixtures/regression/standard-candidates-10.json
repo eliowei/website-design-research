@@ -1,0 +1,192 @@
+{
+ "_source": "2026-10-05 實際 5 站（Value／preflight 照當天）＋5 個合成候選，模擬 Daily × 10 → Standard × 3",
+ "candidates": [
+  {
+   "domain": "brilean.com",
+   "url": "https://www.brilean.com/",
+   "value": {
+    "visual": 1,
+    "ux": 2,
+    "motion": 1,
+    "responsive": 2,
+    "business": 2,
+    "brand": 1,
+    "uncertainty": 2,
+    "learning": 2
+   }
+  },
+  {
+   "domain": "nightkidz.shop",
+   "url": "https://www.nightkidz.shop/",
+   "value": {
+    "visual": 1,
+    "ux": 1,
+    "motion": 2,
+    "responsive": 1,
+    "business": 2,
+    "brand": 2,
+    "uncertainty": 2,
+    "learning": 2
+   }
+  },
+  {
+   "domain": "designbomb.it",
+   "url": "https://www.designbomb.it/",
+   "value": {
+    "visual": 2,
+    "ux": 1,
+    "motion": 1,
+    "responsive": 1,
+    "business": 2,
+    "brand": 2,
+    "uncertainty": 2,
+    "learning": 2
+   }
+  },
+  {
+   "domain": "bleibtgleich.dev",
+   "url": "https://bleibtgleich.dev/",
+   "value": {
+    "visual": 2,
+    "ux": 1,
+    "motion": 2,
+    "responsive": 1,
+    "business": 1,
+    "brand": 2,
+    "uncertainty": 1,
+    "learning": 2
+   }
+  },
+  {
+   "domain": "spykercars.com",
+   "url": "https://www.spykercars.com/",
+   "value": {
+    "visual": 1,
+    "ux": 1,
+    "motion": 1,
+    "responsive": 1,
+    "business": 1,
+    "brand": 2,
+    "uncertainty": 1,
+    "learning": 2
+   }
+  },
+  {
+   "domain": "webgl-hero.example",
+   "url": "https://webgl-hero.example/",
+   "value": {
+    "visual": 2,
+    "ux": 2,
+    "motion": 2,
+    "responsive": 2,
+    "business": 1,
+    "brand": 2,
+    "uncertainty": 2,
+    "learning": 2
+   },
+   "_note": "高 Value（15）＋Low：應以 reduced 入選並排最後"
+  },
+  {
+   "domain": "plain-saas.example",
+   "url": "https://plain-saas.example/",
+   "value": {
+    "visual": 1,
+    "ux": 1,
+    "motion": 0,
+    "responsive": 1,
+    "business": 2,
+    "brand": 1,
+    "uncertainty": 1,
+    "learning": 2
+   }
+  },
+  {
+   "domain": "portfolio-a.example",
+   "url": "https://portfolio-a.example/",
+   "value": {
+    "visual": 1,
+    "ux": 1,
+    "motion": 1,
+    "responsive": 0,
+    "business": 0,
+    "brand": 1,
+    "uncertainty": 1,
+    "learning": 1
+   }
+  },
+  {
+   "domain": "shop-b.example",
+   "url": "https://shop-b.example/",
+   "value": {
+    "visual": 0,
+    "ux": 1,
+    "motion": 0,
+    "responsive": 1,
+    "business": 1,
+    "brand": 1,
+    "uncertainty": 0,
+    "learning": 1
+   }
+  },
+  {
+   "domain": "santionispirits.com",
+   "url": "https://santionispirits.com/",
+   "value": {
+    "visual": 2,
+    "ux": 1,
+    "motion": 2,
+    "responsive": 1,
+    "business": 1,
+    "brand": 2,
+    "uncertainty": 1,
+    "learning": 2
+   },
+   "environment_failure": true
+  }
+ ],
+ "preflights": {
+  "brilean.com": {
+   "feasibility": "Medium",
+   "reasons": [
+    "有 smooth scroll／自訂捲動容器跡象"
+   ]
+  },
+  "nightkidz.shop": {
+   "feasibility": "Medium",
+   "reasons": [
+    "wheel／鍵盤捲不動，只有 scrollTo 有效（可能是 scroll hijacking）",
+    "幀率很低（fps≈7）"
+   ]
+  },
+  "designbomb.it": {
+   "feasibility": "Low",
+   "reasons": [
+    "大面積 canvas（2 個），fps≈5",
+    "有 smooth scroll／自訂捲動容器跡象"
+   ]
+  },
+  "bleibtgleich.dev": {
+   "feasibility": "Low",
+   "reasons": [
+    "大面積 canvas（1 個），fps≈1"
+   ]
+  },
+  "spykercars.com": {
+   "feasibility": "High",
+   "reasons": [
+    "首屏、捲動、DOM、手機都正常"
+   ]
+  },
+  "webgl-hero.example": {
+   "feasibility": "Low",
+   "reasons": [
+    "大面積 canvas（1 個），fps≈2",
+    "桌機無法捲動（scroll locked 或 hijacking）"
+   ]
+  },
+  "plain-saas.example": {
+   "feasibility": "High",
+   "reasons": []
+  }
+ }
+}

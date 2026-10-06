@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fixture: consent banner vs real CTA</title>
+<!-- 重現 2026-10-05 Nightkidz：cookie 橫幅的按鈕樣式連結（Privacy Policy、Accept All）出現次數比真正的 CTA 多，
+     舊版 measure_cta 會把它們當 Primary CTA 點下去。正確行為：排除 consent 元素，點「Shop wheels」，落地頁對得上 href。 -->
+<style>
+body{margin:0;font:16px/1.5 sans-serif;background:#000;color:#fff}
+header{display:flex;justify-content:space-between;padding:16px 24px}
+header a{color:#fff;text-decoration:none}
+section{min-height:700px;padding:64px 24px}
+.shop{display:inline-block;padding:10px 4px;color:#fff;border-bottom:1px solid #fff;text-decoration:none}
+#cookie-banner{position:fixed;right:24px;bottom:24px;width:360px;background:#111;border:1px solid #333;padding:16px;z-index:9}
+#cookie-banner a,#cookie-banner button{display:inline-block;padding:8px 20px;margin:4px;background:#fff;color:#000;border:0;text-decoration:none}
+</style></head>
+<body>
+<header><a href="consent-cta.html">Nightkidz fixture</a><a href="cart.html">Cart (0)</a></header>
+<section><h1>JDM parts</h1>
+<h2>Wheels</h2><a class="shop" href="target-shop.html">Shop wheels</a>
+</section>
+<section><h2>Apparel</h2><p>Lorem ipsum.</p></section>
+<div id="cookie-banner" role="dialog" aria-label="Cookie Preferences">
+  <h3>Cookie Preferences</h3><p>We use cookies to enhance your experience.</p>
+  <a href="privacy-policy.html" aria-label="View privacy policy">Privacy Policy</a>
+  <a href="privacy-policy.html" aria-label="View privacy policy">Privacy Policy</a>
+  <button>Essential Only</button><button>Accept All</button>
+</div>
+</body></html>

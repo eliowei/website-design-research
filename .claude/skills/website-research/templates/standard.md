@@ -3,11 +3,14 @@
 - **網址**：<url>　**研究日期**：<YYYY-MM-DD>
 - **資料來源**：Firecrawl（1920、360）、Playwright（1440、768、390；量測在 `source/pw/`，截圖在 `screenshots/pw/`）
 - **限制**：<連不上、截圖空白、沒有測到的互動…>
-- **Feasibility**：<High／Medium／Low（preflight 的理由）；範圍 full／reduced>
+- **Feasibility**：<High／Medium／Low（preflight 的理由）；範圍 full／reduced；reduced 時列出不可驗證項目（select_standard.py 的輸出）>
+- **擷取**：<Final Capture Quality 表格：Initial → Fallback → Final（quality_check.py final）>
+- **Action Verification**：<Primary CTA：verified／failed／unverified，失敗的是哪一層（目標、動作、結果）；source/pw/click-1440.json 的 verification>
 
 <貼上 `reliability.py --mode standard --markdown` 的輸出：研究可靠度一行＋能力狀態表>
 
-能力狀態不是 ok 的部分照降級寫：unverified／unavailable 的行為寫「未驗證」，缺口裡的內容寫「未觀察到」，不寫「沒有」。研究可靠度是證據取得的可靠度，不是網站設計的評分。
+能力狀態不是 ok 的部分照降級寫：unverified／unavailable 的行為寫「未驗證」，缺口裡的內容寫「未觀察到」，不寫「沒有」。
+Action Verification 不是 verified 時，不能寫「CTA 已驗證」或「點擊後進入…」：寫 Action Verification Failed／未驗證，以及失敗的是哪一層。研究可靠度是證據取得的可靠度，不是網站設計的評分。
 
 截圖名稱寫完整（`pw1440-s07`、`int1440-hover-1-after`、`fb-d-s03`），範圍寫 `pw1440-s01～pw1440-s05`，收尾用 `validate_refs.py` 檢查。
 每個結論後面用括號標來源：`（截圖：pw1440-hero）`、`（CSS：h1）`、`（DOM）`、`（互動：hover CTA）`、`（CTA 清單）`、`（文案：h1）`、`（branding）`；推出來的標 `（推測）`。
@@ -19,7 +22,7 @@
 ## 商業／轉換
 - **商業目標與頁面目標**：<網站靠什麼達成目標；這一頁要訪客最後做什麼>（文案：…／DOM）
 - **目標客群**：<理想客戶是誰，根據什麼>（推測或文案：…）
-- **Primary CTA**：<文案、連到哪裡、點下去實際發生什麼、完成要幾步>（CTA 清單／互動：…）
+- **Primary CTA**：<文案、連到哪裡、點下去實際發生什麼、完成要幾步；Action Verification 的結果>（CTA 清單／互動：…）
 - **CTA 位置與次數**：<1440／390 各幾次、在哪些段落；有無常駐 CTA>（CTA 清單）
 - **Secondary CTA**：<有沒有、和 Primary 的關係：分流、降低門檻或競爭>（CTA 清單）
 - **轉換路徑**：<進站 → … → 行動，一行寫完>

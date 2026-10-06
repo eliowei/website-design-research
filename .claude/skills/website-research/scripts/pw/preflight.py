@@ -26,6 +26,8 @@ import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import common as C  # noqa: E402
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from quality_check import environment_failure  # noqa: E402
 
 PROBE_JS = r"""
 () => {
@@ -34,7 +36,8 @@ PROBE_JS = r"""
   let readable = 0, blocked = 0;
   for (const sh of document.styleSheets) { try { sh.cssRules; readable++; } catch (e) { blocked++; } }
   const st = W.scrollState();
-  return {nodes: document.querySelectorAll('*').length, textChars: document.body ? document.body.innerText.length : 0,
+  return {url: location.href, title: document.title, textSample: document.body ? document.body.innerText.slice(0, 1500) : '',
+          nodes: document.querySelectorAll('*').length, textChars: document.body ? document.body.innerText.length : 0,
           bigCanvas: big.filter(e => e.tagName === 'CANVAS').length, bigVideo: big.filter(e => e.tagName === 'VIDEO').length,
           stylesheets: {readable, blocked}, smoothLib: st.smoothLib, bodyOverflow: st.bodyOverflow, docHeight: st.docHeight,
           containers: st.containers.length};
@@ -141,6 +144,11 @@ def grade(res):
     if res.get('http', {}).get('status') in (401, 403) or not d.get('nav', {}).get('ok'):
         why = d.get('nav', {}).get('error') or f'HTTP {res.get("http", {}).get("status")}'
         return 'Blocked', 'none', [f'無法載入桌機頁面：{why}']
+    pr0 = d.get('probe') or {}
+    env = environment_failure(pr0.get('url'), pr0.get('title'), pr0.get('textSample'), res.get('http', {}).get('status'))
+    if env:  # 網站拒絕研究環境（例如 browser unsupported）：不是低可量測，而是這次無法研究
+        res['environment_failure'] = env
+        return 'Blocked', 'none', [f'Research Environment Failure（{env["type"]}）：{env["evidence"]}']
     fs = d.get('first_screenshot', {})
     if fs.get('status') == 'unavailable':
         return 'Blocked', 'capture-only', ['首屏截圖失敗（含 CDP 備援）']

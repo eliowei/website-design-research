@@ -30,6 +30,8 @@ def default_targets(cta, inv, n):
     for c in (cta or {}).get('ctas', []):
         if c['style'] != 'primary' or c.get('visibleNow') is False:
             continue
+        if c.get('consent') or c.get('conversion') is False:  # Target Correctness：不量 cookie 橫幅與法律連結的 hover
+            continue
         k = c['text'] or c['href']
         if k in seen:
             continue
@@ -37,7 +39,8 @@ def default_targets(cta, inv, n):
         out.append({'text': c['text'], 'selector': c['selector'], 'kind': 'cta'})
         if len(out) >= max(1, n - 2):
             break
-    navs = [it for it in (inv or {}).get('links', []) if it.get('persistent') and not it.get('buttonLike') and it.get('text')]
+    navs = [it for it in (inv or {}).get('links', []) if it.get('persistent') and not it.get('buttonLike') and it.get('text')
+            and not it.get('consent')]
     for it in navs[:2]:
         if it['text'] not in seen:
             out.append({'text': it['text'], 'selector': it['selector'], 'kind': 'nav'})

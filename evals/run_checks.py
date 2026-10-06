@@ -10,6 +10,9 @@
             evals.json 格式、既有規則仍在（rule preservation）
   unit      quality_check 的等級、reliability 的算法（含使用者範例 B/C/D/A → C）、pack_assets 的配額與
             「被引用的圖一定打包」、validate_refs 抓得到沒上傳的引用
+  regression  2026-10-05 每日研究實際發生的異常（REG-01～REG-08，資料在 evals/fixtures/regression/）：
+            browser unsupported、Initial＋Fallback 的 Final Capture、CTA 選錯元素、高 Value＋Low Feasibility、
+            打包上限、引用不存在的截圖。修改 skill 時這些都必須維持通過。
   pw        fixtures：隱藏複本、內層 hover、選單、自訂捲動容器、捲動被鎖、捲動進場（fallback）、永遠載不完的頁面
 """
 import argparse
@@ -102,7 +105,10 @@ def lint():
     check('既有規則仍在 SKILL.md', not lost, '遺失：' + '、'.join(lost))
     new = ['Research completeness should degrade gracefully', 'Research value and research feasibility are separate dimensions',
            'Never treat missing evidence as evidence of absence', 'Capture Quality', 'Research Reliability', 'preflight.py',
-           'run_standard.py', 'validate_refs.py']
+           'run_standard.py', 'validate_refs.py',
+           # 2026-10-06：證據集合、正式 fallback 流程、Action Verification、統一的 Standard 候選管線
+           'Final Capture Quality', '證據集合', 'Re-evaluate', 'Research Environment Failure', 'Action Verification',
+           'Target Correctness', 'Action Success', 'Expected Outcome', 'select_standard.py', 'Daily × 10', 'Standard Candidate Pool']
     miss = [k for k in new if k not in text]
     check('新規則寫進 SKILL.md', not miss, '缺少：' + '、'.join(miss))
     ref = open(os.path.join(SKILL, 'references', 'capture-reliability.md'), encoding='utf-8').read()
@@ -114,7 +120,12 @@ def lint():
     import common as C
     vb = C.BUDGET['viewport']
     check('時間預算和文件一致（common.BUDGET ↔ capture-reliability.md）',
-          all(f'{k}：{v} 秒' in ref for k, v in vb.items()) and f'{C.BUDGET["site"]} 秒' in ref)
+          all(f'{k}：{v} 秒' in ref for k, v in vb.items()) and f'{C.BUDGET["site"]} 秒' in ref and f'{C.BUDGET["reduced_site"]} 秒' in ref)
+    import select_standard as SEL
+    check('Standard 選站常數和文件一致（select_standard ↔ capture-reliability.md／SKILL.md）',
+          SEL.REDUCED_BUDGET == C.BUDGET['reduced_site'] and f'≥ {SEL.EXCEPTION_MIN_VALUE}' in text and f'{SEL.EXCEPTION_MARGIN} 分以上' in text)
+    for sec in ('### 2.1 Final Capture Quality', '### 6.1 Research Environment Failure', '### 6.2 Action Verification'):
+        check(f'capture-reliability.md 有「{sec[4:]}」', sec in ref)
 
 
 # ---------------------------------------------------------------- unit
@@ -265,6 +276,192 @@ def _raises(fn):
     return False
 
 
+# ---------------------------------------------------------------- regression（2026-10-05 實際研究的異常）
+REG = os.path.join(FIX, 'regression')
+
+
+def _site_with_captures(tmp, name, captures):
+    """captures：[(key, grade, extra)]，依序記錄（同 key 重複記錄 = 同一種擷取又試了一次）。"""
+    import wr_status as W
+    site = os.path.join(tmp, name)
+    os.makedirs(site, exist_ok=True)
+    for key, grade, extra in captures:
+        W.set_capture(site, key, {'kind': 'image', 'auto_grade': grade, 'grade': grade, 'reasons': [], 'metrics': {}, 'gaps': [],
+                                  **(extra or {})})
+    return site
+
+
+def regression(tmp):
+    import quality_check as Q
+    import reliability as R
+    import wr_status as W
+    sys.path.insert(0, os.path.join(S, 'pw'))
+    import action_verify as AV
+    import select_standard as SEL
+
+    # R1 Browser unsupported → Research Environment Failure（Santioni Spirits）
+    fx = json.load(open(os.path.join(REG, 'santioni-unsupported.json'), encoding='utf-8'))
+    fc, pwx = fx['firecrawl'], fx['playwright']
+    env = Q.environment_failure(fc['url'], fc['title'], fc['markdown'], fc['statusCode'])
+    check('REG-01a browser unsupported（Firecrawl 訊號）→ Research Environment Failure',
+          env and env['type'] == 'unsupported-browser', str(env))
+    env2 = Q.environment_failure(pwx['url'], pwx['title'], pwx['text'])
+    check('REG-01b browser unsupported（Playwright 訊號）→ Research Environment Failure', env2 and env2['type'] == 'unsupported-browser', str(env2))
+    check('REG-01c 正文很長、只是提到 captcha → 不是環境失敗',
+          Q.environment_failure('https://x.com/', 'Security blog', 'How captcha works. ' * 200) is None)
+    p = os.path.join(tmp, 'unsupported.png')
+    make_img(p, 1920, 1080)  # 畫面看起來「有內容」：一定要靠網址／文字訊號，不能只靠空白偵測
+    site = os.path.join(tmp, 'santioni')
+    code, out = run([sys.executable, os.path.join(S, 'quality_check.py'), 'image', p, '--record', site, '--as', 'firecrawl-desktop',
+                     '--page-url', fc['url'], '--page-title', fc['title'], '--page-text', fc['markdown']])
+    check('REG-01d quality_check image 帶網址／標題 → D 並標示 Research Environment Failure',
+          'Capture Quality：D' in out and 'Research Environment Failure' in out, out[-300:])
+    W.set_capture(site, 'fallback-desktop', {'kind': 'segments', 'grade': 'D', 'auto_grade': 'D', 'reasons': [], 'metrics': {}, 'gaps': [],
+                                             'environment_failure': env2})
+    d = W.load(site)
+    fin = Q.final_capture(d)
+    check('REG-01e 只有被拒絕的擷取 → Final status environment-failure', fin['desktop']['status'] == 'environment-failure', str(fin['desktop']))
+    r = R.compute(d, 'daily')
+    check('REG-01f reliability：research_status environment-failure、Overall D',
+          r['research_status'] == 'environment-failure' and r['overall'] == 'D', str(r))
+    check('REG-01g 報告開頭寫「研究環境失敗」而不是一般的 Capture D', '研究環境失敗' in R.markdown(r, d))
+    code, out = run([sys.executable, os.path.join(S, 'quality_check.py'), 'image', p, '--page-url', fc['url'],
+                     '--override', 'B', '--reason', 'x'])
+    check('REG-01h 環境失敗的擷取不能被覆寫成較好的等級', code != 0, out[-200:])
+    sys.path.insert(0, os.path.join(S, 'pw'))
+    import preflight as PF
+    g = PF.grade({'http': {'status': 200}, 'desktop': {'nav': {'ok': True}, 'first_screenshot': {'status': 'ok', 'seconds_from_nav': 3},
+                                                       'probe': {'url': fc['url'], 'title': fc['title'], 'textSample': pwx['text'], 'nodes': 40}}})
+    check('REG-01i preflight：browser unsupported → Blocked（不是 Low）', g[0] == 'Blocked' and 'Environment' in g[2][0], str(g))
+
+    # R2 Initial B + Fallback D → Final B（Spyker：fallback 捲動被接管）
+    site = _site_with_captures(tmp, 'spyker', [('firecrawl-desktop', 'B', None), ('fallback-desktop', 'D', None)])
+    d = W.load(site)
+    fin = Q.final_capture(d)['desktop']
+    check('REG-02 Initial B＋Fallback D → Final B（失敗的 fallback 不會拉低已取得的證據）',
+          (fin['initial'], fin['fallback'], fin['grade']) == ('B', ['D'], 'B'), str(fin))
+    check('REG-02b reliability 的 Capture 用 Final（B）', R.compute(d, 'daily')['capture'] == 'B')
+    legacy = {'captures': {'firecrawl-desktop': {'grade': 'B'}, 'fallback-desktop': {'grade': 'D'}}}  # 10/05 以前的格式（沒有 stage）
+    fin = Q.final_capture(legacy)['desktop']
+    check('REG-02c 舊格式的狀態檔（沒有 stage）也能分出 Initial／Fallback', (fin['initial'], fin['fallback'], fin['grade']) == ('B', ['D'], 'B'), str(fin))
+
+    # R3 Initial C + Fallback A → Final A（Brilean）
+    site = _site_with_captures(tmp, 'brilean', [('firecrawl-desktop', 'C', None), ('fallback-desktop', 'A', None),
+                                                ('firecrawl-mobile', 'C', None), ('fallback-mobile', 'A', None)])
+    d = W.load(site)
+    fin = Q.final_capture(d)
+    check('REG-03 Initial C＋Fallback A → Final A', fin['desktop']['grade'] == 'A' and fin['mobile']['grade'] == 'A', str(fin))
+    r = R.compute(d, 'daily')
+    check('REG-03b reliability：Capture A、Responsive A（兩個裝置都由 fallback 補齊）',
+          (r['capture'], r['responsive'], r['overall']) == ('A', 'A', 'A'), str(r))
+
+    # R4 Firecrawl D + Fallback A → Final A（bleibtgleich 手機只拍到預載 97%）＋同 key 重拍不覆蓋證據（Nightkidz）
+    site = _site_with_captures(tmp, 'bleibt', [('firecrawl-desktop', 'B', None), ('firecrawl-mobile', 'D', None),
+                                               ('fallback-mobile', 'A', None)])
+    fin = Q.final_capture(W.load(site))['mobile']
+    check('REG-04 Firecrawl D＋Fallback A → Final A', (fin['initial'], fin['grade']) == ('D', 'A'), str(fin))
+    site = _site_with_captures(tmp, 'nightkidz', [('firecrawl-mobile', 'B', None), ('fallback-mobile', 'D', None),
+                                                  ('fallback-mobile', 'A', None)])
+    d = W.load(site)
+    fin = Q.final_capture(d)['mobile']
+    check('REG-04b 同一種 fallback 重拍：舊的 D 留在證據集合（attempts），Final 取 A',
+          fin['grade'] == 'A' and fin['fallback'] == ['D', 'A'] and len(d['captures']['fallback-mobile']['attempts']) == 1, str(fin))
+    site = _site_with_captures(tmp, 'override', [('firecrawl-desktop', 'C', None), ('fallback-desktop', 'C', None)])
+    code, out = run([sys.executable, os.path.join(S, 'quality_check.py'), 'final', site, '--override', 'desktop=B'])
+    check('REG-04c final --override 沒有理由 → 拒絕', code != 0)
+    code, out = run([sys.executable, os.path.join(S, 'quality_check.py'), 'final', site, '--override', 'desktop=B',
+                     '--reason', 'firecrawl-desktop 缺中段、fallback-desktop 補到中段，合起來只缺頁尾'])
+    check('REG-04d 互補的兩次擷取：研究者可以有理由地把 Final 調成 B', '**B**' in out and Q.final_capture(W.load(site))['desktop']['grade'] == 'B', out[-300:])
+
+    # R5 CTA selector 點到錯誤元素 → Action Verification Failed（Nightkidz：cookie 橫幅的 Privacy Policy）
+    import measure_cta as MC
+    cta = json.load(open(os.path.join(REG, 'nightkidz-cta-1440.json'), encoding='utf-8'))
+    for c in cta['ctas']:
+        c['conversion'], why = AV.target_check(c, 'cta')
+    prim = MC.pick_primary(cta)
+    check('REG-05a Nightkidz 的候選（Cart、Privacy Policy、Essential Only、Accept All）都不是轉換 CTA → 不選 Primary',
+          prim is None and len(cta['primary_rejected']) == 4, str(prim))
+    old = json.load(open(os.path.join(REG, 'nightkidz-click-1440.json'), encoding='utf-8'))
+    v = AV.verify(old['target'], old)
+    check('REG-05b 舊紀錄（target＝Privacy Policy）→ Action Verification Failed（Target Correctness 失敗），能力記 unverified',
+          v['verdict'] == 'failed' and not v['target_correctness']['ok'] and v['capability_status'] == 'unverified', v['summary'])
+    real = {'text': 'Contact us', 'href': '/contacts', 'style': 'primary', 'section': {'container': 'header'}}
+    v = AV.verify(real, {'result': 'navigated', 'url': 'https://example.com/privacy-policy'})
+    check('REG-05c 目標對、但點擊後落在 privacy 頁 → Failed（Expected Outcome 不符）',
+          v['verdict'] == 'failed' and v['expected_outcome']['outcome'] == 'unexpected', v['summary'])
+    v = AV.verify({'text': 'Shop now', 'href': '/shop', 'consent': 'attr:cookie-banner'}, {'result': 'navigated', 'url': 'https://x.com/shop'})
+    check('REG-05d 目標在 cookie 橫幅裡（就算網址看起來正常）→ Failed', v['verdict'] == 'failed', v['summary'])
+    v = AV.verify(real, {'result': 'navigated', 'url': 'https://example.com/contacts'})
+    check('REG-05e 目標對、落地網址對得上 href → verified（能力 ok）', v['verdict'] == 'verified' and v['capability_status'] == 'ok', v['summary'])
+    v = AV.verify(real, {'result': 'no_observable_change'})
+    check('REG-05f 點了但沒有可觀察的結果 → unverified（不是 verified）', v['verdict'] == 'unverified', v['summary'])
+    v = AV.verify(real, {'result': 'dialog', 'dialog_text': 'We use cookies to enhance your experience'})
+    check('REG-05g 點擊後開出的是 cookie 對話框 → Failed', v['verdict'] == 'failed', v['summary'])
+    mixed = {'ctas': [dict(c) for c in cta['ctas']] + [{'text': 'Shop wheels', 'href': '/us/collections/wheels', 'style': 'link',
+                                                         'y': 900, 'topmost': True, 'selector': {'kind': 'semantic'}}]}
+    for c in mixed['ctas']:
+        c['conversion'], _ = AV.target_check(c, 'cta')
+    prim = MC.pick_primary(mixed)
+    check('REG-05h 有真正的轉換連結時，就算 consent 按鈕是「按鈕樣式」也選真正的 CTA',
+          prim and prim['text'] == 'Shop wheels', str(prim))
+
+    # R6 高 Value＋Low Feasibility → 降級研究，但不阻塞 pipeline
+    fx = json.load(open(os.path.join(REG, 'standard-candidates-10.json'), encoding='utf-8'))
+    res = SEL.select(json.loads(json.dumps(fx['candidates'])), tmp, 3, None, fx['preflights'])
+    sel = {p['domain']: p for p in res['selected']}
+    check('REG-06a Daily × 10 → 選出 3 個 Standard', not res['errors'] and len(res['selected']) == 3, str(res['errors']))
+    w = sel.get('webgl-hero.example')
+    check('REG-06b 高 Value（15）＋Low → 以 reduced 入選、上限 480 秒、排最後、列出不可驗證項目',
+          w and w['scope'] == 'reduced' and w['budget'] <= 480 and w['order'] == 3 and w['unverifiable'], str(w))
+    check('REG-06c 例外最多 1 個：Value 13／12 的 Low（designbomb、bleibtgleich）不入選',
+          'designbomb.it' not in sel and 'bleibtgleich.dev' not in sel)
+    check('REG-06d Research Environment Failure 的網站不進候選池', 'santionispirits.com' not in res['pool'])
+    pre = dict(fx['preflights'])
+    del pre['spykercars.com']
+    res2 = SEL.select(json.loads(json.dumps(fx['candidates'])), tmp, 3, None, pre)
+    check('REG-06e 候選池有網站沒做 Preflight → Pipeline Error（不能有些做、有些沒做）',
+          res2['errors'] and 'spykercars.com' in res2['errors'][0], str(res2['errors']))
+    only_low = {k: ({'feasibility': 'Low', 'reasons': ['大面積 canvas（1 個），fps≈2']} if v['feasibility'] != 'High' else v)
+                for k, v in fx['preflights'].items()}
+    res3 = SEL.select(json.loads(json.dumps(fx['candidates'])), tmp, 3, None, only_low)
+    lows = [p for p in res3['selected'] if p['feasibility'] == 'Low']
+    check('REG-06f 可量測候選不足時，Low 依 Value 補位（reduced、排在可量測者之後），名額不空著',
+          len(res3['selected']) == 3 and all(p['scope'] == 'reduced' for p in lows)
+          and [p['feasibility'] for p in res3['selected']][0] == 'High', json.dumps(res3['selected'], ensure_ascii=False)[:300])
+    site = os.path.join(tmp, 'blocked-site')
+    os.makedirs(os.path.join(site, 'source'), exist_ok=True)
+    json.dump({'feasibility': 'Blocked', 'reasons': ['Research Environment Failure（unsupported-browser）']},
+              open(os.path.join(site, 'source', 'preflight.json'), 'w'))
+    code, out = run([sys.executable, os.path.join(S, 'pw', 'run_standard.py'), 'https://example.invalid/', site], timeout=60)
+    check('REG-06g run_standard 遇到 Blocked 立即結束（結束碼 3），不啟動瀏覽器、不拖住後面的網站', code == 3, out[-200:])
+
+    # R7 截圖引用超過打包上限 → Pipeline Error，而不是默默刪除（Brilean 33 張）
+    site = os.path.join(tmp, 'over-limit')
+    os.makedirs(os.path.join(site, 'screenshots', 'pw'))
+    for i in range(30):
+        make_img(os.path.join(site, 'screenshots', 'pw', f'pw1440-s{i:02d}.png'), 120, 80)
+    with open(os.path.join(site, 'notes.md'), 'w', encoding='utf-8') as f:
+        f.write('全部段落（截圖：pw1440-s00～pw1440-s29）\n')
+    out_dir = os.path.join(tmp, 'over-pack')
+    os.makedirs(out_dir)
+    json.dump({'images': [], 'data': None}, open(os.path.join(out_dir, 'manifest.json'), 'w'))  # 上一次的舊 manifest
+    code, out = run([sys.executable, os.path.join(S, 'pack_assets.py'), site, out_dir])
+    check('REG-07a 引用 30 張 > 上限 24 → Pipeline Error（結束碼非 0）', code != 0 and 'Pipeline Error' in out, out[-200:])
+    check('REG-07b 打包失敗不留下舊 manifest（避免被誤當成這次的結果）', not os.path.exists(os.path.join(out_dir, 'manifest.json')))
+    code, out = run([sys.executable, os.path.join(S, 'validate_refs.py'), site, '--manifest', os.path.join(out_dir, 'manifest.json')])
+    check('REG-07c 接著驗證 → Pipeline Error（不是 Python traceback）', code == 1 and 'Traceback' not in out and 'manifest 不存在' in out, out[-200:])
+
+    # R8 Markdown 引用不存在的截圖 → Pipeline Error
+    site = os.path.join(tmp, 'missing-ref')
+    os.makedirs(os.path.join(site, 'screenshots', 'fb'))
+    make_img(os.path.join(site, 'screenshots', 'desktop.png'), 200, 400)
+    with open(os.path.join(site, 'summary.md'), 'w', encoding='utf-8') as f:
+        f.write('首屏（截圖：desktop）\n中段（截圖：fb-d-s07）\n')
+    code, out = run([sys.executable, os.path.join(S, 'validate_refs.py'), site])
+    check('REG-08 Markdown 引用不存在的截圖（fb-d-s07）→ Pipeline Error（結束碼 1）',
+          code == 1 and 'Pipeline Error' in out and 'fb-d-s07' in out, out[-300:])
+
+
 # ---------------------------------------------------------------- playwright fixtures
 def pw(tmp):
     PW = os.path.join(S, 'pw')
@@ -325,6 +522,30 @@ def pw(tmp):
     check('pw hang: 在時間上限內結束', secs < 160 + 60, f'{secs:.0f} 秒')
     check('pw hang: 所有能力標 unavailable，研究仍可降級繼續', all(r['status'] == 'unavailable' for r in d['capabilities']['1440'].values())
           and d['reliability']['overall'] == 'D')
+    # 回歸：Action Verification（Nightkidz）與 Research Environment Failure（Santioni）在真的瀏覽器裡
+    site = os.path.join(tmp, 'consent')
+    run([sys.executable, os.path.join(PW, 'measure_cta.py'), url('consent-cta.html'), site, '--click'], timeout=150)
+    ck = json.load(open(os.path.join(site, 'source', 'pw', 'click-1440.json'), encoding='utf-8'))
+    check('REG-pw-05 cookie 橫幅的 Privacy Policy／Accept All 不會被當成 Primary CTA；點的是 Shop wheels 並驗證落地頁',
+          ck['target']['text'] == 'Shop wheels' and ck['verification']['verdict'] == 'verified'
+          and status(site)['capabilities']['1440']['cta_click']['status'] == 'ok', json.dumps(ck, ensure_ascii=False)[:300])
+    cl = json.load(open(os.path.join(site, 'source', 'pw', 'cta-1440.json'), encoding='utf-8'))
+    check('REG-pw-05b cookie 橫幅內的元素標記 consent、conversion: false',
+          all(c.get('consent') and c.get('conversion') is False for c in cl['ctas'] if c['text'] in ('Privacy Policy', 'Accept All', 'Essential Only')))
+    site = os.path.join(tmp, 'consent-only')
+    run([sys.executable, os.path.join(PW, 'measure_cta.py'), url('consent-only.html'), site, '--click'], timeout=150)
+    cc = status(site)['capabilities']['1440']['cta_click']
+    check('REG-pw-05c 頁面只有 consent 按鈕 → cta_click unverified（不點、不能算 CTA 已驗證）', cc['status'] == 'unverified', str(cc))
+    site = os.path.join(tmp, 'unsupported')
+    run([sys.executable, os.path.join(PW, 'scroll_page.py'), url('unsupported.html'), site, '--capture-only'], timeout=200)
+    run([sys.executable, os.path.join(S, 'quality_check.py'), 'final', site], timeout=60)
+    d = status(site)
+    check('REG-pw-01 fallback 擷取到「browser not supported」頁面 → Research Environment Failure（不是 Capture A）',
+          d['captures']['fallback-desktop'].get('environment_failure') and d.get('research_status') == 'environment-failure',
+          json.dumps(d['captures'].get('fallback-desktop', {}), ensure_ascii=False)[:300])
+    code, out = run([sys.executable, os.path.join(PW, 'preflight.py'), url('unsupported.html'), os.path.join(tmp, 'pre-unsup'), '--budget', '60'], timeout=120)
+    check('REG-pw-01b preflight：browser unsupported → Blocked（Research Environment Failure）', 'Blocked' in out and 'Environment' in out, out[-200:])
+
     code, out = run([sys.executable, os.path.join(PW, 'preflight.py'), url('hang.html'), os.path.join(tmp, 'pre-hang'), '--budget', '60'], timeout=120)
     check('pw preflight: 載不完的頁面 → Blocked', 'Blocked' in out, out[-200:])
     code, out = run([sys.executable, os.path.join(PW, 'preflight.py'), url('locked.html'), os.path.join(tmp, 'pre-locked'), '--budget', '60'], timeout=120)
@@ -342,6 +563,7 @@ def main():
     try:
         print('== lint'); lint()
         print('== unit'); unit(tmp)
+        print('== regression（2026-10-05 實際案例）'); regression(tmp)
         if o.pw:
             print('== playwright fixtures'); pw(tmp)
     finally:
