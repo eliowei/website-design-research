@@ -1,0 +1,638 @@
+{
+ "_comment": "2026-10-06 每日研究的實際擷取紀錄（從 capture-status.json 與 source/fallback-*.json、segments-*.json 擷取必要欄位）。用於 REG-09：Final Capture Quality 以 Evidence Quality × Evidence Coverage 判定。expected 是研究者當時看過切圖後的判定。",
+ "sites": {
+  "aardvarkbookclub.com": {
+   "captures": {
+    "firecrawl-desktop": {
+     "kind": "image",
+     "stage": "primary",
+     "auto_grade": "B",
+     "grade": "B",
+     "reasons": [
+      "空白比例 13% ≥ 8%",
+      "最長空白 2175px（≥ 1.5 個視窗高）"
+     ],
+     "metrics": {
+      "width": 1920,
+      "height": 16515,
+      "viewport_h": 1080,
+      "blank_ratio": 0.132,
+      "tail_blank": 0,
+      "longest_run": 2175,
+      "first_screen_only": false,
+      "single_screen_unknown": false,
+      "height_mismatch": 0.0,
+      "height_capped": false,
+      "failed": false
+     },
+     "gaps": [
+      [
+       5100,
+       7275
+      ]
+     ]
+    },
+    "firecrawl-mobile": {
+     "kind": "image",
+     "stage": "primary",
+     "auto_grade": "B",
+     "grade": "B",
+     "reasons": [
+      "截圖只有一屏高，需確認網站是否本來就是單屏"
+     ],
+     "metrics": {
+      "width": 360,
+      "height": 800,
+      "viewport_h": 800,
+      "blank_ratio": 0.0,
+      "tail_blank": 0,
+      "longest_run": 0,
+      "first_screen_only": false,
+      "single_screen_unknown": true,
+      "height_mismatch": 0.0,
+      "height_capped": false,
+      "failed": false
+     },
+     "gaps": []
+    },
+    "fallback-desktop": {
+     "kind": "segments",
+     "stage": "fallback",
+     "auto_grade": "A",
+     "grade": "A",
+     "reasons": [
+      "可用分段 1/1（覆蓋 100%）"
+     ],
+     "metrics": {
+      "planned": 1,
+      "captured": 1,
+      "usable": 1,
+      "coverage": 1.0,
+      "verdicts": [
+       "content"
+      ],
+      "vw": 1440,
+      "vh": 900,
+      "est_height": 900,
+      "positions": [
+       [
+        0,
+        "content"
+       ]
+      ]
+     },
+     "gaps": []
+    },
+    "fallback-mobile": {
+     "kind": "segments",
+     "stage": "fallback",
+     "auto_grade": "A",
+     "grade": "A",
+     "reasons": [
+      "可用分段 10/10（覆蓋 100%）"
+     ],
+     "metrics": {
+      "planned": 10,
+      "captured": 10,
+      "usable": 10,
+      "coverage": 1.0,
+      "verdicts": [
+       "content",
+       "content",
+       "content",
+       "content",
+       "content",
+       "content",
+       "content",
+       "content",
+       "content",
+       "content"
+      ],
+      "vw": 390,
+      "vh": 844,
+      "est_height": 10128,
+      "positions": [
+       [
+        0,
+        "content"
+       ],
+       [
+        1032,
+        "content"
+       ],
+       [
+        2063,
+        "content"
+       ],
+       [
+        3095,
+        "content"
+       ],
+       [
+        4126,
+        "content"
+       ],
+       [
+        5158,
+        "content"
+       ],
+       [
+        6189,
+        "content"
+       ],
+       [
+        7221,
+        "content"
+       ],
+       [
+        8252,
+        "content"
+       ],
+       [
+        9284,
+        "content"
+       ]
+      ]
+     },
+     "gaps": []
+    }
+   },
+   "expected": {
+    "desktop": "B"
+   },
+   "researcher_override_reason": {
+    "desktop": {
+     "grade": "B",
+     "reason": "fallback-desktop 自動判 A 但只拍到 1 屏（頁面初始高度 900px、fps≈1，捲動未展開），不能代表整頁；以 firecrawl-desktop（B，y≈5,100–7,275 青色區塊空白）為準，該區塊內容由 fallback-mobile（fb-m-s04～fb-m-s05）看到"
+    }
+   }
+  },
+  "sharplink.com": {
+   "captures": {
+    "firecrawl-desktop": {
+     "kind": "image",
+     "stage": "primary",
+     "auto_grade": "B",
+     "grade": "B",
+     "reasons": [
+      "空白比例 15% ≥ 8%"
+     ],
+     "metrics": {
+      "width": 1920,
+      "height": 9464,
+      "viewport_h": 1080,
+      "blank_ratio": 0.149,
+      "tail_blank": 0,
+      "longest_run": 1410,
+      "first_screen_only": false,
+      "single_screen_unknown": false,
+      "height_mismatch": 0.0,
+      "height_capped": false,
+      "failed": false
+     },
+     "gaps": [
+      [
+       1095,
+       2505
+      ]
+     ]
+    },
+    "firecrawl-mobile": {
+     "kind": "image",
+     "stage": "primary",
+     "auto_grade": "B",
+     "grade": "B",
+     "reasons": [
+      "空白比例 13% ≥ 8%"
+     ],
+     "metrics": {
+      "width": 360,
+      "height": 12701,
+      "viewport_h": 800,
+      "blank_ratio": 0.131,
+      "tail_blank": 0,
+      "longest_run": 656,
+      "first_screen_only": false,
+      "single_screen_unknown": false,
+      "height_mismatch": 0.0,
+      "height_capped": false,
+      "failed": false
+     },
+     "gaps": [
+      [
+       5394,
+       5833
+      ],
+      [
+       6060,
+       6716
+      ],
+      [
+       9312,
+       9880
+      ]
+     ]
+    },
+    "fallback-mobile": {
+     "kind": "segments",
+     "stage": "fallback",
+     "auto_grade": "A",
+     "grade": "A",
+     "reasons": [
+      "可用分段 3/3（覆蓋 100%）"
+     ],
+     "metrics": {
+      "planned": 3,
+      "captured": 3,
+      "usable": 3,
+      "coverage": 1.0,
+      "verdicts": [
+       "content",
+       "content",
+       "content"
+      ],
+      "vw": 390,
+      "vh": 844,
+      "est_height": 12950,
+      "positions": [
+       [
+        0,
+        "content"
+       ],
+       [
+        6053,
+        "content"
+       ],
+       [
+        12106,
+        "content"
+       ]
+      ]
+     },
+     "gaps": []
+    },
+    "fallback-desktop": {
+     "kind": "segments",
+     "stage": "fallback",
+     "auto_grade": "A",
+     "grade": "A",
+     "reasons": [
+      "可用分段 3/3（覆蓋 100%）"
+     ],
+     "metrics": {
+      "planned": 3,
+      "captured": 3,
+      "usable": 3,
+      "coverage": 1.0,
+      "verdicts": [
+       "content",
+       "content",
+       "content"
+      ],
+      "vw": 1440,
+      "vh": 900,
+      "est_height": 8664,
+      "positions": [
+       [
+        0,
+        "content"
+       ],
+       [
+        3882,
+        "content"
+       ],
+       [
+        7764,
+        "content"
+       ]
+      ]
+     },
+     "gaps": []
+    }
+   },
+   "expected": {
+    "desktop": "B"
+   },
+   "researcher_override_reason": {
+    "desktop": {
+     "grade": "B",
+     "reason": "fallback-desktop 低幀率（fps≈1）只拍頭、中、尾 3 張，未涵蓋 firecrawl-desktop 的缺口 y≈1,100–2,500（Pioneering Productivity 與 ETH 持有量卡片，只在手機截圖看到）；以 firecrawl-desktop B＋fallback 3 張判定"
+    }
+   }
+  },
+  "otsuka-air.jp": {
+   "captures": {
+    "firecrawl-desktop": {
+     "kind": "image",
+     "stage": "primary",
+     "auto_grade": "D",
+     "grade": "D",
+     "reasons": [
+      "空白比例 95% ≥ 60%"
+     ],
+     "metrics": {
+      "width": 1920,
+      "height": 50929,
+      "viewport_h": 1080,
+      "blank_ratio": 0.948,
+      "tail_blank": 0,
+      "longest_run": 48285,
+      "first_screen_only": false,
+      "single_screen_unknown": false,
+      "height_mismatch": 0.0,
+      "height_capped": false,
+      "failed": false
+     },
+     "gaps": [
+      [
+       1080,
+       49365
+      ]
+     ]
+    },
+    "firecrawl-mobile": {
+     "kind": "image",
+     "stage": "primary",
+     "auto_grade": "D",
+     "grade": "D",
+     "reasons": [
+      "空白比例 94% ≥ 60%"
+     ],
+     "metrics": {
+      "width": 360,
+      "height": 26749,
+      "viewport_h": 800,
+      "blank_ratio": 0.945,
+      "tail_blank": 0,
+      "longest_run": 13191,
+      "first_screen_only": false,
+      "single_screen_unknown": false,
+      "height_mismatch": 0.0,
+      "height_capped": false,
+      "failed": false
+     },
+     "gaps": [
+      [
+       75,
+       13266
+      ],
+      [
+       13485,
+       25562
+      ]
+     ]
+    },
+    "fallback-mobile": {
+     "kind": "segments",
+     "stage": "fallback",
+     "auto_grade": "A",
+     "grade": "A",
+     "reasons": [
+      "可用分段 3/3（覆蓋 100%）"
+     ],
+     "metrics": {
+      "planned": 3,
+      "captured": 3,
+      "usable": 3,
+      "coverage": 1.0,
+      "verdicts": [
+       "content",
+       "content",
+       "content"
+      ],
+      "vw": 390,
+      "vh": 844,
+      "est_height": 27968,
+      "positions": [
+       [
+        0,
+        "content"
+       ],
+       [
+        13562,
+        "content"
+       ],
+       [
+        27124,
+        "content"
+       ]
+      ]
+     },
+     "gaps": []
+    },
+    "fallback-desktop": {
+     "kind": "segments",
+     "stage": "fallback",
+     "auto_grade": "A",
+     "grade": "A",
+     "reasons": [
+      "可用分段 3/3（覆蓋 100%）"
+     ],
+     "metrics": {
+      "planned": 3,
+      "captured": 3,
+      "usable": 3,
+      "coverage": 1.0,
+      "verdicts": [
+       "content",
+       "content",
+       "content"
+      ],
+      "vw": 1440,
+      "vh": 900,
+      "est_height": 44335,
+      "positions": [
+       [
+        0,
+        "content"
+       ],
+       [
+        21718,
+        "content"
+       ],
+       [
+        43435,
+        "content"
+       ]
+      ]
+     },
+     "gaps": []
+    }
+   },
+   "expected": {
+    "desktop": "C",
+    "mobile": "C"
+   },
+   "researcher_override_reason": {
+    "desktop": {
+     "grade": "C",
+     "reason": "Firecrawl 桌機／手機 95%／94% 空白（D，只有首屏 3D 開場與頁尾）；fallback 只能 scrollTo、低幀率只拍 3 張（頭、中、尾），Chapter 1–5 敘事段與 ON/OFF 使用情境未拍到；合併後只支撐首屏、一段情境照片、頁尾導覽卡與頁尾"
+    },
+    "mobile": {
+     "grade": "C",
+     "reason": "Firecrawl 桌機／手機 95%／94% 空白（D，只有首屏 3D 開場與頁尾）；fallback 只能 scrollTo、低幀率只拍 3 張（頭、中、尾），Chapter 1–5 敘事段與 ON/OFF 使用情境未拍到；合併後只支撐首屏、一段情境照片、頁尾導覽卡與頁尾"
+    }
+   }
+  },
+  "sstr.tech": {
+   "captures": {
+    "firecrawl-desktop": {
+     "kind": "image",
+     "stage": "primary",
+     "auto_grade": "C",
+     "grade": "C",
+     "reasons": [
+      "空白比例 35% ≥ 25%",
+      "底部連續空白 5370px（≥ 2 個視窗高）",
+      "最長空白 5370px（≥ 1.5 個視窗高）"
+     ],
+     "metrics": {
+      "width": 1920,
+      "height": 22500,
+      "viewport_h": 1080,
+      "blank_ratio": 0.353,
+      "tail_blank": 5370,
+      "longest_run": 5370,
+      "first_screen_only": false,
+      "single_screen_unknown": false,
+      "height_mismatch": 0.0,
+      "height_capped": false,
+      "failed": false
+     },
+     "gaps": [
+      [
+       555,
+       1155
+      ],
+      [
+       5685,
+       6090
+      ],
+      [
+       6225,
+       6615
+      ],
+      [
+       8160,
+       8550
+      ],
+      [
+       10095,
+       10470
+      ],
+      [
+       12150,
+       12570
+      ],
+      [
+       17130,
+       22500
+      ]
+     ]
+    },
+    "firecrawl-mobile": {
+     "kind": "image",
+     "stage": "primary",
+     "auto_grade": "A",
+     "grade": "A",
+     "reasons": [],
+     "metrics": {
+      "width": 360,
+      "height": 14449,
+      "viewport_h": 800,
+      "blank_ratio": 0.061,
+      "tail_blank": 0,
+      "longest_run": 877,
+      "first_screen_only": false,
+      "single_screen_unknown": false,
+      "height_mismatch": 0.0,
+      "height_capped": false,
+      "failed": false
+     },
+     "gaps": [
+      [
+       4722,
+       5599
+      ]
+     ]
+    },
+    "fallback-desktop": {
+     "kind": "segments",
+     "stage": "fallback",
+     "auto_grade": "D",
+     "grade": "D",
+     "reasons": [
+      "可用分段 3/10（覆蓋 30%）"
+     ],
+     "metrics": {
+      "planned": 10,
+      "captured": 7,
+      "usable": 3,
+      "coverage": 0.3,
+      "verdicts": [
+       "content",
+       "unrendered",
+       "content",
+       "unrendered",
+       "content",
+       "not-moved",
+       "not-moved"
+      ],
+      "vw": 1440,
+      "vh": 900,
+      "est_height": 13934,
+      "positions": [
+       [
+        0,
+        "content"
+       ],
+       [
+        1448,
+        "unrendered"
+       ],
+       [
+        2896,
+        "content"
+       ],
+       [
+        4345,
+        "unrendered"
+       ],
+       [
+        5793,
+        "content"
+       ],
+       [
+        7241,
+        "not-moved"
+       ],
+       [
+        8689,
+        "not-moved"
+       ]
+      ]
+     },
+     "gaps": [
+      1448,
+      4345,
+      7241,
+      8689
+     ]
+    }
+   },
+   "expected": {
+    "desktop": "B"
+   },
+   "researcher_override_reason": {
+    "desktop": {
+     "grade": "B",
+     "reason": "首屏在 firecrawl-desktop 與 firecrawl-mobile 都只拍到預載畫面「READY」（標題 Pushing the limits of drilling 未觀察到）；firecrawl-desktop 其餘段落（About、Results、Products、Case studies、Trusted by、聯絡表單）完整，底部 y≈17,100 以下空白；fallback-desktop D（捲動被釘選的鑽桿動畫段接管，7 張中 3 張停在同一畫面）。合併後中段到頁尾大致可研究"
+    },
+    "mobile": {
+     "grade": "B",
+     "reason": "首屏在 firecrawl-desktop 與 firecrawl-mobile 都只拍到預載畫面「READY」（標題 Pushing the limits of drilling 未觀察到）；firecrawl-desktop 其餘段落（About、Results、Products、Case studies、Trusted by、聯絡表單）完整，底部 y≈17,100 以下空白；fallback-desktop D（捲動被釘選的鑽桿動畫段接管，7 張中 3 張停在同一畫面）。合併後中段到頁尾大致可研究"
+    }
+   }
+  }
+ }
+}

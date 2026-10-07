@@ -16,11 +16,23 @@
   feasibility: High | Medium | Low | Blocked
   scope:       full | reduced | capture-only | none
   reasons:     判斷依據
+  concurrency: 這次量測時的環境負載（mode、同時在量測的 preflight 數、每顆 CPU 的負載）
+  load_affected: true → 性能相關的量測（fps、首屏時間、逾時、CDP 備援）可能被研究環境負載拖慢
+
+Research Environment Load ≠ Website Performance：
+  fps、首屏時間這類性能量測會被「同時跑的其他 Chromium」拖慢。2026-10-06 三站並行 preflight，
+  fps 讀數偏低，Low 判定可能過度保守。所以：
+  - 預設 serial：同一台機器上的 preflight 用檔案鎖排隊，一次只量一站（--allow-concurrent 才會並行）。
+  - 量測時若有其他 preflight 同時在量，或每顆 CPU 負載 ≥ 1.0，標記 load_affected，
+    性能相關的訊號只能降到 Medium（附「研究環境負載下量測」），不能單獨造成 Low；
+    結構性的訊號（捲動被鎖、DOM 幾乎是空的、手機載不了）不受影響。
+  - select_standard.py 會在選站表標出 load_affected 的網站，建議 serial 重測。
 """
 import argparse
 import json
 import os
 import sys
+import tempfile
 import time
 import urllib.request
 
@@ -138,8 +150,100 @@ def child(o):
     return res
 
 
+LOCK_PATH = os.path.join(tempfile.gettempdir(), 'website-research-preflight.lock')
+RUNNING_DIR = os.path.join(tempfile.gettempdir(), 'website-research-preflight.running')
+LOAD_PER_CPU_MAX = 1.0   # 每顆 CPU 的 1 分鐘負載 ≥ 這個值 → 性能量測可能受研究環境負載影響
+LOAD_NOTE = '（研究環境負載下量測，可能偏低；不能據此判定網站效能）'
+
+
+def load_per_cpu():
+    try:
+        return round(os.getloadavg()[0] / (os.cpu_count() or 1), 2)
+    except (OSError, AttributeError):
+        return None
+
+
+def _alive(pid):
+    if os.name == 'nt':  # Windows 的 os.kill(pid, 0) 是 CTRL_C_EVENT，會中斷對方
+        import ctypes
+        h = ctypes.windll.kernel32.OpenProcess(0x1000, False, pid)  # QUERY_LIMITED_INFORMATION
+        if h:
+            ctypes.windll.kernel32.CloseHandle(h)
+        return bool(h)
+    try:
+        os.kill(pid, 0)
+        return True
+    except (OSError, ValueError):
+        return False
+
+
+def others_measuring():
+    """其他正在量測（不是在排隊）的 preflight 數。"""
+    n = 0
+    try:
+        for f in os.listdir(RUNNING_DIR):
+            pid = int(f.split('.')[0]) if f.split('.')[0].isdigit() else -1
+            if pid != os.getpid() and _alive(pid):
+                n += 1
+    except FileNotFoundError:
+        pass
+    return n
+
+
+class MeasureSlot:
+    """預設 serial：用檔案鎖排隊，一次只讓一個 preflight 量測（性能量測不互相干擾）。"""
+
+    def __init__(self, serial=True, wait=900):
+        self.serial, self.wait, self.fh, self.waited = serial, wait, None, 0.0
+
+    def __enter__(self):
+        t0 = time.monotonic()
+        if self.serial:
+            try:
+                if os.name == 'nt':
+                    import msvcrt
+                    lock = lambda f: msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)  # noqa: E731
+                else:
+                    import fcntl
+                    lock = lambda f: fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)  # noqa: E731
+                self.fh = open(LOCK_PATH, 'a+')
+                while True:
+                    try:
+                        lock(self.fh)
+                        break
+                    except (BlockingIOError, PermissionError):
+                        if time.monotonic() - t0 > self.wait:
+                            self.serial = False  # 等太久：照樣量測，但記成 concurrent，交給 load_affected 判斷
+                            break
+                        time.sleep(1)
+            except ImportError:  # 沒有 fcntl 的平台：無法排隊，記錄並交給 load_affected 判斷
+                self.serial = False
+        self.waited = round(time.monotonic() - t0, 1)
+        os.makedirs(RUNNING_DIR, exist_ok=True)
+        self.mark = os.path.join(RUNNING_DIR, f'{os.getpid()}.pid')
+        open(self.mark, 'w').close()
+        return self
+
+    def __exit__(self, *a):
+        try:
+            os.remove(self.mark)
+        except OSError:
+            pass
+        if self.fh:
+            self.fh.close()
+
+
+def concurrency_record(mode, waited, others, load_before, load_after):
+    affected = bool(others) or any(x is not None and x >= LOAD_PER_CPU_MAX for x in (load_before, load_after))
+    return {'mode': mode, 'waited_seconds': waited, 'concurrent_measurements': others,
+            'load_per_cpu': load_before, 'load_per_cpu_after': load_after, 'load_affected': affected}
+
+
 def grade(res):
     reasons = []
+    conc = res.get('concurrency') or {}
+    affected = bool(conc.get('load_affected'))
+    res['load_affected'] = affected
     d = res.get('desktop') or {}
     if res.get('http', {}).get('status') in (401, 403) or not d.get('nav', {}).get('ok'):
         why = d.get('nav', {}).get('error') or f'HTTP {res.get("http", {}).get("status")}'
@@ -153,13 +257,20 @@ def grade(res):
     if fs.get('status') == 'unavailable':
         return 'Blocked', 'capture-only', ['首屏截圖失敗（含 CDP 備援）']
     low, med = [], []
+    # 性能相關的訊號：研究環境負載下只能降到 Medium，不能單獨造成 Low（Research Environment Load ≠ Website Performance）
+    perf_low = med if affected else low
+    note = LOAD_NOTE if affected else ''
+    if affected:
+        med.append(f'Research Environment Load：量測時有 {conc.get("concurrent_measurements", 0)} 個其他 preflight 同時在量、'
+                   f'每顆 CPU 負載 {conc.get("load_per_cpu")}→{conc.get("load_per_cpu_after")}；'
+                   'fps／首屏時間可能被研究環境拖慢，建議 serial 重測')
     secs = fs.get('seconds_from_nav') or 0
     if secs > 30:
-        low.append(f'首屏 {secs:.0f} 秒才拍到')
+        perf_low.append(f'首屏 {secs:.0f} 秒才拍到' + note)
     elif secs > 12:
-        med.append(f'首屏 {secs:.0f} 秒才拍到')
+        med.append(f'首屏 {secs:.0f} 秒才拍到' + note)
     if fs.get('status') == 'fallback':
-        med.append('一般截圖逾時，靠 CDP 擷取')
+        med.append('一般截圖逾時，靠 CDP 擷取' + note)
     sc = d.get('scroll', {})
     if sc.get('ok') is False:
         low.append('桌機無法捲動（scroll locked 或 hijacking）')
@@ -168,9 +279,9 @@ def grade(res):
     pr = d.get('probe') or {}
     fps = d.get('fps')
     if pr.get('bigCanvas'):
-        (low if (fps is not None and fps < 10) else med).append(f'大面積 canvas（{pr["bigCanvas"]} 個），fps≈{fps}')
+        (perf_low if (fps is not None and fps < 10) else med).append(f'大面積 canvas（{pr["bigCanvas"]} 個），fps≈{fps}' + note)
     elif fps is not None and fps < 10:
-        med.append(f'幀率很低（fps≈{fps}）')
+        med.append(f'幀率很低（fps≈{fps}）' + note)
     if pr.get('smoothLib') or pr.get('containers'):
         med.append('有 smooth scroll／自訂捲動容器跡象')
     if pr.get('nodes', 0) < 30:
@@ -187,7 +298,7 @@ def grade(res):
     elif m is not None and m.get('skipped'):
         med.append('手機沒有預檢（時間預算不足）')
     if res.get('timeouts', 0) >= 2:
-        low.append(f'逾時 {res["timeouts"]} 次')
+        perf_low.append(f'逾時 {res["timeouts"]} 次' + note)
     reasons = low + med
     if low:
         return 'Low', 'reduced', reasons
@@ -203,6 +314,9 @@ def main():
     p.add_argument('--budget', type=int, default=C.BUDGET['preflight'])
     p.add_argument('--no-mobile', action='store_true')
     p.add_argument('--gpu', choices=('swiftshader', 'default'), default='swiftshader')
+    p.add_argument('--allow-concurrent', action='store_true',
+                   help='不排隊（預設 serial：同一台機器一次只量一站，避免 fps 等性能量測互相干擾）')
+    p.add_argument('--lock-wait', type=int, default=900, help='排隊最多等幾秒（預設 900）')
     p.add_argument('--_child', action='store_true', help=argparse.SUPPRESS)
     p.add_argument('--_out', help=argparse.SUPPRESS)
     o = p.parse_args()
@@ -216,18 +330,29 @@ def main():
             '--_child', '--_out', tmp] + (['--no-mobile'] if o.no_mobile else [])
     if os.path.exists(tmp):
         os.remove(tmp)
-    t0 = time.monotonic()
-    code, log = C.run_with_hard_timeout(argv, o.budget + 15)
+    with MeasureSlot(serial=not o.allow_concurrent, wait=o.lock_wait) as slot:
+        others = others_measuring()
+        load0 = load_per_cpu()
+        t0 = time.monotonic()
+        code, log = C.run_with_hard_timeout(argv, o.budget + 15)
+        others = max(others, others_measuring())
+        load1 = load_per_cpu()
     res = C.read_json(tmp) or {'url': o.url, 'error': '預檢超過時間上限被中止' if code is None else f'預檢失敗：{(log or "")[-200:]}',
                                'desktop': {'nav': {'ok': False, 'error': '預檢逾時'}}}
     res['seconds'] = round(time.monotonic() - t0, 1)
+    res['concurrency'] = concurrency_record('serial' if slot.serial else 'concurrent', slot.waited, others, load0, load1)
     feas, scope, reasons = grade(res)
     res.update(feasibility=feas, scope=scope, reasons=reasons)
     if os.path.exists(tmp):
         os.remove(tmp)
     C.write_json(out, res)
-    C.wr_status.set_key(o.site_dir, 'preflight', {k: res[k] for k in ('feasibility', 'scope', 'reasons', 'seconds')})
-    print(f'Feasibility：{feas}（建議範圍：{scope}，{res["seconds"]} 秒）')
+    C.wr_status.set_key(o.site_dir, 'preflight', {k: res.get(k) for k in ('feasibility', 'scope', 'reasons', 'seconds',
+                                                                          'concurrency', 'load_affected')})
+    cc = res['concurrency']
+    print(f'Feasibility：{feas}（建議範圍：{scope}，{res["seconds"]} 秒；{cc["mode"]}，排隊 {cc["waited_seconds"]} 秒，'
+          f'同時量測 {cc["concurrent_measurements"]}，負載 {cc["load_per_cpu"]}→{cc["load_per_cpu_after"]}）')
+    if res.get('load_affected'):
+        print('  ⚠ load_affected：性能量測可能受研究環境負載影響（Research Environment Load ≠ Website Performance），建議 serial 重測')
     for r in reasons:
         print(f'  - {r}')
 

@@ -1,13 +1,13 @@
 # 擷取品質、失敗處理與研究可靠度
 
 三種模式都適用。Daily 讀 §0–4、§6.1、§7–9；Standard 再讀 §5–6（含 §6.2 Action Verification）；Deep 全部。
-修改這份規則或 `scripts/` 時，`python evals/run_checks.py` 的 regression（REG-01～REG-08，來自 2026-10-05 的實際案例）必須全部通過。
+修改這份規則或 `scripts/` 時，`python evals/run_checks.py` 的 regression（REG-01～REG-08 來自 2026-10-05、REG-09～REG-14 來自 2026-10-06 的實際案例）必須全部通過。
 這份規則從 2026-10-05 之後的研究開始生效，不回頭改寫舊研究（§10）。
 
 ## 目錄
 0. 三條原則
-1. 四個不同的東西：不要混在一起
-2. Capture Quality（A–D）與 Final Capture Quality（證據集合）
+1. 這幾個東西不要混在一起
+2. Capture Quality（A–D）、Final Capture Quality（證據集合）、Evidence Quality 與 Evidence Coverage
 3. 擷取流程：Primary → Check → Fallback → Re-evaluate → Final
 4. 擷取不完整時怎麼寫
 5. Research Value 與 Research Feasibility（選 Standard）
@@ -30,12 +30,13 @@
 
 這三條是後面所有規則的理由。遇到這份文件沒寫到的情況，就照這三條判斷。
 
-## 1. 四個不同的東西：不要混在一起
+## 1. 這幾個東西不要混在一起
 
 | 名稱 | 回答什麼 | 範圍 | 值 | 誰產生 |
 |---|---|---|---|---|
 | **Capture Quality** | 這「一次擷取」拿到的畫面完不完整？ | 一張整頁截圖或一組分段截圖 | A–D | `quality_check.py image／segments` |
 | **Final Capture Quality** | 把這個裝置的所有擷取（Initial＋Fallback）放在一起，這次研究能支撐到什麼程度？ | 一個裝置（桌機／平板／手機） | A–D，或 environment-failure | `quality_check.py final` |
+| **Evidence Quality／Evidence Coverage** | 拍到的畫面本身正不正常？合起來涵蓋了多少頁面／視窗／段落？（Final 的兩個依據，§2.2） | 一次擷取／一個裝置的證據集合 | Quality A–D；Coverage 比例、屏數、頁首／中段／頁尾、最大缺口 | `quality_check.py final` |
 | **Action Verification** | 這一個互動量測（點擊、hover、focus）是不是真的驗證了我們要驗證的東西？ | 一次互動 | verified／failed／unverified | `scripts/pw/action_verify.py` |
 | **能力狀態** | 這個「研究能力」（截圖、捲動、hover…）在這個寬度成功了嗎？ | 一個能力 × 一個寬度 | ok／fallback／partial／unverified／unavailable／skipped／na | `scripts/pw/` 的工具 |
 | **Research Reliability** | 這份研究「取得證據」整體有多可靠？ | 一份研究，分四個面向＋Overall | A–D | `reliability.py` |
@@ -84,24 +85,74 @@ Initial Capture（primary：Firecrawl、Playwright 正式量測）與 Fallback C
 也不是「後面那次取代前面那次」。它們都是證據，放在同一個集合裡判定：
 
 > **Final Capture Quality = 綜合目前可用的 evidence 後，這次研究實際能支撐到什麼程度。**
-> 不是單純取最後一次擷取的結果。
+> 它**不是**取 Initial／Fallback 中最高的等級，**也不是**單純採用最後一次擷取的結果。
+
+判定依據（§2.2 有定義與門檻）：
+
+| 依據 | 問的是 |
+|---|---|
+| Evidence quality | 拍到的畫面本身正不正常？（不是預載畫面、全空白、模糊背景、被選單或 cookie 蓋住） |
+| Evidence coverage | 所有擷取合起來，涵蓋了頁面高度的多少？ |
+| Viewport coverage | 合起來大約是幾個視窗高的內容？ |
+| Page coverage | 頁首、中段、頁尾是不是都有取到？ |
+| Capture gap | 合起來之後，是否仍有明顯的連續缺口（≥ 1 個視窗高）？ |
 
 規則（`quality_check.py final <網站資料夾>` 實作，結果寫進 `capture-status.json` 的 `final_capture`）：
 
 1. 同一個裝置的所有擷取都是證據：primary、每一次 fallback、同一種擷取重拍前的舊紀錄（`attempts`，不會被覆蓋）。
-2. Final 取證據集合中**能支撐的最好等級**：一組 A 的分段擷取就足以讓 Final 成為 A；一次失敗的 fallback 不會把已經取得的證據拉低。
-3. Research Environment Failure 的擷取不算證據（§6.1）。某裝置只有這種擷取 → 該裝置 `environment-failure`、Final D；桌機是 environment-failure → 整份研究 `research_status: environment-failure`。
-4. 擷取各自只涵蓋一部分、合起來更完整（例如 Firecrawl 缺中段、fallback 補到中段但缺頁尾）時，工具無法自動算「聯集」：
-   研究者用 `final --override desktop=B --reason "…"` 調整，理由要指出依據哪幾次擷取。也可以往下調（看切圖發現最好的那次其實是預載畫面）。
-5. Research Reliability 的 Capture／Responsive 都用 Final，不用單一擷取。
+2. 畫面品質 A／B 的擷取把各自涵蓋的頁面範圍合起來（聯集）。**Final ≤ Coverage 等級，且 ≤ 參與者中最差的 Quality。**
+   一次失敗的 fallback（D）不參與聯集，所以不會把已經取得的證據拉低。
+3. **Fallback A 但只拍到 1 個視窗或少數幾段，不會自動把整份研究提升為 A**：它的畫面品質是 A，涵蓋率卻很低。
+4. 聯集後仍有 ≥ 1 個視窗高的連續缺口 → 最多 B（明顯的 capture gap 仍在）。
+5. 不同擷取的位置只能近似對齊（Firecrawl 1920 與 Playwright 1440 的版面高度不同）：聯集最多比單次擷取中最好的等級高 1 級。
+6. Research Environment Failure 的擷取不算證據（§6.1）。某裝置只有這種擷取 → 該裝置 `environment-failure`、Final D；桌機是 environment-failure → 整份研究 `research_status: environment-failure`。
+7. 工具偵測不到「畫面有東西但內容不對」：研究者看過切圖後，可以把單次擷取往下覆寫（`image --override C`，等於說畫面品質有問題），
+   或用 `final --override desktop=B --reason "…"` 調整 Final，理由要指出依據哪幾次擷取。
+8. 沒有 Coverage 資料的舊紀錄（10/05 以前的狀態檔）沿用舊規則（取該紀錄的等級），`rule` 欄位會註明。
+9. Research Reliability 的 Capture／Responsive 都用 Final，不用單一擷取。
 
-| Initial | Fallback | Final | 說明（2026-10-05 實例） |
+| Initial | Fallback | Final | 說明（實例） |
 |---|---|---|---|
-| B | D | **B** | Spyker Cars：fallback 捲動被接管、幾乎全白；已取得的 B 仍然成立 |
-| C | A | **A** | Brilean：捲動進場與釘選段在整頁截圖中空白，分段擷取補齊 |
-| D | A | **A** | bleibtgleich'26 手機：Firecrawl 只拍到預載「97%」，分段擷取 7 張都有內容 |
-| B | D → A（同一種重拍） | **A** | Nightkidz 手機：第一次 fallback 只拍到像素預載（D，保留在 attempts），加長等待重拍為 A |
-| D（環境失敗） | D（環境失敗） | **environment-failure** | Santioni Spirits：兩種方式都只拿到「Your browser is not supported」 |
+| B | D | **B** | Spyker Cars（10/05）：fallback 捲動被接管、幾乎全白；已取得的 B 仍然成立 |
+| C | A（10/10 分段） | **A** | Brilean（10/05）：捲動進場段在整頁截圖中空白，分段擷取補齊整頁 |
+| D | A（7/7 分段） | **A** | bleibtgleich'26 手機（10/05）：Firecrawl 只拍到預載「97%」，分段擷取涵蓋整頁 |
+| B | D → A（同一種重拍） | **A** | Nightkidz 手機（10/05）：第一次 fallback 只拍到像素預載（D，保留在 attempts），加長等待重拍為 A |
+| B | A（只拍到 1 屏） | **B** | aardvarkbookclub（10/06）：頁面初始高度被鎖成 900px，fallback 只拍到首屏；Firecrawl 的 2 屏缺口仍在 |
+| B | A（低幀率只拍 3 張） | **B** | sharplink（10/06）：3 張取樣沒有補到 Firecrawl 的 1.6 屏缺口 |
+| D | A（頭、中、尾 3 張） | **C** | otsuka-air（10/06，regression）：畫面正常但只涵蓋 7–10% 的頁面；頁首／中段／頁尾都有取樣 → C，不是 A |
+| C | D | **B** | sstr（10/06）：失敗的 fallback 不拉低；Firecrawl 涵蓋約 3/4，仍有 5 屏缺口 → B |
+| D（環境失敗） | D（環境失敗） | **environment-failure** | Santioni Spirits（10/05）：兩種方式都只拿到「Your browser is not supported」 |
+
+### 2.2 Evidence Quality 與 Evidence Coverage
+
+Capture Quality 至少要分成兩個問題，不能混在一起：
+
+| | 問的是 | 怎麼判斷 |
+|---|---|---|
+| **Evidence Quality** | 取得的畫面本身是否正常？ | 檔案可讀、不是 95% 以上空白；研究者看切圖發現預載、模糊背景、動畫中途、被蓋住時往下覆寫 |
+| **Evidence Coverage** | 取得了多少頁面／視窗／段落？ | 整頁截圖：扣掉空白缺口後的範圍；分段擷取：每一張「有內容」的分段在頁面上的位置（`segments-*.json` 的 `positions`、`est_height`） |
+
+```
+High quality + Low coverage   ≠   High quality + High coverage
+（一張正常的截圖、3 張取樣）        （整頁都取得）
+```
+
+不要因為一張正常的截圖就認定整個網站 Capture A。
+
+Coverage 的門檻（`quality_check.py` 開頭的常數，改了要同步改這張表）：
+
+| 條件 | Coverage 等級 |
+|---|---|
+| 涵蓋頁面高度 ≥ 85% | A |
+| ≥ 60% | B |
+| ≥ 25% | C |
+| < 25%，但頁首、中段、頁尾都有取樣而且合計約 ≥ 2.5 個視窗 | C（骨架式取樣） |
+| 其他（例如只拍到 1 屏） | D |
+| 聯集後仍有 ≥ 1 個視窗高的連續缺口 | 最多 B |
+
+- 小於半個視窗高的未涵蓋區不算缺口（設計留白）；同一組分段擷取裡，相鄰兩張之間 < 1 個視窗高的間距視為取樣間距。
+- 某次擷取看到的頁面長度 < 其他擷取的 60%（例如捲動被鎖、頁面只有 1 屏高）→ 視為被截斷，它的涵蓋範圍從頁首起算，不會被放大成整頁。
+- 只有一張一屏高的截圖、頁面長度未知時，Final 不會比那張截圖自己的判定更好。
 
 ## 3. 擷取流程：Primary → Check → Fallback → Re-evaluate → Final
 
@@ -180,7 +231,7 @@ Fallback 是研究流程的**正式步驟**，不是例外處理。每個網站�
 | Daily uncertainty | Daily 留下的推測，**而且 Standard 有機會驗證** |
 | Learning value | 可以遷移到其他專案 |
 
-**Research Feasibility**（這次能量到多少；`scripts/pw/preflight.py`，≤ 90 秒）
+**Research Feasibility**（這次能量到多少；`scripts/pw/preflight.py`，≤ 90 秒，**一站一站跑**，見 §5.1）
 
 檢查：首屏能否在合理時間取得、能否捲動、DOM／CSS 是否取得、是否大量依賴 WebGL／canvas、smooth scroll／scroll hijacking 跡象、幀率、手機 viewport 能否載入、逾時次數。
 
@@ -206,6 +257,21 @@ K 個 Standard ＋ 量測順序、scope、時間上限、不可驗證項目
 - 候選池任何一站沒有 preflight → `select_standard.py` 以 Pipeline Error 結束：不能有些網站做了 preflight、有些憑印象判斷。
 - 不在候選池的網站不需要 preflight，表格上寫「不在候選池」。
 - 可量測候選不足 K 個時，Low 依 Value 補位（同樣縮小範圍、排在最後），名額不空著。
+
+### 5.1 Preflight 不要讓量測互相干擾（Research Environment Load ≠ Website Performance）
+
+fps、首屏時間、逾時、CDP 備援這些**性能相關**的訊號，量到的是「網站＋研究環境」。2026-10-06 三站同時跑 preflight，
+三個 Chromium（軟體渲染 WebGL）互搶 CPU，fps 讀數偏低，Low 判定可能過度保守：研究環境的負載被誤認成網站效能。
+
+- **預設 serial**：`preflight.py` 用檔案鎖排隊，同一台機器一次只有一個 preflight 在量（`--allow-concurrent` 才會並行，不建議）。
+  不要用 `&` 平行啟動；就算平行啟動，它們也會排隊。
+- **記錄 concurrency**：`source/preflight.json` 的 `concurrency` 記錄 mode（serial／concurrent）、排隊秒數、
+  量測時同時在量的其他 preflight 數、量測前後每顆 CPU 的負載。
+- **標記 load_affected**：量測時有其他 preflight 同時在量，或每顆 CPU 負載 ≥ 1.0 → `load_affected: true`。這時：
+  - 性能相關的訊號只能降到 **Medium**，理由後面加「研究環境負載下量測，可能偏低」，不能單獨造成 Low；
+  - 結構性的訊號（捲動被鎖、DOM 幾乎是空的、手機載不了、研究環境被拒絕）不受影響，照常判 Low／Blocked；
+  - `select_standard.py` 在選站表標「⚠ 負載下量測」並列出警告，建議 serial 重跑那一站的 preflight。
+- 舊版 preflight 沒有 `concurrency` 欄位：選站表會警告「無法確認量測時的研究環境負載」。
 
 **例外**：不要因此永遠排除 WebGL／3D 網站。Low 的網站 Value 明顯最高（≥ 12/16，而且比第 K 名可量測候選高 3 分以上）時，可以佔用**最多 1 個**名額，但必須：
 - 用 reduced 範圍（`run_standard.py --scope reduced`，或讓 `--scope auto` 讀 preflight 結果）；
@@ -268,6 +334,8 @@ Value 決定「值不值得研究」，Feasibility 決定「這次能研究到�
 | 預檢 Blocked | — | 不做 Standard | 只保留 Daily |
 | 研究環境被拒絕（browser unsupported 等） | 換另一種擷取方式一次 | Research Environment Failure | 不寫設計結論，記入研究限制並補位（§6.1） |
 | 互動目標選錯／結果不符預期 | 換下一個轉換候選（不點 consent／法律元素） | Action Verification Failed（能力記 unverified） | 那個行為寫「未驗證」，並寫出失敗的是哪一層（§6.2） |
+| preflight 量測時研究環境有負載（並行、CPU 高） | serial 重測 | `load_affected`（性能訊號最多降到 Medium） | 選站表標「⚠ 負載下量測」；不要把研究環境的負載寫成網站效能差（§5.1） |
+| 截圖引用超過 24 張 | 減少重複引用後重新打包 | Pipeline Error（deployment gate FAIL） | 不發佈；不能提高上限、不能刪被引用的圖（§9） |
 
 沒有任何一項失敗會讓整份研究「失敗」。研究照常寫完，只是對應的段落降級，並在可靠度與「限制」裡寫清楚。
 唯一的例外是 Research Environment Failure：那不是「證據不完整」，而是「沒有拿到網站」，見 §6.1。
@@ -310,6 +378,19 @@ click
 verified → cta_click: ok      failed／unverified → cta_click: unverified（click-<寬>.json 的 verification 寫明哪一層）
 ```
 
+**「click 成功」不等於「CTA flow verified」**（2026-10-06：三站的工具自動點擊都選錯目標）：
+
+| 情況 | 實例 | 判定 |
+|---|---|---|
+| 目標是頁內控制：捲動提示、輪播 Previous／Next、分頁、Show point、播放鍵 | Aevion「Scroll Down」、Decathlon Yestalgia「Previous」 | Target Correctness 失敗 → Failed（不是轉換行動） |
+| 目標沒有實際目的地（`href="#"`、`javascript:`、沒有 href 的按鈕），點擊後沒有可觀察的變化 | ERA Residence「BOOK A CALL」（`href="#"`） | Unverified |
+| 同上，只看到「頁面狀態改變」 | — | Unverified（無法確認是 CTA flow） |
+| 同上，開出非 cookie 的表單對話框 | ERA 的 Book a call 表單 | 可以 verified（有可驗證的 modal） |
+| click 成功，但落地結果不符預期（目標 /contact，落在 /blog） | — | Failed（Expected Outcome 不符） |
+| 換頁了，但落地頁是機器人驗證（Cloudflare「Just a moment...」、網址有 `__cf_chl`） | Decathlon「BOUTIQUE」→ decathlon.fr | Unverified（研究環境被落地站拒絕，不代表連結有問題，不要繞過） |
+
+- 選 Primary CTA 時，**有實際目的地（href 會換頁或開新分頁）的轉換候選優先**；頁內控制不進候選。
+- `click-<寬>.json` 記錄落地頁的 `title`，讓 Expected Outcome 看得出驗證頁。
 - Hover：只量轉換 CTA 與常駐導覽，不量 consent 元素；目標被蓋住記 unverified。
 - Focus：落在看不見元素、或沒有焦點指示的步驟不算驗證到的步驟；驗證到的步驟少於 3 步 → partial。
 - 報告寫法：verdict 不是 verified 時，寫「Action Verification Failed（目標是 cookie 橫幅的 Privacy Policy）」或「未驗證（點擊後沒有可觀察的結果）」，**不能寫「CTA 已驗證」或「點擊後進入…」**。
@@ -375,9 +456,23 @@ validate_refs.py：檔案存在？已打包？有上傳網址？
 ```
 
 - 研究收尾：`validate_refs.py <網站資料夾>`（引用的檔案都存在；引用不存在的截圖 → Pipeline Error，結束碼 1）。
-- 打包：`pack_assets.py` 在引用數超過上限時以 Pipeline Error 結束，**不默默刪圖**，也不留下上一次的 manifest（避免被誤當成這次的結果）。處理方式是減少報告的重複引用，或有理由地提高 `--max`。
+- 打包：`pack_assets.py` 在引用數超過上限時以 Pipeline Error 結束，**不默默刪圖**，也不留下上一次的 manifest（避免被誤當成這次的結果）。
+  **24 張是硬上限**（`validate_refs.HARD_MAX`）：`--max` 只能調低，不能提高。處理方式是減少報告的重複引用
+  （同一段落只引代表性的 1–3 張；長範圍改成代表張），然後重新打包。
 - 打包後：`validate_refs.py <網站資料夾> --manifest <manifest.json>`（manifest 不存在也是 Pipeline Error）。
 - 發佈前：`validate_refs.py <網站資料夾> --day <day.json> --domain <網域>`。
+
+**Deployment gate**（`scripts/deploy_gate.py`）：packaging validation 是部署的關卡，不是事後檢查。
+
+```
+Research → Package → Validate references → Validate image limit → Packed → Uploaded
+                                                                  ├─ 全部 PASS → Deploy
+                                                                  └─ 任何一站 FAIL → Stop / Repair（不發佈）
+```
+
+`python deploy_gate.py --research research --assets <打包資料夾> --day <day.json>`：沒有 manifest（打包失敗）、引用不存在、
+打包或引用超過 24 張、引用沒有被打包、沒有上傳網址，任何一項失敗就以結束碼 1 結束。
+不要用提高上限、刪除被引用的圖、或略過這個檢查的方式讓部署通過。
 
 ## 10. 生效範圍
 
@@ -387,3 +482,6 @@ validate_refs.py：檔案存在？已打包？有上傳網址？
 - Final Capture Quality（§2.1）、Research Environment Failure（§6.1）、Action Verification（§6.2）與 Standard Candidate Pipeline（§5）從 2026-10-06 之後的研究生效；
   10/05 的報告不回頭改寫，它們的異常已轉成 `evals/run_checks.py` 的 regression（REG-01～REG-08）。
 - 舊研究升級成 Standard 時，用新流程重新取得證據，新的 notes.md 才有 Reliability。
+- Evidence Quality × Evidence Coverage（§2.1、§2.2）、preflight serial／load_affected（§5.1）、頁內控制與 `href="#"` 的 Action Verification（§6.2）、
+  24 張硬上限與 deployment gate（§9）從 2026-10-07 之後的研究生效；10/06 的報告不回頭改寫，它的實例已轉成
+  `evals/run_checks.py` 的 regression（REG-09～REG-14）。

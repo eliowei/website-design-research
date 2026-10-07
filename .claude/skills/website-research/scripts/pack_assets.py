@@ -5,8 +5,10 @@
   python pack_assets.py <網站資料夾> <輸出資料夾> [--max 24] [--quota desktop=7,mobile=6,...]
 
 規則（references/capture-reliability.md §9）：
-  1. 報告引用到的截圖一定先打包（validate_refs.py 的同一套解析）。引用數超過 --max 時直接失敗
-     （結束碼 2），不要默默丟掉被引用的圖。
+  1. 報告引用到的截圖一定先打包（validate_refs.py 的同一套解析）。引用數超過上限時直接失敗
+     （Pipeline Error，結束碼 2），不要默默丟掉被引用的圖。
+     上限 24 張是硬限制（HARD_MAX）：--max 只能調低，不能調高。超過時的修正方式是減少報告裡的重複引用
+     （同一段落只引用代表性的 1–3 張、範圍改成代表張），不是提高上限。
   2. 其餘名額依類型分配最低配額，避免某一類（例如互動截圖）把手機截圖擠掉：
        desktop（桌機：desktop.png、pw1440-*）  mobile（手機：mobile.png、pw390-*）
        tablet（平板：tablet.png、pw768-*）      interaction（互動：int*）
@@ -26,7 +28,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from validate_refs import collect_refs  # noqa: E402
+from validate_refs import collect_refs, HARD_MAX  # noqa: E402
 
 try:
     from PIL import Image
@@ -86,7 +88,7 @@ def select(site_dir, max_n, quota):
     referenced = sorted({k for k in refs if k.startswith('screenshots/') and k in all_imgs}, key=sort_key)
     if len(referenced) > max_n:
         raise SystemExit(f'Pipeline Error：報告引用了 {len(referenced)} 張截圖，超過上限 {max_n}。'
-                         f'請減少引用或提高 --max（被引用的圖不能被丟掉）。')
+                         f'請減少報告中的重複引用後重新打包（上限是硬限制、不能提高；被引用的圖不能被默默丟掉）。')
     chosen = list(referenced)
     by_cat = {}
     for rel in sorted(all_imgs, key=sort_key):
@@ -156,9 +158,12 @@ def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument('site_dir')
     p.add_argument('out_dir')
-    p.add_argument('--max', type=int, default=24)
+    p.add_argument('--max', type=int, default=HARD_MAX, help=f'打包張數上限（預設 {HARD_MAX}；只能調低，不能超過 {HARD_MAX}）')
     p.add_argument('--quota', help='例如 desktop=7,mobile=6,tablet=3,interaction=4,fallback=4')
     o = p.parse_args()
+    if o.max > HARD_MAX:
+        print(f'Pipeline Error：--max {o.max} 超過硬限制 {HARD_MAX}。上限不能提高；請減少報告中的重複引用。', file=sys.stderr)
+        sys.exit(2)
     site = o.site_dir.rstrip('/')
     out_img = os.path.join(o.out_dir, 'img')
     os.makedirs(out_img, exist_ok=True)
@@ -166,7 +171,8 @@ def main():
     if os.path.exists(stale):  # 這次打包失敗時，不能讓上一次的 manifest 被誤當成這次的結果
         os.remove(stale)
     chosen, referenced, skipped, count = select(site, o.max, parse_quota(o.quota))
-    manifest = {'images': [], 'data': None, 'referenced': referenced, 'skipped': skipped, 'categories': count}
+    manifest = {'images': [], 'data': None, 'referenced': referenced, 'skipped': skipped, 'categories': count,
+                'max': o.max, 'hard_max': HARD_MAX}
     for rel in chosen:
         dst, w, h = convert(site, rel, out_img)
         manifest['images'].append({'path': rel, 'file': os.path.abspath(dst), 'label': label_for(rel),

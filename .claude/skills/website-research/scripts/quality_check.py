@@ -11,7 +11,10 @@
       加上擷取工具回報的網址／標題／內文，偵測 Research Environment Failure（browser unsupported、機器人驗證、被擋）。
 
   python quality_check.py final <網站資料夾> [--override desktop=B --reason "依據 firecrawl-desktop＋fallback-desktop"]
-      以證據集合判定 Final Capture Quality：Initial（primary）＋所有 Fallback 一起看，不是取最後一次。
+      以證據集合判定 Final Capture Quality：Initial（primary）＋所有 Fallback 一起看。
+      Final 不是取最高等級，也不是取最後一次，而是 Evidence Quality（畫面本身正不正常）×
+      Evidence Coverage（涵蓋多少頁面／視窗／段落、是否仍有明顯缺口）綜合判斷「證據是否足以支撐研究」。
+      例：fallback A 但只拍到 1 屏 → 涵蓋率低，不會把 Final 升到 A。
 
   python quality_check.py segments <segments.json> [--record <網站資料夾> --as fallback-desktop]
                                    [--override B --reason "理由"] [--json]
@@ -251,8 +254,12 @@ def analyze_segments(seg_path):
         credit += c
         if c >= 1.0:
             usable.append(g)
+    vh = s.get('vh') or 0
     m = {'file': seg_path, 'planned': planned, 'captured': len(segs), 'usable': len(usable),
          'coverage': round(credit / planned, 3),
+         # Evidence Coverage 用：每一張分段在頁面上的位置與判定、頁面高度估計、視窗大小（§2.2）
+         'vw': s.get('viewport'), 'vh': vh, 'est_height': s.get('est_height'),
+         'positions': [[g.get('target_y', 0), g.get('verdict')] for g in segs],
          'verdicts': [g.get('verdict') for g in segs],
          'scroll_status': s.get('scroll', {}).get('status'), 'scroll_method': s.get('scroll', {}).get('method'),
          'gaps': [g.get('target_y') for g in segs if g.get('verdict') in ('unrendered', 'missing', 'not-moved', 'partly-rendered')]}
@@ -339,15 +346,170 @@ def device_of(key):
     return 'other'
 
 
-def final_capture(d):
+# Evidence Quality × Evidence Coverage（references/capture-reliability.md §2.2）
+# 一張畫面正常的截圖（Quality 高）只代表「拍到的那一段」可以研究，不代表整個網站都拍到了（Coverage）。
+COV_A, COV_B, COV_C = 0.85, 0.60, 0.25   # 證據集合涵蓋頁面高度的比例 → A／B／C（其餘 D）
+GAP_TOL_VH = 0.5        # 小於半個視窗高的未涵蓋區不算缺口（設計留白、分段取樣的間距）
+GAP_CAP_VH = 1.0        # 仍有 ≥ 1 個視窗高的連續缺口 → Final 最多 B（「明顯的 capture gap」）
+SPREAD_MIN_VIEWPORTS = 2.5  # 頁首／中段／頁尾都取樣到、而且至少約 3 個視窗 → 最多 C（骨架式取樣）
+SHORT_PAGE_RATIO = 0.6  # 某次擷取看到的頁面長度 < 參考長度的 60% → 視為被截斷（例如捲動被鎖，只拍到 1 屏）
+SEG_STRIDE_TOL_VH = 1.0  # 同一組分段擷取裡，相鄰兩張之間 < 1 個視窗高的間距視為取樣間距（不是缺口）
+UNION_MAX_LIFT = 1      # 不同擷取的位置只能近似對齊（寬度不同、重排）：聯集最多比「單次擷取中最好的等級」高 1 級
+
+
+def _worse(a, b):
+    return a if GRADE_ORDER.index(a) >= GRADE_ORDER.index(b) else b
+
+
+def _better(a, b):
+    return a if GRADE_ORDER.index(a) <= GRADE_ORDER.index(b) else b
+
+
+def _load_segments_file(m, site_dir):
+    """舊的分段紀錄沒有 positions：試著從 segments json 補回。"""
+    f = m.get('file')
+    cands = [f] if f else []
+    if f and site_dir:
+        cands += [os.path.join(site_dir, 'source', os.path.basename(f)), os.path.join(site_dir, f)]
+    for c in cands:
+        try:
+            m2 = analyze_segments(c)
+            return {**m, **{k: m2[k] for k in ('vw', 'vh', 'est_height', 'positions')}}
+        except Exception:
+            continue
+    return m
+
+
+def evidence_of(rec, site_dir=None):
+    """一次擷取的 Evidence Quality 與 Evidence Coverage。沒有足夠資料（舊格式）時回傳 None。
+
+    回傳 {'quality', 'intervals'（自己頁面高度的比例 0–1）, 'own_len'（頁面長度，以視窗寬為單位）,
+          'vh_w'（視窗高 ÷ 寬）, 'length_known', 'kind'}。
+    Quality 只看「拍到的畫面本身」正不正常；拍到多少是 Coverage。
+    研究者把某次擷取往下覆寫（例如看切圖發現是預載畫面），等於說那次的畫面品質有問題 → Quality 取覆寫等級。
+    往上覆寫（例如空白是設計留白）沒有辦法換算成涵蓋範圍 → 回傳 None，走舊規則（用覆寫後的等級）。
+    """
+    m = rec.get('metrics') or {}
+    kind = rec.get('kind')
+    ov = rec.get('override_reason') and rec.get('grade') in GRADE_ORDER and rec.get('auto_grade') in GRADE_ORDER
+    if ov and GRADE_ORDER.index(rec['grade']) < GRADE_ORDER.index(rec['auto_grade']):
+        return None
+    if kind == 'image' and m.get('width') and m.get('height'):
+        w, h = m['width'], m['height']
+        vh = m.get('viewport_h') or guess_viewport_h(w)
+        q = 'D' if m.get('failed') else 'A'
+        gaps = sorted(tuple(g) for g in (rec.get('gaps') or m.get('gaps') or []))
+        iv, y = [], 0
+        for g0, g1 in gaps:
+            if g0 > y:
+                iv.append((y / h, g0 / h))
+            y = max(y, g1)
+        if y < h:
+            iv.append((y / h, 1.0))
+        known = not (m.get('first_screen_only') or m.get('height_capped') or m.get('single_screen_unknown')
+                     or (m.get('height_mismatch') or 0) >= B_HEIGHT_MISMATCH)
+        ev = {'kind': 'image', 'quality': q, 'intervals': iv, 'own_len': h / w, 'vh_w': vh / w, 'length_known': known,
+              'auto_grade': rec.get('auto_grade')}
+    elif kind == 'segments':
+        if not m.get('positions'):
+            m = _load_segments_file(m, site_dir)
+        if not m.get('positions') or not m.get('vh') or not m.get('vw'):
+            return None
+        vh, vw = m['vh'], m['vw']
+        est = m.get('est_height') or vh * max(m.get('planned', 1), 1)
+        est = max(est, vh)
+        iv = []
+        for y, verdict in m['positions']:
+            if verdict in ('content', 'empty-by-design'):
+                iv.append((y / est, min(1.0, (y + vh) / est)))
+            elif verdict == 'partly-rendered':
+                iv.append((y / est, min(1.0, (y + vh / 2) / est)))
+        tol = SEG_STRIDE_TOL_VH * vh / est
+        merged = []
+        for a, b in sorted(iv):
+            if merged and a - merged[-1][1] <= tol:
+                merged[-1] = (merged[-1][0], max(merged[-1][1], b))
+            else:
+                merged.append((a, b))
+        iv = merged
+        q = 'A' if iv else 'D'
+        ev = {'kind': 'segments', 'quality': q, 'intervals': iv, 'own_len': est / vw, 'vh_w': vh / vw,
+              'length_known': est > 1.2 * vh, 'auto_grade': rec.get('auto_grade')}
+    else:
+        return None
+    if ov:  # 往下覆寫：畫面品質有問題（預載、模糊背景、選單蓋住內容…）
+        ev['quality'] = _worse(ev['quality'], rec['grade'])
+    return ev
+
+
+def coverage_of(evs):
+    """把同一裝置的多次擷取合成一條「頁面涵蓋範圍」，回傳 Coverage 指標與 Coverage 等級。"""
+    known = [e for e in evs if e['length_known']] or evs
+    L = max(e['own_len'] for e in known)
+    vh_w = min(e['vh_w'] for e in evs)
+    spans = []
+    for e in evs:
+        # 看到的頁面長度和參考長度相近 → 依比例對應；明顯較短（捲動被鎖、只拍到 1 屏）→ 從頁首起算的絕對長度
+        k = 1.0 if e['own_len'] >= SHORT_PAGE_RATIO * L else e['own_len'] / L
+        spans += [(a * k, b * k) for a, b in e['intervals'] if b > a]
+    spans.sort()
+    tol = GAP_TOL_VH * vh_w / L
+    merged = []
+    for a, b in spans:
+        if merged and a - merged[-1][1] <= tol:
+            merged[-1][1] = max(merged[-1][1], b)
+        else:
+            merged.append([a, b])
+    if merged and merged[0][0] <= tol:
+        merged[0][0] = 0.0
+    if merged and 1.0 - merged[-1][1] <= tol:
+        merged[-1][1] = 1.0
+    cov = sum(b - a for a, b in merged)
+    holes, y = [], 0.0
+    for a, b in merged:
+        if a > y:
+            holes.append(a - y)
+        y = max(y, b)
+    if y < 1.0:
+        holes.append(1.0 - y)
+    largest_gap_vh = max(holes, default=0.0) * L / vh_w
+    viewports = cov * L / vh_w
+    thirds = sorted({i for a, b in merged for i in range(3) if a < (i + 1) / 3 and b > i / 3})
+    if cov >= COV_A:
+        g = 'A'
+    elif cov >= COV_B:
+        g = 'B'
+    elif cov >= COV_C:
+        g = 'C'
+    elif len(thirds) == 3 and viewports >= SPREAD_MIN_VIEWPORTS:
+        g = 'C'
+    else:
+        g = 'D'
+    notes = []
+    if g == 'A' and largest_gap_vh >= GAP_CAP_VH:
+        g = 'B'
+        notes.append(f'仍有約 {largest_gap_vh:.1f} 個視窗高的連續缺口')
+    if not any(e['length_known'] for e in evs):
+        notes.append('頁面總長度未知（只拍到一屏、或截圖高度可能被截斷）')
+    return {'coverage': round(cov, 3), 'viewports': round(viewports, 1), 'largest_gap_vh': round(largest_gap_vh, 1),
+            'sections': [['頁首', '中段', '頁尾'][i] for i in thirds],
+            'grade': g, 'notes': notes, 'length_known': any(e['length_known'] for e in evs)}
+
+
+def final_capture(d, site_dir=None):
     """以「證據集合」判定每個裝置的 Final Capture Quality。
 
-    規則（references/capture-reliability.md §2.1）：
-      1. 同一個裝置的所有擷取（primary、fallback、歷次嘗試）都是證據，不互斥；Final 不是「最後一次」的結果。
-      2. Final = 證據集合中能支撐的最好等級：一張 A 的分段擷取就足以讓 Final 成為 A，
-         失敗的 fallback（D）不會把已經取得的 B 拉下來。
-      3. Research Environment Failure 的擷取不算證據；某裝置只有這種擷取時，該裝置 status = environment-failure、Final D。
-      4. 多次擷取各自只涵蓋一部分、合起來更完整時，研究者可以用 final --override 調整（理由必填、要指出是哪些擷取）。
+    Final 不是 Initial／Fallback 中最高的等級，也不是最後一次擷取的結果，而是綜合
+    Evidence Quality（畫面本身正不正常）× Evidence Coverage（頁面、視窗、段落涵蓋多少）
+    × 是否仍有明顯 capture gap，判斷「目前的證據是否足以支撐研究」（references/capture-reliability.md §2.1、§2.2）：
+      1. 同一個裝置的所有擷取（primary、fallback、歷次嘗試）都是證據，不互斥。
+      2. 畫面品質 A／B 的擷取把各自涵蓋的頁面範圍合起來（聯集）；Final ≤ Coverage 等級、≤ 參與者中最差的 Quality。
+         一張 A 的 fallback 只拍到 1 屏或 3 張取樣 → 涵蓋率低，不能把整份研究升到 A。
+         失敗的 fallback（D）不會把已經取得的證據拉低（它不參與聯集）。
+      3. 聯集後仍有 ≥ 1 個視窗高的連續缺口 → 最多 B。
+      4. Research Environment Failure 的擷取不算證據；某裝置只有這種擷取時，status = environment-failure、Final D。
+      5. 沒有 Coverage 資料的舊紀錄：沿用舊規則（取該紀錄的等級），並在 rule 註明。
+      6. 研究者可以 final --override 調整（理由必填、要指出是哪些擷取）。
     """
     import wr_status
     groups = {}
@@ -366,9 +528,41 @@ def final_capture(d):
                'evidence': [{'capture': k, 'stage': r.get('stage', 'primary'), 'grade': r.get('grade'),
                              'environment_failure': bool(r.get('environment_failure'))} for k, r in items]}
         if usable:
-            best_k, best_r = min(usable, key=lambda kr: GRADE_ORDER.index(kr[1]['grade']))
-            rec.update(grade=best_r['grade'], basis=best_k, status='ok' if best_r['grade'] == 'A' else 'degraded',
-                       rule='證據集合中最好的擷取')
+            evs, legacy = [], []
+            for k, r in usable:
+                e = evidence_of(r, site_dir)
+                (evs if e else legacy).append((k, r, e))
+            contrib = [(k, r, e) for k, r, e in evs if e['quality'] in 'AB']
+            new_grade, cov = None, None
+            if contrib:
+                cov = coverage_of([e for _, _, e in contrib])
+                if len(contrib) > 1:  # 聯集最多比單次擷取中最好的等級高 UNION_MAX_LIFT 級
+                    best_single = min((r['grade'] for _, r, _ in contrib), key=GRADE_ORDER.index)
+                    cap = GRADE_ORDER[max(0, GRADE_ORDER.index(best_single) - UNION_MAX_LIFT)]
+                    if GRADE_ORDER.index(cov['grade']) < GRADE_ORDER.index(cap):
+                        cov['notes'].append(f'各次擷取位置只能近似對齊：聯集最多比最好的單次擷取（{best_single}）高 {UNION_MAX_LIFT} 級')
+                        cov['grade'] = cap
+                q = max((e['quality'] for _, _, e in contrib), key=GRADE_ORDER.index)
+                new_grade = _worse(cov['grade'], q)
+                if not cov['length_known']:  # 長度未知時不能比單張擷取自己的判定更好
+                    new_grade = _worse(new_grade, min((e['auto_grade'] or 'D' for _, _, e in contrib), key=GRADE_ORDER.index))
+                rec['evidence_quality'] = q
+                rec['coverage'] = cov
+            elif evs:  # 只有畫面品質 C／D 的擷取（預載、選單蓋住…）
+                new_grade = _worse('C', max((e['quality'] for _, _, e in evs), key=GRADE_ORDER.index))
+                rec['evidence_quality'] = new_grade
+            legacy_grade = min((r['grade'] for _, r, _ in legacy), key=GRADE_ORDER.index) if legacy else None
+            if new_grade and legacy_grade:
+                grade = _better(new_grade, legacy_grade)
+                rule = '證據集合（Quality × Coverage）＋舊格式紀錄（沒有 Coverage 資料，沿用其等級）'
+            elif new_grade:
+                grade = new_grade
+                rule = 'Evidence Quality × Evidence Coverage（證據集合聯集）'
+            else:
+                grade = legacy_grade
+                rule = '舊格式紀錄（沒有 Coverage 資料）：取證據集合中最好的擷取'
+            basis = [k for k, _, _ in contrib] or [k for k, _, _ in legacy] or [k for k, _, _ in evs]
+            rec.update(grade=grade, basis='＋'.join(dict.fromkeys(basis)), status='ok' if grade == 'A' else 'degraded', rule=rule)
         else:
             rec.update(grade='D', basis=None, status='environment-failure' if env else 'failed',
                        rule='只有研究環境被拒絕的擷取' if env else '沒有可用擷取')
@@ -396,7 +590,7 @@ def research_status(final):
 
 
 def final_table(final):
-    rows = ['| 裝置 | Initial | Fallback | **Final** | 依據 |', '| --- | --- | --- | --- | --- |']
+    rows = ['| 裝置 | Initial | Fallback | Quality | Coverage | **Final** | 依據 |', '| --- | --- | --- | --- | --- | --- | --- |']
     for dev in DEVICES + ('other',):
         r = final.get(dev)
         if not r:
@@ -405,7 +599,11 @@ def final_table(final):
         basis = r.get('basis') or ('Research Environment Failure' if r['status'] == 'environment-failure' else '—')
         if r.get('override_reason'):
             basis += f'（覆寫：{r["override_reason"]}）'
-        rows.append(f'| {dev} | {r["initial"] or "—"} | {fb} | **{r["grade"]}** | {basis} |')
+        c = r.get('coverage')
+        cov = (f'{c["coverage"]:.0%}・約 {c["viewports"]:g} 屏・{"／".join(c["sections"]) or "—"}'
+               + (f'・最大缺口 {c["largest_gap_vh"]:g} 屏' if c['largest_gap_vh'] >= GAP_TOL_VH else '')
+               + (f'（{c["grade"]}）') if c else '—（舊格式）')
+        rows.append(f'| {dev} | {r["initial"] or "—"} | {fb} | {r.get("evidence_quality", "—")} | {cov} | **{r["grade"]}** | {basis} |')
     return '\n'.join(rows)
 
 
@@ -492,7 +690,7 @@ def main_final(p, o):
                 p.error(f'無法解析 {item}（裝置：desktop／tablet／mobile；等級 A–D）')
             ov[dev] = {'grade': g, 'reason': o.reason}
         wr_status.save(o.site_dir, d)
-    fin = final_capture(d)
+    fin = final_capture(d, o.site_dir)
     status = research_status(fin)
     wr_status.set_key(o.site_dir, 'final_capture', fin)
     wr_status.set_key(o.site_dir, 'research_status', status)
