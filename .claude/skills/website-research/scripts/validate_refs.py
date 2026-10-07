@@ -5,7 +5,7 @@
   python validate_refs.py <網站資料夾>
       研究收尾時用：報告（*.md）引用的每張截圖、每個 source/ 檔案都要在資料夾裡找得到。
   python validate_refs.py <網站資料夾> --manifest <manifest.json>
-      打包後用：引用的截圖都要在打包清單裡（pack_assets.py 產生）。
+      打包後用：引用的截圖都要在打包清單裡（pack_assets.py 產生），打包張數與引用張數都不能超過硬上限 24。
   python validate_refs.py <網站資料夾> --day <day.json> --domain <網域>
       發佈前用：day 檔裡這個網站的報告引用的截圖，都要有上傳後的網址（attach_assets.py 寫入）。
 
@@ -26,6 +26,7 @@ import re
 import sys
 
 IMG_EXT = ('.png', '.jpg', '.jpeg', '.webp')
+HARD_MAX = 24  # 每個網站打包上傳的截圖張數硬上限（pack_assets.py 與部署前檢查共用；不能提高）
 CITE_RE = re.compile(r'截圖[：:]\s*([^）)\n]*)')
 LINK_RE = re.compile(r'\]\(\s*(?:\./)?((?:screenshots|source)/[^)\s#]+)')
 SPLIT_RE = re.compile(r'[、,，／/；;\s]+')
@@ -142,6 +143,12 @@ def check(site_dir, manifest=None, day=None, domain=None):
             man = json.load(f)
         packed = {i['path'] for i in man.get('images', [])}
         packed_data = set((man.get('data') or {}).get('paths', []))
+        # Validate image limit：打包張數與被引用張數都不能超過硬上限（就算 manifest 是別的方式產生的）
+        if len(man.get('images', [])) > HARD_MAX:
+            errors.append(f'打包了 {len(man["images"])} 張截圖，超過硬上限 {HARD_MAX}')
+        n_ref = sum(1 for k in refs if k.startswith('screenshots/'))
+        if n_ref > HARD_MAX:
+            errors.append(f'報告引用了 {n_ref} 張截圖，超過硬上限 {HARD_MAX}（減少重複引用，不能提高上限）')
     for key, where in sorted(refs.items()):
         loc = '、'.join(where[:3]) + ('…' if len(where) > 3 else '')
         if key.startswith('?'):

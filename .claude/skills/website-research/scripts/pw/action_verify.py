@@ -12,6 +12,13 @@
                          Primary CTA：換頁到非法律頁、開出非 cookie 的對話框或表單、狀態改變，
                          而且落地頁不是 privacy／cookie／terms 這類頁面；有 href 時落地網址要對得上。
 
+「click 成功」不等於「CTA flow verified」：
+  - 頁內控制（Scroll Down、Previous／Next、輪播圓點、Show point、播放鍵…）在 Target Correctness 就失敗。
+  - href="#"、javascript: 或沒有目的地的元素：只有開出非 cookie 的對話框（或換頁）才算預期結果；
+    沒有變化、或只有「狀態改變」都是 unverified。
+  - 換頁了，但落地頁是機器人驗證（Cloudflare「Just a moment...」、__cf_chl）→ unverified（研究環境被落地站拒絕）。
+  - 有 href 卻落在別的路徑（例如目標 /contact、落在 /blog）→ failed（結果不符預期）。
+
 判定：
   verified    三層都通過 → 能力狀態 ok（或 fallback，看使用的方法）
   failed      目標選錯，或結果明確不符合預期（例如點到 Privacy Policy、落在 /privacy）→ 能力狀態 unverified，
@@ -43,6 +50,29 @@ UTILITY_RE = re.compile(r'^(en|fr|de|it|es|pt|nl|ja|zh|ko|english|français|deut
                         r'skip to (main )?content|menu|close|search|sign in|log ?in|login|account|cart( \(\d+\))?)$', re.I)
 
 
+# 頁內控制元素：捲動提示、輪播與分頁切換、媒體控制。點了只會改變頁內狀態，不是轉換行動（2026-10-06：Scroll Down、Previous）
+PAGE_CONTROL_RE = re.compile(r'^(scroll( down| to (explore|discover|top))?|scroll ?↓|↓|back to top|to top|to start|skip( intro)?|'
+                             r'prev(ious)?( slide)?|next( slide)?|←|→|‹|›|«|»|slide \d+|go to slide \d+|'
+                             r'play|pause|mute|unmute|sound( on| off)?|(click to )?enable sound|replay|'
+                             r'show point .*|view more photos|zoom( in| out)?|drag( to see more)?|by (day|night))$', re.I)
+# 研究環境被落地站拒絕（機器人驗證）：網址或標題的明確訊號
+CHALLENGE_URL_RE = re.compile(r'__cf_chl|/cdn-cgi/challenge|captcha|/challenge(\b|/)', re.I)
+CHALLENGE_TITLE_RE = re.compile(r'^just a moment|attention required|verify (that )?you are (a )?human|'
+                                r'performing security verification|are you a robot|access denied', re.I)
+
+
+def destination(target):
+    """目標有沒有實際的目的地：'url'（有 href，會換頁或開新分頁）、'anchor'（#section，頁內跳轉）、
+    'none'（href="#"、javascript:、沒有 href 的 button）。"""
+    href = (target or {}).get('href') or ''
+    h = href.strip()
+    if not h or h in ('#', '#!', '#0') or h.lower().startswith('javascript:'):
+        return 'none'
+    if h.startswith('#'):
+        return 'anchor'
+    return 'url'
+
+
 def _blob(t):
     return ' '.join(str(t.get(k) or '') for k in ('text', 'aria', 'href'))
 
@@ -69,6 +99,8 @@ def target_check(target, kind='cta'):
             reasons.append(f'「{text or href}」是法律／隱私權連結，不是轉換行動')
         if UTILITY_RE.match(text):
             reasons.append(f'「{text}」是導覽／工具元素，不是轉換行動')
+        if PAGE_CONTROL_RE.match(text) or PAGE_CONTROL_RE.match((target.get('aria') or '').strip()):
+            reasons.append(f'「{text or target.get("aria")}」是頁內控制（捲動提示、輪播、分頁、媒體控制），不是轉換行動')
     if target.get('topmost') is False:
         reasons.append('目標被其他元素蓋住（topmost: false）')
     if target.get('visibleNow') is False and kind != 'cta':
@@ -95,11 +127,17 @@ def outcome_check(target, result, kind='cta'):
     """
     reasons = []
     res = (result or {}).get('result')
+    dest = destination(target)
     if res in (None, 'error'):
         return False, 'none', [f'動作沒有發生：{(result or {}).get("error") or "沒有結果"}']
     if res == 'no_observable_change':
-        return True, 'none', ['點擊後沒有可觀察的變化（URL、對話框、狀態都沒變）']
+        extra = '；目標沒有實際目的地（href 為空、# 或 javascript:）' if dest == 'none' else ''
+        return True, 'none', ['點擊後沒有可觀察的變化（URL、對話框、狀態都沒變）' + extra]
     url = (result or {}).get('url') or ''
+    title = (result or {}).get('title') or ''
+    if res in ('navigated', 'new_tab') and (CHALLENGE_URL_RE.search(url) or CHALLENGE_TITLE_RE.search(title.strip())):
+        # 有換頁，但看到的是機器人驗證頁：研究環境被落地站拒絕，落地結果無法確認（不是 verified，也不代表連結壞掉）
+        return True, 'none', [f'落地頁是研究環境的機器人驗證（{title or url[:80]}），無法確認落地結果']
     if res in ('navigated', 'new_tab'):
         if LEGAL_URL_RE.search(url) or LEGAL_RE.search(_path(url)):
             return True, 'unexpected', [f'落地頁是法律／隱私權頁面：{url}']
@@ -117,6 +155,10 @@ def outcome_check(target, result, kind='cta'):
             return True, 'unexpected', [f'開出的是 consent／法律對話框：{dlg[:60]}']
         return True, 'expected', ['開出對話框' + (f'：{dlg[:60]}' if dlg else '')]
     if res == 'state_change':
+        if dest in ('none', 'anchor'):
+            # href="#"／沒有目的地：只看到「狀態變了」，無法確認是 CTA flow（表單、對話框、換頁）
+            return True, 'none', ['目標沒有實際目的地（href 為空、# 或 javascript:），點擊後只有頁面狀態改變，'
+                                  '沒有可驗證的換頁／網址／對話框，不能算 CTA flow']
         return True, 'expected', ['頁面狀態改變']
     return True, 'none', [f'無法判斷的結果：{res}']
 

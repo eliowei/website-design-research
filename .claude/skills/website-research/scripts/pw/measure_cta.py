@@ -11,7 +11,8 @@ CTA 清單來自 inspect_visible 的可見元素：按鈕樣式（有底色／�
 
 --click：點一次 Primary CTA（預設是出現最多次的按鈕樣式「轉換」CTA，或用 --cta 指定），記錄實際結果：
   新分頁網址、同分頁換頁、出現對話框，或 2.5 秒內沒有可觀察的變化；落地頁只記錄可見的表單欄位，不送出。
-  每次點擊都做 Action Verification（action_verify.py）：Target Correctness（不是 consent／法律／導覽元素）→
+  有實際目的地（href）的轉換候選優先；頁內控制（Scroll Down、Previous／Next、輪播、Show point）不是候選。
+  每次點擊都做 Action Verification（action_verify.py）：Target Correctness（不是 consent／法律／導覽／頁內控制）→
   Action Success（真的點到）→ Expected Outcome（落地不是 privacy／cookie／terms，網址對得上 href）。
   三層都過才記 cta_click: ok；否則記 unverified，並在 click-<寬度>.json 的 verification 寫明哪一層失敗。
 輸出：source/pw/cta-<寬度>.json、source/pw/click-<寬度>.json、screenshots/pw/int<寬度>-cta-click.png。
@@ -29,7 +30,8 @@ import inspect_visible  # noqa: E402
 import action_verify as AV  # noqa: E402
 
 CONVERT_RE = re.compile(r'contact|sign-?up|register|join|get-?started|start|demo|trial|pricing|plans?|buy|shop|cart|checkout|'
-                        r'book|reserve|apply|download|subscribe|waitlist|access|quote|talk|apps\.apple|play\.google', re.I)
+                        r'book|reserve|apply|download|subscribe|waitlist|access|quote|talk|apps\.apple|play\.google|'
+                        r'boutique|store|e-?shop|acheter|achat|kaufen|comprar|tienda|negozio|enquire|inquire', re.I)
 FIELDS_JS = r"""() => [...document.querySelectorAll('input,select,textarea,button')].filter(e => window.__wr.vis(e))
   .map(e => ({tag: e.tagName.toLowerCase(), type: e.type || null, name: e.name || null, placeholder: e.placeholder || null,
               text: window.__wr.text(e).slice(0, 40), required: !!e.required}))"""
@@ -86,9 +88,13 @@ def pick_primary(cta):
     rejected = [{'text': c.get('text'), 'href': c.get('href'), 'why': c.get('not_conversion') or AV.target_check(c, 'cta')[1]}
                 for c in cta.get('ctas', []) if c not in pool]
     cta['primary_rejected'] = rejected
-    prim = [c for c in pool if c['style'] == 'primary' and c.get('topmost') is not False]
-    if not prim:
-        prim = [c for c in pool if c.get('topmost') is not False]
+    pool = [c for c in pool if c.get('topmost') is not False]
+    # 有實際目的地（href 會換頁／開新分頁）的候選優先：href="#"、javascript:、沒有 href 的按鈕
+    # 點了常常只改變頁內狀態，不能確認 CTA flow（2026-10-06：ERA 的 BOOK A CALL href="#"）
+    with_dest = [c for c in pool if AV.destination(c) == 'url']
+    if with_dest:
+        pool = with_dest
+    prim = [c for c in pool if c['style'] == 'primary'] or pool
     if not prim:
         return None
     counts = Counter(c['href'] or c['text'] for c in prim)
@@ -154,6 +160,10 @@ def click(page, ctx, target):
         except Exception:
             pass
         out.update(result='new_tab', url=newp.url)
+        try:
+            out['title'] = newp.title()
+        except Exception:
+            pass
         status, detail = 'ok', f'開新分頁：{newp.url}'
         newp.close()
     except Exception as e:
@@ -164,6 +174,10 @@ def click(page, ctx, target):
             page.wait_for_timeout(2500)
             if page.url != before_url:
                 out.update(result='navigated', url=page.url)
+                try:
+                    out['title'] = page.title()
+                except Exception:
+                    pass
                 status, detail = 'ok', f'同分頁換頁：{page.url}'
             elif C.evaluate(page, DIALOG_JS, default=0) > (dialogs_before or 0):
                 out.update(result='dialog', dialog_text=C.evaluate(page, DIALOG_TEXT_JS, default=''))

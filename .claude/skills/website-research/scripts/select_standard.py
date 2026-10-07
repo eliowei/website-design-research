@@ -15,6 +15,8 @@
   4. 可量測候選不足 K 個時，Low 候選依 Value 補位（每一站都縮小範圍），不讓名額空著。
   5. 所有 Low 入選者：scope=reduced、量測上限 480 秒、排在最後量測、列出不可驗證項目；
      它們失敗或逾時不影響其他 Standard（run_standard.py 本來就逐站、逐寬度隔離）。
+  6. preflight 量測時研究環境有負載（load_affected：其他 preflight 同時在量、CPU 負載高）→ 選站表標「⚠ 負載下量測」，
+     並列出警告建議 serial 重測（Research Environment Load ≠ Website Performance）。preflight 預設就是 serial。
 
 用法：
   python select_standard.py candidates.json --research-dir research [--k 3] [--pool 6] [--json] [--markdown]
@@ -110,6 +112,9 @@ def select(cands, research_dir, k=3, pool_size=None, preflights=None):
             c['_feas'], c['_reasons'] = None, []
         else:
             c['_feas'], c['_reasons'] = pre['feasibility'], pre.get('reasons', [])
+            c['_load'] = bool(pre.get('load_affected') or (pre.get('concurrency') or {}).get('load_affected'))
+            if 'concurrency' not in pre:
+                c['_load_unknown'] = True
             if pre.get('environment_failure'):
                 c['_feas'] = 'Blocked'
     if errors:
@@ -160,9 +165,14 @@ def select(cands, research_dir, k=3, pool_size=None, preflights=None):
         else:
             why = notes.get(c['domain']) or f'Value {c["_value"]} 排在入選者之後'
         rows.append({'domain': c['domain'], 'value': c['_value'], 'value_detail': c.get('value'), 'feasibility': c['_feas'],
-                     'in_pool': True, 'selected': c['domain'] in sel_domains, 'why': why})
+                     'in_pool': True, 'selected': c['domain'] in sel_domains, 'why': why, 'load_affected': c.get('_load', False)})
     rows.sort(key=lambda r: (-r['selected'], -r['in_pool'], -r['value']))
-    return {'errors': [], 'rows': rows, 'selected': plan, 'pool': [c['domain'] for c in pool]}
+    # Research Environment Load ≠ Website Performance：preflight 量測時環境有負載 → 標記並建議 serial 重測
+    warnings = [f'{c["domain"]}：preflight 量測時研究環境有負載（load_affected），fps／首屏時間可能偏低；'
+                f'Feasibility {c["_feas"]} 可能偏保守，建議 serial 重跑 preflight.py' for c in pool if c.get('_load')]
+    warnings += [f'{c["domain"]}：preflight 沒有記錄 concurrency（舊版 preflight），無法確認量測時的研究環境負載'
+                 for c in pool if c.get('_load_unknown')]
+    return {'errors': [], 'rows': rows, 'selected': plan, 'pool': [c['domain'] for c in pool], 'warnings': warnings}
 
 
 def markdown(res, cands):
@@ -173,11 +183,15 @@ def markdown(res, cands):
         v = (by.get(r['domain']) or {}).get('value') or {}
         cells = ' | '.join(str(v.get(k, '—')) for k in VALUE_KEYS)
         mark = '✅' if r['selected'] else '—'
-        lines.append(f'| {r["domain"]} | {cells} | **{r["value"]}** | {r["feasibility"]} | {mark} | {r["why"]} |')
+        feas = r['feasibility'] + ('（⚠ 負載下量測）' if r.get('load_affected') else '')
+        lines.append(f'| {r["domain"]} | {cells} | **{r["value"]}** | {feas} | {mark} | {r["why"]} |')
     lines += ['', '**量測順序**（Low 一律排最後、縮小範圍，不阻塞其他網站）：']
     for p in res['selected']:
         extra = f'；不可驗證：{"、".join(p["unverifiable"])}' if p['unverifiable'] else ''
         lines.append(f'{p["order"]}. {p["domain"]}（{p["feasibility"]}，scope {p["scope"]}，上限 {p["budget"]} 秒{extra}）')
+    if res.get('warnings'):
+        lines += ['', '**Preflight 量測環境警告**（Research Environment Load ≠ Website Performance）：']
+        lines += [f'- {w}' for w in res['warnings']]
     return '\n'.join(lines)
 
 
@@ -196,6 +210,8 @@ def main():
         for e in res['errors']:
             print(e, file=sys.stderr)
         sys.exit(1)
+    for w in res.get('warnings', []):
+        print('警告：' + w, file=sys.stderr)
     if o.json:
         print(json.dumps(res, ensure_ascii=False, indent=1))
     else:

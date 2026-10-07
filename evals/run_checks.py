@@ -12,7 +12,11 @@
             「被引用的圖一定打包」、validate_refs 抓得到沒上傳的引用
   regression  2026-10-05 每日研究實際發生的異常（REG-01～REG-08，資料在 evals/fixtures/regression/）：
             browser unsupported、Initial＋Fallback 的 Final Capture、CTA 選錯元素、高 Value＋Low Feasibility、
-            打包上限、引用不存在的截圖。修改 skill 時這些都必須維持通過。
+            打包上限、引用不存在的截圖。
+            2026-10-06 的實際案例（REG-09～REG-14）：Final Capture = Evidence Quality × Evidence Coverage
+            （B→A→B、D→A→C、C→D→B、fallback A 但涵蓋不足）、CTA 選到 Scroll Down／href="#"／Previous、
+            Cloudflare 驗證頁、preflight 並行造成 fps 偏低、截圖超過 24 張、減少重複引用後通過 deployment gate。
+            修改 skill 時這些都必須維持通過。
   pw        fixtures：隱藏複本、內層 hover、選單、自訂捲動容器、捲動被鎖、捲動進場（fallback）、永遠載不完的頁面
 """
 import argparse
@@ -108,7 +112,10 @@ def lint():
            'run_standard.py', 'validate_refs.py',
            # 2026-10-06：證據集合、正式 fallback 流程、Action Verification、統一的 Standard 候選管線
            'Final Capture Quality', '證據集合', 'Re-evaluate', 'Research Environment Failure', 'Action Verification',
-           'Target Correctness', 'Action Success', 'Expected Outcome', 'select_standard.py', 'Daily × 10', 'Standard Candidate Pool']
+           'Target Correctness', 'Action Success', 'Expected Outcome', 'select_standard.py', 'Daily × 10', 'Standard Candidate Pool',
+           # 2026-10-07：Evidence Quality × Coverage、preflight serial、href="#"、deployment gate
+           'Evidence Quality', 'Evidence Coverage', 'High quality + Low coverage ≠ High quality + High coverage',
+           'Research Environment Load ≠ Website Performance', 'load_affected', 'href="#"', 'deploy_gate.py', '硬限制']
     miss = [k for k in new if k not in text]
     check('新規則寫進 SKILL.md', not miss, '缺少：' + '、'.join(miss))
     ref = open(os.path.join(SKILL, 'references', 'capture-reliability.md'), encoding='utf-8').read()
@@ -124,7 +131,16 @@ def lint():
     import select_standard as SEL
     check('Standard 選站常數和文件一致（select_standard ↔ capture-reliability.md／SKILL.md）',
           SEL.REDUCED_BUDGET == C.BUDGET['reduced_site'] and f'≥ {SEL.EXCEPTION_MIN_VALUE}' in text and f'{SEL.EXCEPTION_MARGIN} 分以上' in text)
-    for sec in ('### 2.1 Final Capture Quality', '### 6.1 Research Environment Failure', '### 6.2 Action Verification'):
+    cov = [f'≥ {int(Q.COV_A * 100)}%', f'≥ {int(Q.COV_B * 100)}%', f'≥ {int(Q.COV_C * 100)}%', f'≥ {Q.GAP_CAP_VH:g} 個視窗高',
+           f'約 ≥ {Q.SPREAD_MIN_VIEWPORTS:g} 個視窗']
+    check('Coverage 門檻和文件一致（quality_check ↔ capture-reliability.md §2.2）', all(x in ref for x in cov), str(cov))
+    import validate_refs as VR
+    import preflight as PF
+    check('打包硬上限與文件一致（validate_refs.HARD_MAX ↔ SKILL.md／capture-reliability.md）',
+          VR.HARD_MAX == 24 and '24 張是硬上限' in ref and '24 張是硬限制' in text)
+    check('preflight 負載門檻與文件一致（preflight.LOAD_PER_CPU_MAX ↔ capture-reliability.md §5.1）', f'≥ {PF.LOAD_PER_CPU_MAX:g}' in ref)
+    for sec in ('### 2.1 Final Capture Quality', '### 2.2 Evidence Quality 與 Evidence Coverage', '### 5.1 Preflight',
+                '### 6.1 Research Environment Failure', '### 6.2 Action Verification'):
         check(f'capture-reliability.md 有「{sec[4:]}」', sec in ref)
 
 
@@ -462,6 +478,220 @@ def regression(tmp):
           code == 1 and 'Pipeline Error' in out and 'fb-d-s07' in out, out[-300:])
 
 
+# ---------------------------------------------------------------- regression（2026-10-06 實際研究的異常）
+def _status_from_fixture(caps):
+    """fixture 的擷取紀錄 → capture-status 的 dict（不寫檔，直接給 final_capture）。"""
+    return {'captures': {k: dict(v) for k, v in caps.items()}}
+
+
+def _seg_rec(vw, vh, est, ys, verdict='content', stage='fallback'):
+    pos = [[y, verdict] for y in ys]
+    return {'kind': 'segments', 'stage': stage, 'auto_grade': 'A', 'grade': 'A', 'reasons': [],
+            'metrics': {'planned': len(ys), 'usable': len(ys), 'coverage': 1.0, 'vw': vw, 'vh': vh, 'est_height': est,
+                        'positions': pos}, 'gaps': []}
+
+
+def _img_rec(w, h, vh, gaps, grade, failed=False, stage='primary'):
+    blank = sum(b - a for a, b in gaps)
+    return {'kind': 'image', 'stage': stage, 'auto_grade': grade, 'grade': grade, 'reasons': [],
+            'metrics': {'width': w, 'height': h, 'viewport_h': vh, 'blank_ratio': round(blank / h, 3), 'failed': failed,
+                        'first_screen_only': False, 'single_screen_unknown': False, 'height_mismatch': 0, 'height_capped': False},
+            'gaps': [list(g) for g in gaps]}
+
+
+def regression_1006(tmp):
+    import quality_check as Q
+    import wr_status as W
+    sys.path.insert(0, os.path.join(S, 'pw'))
+    import action_verify as AV
+    import measure_cta as MC
+    import preflight as PF
+    import select_standard as SEL
+
+    # REG-09 Final Capture Quality = Evidence Quality × Evidence Coverage（不是取最高、也不是取最後一次）
+    fx = json.load(open(os.path.join(REG, '2026-10-06-captures.json'), encoding='utf-8'))
+    cases = {'aardvarkbookclub.com': ('REG-09a', 'aardvarkbookclub 桌機 B → A → B（fallback A 只拍到 1 屏，頁面被鎖成 900px）'),
+             'sharplink.com': ('REG-09b', 'sharplink 桌機 B → A → B（fallback 低幀率只拍 3 張，Firecrawl 的 1.6 屏缺口仍在）'),
+             'otsuka-air.jp': ('REG-09c', 'otsuka-air 桌機／手機 D → A → C（fallback A 只有頭、中、尾 3 張，涵蓋 7–10%）'),
+             'sstr.tech': ('REG-09d', 'sstr 桌機 C → D → B（失敗的 fallback 不拉低；仍有 5 屏缺口 → 不是 A）')}
+    for dom, (rid, label) in cases.items():
+        site = fx['sites'][dom]
+        fin = Q.final_capture(_status_from_fixture(site['captures']))
+        got = {dev: fin[dev]['grade'] for dev in site['expected']}
+        check(f'{rid} {label}', got == site['expected'], json.dumps({d: (fin[d]['initial'], fin[d]['fallback'], fin[d]['grade'],
+                                                                           fin[d].get('coverage')) for d in site['expected']},
+                                                                      ensure_ascii=False))
+    fin = Q.final_capture(_status_from_fixture(fx['sites']['otsuka-air.jp']['captures']))['desktop']
+    best = min([fin['initial']] + fin['fallback'], key=Q.GRADE_ORDER.index)
+    check('REG-09e otsuka：Final 不是 Initial／Fallback 中最高的等級（A），也不是最後一次（A）',
+          fin['grade'] != best and fin['grade'] != fin['fallback'][-1] and fin['grade'] == 'C', str((best, fin['grade'])))
+    check('REG-09f otsuka：Final 記錄 Evidence Quality 與 Evidence Coverage（涵蓋率、屏數、頁首／中段／頁尾、最大缺口）',
+          fin.get('evidence_quality') == 'A' and fin['coverage']['coverage'] < 0.25 and fin['coverage']['sections'] == ['頁首', '中段', '頁尾']
+          and fin['coverage']['largest_gap_vh'] > 10, json.dumps(fin.get('coverage'), ensure_ascii=False))
+    # Initial D（幾乎全空白）＋ fallback A 但只拍到首屏 1 張 → 涵蓋不足，不能升到 A
+    d = {'captures': {'firecrawl-desktop': _img_rec(1920, 30000, 1080, [(1080, 30000)], 'D', failed=True),
+                      'fallback-desktop': _seg_rec(1440, 900, 22000, [0])}}
+    fin = Q.final_capture(d)['desktop']
+    check('REG-09g Initial D＋Fallback A 但只拍到 1 個視窗（coverage 不足）→ Final 不是 A（D）',
+          fin['grade'] == 'D' and fin['fallback'] == ['A'], str((fin['grade'], fin.get('coverage'))))
+    # High quality + Low coverage ≠ High quality + High coverage
+    lo = Q.final_capture({'captures': {'fallback-desktop': _seg_rec(1440, 900, 27000, [0, 900, 1800])}})['desktop']
+    hi = Q.final_capture({'captures': {'fallback-desktop': _seg_rec(1440, 900, 9000, [i * 900 for i in range(10)])}})['desktop']
+    check('REG-09h 同樣是畫面正常的 A：只涵蓋頁首 3 屏（Low coverage）≠ 涵蓋整頁 10 屏（High coverage）',
+          lo['evidence_quality'] == hi['evidence_quality'] == 'A' and lo['grade'] == 'D' and hi['grade'] == 'A',
+          str((lo['grade'], hi['grade'])))
+    # 一張正常截圖 ≠ 整個網站 A：Firecrawl 一屏、頁面長度未知
+    one = {'captures': {'firecrawl-desktop': {**_img_rec(1920, 1080, 1080, [], 'B'),
+                                              'metrics': {**_img_rec(1920, 1080, 1080, [], 'B')['metrics'], 'single_screen_unknown': True}}}}
+    fin = Q.final_capture(one)['desktop']
+    check('REG-09i 只有一張正常的一屏截圖（頁面長度未知）→ 不會被認定為 Capture A', fin['grade'] != 'A', str(fin['grade']))
+    # 聯集仍有 ≥ 1 屏的連續缺口 → 最多 B
+    gap = {'captures': {'firecrawl-desktop': _img_rec(1920, 10000, 1080, [(4000, 5500)], 'B')}}
+    check('REG-09j 涵蓋 85% 但仍有 1.4 屏的連續缺口 → 最多 B', Q.final_capture(gap)['desktop']['grade'] == 'B')
+    site = _site_with_captures(tmp, 'otsuka-cli', [])
+    W.save(site, {**W.load(site), 'captures': {k: dict(v) for k, v in fx['sites']['otsuka-air.jp']['captures'].items()}})
+    code, out = run([sys.executable, os.path.join(S, 'quality_check.py'), 'final', site])
+    check('REG-09k quality_check final 的表格列出 Quality 與 Coverage', code == 0 and '| Quality | Coverage |' in out and '頁首／中段／頁尾' in out,
+          out[-400:])
+
+    # REG-10 Action Verification：工具選錯 CTA（2026-10-06 三站都是）
+    cfx = json.load(open(os.path.join(REG, '2026-10-06-cta.json'), encoding='utf-8'))
+    dr, er, de = cfx['drone.riotters.com'], cfx['era-residence.com'], cfx['decathlonyestalgia.com']
+    ok, why = AV.target_check(dr['tool_click']['target'], 'cta')
+    check('REG-10a CTA selector 選到「Scroll Down」→ Target Correctness 失敗（頁內控制，不是轉換行動）', not ok and '頁內控制' in why[0], str(why))
+    v = AV.verify(dr['tool_click']['target'], dr['tool_click'])
+    check('REG-10b Scroll Down 點了也不能算 CTA 已驗證 → Action Verification Failed', v['verdict'] == 'failed', v['summary'])
+    for c in dr['ctas']:
+        c['conversion'], _ = AV.target_check(c, 'cta')
+    prim = MC.pick_primary(dr)
+    check('REG-10c Aevion 的 Primary CTA 改選有實際目的地的「Contact Us」（不是 Scroll Down、分頁按鈕、Show point）',
+          prim and prim['text'] == 'Contact Us', str(prim and prim['text']))
+    v = AV.verify(er['tool_click']['target'], er['tool_click'])
+    check('REG-10d CTA selector 選到 href="#" 的 BOOK A CALL、點擊後沒有可觀察的變化 → unverified（不是 verified）',
+          v['verdict'] == 'unverified' and '沒有實際目的地' in v['summary'], v['summary'])
+    v = AV.verify({'text': 'BOOK A CALL', 'href': '#'}, {'result': 'state_change'})
+    check('REG-10e href="#" 只有「頁面狀態改變」→ unverified（無法確認是 CTA flow）', v['verdict'] == 'unverified', v['summary'])
+    v = AV.verify({'text': 'BOOK A CALL', 'href': '#'}, {'result': 'dialog', 'dialog_text': 'Book a call Name Email Phone Message Submit'})
+    check('REG-10f href="#" 開出非 cookie 的表單對話框 → verified（有可驗證的 modal）', v['verdict'] == 'verified', v['summary'])
+    for c in er['ctas']:
+        c['conversion'], _ = AV.target_check(c, 'cta')
+    prim = MC.pick_primary(er)
+    check('REG-10g ERA 的候選中有實際目的地的連結時，不選 href="#" 的 BOOK A CALL', prim and AV.destination(prim) == 'url',
+          str(prim and (prim['text'], prim['href'])))
+    ok, why = AV.target_check(de['tool_click']['target'], 'cta')
+    check('REG-10h CTA selector 選到輪播的「Previous」→ Target Correctness 失敗', not ok, str(why))
+    boutique = {'text': 'BOUTIQUE', 'href': 'https://www.decathlon.fr/sportswear/decathlon-yestalgia?opeco=x', 'style': 'link',
+                'y': 20, 'topmost': True, 'section': {'container': 'header'}, 'selector': {'kind': 'semantic'}}
+    check('REG-10i「Boutique」是轉換 CTA（以前沒被列入 CTA 清單）', MC.is_cta({'text': 'BOUTIQUE', 'href': boutique['href']}))
+    lst = {'ctas': [dict(c) for c in de['ctas']] + [boutique]}
+    for c in lst['ctas']:
+        c['conversion'], _ = AV.target_check(c, 'cta')
+    prim = MC.pick_primary(lst)
+    check('REG-10j Decathlon 改選 BOUTIQUE（不是 Previous／Next）', prim and prim['text'] == 'BOUTIQUE', str(prim))
+    v = AV.verify({'text': 'Contact', 'href': '/contact'}, {'result': 'navigated', 'url': 'https://example.com/blog'})
+    check('REG-10k click 成功但 Expected Outcome 不符（目標 /contact、落在 /blog）→ Failed', v['verdict'] == 'failed'
+          and v['action_success']['ok'], v['summary'])
+    v = AV.verify(de['manual_click']['target'], de['manual_click']['result'])
+    check('REG-10l 落地頁是 Cloudflare 機器人驗證（Just a moment...、__cf_chl）→ unverified（不是 verified）',
+          v['verdict'] == 'unverified' and '機器人驗證' in v['summary'], v['summary'])
+    v = AV.verify({'text': 'Shop', 'href': '/shop'}, {'result': 'navigated', 'url': 'https://x.com/shop', 'title': 'Attention Required! | Cloudflare'})
+    check('REG-10m 只有標題是驗證頁（網址看起來正常）也 → unverified', v['verdict'] == 'unverified', v['summary'])
+    ok_d = AV.verify(dr['manual_click']['target'], dr['manual_click']['result'])['verdict']
+    ok_e = AV.verify(er['manual_click']['target'], er['manual_click']['result'])['verdict']
+    check('REG-10n 手寫補點的真實結果仍判定正確（Aevion Contact Us、ERA Select an Apartment → verified）',
+          ok_d == ok_e == 'verified', str((ok_d, ok_e)))
+
+    # REG-11 Research Environment Failure（擷取到的是拒絕或驗證頁）
+    env = Q.environment_failure('https://www.decathlon.fr/x?__cf_chl_rt_tk=1', 'Just a moment...', 'Performing security verification')
+    check('REG-11a 擷取到 Cloudflare「Just a moment...」→ Research Environment Failure（bot-challenge）',
+          env and env['type'] == 'bot-challenge', str(env))
+    fxs = json.load(open(os.path.join(REG, 'santioni-unsupported.json'), encoding='utf-8'))['firecrawl']
+    env = Q.environment_failure(fxs['url'], fxs['title'], fxs['markdown'], fxs['statusCode'])
+    d = {'captures': {'firecrawl-desktop': {'kind': 'image', 'stage': 'primary', 'grade': 'D', 'auto_grade': 'D', 'metrics': {}, 'gaps': [],
+                                            'environment_failure': env},
+                      'fallback-desktop': {'kind': 'segments', 'stage': 'fallback', 'grade': 'D', 'auto_grade': 'D', 'metrics': {}, 'gaps': [],
+                                           'environment_failure': env}}}
+    fin = Q.final_capture(d)
+    check('REG-11b Browser unsupported（兩種擷取都被拒）→ Research Environment Failure，Final D，不算 Coverage',
+          fin['desktop']['status'] == 'environment-failure' and Q.research_status(fin) == 'environment-failure'
+          and 'coverage' not in fin['desktop'], str(fin['desktop']))
+
+    # REG-12 Preflight：Research Environment Load ≠ Website Performance
+    base = {'http': {'status': 200}, 'desktop': {'nav': {'ok': True}, 'first_screenshot': {'status': 'ok', 'seconds_from_nav': 6},
+                                                 'scroll': {'ok': True}, 'fps': 2,
+                                                 'probe': {'nodes': 800, 'bigCanvas': 1, 'smoothLib': True, 'stylesheets': {'readable': 3}}},
+            'mobile': {'nav': {'ok': True}, 'first_screenshot': {'status': 'ok'}, 'scroll': {'ok': True}}}
+    serial = json.loads(json.dumps(base)); serial['concurrency'] = PF.concurrency_record('serial', 0, 0, 0.2, 0.3)
+    conc = json.loads(json.dumps(base)); conc['concurrency'] = PF.concurrency_record('concurrent', 0, 2, 0.4, 1.6)
+    gs, gc = PF.grade(serial), PF.grade(conc)
+    check('REG-12a serial、沒有其他量測、負載低：大面積 canvas＋fps≈2 → Low（量測可信）',
+          gs[0] == 'Low' and not serial['load_affected'], str(gs))
+    check('REG-12b 3 站並行（同時有 2 個 preflight 在量）→ load_affected，fps 只能降到 Medium 並標「研究環境負載」',
+          gc[0] == 'Medium' and conc['load_affected'] and any('Research Environment Load' in r for r in gc[2])
+          and any('研究環境負載下量測' in r for r in gc[2]), str(gc))
+    locked = json.loads(json.dumps(conc)); locked['desktop']['scroll'] = {'ok': False}
+    check('REG-12c 環境負載不會掩蓋結構性問題：捲動被鎖仍是 Low', PF.grade(locked)[0] == 'Low')
+    check('REG-12d 只有 CPU 負載高（每顆 ≥ 1.0）也標 load_affected',
+          PF.concurrency_record('serial', 0, 0, 1.3, 0.5)['load_affected'] and not PF.concurrency_record('serial', 0, 0, 0.5, 0.6)['load_affected'])
+    pre = {'a.example': {'feasibility': 'Medium', 'reasons': gc[2], 'concurrency': conc['concurrency'], 'load_affected': True},
+           'b.example': {'feasibility': 'High', 'reasons': [], 'concurrency': serial['concurrency'], 'load_affected': False}}
+    full = lambda n: {k: n for k in SEL.VALUE_KEYS}  # noqa: E731
+    cands = [{'domain': 'a.example', 'value': full(2)}, {'domain': 'b.example', 'value': full(1)}]
+    res = SEL.select(cands, tmp, 1, None, pre)
+    md = SEL.markdown(res, cands)
+    check('REG-12e select_standard 在選站表標出「負載下量測」並建議 serial 重測',
+          '⚠ 負載下量測' in md and res['warnings'] and 'serial' in res['warnings'][0], md[-300:])
+    # 預設 serial：另一個行程佔著量測位置時，這一站排隊；等不到就記為 concurrent
+    holder = subprocess.Popen([sys.executable, '-c', 'import sys,time; sys.path.insert(0, sys.argv[1]); import preflight as P\n'
+                               'with P.MeasureSlot(serial=True):\n    print("held", flush=True); time.sleep(4)', os.path.join(S, 'pw')],
+                              stdout=subprocess.PIPE, text=True)
+    holder.stdout.readline()
+    with PF.MeasureSlot(serial=True, wait=1) as slot:
+        others = PF.others_measuring()
+    holder.wait(timeout=20)
+    check('REG-12f preflight 預設 serial：有其他 preflight 正在量測時排隊；等太久才量的那次記成 concurrent、others ≥ 1',
+          slot.serial is False and others >= 1 and slot.waited >= 1, str((slot.serial, others, slot.waited)))
+    with PF.MeasureSlot(serial=True, wait=10) as slot2:
+        pass
+    check('REG-12g 沒有其他 preflight 時立即取得量測位置（serial、不用等）', slot2.serial and slot2.waited < 1, str(slot2.waited))
+
+    # REG-13 Packaging limit 是硬限制，放在 deployment gate
+    site = os.path.join(tmp, 'drone-27')
+    os.makedirs(os.path.join(site, 'screenshots', 'pw'))
+    for i in range(27):
+        make_img(os.path.join(site, 'screenshots', 'pw', f'pw1440-s{i:02d}.png'), 120, 80)
+    with open(os.path.join(site, 'notes.md'), 'w', encoding='utf-8') as f:
+        f.write('Gear（截圖：pw1440-s00～pw1440-s09）\nCapabilities（截圖：pw1440-s10～pw1440-s20）\n頁尾（截圖：pw1440-s21～pw1440-s26）\n')
+    out_dir = os.path.join(tmp, 'pack-27')
+    code, out = run([sys.executable, os.path.join(S, 'pack_assets.py'), site, out_dir])
+    check('REG-13a 報告引用 27 張截圖（drone.riotters.com）→ Pipeline Error，不默默刪圖、不留 manifest',
+          code != 0 and 'Pipeline Error' in out and not os.path.exists(os.path.join(out_dir, 'manifest.json')), out[-200:])
+    code, out = run([sys.executable, os.path.join(S, 'pack_assets.py'), site, out_dir, '--max', '30'])
+    check('REG-13b 不能用 --max 30 提高上限 → Pipeline Error', code != 0 and '硬限制' in out, out[-200:])
+    code, out = run([sys.executable, os.path.join(S, 'deploy_gate.py'), '--research', tmp, '--assets', tmp, 'drone-27'])
+    check('REG-13c Deployment Gate：打包失敗（沒有 manifest）→ FAIL，不發佈（結束碼 1）', code == 1 and 'FAIL' in out and '不要發佈' in out,
+          out[-300:])
+    big = os.path.join(tmp, 'pack-25', 'drone-27')
+    os.makedirs(big)
+    json.dump({'images': [{'path': f'screenshots/pw/pw1440-s{i:02d}.png', 'file': 'x', 'label': 'x', 'w': 1, 'h': 1} for i in range(25)],
+               'data': None}, open(os.path.join(big, 'manifest.json'), 'w'))
+    code, out = run([sys.executable, os.path.join(S, 'validate_refs.py'), site, '--manifest', os.path.join(big, 'manifest.json')])
+    check('REG-13d 別的方式產生的 manifest 超過 24 張 → validate_refs 也是 Pipeline Error（Validate image limit）',
+          code == 1 and '硬上限' in out, out[-300:])
+
+    # REG-14 減少重複引用後重新打包 → 通過 deployment gate
+    with open(os.path.join(site, 'notes.md'), 'w', encoding='utf-8') as f:
+        f.write('Gear（截圖：pw1440-s00、pw1440-s04、pw1440-s08；10 張分段截圖都在同一位置）\n'
+                'Capabilities（截圖：pw1440-s10～pw1440-s20）\n頁尾（截圖：pw1440-s21～pw1440-s26）\n')
+    out_dir = os.path.join(tmp, 'pack-ok', 'drone-27')
+    code, out = run([sys.executable, os.path.join(S, 'pack_assets.py'), site, out_dir])
+    man = json.load(open(os.path.join(out_dir, 'manifest.json'))) if code == 0 else {}
+    check('REG-14a 減少重複引用（27 → 20 張）後打包成功，被引用的圖都在 manifest 裡',
+          code == 0 and len(man.get("referenced", [])) == 20 and len(man['images']) <= 24, out[-200:])
+    code, out = run([sys.executable, os.path.join(S, 'deploy_gate.py'), '--research', tmp, '--assets', os.path.join(tmp, 'pack-ok'), 'drone-27'])
+    check('REG-14b Deployment Gate：References → Image limit → Packed 都通過 → PASS', code == 0 and 'PASS' in out, out[-300:])
+
+
 # ---------------------------------------------------------------- playwright fixtures
 def pw(tmp):
     PW = os.path.join(S, 'pw')
@@ -564,6 +794,7 @@ def main():
         print('== lint'); lint()
         print('== unit'); unit(tmp)
         print('== regression（2026-10-05 實際案例）'); regression(tmp)
+        print('== regression（2026-10-06 實際案例）'); regression_1006(tmp)
         if o.pw:
             print('== playwright fixtures'); pw(tmp)
     finally:

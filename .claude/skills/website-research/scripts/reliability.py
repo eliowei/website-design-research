@@ -75,10 +75,10 @@ def cap_status(d, vp, name):
     return d.get('capabilities', {}).get(vp, {}).get(name, {}).get('status')
 
 
-def compute(d, mode):
+def compute(d, mode, site_dir=None):
     # Capture 用證據集合判定的 Final Capture Quality（Initial＋Fallback），不是最後一次擷取
     import quality_check
-    fin = quality_check.final_capture(d)
+    fin = quality_check.final_capture(d, site_dir)
     status = quality_check.research_status(fin)
     notes = []
     capture = fin.get('desktop', {}).get('grade')
@@ -191,7 +191,7 @@ def main():
                 p.error(f'無法解析 {item}')
             ov[k] = {'grade': g, 'reason': o.reason}
         wr_status.save(o.site_dir, d)
-    r = compute(d, o.mode)
+    r = compute(d, o.mode, o.site_dir)
     if o.write:
         wr_status.set_key(o.site_dir, 'reliability', r)
     if o.markdown:

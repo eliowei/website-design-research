@@ -1,0 +1,564 @@
+{
+ "drone.riotters.com": {
+  "ctas": [
+   {
+    "text": "Scroll Down",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 820,
+    "section": {
+     "container": "section#hero",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": true,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#hero > div:nth-of-type(2) > div > div:nth-of-type(2) > div > button",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Energy",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 6929,
+    "section": {
+     "container": "nav",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#solutions > div:nth-of-type(3) > nav > div > button:nth-of-type(1)",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Infrastructure",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 6929,
+    "section": {
+     "container": "nav",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#solutions > div:nth-of-type(3) > nav > div > button:nth-of-type(2)",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Industry",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 6929,
+    "section": {
+     "container": "nav",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#solutions > div:nth-of-type(3) > nav > div > button:nth-of-type(3)",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Geospatial",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 6929,
+    "section": {
+     "container": "nav",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#solutions > div:nth-of-type(3) > nav > div > button:nth-of-type(4)",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Scan",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 8354,
+    "section": {
+     "container": "nav",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": "sticky",
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#capabilities-section > div > div:nth-of-type(2) > div:nth-of-type(1) > div > nav > button:nth-of-type(1)",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Connection",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 8426,
+    "section": {
+     "container": "nav",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": "sticky",
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#capabilities-section > div > div:nth-of-type(2) > div:nth-of-type(1) > div > nav > button:nth-of-type(2)",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Compactness",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 8490,
+    "section": {
+     "container": "nav",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": "sticky",
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#capabilities-section > div > div:nth-of-type(2) > div:nth-of-type(1) > div > nav > button:nth-of-type(3)",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Show point 03: Erosion Scarp",
+    "href": null,
+    "aria": "Show point 03: Erosion Scarp",
+    "style": "primary",
+    "y": 14790,
+    "section": {
+     "container": "section#software",
+     "heading": "Software"
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "aria",
+     "sel": "[aria-label=\"Show point 03: Erosion Scarp\"]",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Show point 01: Structural Fault Zone",
+    "href": null,
+    "aria": "Show point 01: Structural Fault Zone",
+    "style": "primary",
+    "y": 14817,
+    "section": {
+     "container": "section#software",
+     "heading": "Software"
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "aria",
+     "sel": "[aria-label=\"Show point 01: Structural Fault Zone\"]",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Show point 02: Sediment Drift",
+    "href": null,
+    "aria": "Show point 02: Sediment Drift",
+    "style": "primary",
+    "y": 15364,
+    "section": {
+     "container": "section#software",
+     "heading": "Software"
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "aria",
+     "sel": "[aria-label=\"Show point 02: Sediment Drift\"]",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Contact Us",
+    "href": "https://riotters.com/contact",
+    "aria": null,
+    "style": "primary",
+    "y": 16437,
+    "section": {
+     "container": "footer",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "semantic",
+     "sel": "a[href=\"https://riotters.com/contact\"]",
+     "nth": 0,
+     "unique": true
+    }
+   }
+  ],
+  "tool_click": {
+   "target": {
+    "text": "Scroll Down",
+    "href": null,
+    "aria": null,
+    "style": "primary",
+    "y": 820,
+    "section": {
+     "container": "section#hero",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": true,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "#hero > div:nth-of-type(2) > div > div:nth-of-type(2) > div > button",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   "result": "no_observable_change",
+   "url": "https://drone.riotters.com/"
+  },
+  "manual_click": {
+   "target": {
+    "text": "Contact Us",
+    "href": "https://riotters.com/contact",
+    "target": "_blank",
+    "consent": null,
+    "topmost": true,
+    "conversion": true,
+    "section": {
+     "container": "manual"
+    }
+   },
+   "result": {
+    "result": "new_tab",
+    "url": "https://riotters.com/contact",
+    "title": "Contact Riotters - Book a Discovery Call"
+   }
+  }
+ },
+ "era-residence.com": {
+  "ctas": [
+   {
+    "text": "BOOK A CALL",
+    "href": "#",
+    "aria": "Book a call",
+    "style": "link",
+    "y": 116,
+    "section": {
+     "container": "div",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": "fixed",
+    "topmost": true,
+    "visibleNow": true,
+    "selector": {
+     "kind": "aria",
+     "sel": "[aria-label=\"Book a call\"]",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "CONTACT",
+    "href": "/contact",
+    "aria": "Contact",
+    "style": "link",
+    "y": 131,
+    "section": {
+     "container": "div",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": "fixed",
+    "topmost": true,
+    "visibleNow": true,
+    "selector": {
+     "kind": "semantic",
+     "sel": "a[href=\"/contact\"]",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "Book a call now",
+    "href": "#",
+    "aria": "Book a call now",
+    "style": "link",
+    "y": 14499,
+    "section": {
+     "container": "section",
+     "heading": "GATED COMMUNITY"
+    },
+    "consent": null,
+    "persistent": "sticky",
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "div > div > div > div:nth-of-type(3) > div > div > div > a",
+     "nth": 1,
+     "unique": false
+    }
+   },
+   {
+    "text": "BOOK A CALL NOW",
+    "href": "#",
+    "aria": "Book a call now",
+    "style": "link",
+    "y": 14578,
+    "section": {
+     "container": "section",
+     "heading": "GATED COMMUNITY"
+    },
+    "consent": null,
+    "persistent": "sticky",
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "div > div > div:nth-of-type(3) > div > div > div > div:nth-of-type(1) > a",
+     "nth": 0,
+     "unique": false
+    }
+   },
+   {
+    "text": "Book a call now",
+    "href": "#",
+    "aria": "Book a call now",
+    "style": "link",
+    "y": 19138,
+    "section": {
+     "container": "section",
+     "heading": "ARCHITECTURE"
+    },
+    "consent": null,
+    "persistent": "sticky",
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div > a",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   {
+    "text": "BOOK A CALL NOW",
+    "href": "#",
+    "aria": "Book a call now",
+    "style": "link",
+    "y": 19197,
+    "section": {
+     "container": "section",
+     "heading": "ARCHITECTURE"
+    },
+    "consent": null,
+    "persistent": "sticky",
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "structure",
+     "sel": "div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div > div:nth-of-type(1) > a",
+     "nth": 0,
+     "unique": true
+    }
+   }
+  ],
+  "tool_click": {
+   "target": {
+    "text": "BOOK A CALL",
+    "href": "#",
+    "aria": "Book a call",
+    "style": "link",
+    "y": 116,
+    "section": {
+     "container": "div",
+     "heading": null
+    },
+    "consent": null,
+    "persistent": "fixed",
+    "topmost": true,
+    "visibleNow": true,
+    "selector": {
+     "kind": "aria",
+     "sel": "[aria-label=\"Book a call\"]",
+     "nth": 0,
+     "unique": true
+    }
+   },
+   "result": "no_observable_change",
+   "url": "https://www.era-residence.com/"
+  },
+  "manual_click": {
+   "target": {
+    "text": "SELECT\nAN APARTMENT\nSELECT\nAN APARTMENT",
+    "href": "/apartments",
+    "target": null,
+    "consent": null,
+    "topmost": true,
+    "conversion": true,
+    "section": {
+     "container": "manual"
+    }
+   },
+   "result": {
+    "result": "navigated",
+    "url": "https://www.era-residence.com/apartments",
+    "title": "Apartments — ERA Residence Estepona"
+   }
+  }
+ },
+ "decathlonyestalgia.com": {
+  "ctas": [
+   {
+    "text": "Previous",
+    "href": null,
+    "aria": "Previous",
+    "style": "primary",
+    "y": 10529,
+    "section": {
+     "container": "div",
+     "heading": "Decathlon Yestalgia"
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "semantic",
+     "sel": "button",
+     "nth": 1,
+     "unique": false
+    }
+   },
+   {
+    "text": "Next",
+    "href": null,
+    "aria": "Next",
+    "style": "primary",
+    "y": 10529,
+    "section": {
+     "container": "div",
+     "heading": "Decathlon Yestalgia"
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "semantic",
+     "sel": "button",
+     "nth": 2,
+     "unique": false
+    }
+   }
+  ],
+  "tool_click": {
+   "target": {
+    "text": "Previous",
+    "href": null,
+    "aria": "Previous",
+    "style": "primary",
+    "y": 10529,
+    "section": {
+     "container": "div",
+     "heading": "Decathlon Yestalgia"
+    },
+    "consent": null,
+    "persistent": null,
+    "topmost": null,
+    "visibleNow": true,
+    "selector": {
+     "kind": "semantic",
+     "sel": "button",
+     "nth": 1,
+     "unique": false
+    }
+   },
+   "result": "no_observable_change",
+   "url": "https://decathlonyestalgia.com/fr/"
+  },
+  "manual_click": {
+   "target": {
+    "text": "BOUTIQUE",
+    "href": "https://www.decathlon.fr/sportswear/decathlon-yestalgia?opeco=opeco:__drop-yestalgia&type=opeco",
+    "target": "_blank",
+    "consent": null,
+    "topmost": true,
+    "conversion": true,
+    "section": {
+     "container": "manual"
+    }
+   },
+   "result": {
+    "result": "new_tab",
+    "url": "https://www.decathlon.fr/sportswear/decathlon-yestalgia?opeco=opeco:__drop-yestalgia&type=opeco&__cf_chl_rt_tk=sWAgC29gfCC38zl4DWxg1O8Q9S42_fiuP8Cg9y53EcE-1791298215-1.0.1.1-FMXNJJhi8tlbHpv1Yom94xtfU0MDCphmTzs1tywjDSU",
+    "title": "Just a moment..."
+   }
+  }
+ },
+ "_comment": "2026-10-06 Standard 三站的實際 CTA 清單與點擊紀錄。工具當時選中 Scroll Down／BOOK A CALL（href=\"#\"）／Previous；手寫補點的結果在 manual_click。"
+}
